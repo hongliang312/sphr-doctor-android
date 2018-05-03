@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="colorPrimaryDay">#C01E2F</color>
+    <color name="colorPrimaryDayDark">#A82828</color>
+    <color name="colorPrimaryDayAccent">#F65663</color>
+    <color name="colorDayTextLight">#B6B6BE</color>
+    <color name="colorDayTextDark">#444242</color>
+    <color name="colorDayBg">#FFFFFF</color>
+    <color name="colorDayBgDark">#ECECEC</color>
+    <color name="title_black">#222222</color>
+
+
+
+    <color name="theme_color">#297fca</color>
+    <color name="backgound_color">#f2f2f2</color>
+    <color name="toRegister">#dcecff</color>
+    <color name="specialColor">#297fca</color>
+</resources>

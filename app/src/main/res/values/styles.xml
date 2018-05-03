@@ -1,0 +1,59 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/windowAnimation</item>
+        <!-- Set menu background and text color -->
+        <item name="android:itemBackground">@color/white</item>
+        <item name="android:textColor">@color/title_black</item>
+
+        //沉浸状态栏
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="windowAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/push_left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/push_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/push_right_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
+    </style>
+
+    <style name="AppMainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryDay</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDayDark</item>
+        <item name="colorAccent">@color/colorPrimaryDayAccent</item>
+        <item name="colorTextLight">@color/colorDayTextLight</item>
+        <item name="colorTextDark">@color/colorDayTextDark</item>
+        <item name="colorBg">@color/colorDayBg</item>
+        <item name="colorBgDark">@color/colorDayBgDark</item>
+
+        <!--<item name="drawableRefresh">@drawable/ic_svg_refresh_day_bg_24</item>-->
+        <!--<item name="drawableArrowRight">@drawable/ic_svg_arrow_right_day_bg_dark_24</item>-->
+    </style>
+
+    <!--全屏主题-->
+    <style name="NoTitleFullscreen" parent="AppMainTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--冷启动优化-->
+    <style name="AppSplash" parent="NoTitleFullscreen">
+        <item name="android:windowBackground">@mipmap/bryant_cover</item>
+    </style>
+
+    <style name="action_bar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+</resources>

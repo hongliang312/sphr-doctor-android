@@ -1,0 +1,62 @@
+<resources>
+    <string name="appname">阳光医线</string>
+    <string name="title_home">首页</string>
+    <string name="title_contract">联系人</string>
+    <string name="title_my">我的</string>
+
+    <string name="no_network_connection">无网络连接</string>
+
+    <string name="login">账号登录</string>
+    <string name="register">去注册</string>
+    <string name="inputMobile">请输入手机号</string>
+    <string name="inputPsd">请输入密码</string>
+    <string name="forgetPsd">忘记密码</string>
+    <string name="verificationCodeLogin">验证码登录</string>
+    <string name="mobile_or_password_can_not_be_empty">手机号或者密码不能空</string>
+    <string name="mobile_can_not_be_empty">手机号不能空</string>
+    <string name="authcode_can_not_be_empty">验证码不能空</string>
+    <string name="password_can_not_be_empty">密码不能空</string>
+    <string name="mobile_error">手机号码格式错误</string>
+    <string name="auth_code">请输入验证码</string>
+    <string name="send_auth_code">发送验证码</string>
+    <string name="register_agree">点击注册即同意</string>
+    <string name="terms_use"> (使用条款及隐私政策) </string>
+    <string name="authCodeSended">验证码已发送</string>
+    <string name="authCodeHint">s后重发</string>
+    <string name="modifyPsd">修改密码</string>
+    <string name="announcement">公告</string>
+
+    <string name="patient_manage">患者管理</string>
+    <string name="clinical_manage">试验管理</string>
+    <string name="panel">专家组</string>
+    <string name="consult_online">在线咨询</string>
+    <string name="clinical_trial">临床试验招募</string>
+    <string name="recruitment_num">招募人数：</string>
+    <string name="trial_stage">试验阶段：</string>
+    <string name="adaptation_disease">适应症：</string>
+    <string name="biding_unit">申办单位：</string>
+
+    <string name="new_contract">新的好友</string>
+    <string name="contract_list">好友列表</string>
+
+
+    <string name="to_certify">去认证</string>
+    <string name="my_page">我的主页</string>
+    <string name="feedback">意见反馈</string>
+    <string name="my_invitation_code">我的邀请码</string>
+    <string name="setting">设置</string>
+    <string name="service_tel">客服电话  400&#8211;623&#8211;125</string>
+    <string name="service_time">服务时间：周一至周五 9:00&#8211;18:00</string>
+
+
+
+    <string name="jump">跳过</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="more">更多</string>
+    <string name="add">添加</string>
+
+
+    <string name="exit_system">再按一次退出程序</string>
+    <string name="empty"> </string>
+</resources>
