@@ -67,7 +67,7 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
         mContractsAdapter = new ContractsAdapter(getActivity(), R.layout.item_doc_contract);
         mRvContracts.setAdapter(mContractsAdapter);
 
-        // 设置ContractView
+        //   设置ContractView
         View mContractHeadView = LayoutInflater.from(getContext()).inflate(R.layout.layout_contract_head, null);
         TextView tvNewCon = mContractHeadView.findViewById(R.id.tvNewCon);
         tvNewCon.setOnClickListener(this);
