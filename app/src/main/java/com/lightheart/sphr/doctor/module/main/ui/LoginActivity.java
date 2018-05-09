@@ -81,6 +81,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.LOGIN_KEY, true);
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.mobile);
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.PASSWORD_KEY, mEtPassword.getText().toString());
+        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.USER_KEY, user.id);
         // 登陆成功通知其他界面刷新
         RxBus.getInstance().post(user);
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
