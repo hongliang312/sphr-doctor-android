@@ -3,6 +3,7 @@ package com.lightheart.sphr.doctor.base;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -12,14 +13,19 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.app.DCApplication;
+import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.di.component.ActivityComponent;
 import com.lightheart.sphr.doctor.di.component.DaggerActivityComponent;
 import com.lightheart.sphr.doctor.di.module.ActivityModule;
 import com.lightheart.sphr.doctor.utils.StatusBarUtil;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -114,12 +120,12 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     @Override
     public void showLoading() {
-
+        ToastUtils.showShort("showLoading");
     }
 
     @Override
     public void hideLoading() {
-
+        ToastUtils.showShort("hideLoading");
     }
 
     @Override
@@ -139,7 +145,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
 
     @Override
     public void onRetry() {
-
+        ToastUtils.showShort("onRetry");
     }
 
     @Override
@@ -151,6 +157,37 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     @Override
     public <T> LifecycleTransformer<T> bindToLife() {
         return this.bindToLifecycle();
+    }
+
+    /**
+     * 设置加载数据结果
+     *
+     * @param baseQuickAdapter
+     * @param refreshLayout
+     * @param list
+     * @param loadType
+     */
+    protected void setLoadDataResult(BaseQuickAdapter baseQuickAdapter, SwipeRefreshLayout refreshLayout, List list, @LoadType.checker int loadType) {
+        switch (loadType) {
+            case LoadType.TYPE_REFRESH_SUCCESS:
+                baseQuickAdapter.setNewData(list);
+                refreshLayout.setRefreshing(false);
+                break;
+            case LoadType.TYPE_REFRESH_ERROR:
+                refreshLayout.setRefreshing(false);
+                break;
+            case LoadType.TYPE_LOAD_MORE_SUCCESS:
+                if (list != null) baseQuickAdapter.addData(list);
+                break;
+            case LoadType.TYPE_LOAD_MORE_ERROR:
+                baseQuickAdapter.loadMoreFail();
+                break;
+        }
+        if (list == null || list.isEmpty() || list.size() < Constant.PAGE_SIZE) {
+            baseQuickAdapter.loadMoreEnd(false);
+        } else {
+            baseQuickAdapter.loadMoreComplete();
+        }
     }
 
     @Override

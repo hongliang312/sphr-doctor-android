@@ -7,7 +7,7 @@ package com.lightheart.sphr.doctor.bean;
 
 public class User {
 
-    public String id;
+    public int id;
     public String mobile;
     public String realName;
 

@@ -24,7 +24,7 @@ public interface ApiService {
      * 登录
      *
      * @param parmas
-     * @return
+     * @return User
      */
     @POST("user/login")
     Observable<DataResponse<User>> login(@Body LoginRequest parmas);
@@ -33,7 +33,7 @@ public interface ApiService {
      * 验证码登录
      *
      * @param parmas
-     * @return
+     * @return User
      */
     @POST("auth/code/login")
     Observable<DataResponse<User>> authCodeLogin(@Body LoginRequest parmas);
@@ -42,7 +42,7 @@ public interface ApiService {
      * 发送验证码
      *
      * @param parmas
-     * @return
+     * @return Object
      */
     @POST("auth/code/send")
     Observable<DataResponse<Object>> sendAuthCode(@Body LoginRequest parmas);
@@ -51,7 +51,7 @@ public interface ApiService {
      * 验证验证码
      *
      * @param parmas
-     * @return
+     * @return Object
      */
     @POST("auth/code/verify")
     Observable<DataResponse<Object>> verifyAuthCode(@Body LoginRequest.Data parmas);
@@ -60,7 +60,7 @@ public interface ApiService {
      * 注册
      *
      * @param parmas
-     * @return
+     * @return User
      */
     @POST("user/register")
     Observable<DataResponse<User>> register(@Body LoginRequest parmas);
@@ -69,33 +69,55 @@ public interface ApiService {
      * 修改密码
      *
      * @param parmas
-     * @return
+     * @return User
      */
     @POST("user/forgetpwd")
     Observable<DataResponse<User>> modifyPsd(@Body LoginRequest parmas);
 
     /**
      * 获取首页信息
+     *
      * @param parmas
-     * @return
+     * @return HomePageInfo
      */
     @POST("homepage/docHomePageInfo")
     Observable<DataResponse<HomePageInfo>> getHomePageInfo(@Body LoginSuccess parmas);
 
     /**
      * 获取医生联系人
+     *
      * @param parmas
-     * @return
+     * @return List<ContractDocItem>
      */
     @POST("doctorContact/list")
     Observable<DataResponse<List<ContractDocItem>>> getContractList(@Body DocContractRequestParams parmas);
 
     /**
      * 获取医生个人信息
+     *
      * @param parmas
-     * @return
+     * @return DoctorBean
      */
     @POST("doctor/info")
     Observable<DataResponse<DoctorBean>> getDocInfo(@Body DocContractRequestParams parmas);
+
+    /**
+     * 接受，删除添加申请，删除好友
+     *
+     * @param params
+     * @return Object
+     */
+    @POST("doctorContact/operate")
+    Observable<DataResponse<Object>> docOperate(@Body DocContractRequestParams params);
+
+    /**
+     * 通过电话号搜索医生
+     *
+     * @param params
+     * @return
+     */
+    @POST("doctorContact/doctor/list")
+    Observable<DataResponse<List<ContractDocItem>>> searchDoc(@Body DocContractRequestParams params);
+
 
 }

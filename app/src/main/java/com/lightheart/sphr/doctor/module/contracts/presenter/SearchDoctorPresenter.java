@@ -7,7 +7,7 @@ import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
-import com.lightheart.sphr.doctor.module.contracts.contract.ContractsContract;
+import com.lightheart.sphr.doctor.module.contracts.contract.SearchDoctorContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
@@ -19,29 +19,29 @@ import javax.inject.Inject;
 import io.reactivex.functions.Consumer;
 
 /**
- * Created by fucp on 2018-4-25.
- * Description :联系人adapter
+ * Created by fucp on 2018-5-10.
+ * Description :
  */
 
-public class ContractPresenter extends BasePresenter<ContractsContract.View> implements ContractsContract.Presenter {
+public class SearchDoctorPresenter extends BasePresenter<SearchDoctorContract.View> implements SearchDoctorContract.Presenter {
 
     private DocContractRequestParams params = new DocContractRequestParams();
     private boolean mIsRefresh;
     private int mPage = 1;
 
     @Inject
-    public ContractPresenter() {
+    public SearchDoctorPresenter() {
         this.mIsRefresh = true;
-        this.params.status = "ADD";
         this.params.pageSize = 30;
         this.params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         this.params.pageNum = mPage;
     }
 
     @Override
-    public void loadContractData() {
+    public void loadDoctors(String mobile) {
+        this.params.mobile = mobile;
         RetrofitManager.create(ApiService.class)
-                .getContractList(params)
+                .searchDoc(params)
                 .compose(RxSchedulers.<DataResponse<List<ContractDocItem>>>applySchedulers())
                 .compose(mView.<DataResponse<List<ContractDocItem>>>bindToLife())
                 .subscribe(new Consumer<DataResponse<List<ContractDocItem>>>() {
@@ -49,7 +49,7 @@ public class ContractPresenter extends BasePresenter<ContractsContract.View> imp
                     public void accept(DataResponse<List<ContractDocItem>> response) throws Exception {
                         if (response.getResultcode() == 200) {
                             int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                            mView.setClinicals(response.getContent(), loadType);
+                            mView.setSearchDoctors(response.getContent(), loadType);
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
@@ -64,42 +64,13 @@ public class ContractPresenter extends BasePresenter<ContractsContract.View> imp
     }
 
     @Override
-    public void deleteDoc(DocContractRequestParams params) {
-        RetrofitManager.create(ApiService.class)
-                .docOperate(params)
-                .compose(RxSchedulers.<DataResponse<Object>>applySchedulers())
-                .compose(mView.<DataResponse<Object>>bindToLife())
-                .subscribe(new Consumer<DataResponse<Object>>() {
-                    @Override
-                    public void accept(DataResponse<Object> response) throws Exception {
-                        if (response.getResultcode() == 200) {
-                            mView.showSuccess((String) response.getContent());
-                            loadContractData();
-                        } else {
-                            mView.showFaild(String.valueOf(response.getResultmsg()));
-                        }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        mView.showFaild(throwable.getMessage());
-                    }
-                });
-    }
-
-    @Override
     public void refresh() {
-        this.params.pageNum = 1;
-        mIsRefresh = true;
-        loadContractData();
+
     }
 
     @Override
     public void loadMore() {
-        mPage++;
-        this.params.pageNum = mPage;
-        mIsRefresh = false;
-        loadContractData();
+
     }
 
 }

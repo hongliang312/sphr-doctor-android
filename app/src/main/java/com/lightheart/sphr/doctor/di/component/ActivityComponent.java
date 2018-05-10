@@ -6,6 +6,8 @@ import android.content.Context;
 import com.lightheart.sphr.doctor.di.module.ActivityModule;
 import com.lightheart.sphr.doctor.di.scope.ContextLife;
 import com.lightheart.sphr.doctor.di.scope.PerActivity;
+import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
+import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.module.main.ui.RegisterActivity;
 
@@ -26,5 +28,9 @@ public interface ActivityComponent {
     void inject(LoginActivity activity);
 
     void inject(RegisterActivity activity);
+
+    void inject(NewContractActivity activity);
+
+    void inject(SearchPhoneActivity activity);
 
 }

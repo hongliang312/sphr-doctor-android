@@ -26,6 +26,8 @@ public interface ContractsContract {
 
         void loadContractData();
 
+        void deleteDoc(DocContractRequestParams params);
+
         void refresh();
 
         void loadMore();

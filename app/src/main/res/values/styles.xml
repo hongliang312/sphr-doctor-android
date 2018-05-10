@@ -11,8 +11,9 @@
         <item name="android:textColor">@color/title_black</item>
 
         //沉浸状态栏
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <!--<item name="android:windowDisablePreview">true</item>-->
     </style>
 
     <style name="windowAnimation">
@@ -55,5 +56,10 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="addPopAnim" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/right_top_in</item>
+        <item name="android:windowExitAnimation">@anim/right_top_out</item>
+    </style>
 
 </resources>
