@@ -314,29 +314,6 @@
 
     </RelativeLayout>
 
-
-     <!--<LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="vertical"
-         android:layout_marginTop="@dimen/dp_20"
-         >
-
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content">
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recylview"
-        ></android.support.v7.widget.RecyclerView>
-
-         </RelativeLayout>
-
-     </LinearLayout>-->
-
-
          <RelativeLayout
              android:id="@+id/r1"
              android:background="#00669A"

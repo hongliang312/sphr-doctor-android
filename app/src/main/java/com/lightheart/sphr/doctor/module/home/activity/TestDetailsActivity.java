@@ -1,5 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -59,11 +60,7 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
     TextView TotalThegrouprate;
     @BindView(R.id.TotalexitedNum)
     TextView TotalexitedNum;
-
-
-    private TestDetailsAdapter detailsAdapter;
-    private List<TestDetails.CtrSiteAssignmentsBean> list;
-
+    private List<TestDetails.CtrSiteAssignmentsBean> detailslist;
 
     @Override
     protected int getLayoutId() {
@@ -84,46 +81,38 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
 
         assert mPresenter != null;
         mPresenter.loadDetailsData(entity);
-
-       /* recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        detailsAdapter = new TestDetailsAdapter(this,list);
-        recyclerView.setAdapter(detailsAdapter);*/
-
     }
 
     @Override
     public void onClick(View v) {
 
     }
-
     @Override
     public void setDetals(TestDetails content) {
+        if(content != null){
+            title.setText(TextUtils.isEmpty(content.getProjectName()) ? "" : content.getProjectName());
+            time.setText(content.getTrialTime());
+            numb.setText(content.getRecruitCount()+"");
+            Indication.setText(content.getIndications()+"");
+            Cornary.setText(content.getTrialPurpose());
+            ProJectSponsor.setText(content.getOrganizeUnit());
+            Projectorganizer.setText(content.getBidUnit());
+            ProJectPI.setText(content.getTrialStage());
 
-
-        title.setText(content.getProjectName());
-        time.setText(content.getTrialTime());
-        numb.setText(content.getRecruitCount()+"");
-        Indication.setText(content.getIndications()+"");
-        Cornary.setText(content.getTrialPurpose());
-        ProJectSponsor.setText(content.getOrganizeUnit());
-        Projectorganizer.setText(content.getBidUnit());
-        ProJectPI.setText(content.getTrialStage());
-
-        list = content.getCtrSiteAssignments();
-        siteName.setText(list.get(0).getSiteName());
-        contats.setText(list.get(0).getPiName());
-        plannedNum.setText(list.get(0).getPlannedNum()+"");
-        involvedNum.setText(list.get(0).getInvolvedNum()+"");
-        float v = ((float) list.get(0).getInvolvedNum() / list.get(0).getPlannedNum() * 100);
-        Thregrouprate.setText(v+"%");
-        State.setText(list.get(0).getProjectStatusName());
-        isStart.setText(list.get(0).getIsStart());
-        exitedNum.setText(list.get(0).getExitedNum()+"");
-        TotalplannedNum.setText(list.get(0).getPlannedNum()+"");
-        TotalinvolvedNum.setText(list.get(0).getInvolvedNum()+"");
-        TotalThegrouprate.setText(v+"%");
-        TotalexitedNum.setText(list.get(0).getExitedNum()+"");
-
+            detailslist = content.getCtrSiteAssignments();
+            siteName.setText(detailslist.get(0).getSiteName());
+            contats.setText(detailslist.get(0).getPiName());
+            plannedNum.setText(detailslist.get(0).getPlannedNum()+"");
+            involvedNum.setText(detailslist.get(0).getInvolvedNum()+"");
+            float v = ((float) detailslist.get(0).getInvolvedNum() / detailslist.get(0).getPlannedNum() * 100);
+            Thregrouprate.setText(v+"%");
+            State.setText(detailslist.get(0).getProjectStatusName());
+            isStart.setText(detailslist.get(0).getIsStart());
+            exitedNum.setText(detailslist.get(0).getExitedNum()+"");
+            TotalplannedNum.setText(detailslist.get(0).getPlannedNum()+"");
+            TotalinvolvedNum.setText(detailslist.get(0).getInvolvedNum()+"");
+            TotalThegrouprate.setText(v+"%");
+            TotalexitedNum.setText(detailslist.get(0).getExitedNum()+"");
+        }
     }
-
 }
