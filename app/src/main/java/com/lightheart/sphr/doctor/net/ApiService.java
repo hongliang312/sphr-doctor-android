@@ -8,6 +8,8 @@ import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.PatientsModel;
+import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
@@ -150,11 +152,19 @@ public interface ApiService {
     Observable<DataResponse<List<TestingManagement>>> Testinglist(@Body TextsingRequestParams requestParams);
 
     /**
-     *
      * @param entity
      * @return
      */
     @POST("clinicalTrial/myCtrDetailById")
     Observable<DataResponse<TestDetails>> detailslist(@Body DetailsBean entity);
+
+    /**
+     * 患者列表
+     *
+     * @param params
+     * @return List<PatientsModel>
+     */
+    @POST("patient/getPatientByDuid")
+    Observable<DataResponse<PatientsModel>> getPatientByDuid(@Body PatientsRequestParams params);
 
 }

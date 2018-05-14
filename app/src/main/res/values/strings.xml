@@ -27,6 +27,8 @@
     <string name="announcement">公告</string>
 
     <string name="patient_manage">患者管理</string>
+    <string name="patient_search">请输入姓名或患者诊断</string>
+    <string name="patient_search_hint">在患者端关注过您的患者，可以在这里显示哦。\n在这里，您可以看到完整的患者病历记录。</string>
     <string name="clinical_manage">试验管理</string>
     <string name="panel">专家组</string>
     <string name="consult_online">在线咨询</string>

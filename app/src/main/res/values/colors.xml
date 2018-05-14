@@ -13,6 +13,11 @@
     <color name="colorDayBg">#FFFFFF</color>
     <color name="colorDayBgDark">#ECECEC</color>
     <color name="title_black">#222222</color>
+    <color name="search_bg">#bdbdbd</color>
+
+
+
+
     <color name="sky_blue">#2A80CA</color>
     <color name="sky_blue1">#336699</color>
     <color name="sky_blue2"> #3333CC</color>

@@ -81,6 +81,7 @@
         <activity android:name=".module.my.ui.AuthenticationActivity" />
         <activity android:name=".module.my.ui.FeedBackActivity" />
         <activity android:name=".module.my.ui.MyInvitationCodeActivity" />
+        <activity android:name=".module.home.ui.HomePatientManageActivity" />
     </application>
 
 </manifest>
