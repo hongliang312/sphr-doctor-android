@@ -2,10 +2,8 @@ package com.lightheart.sphr.doctor.module.contracts.contract;
 
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
-import com.lightheart.sphr.doctor.bean.HomePageInfo;
-import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 
 import java.util.List;
 
@@ -18,13 +16,15 @@ public interface ContractsContract {
 
     interface View extends BaseContract.BaseView {
 
-        void setClinicals(List<ContractDocItem> ContractDocList, @LoadType.checker int loadType);
+        void setClinicals(List<DoctorBean> ContractDocList, @LoadType.checker int loadType);
 
     }
 
     interface Presenter extends BaseContract.BasePresenter<ContractsContract.View> {
 
         void loadContractData();
+
+        void deleteDoc(DocContractRequestParams params);
 
         void refresh();
 

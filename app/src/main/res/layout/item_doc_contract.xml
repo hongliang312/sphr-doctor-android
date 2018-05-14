@@ -1,41 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lightheart.sphr.doctor.view.SlidingButtonView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:paddingEnd="@dimen/dp_14"
-    android:paddingStart="@dimen/dp_14">
+    android:layout_height="@dimen/dp_70"
+    android:layout_marginBottom="@dimen/dp_05"
+    android:background="@android:color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/dp_8"
-        android:paddingTop="@dimen/dp_8">
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civContract"
-            android:layout_width="@dimen/dp_56"
-            android:layout_height="@dimen/dp_56"
-            android:src="@mipmap/ic_launcher" />
+        <RelativeLayout
+            android:id="@+id/item_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civContract"
+                android:layout_width="@dimen/dp_68"
+                android:layout_height="@dimen/dp_68"
+                android:layout_alignParentStart="true"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingStart="@dimen/dp_14"
+                android:paddingTop="@dimen/dp_8"
+                android:src="@mipmap/ic_launcher"
+                tools:ignore="RtlSymmetry" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/civContract"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvConName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dp_4"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_8"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/big_small"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="@string/title_contract" />
+
+                <TextView
+                    android:id="@+id/tvHospital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp_8"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_4"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/big_small"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="@string/title_contract" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_14"
+                android:background="@drawable/bg_theme_round"
+                android:paddingBottom="@dimen/dp_4"
+                android:paddingEnd="@dimen/dp_10"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_4"
+                android:text="@string/accept"
+                android:textColor="@color/theme_color"
+                android:textSize="@dimen/small"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/tvConName"
+            android:id="@+id/contract_item_delete_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp_14"
-            android:textColor="@color/title_black"
-            android:textSize="@dimen/big_small"
-            tools:text="@string/title_contract" />
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/item_content"
+            android:background="#ff6161"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="@string/delete"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/big_small" />
 
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_05"
-        android:background="@color/colorDayTextLight" />
+    </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</com.lightheart.sphr.doctor.view.SlidingButtonView>

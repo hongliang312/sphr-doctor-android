@@ -46,7 +46,7 @@ public class DoctorBean implements Serializable {
      */
 
     private int id;
-    private String certStatus;
+    private String certStatus;// 'USR_CERT_S_SUC(成功)','USR_CERT_S_FAL(失败)','USR_CERT_S_IN(认证中)','USR_CERT_S_UN(未认证)'
     private int districtId;
     private String districtName;
     private int hospitalId;
@@ -79,6 +79,43 @@ public class DoctorBean implements Serializable {
     private long birth;
     private String isArticlePush;
     private String isPersonalPush;
+
+
+    /**
+     * 医生好友列表使用
+     * <p>
+     * id : 57
+     * contUid : 8514
+     * contName : 帅锅
+     * imgUrl : http://www.lightheart.com.cn/files/20171220/fb6291a59e0d47339c04bb5666448716.jpeg
+     */
+
+    private int contUid;
+    private String contName;
+
+    public int getContUid() {
+        return contUid;
+    }
+
+    public void setContUid(int contUid) {
+        this.contUid = contUid;
+    }
+
+    /**
+     * 搜索医生列表使用
+     * <p>
+     * realName : ws
+     * mobile : 13098989898
+     * majorIn : 唱歌唱
+     * summary : 很好
+     * hospitalName : 首都医科大学附属北京中医医院
+     * departmentName : 内肚科
+     * titleName : 主任医师
+     * friend : false
+     */
+
+    private String mobile;
+    private boolean friend;
 
     public int getId() {
         return id;
@@ -350,5 +387,29 @@ public class DoctorBean implements Serializable {
 
     public void setIsPersonalPush(String isPersonalPush) {
         this.isPersonalPush = isPersonalPush;
+    }
+
+    public String getContName() {
+        return contName;
+    }
+
+    public void setContName(String contName) {
+        this.contName = contName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public boolean isFriend() {
+        return friend;
+    }
+
+    public void setFriend(boolean friend) {
+        this.friend = friend;
     }
 }

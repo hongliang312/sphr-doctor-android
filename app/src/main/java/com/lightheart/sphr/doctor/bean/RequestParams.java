@@ -4,16 +4,15 @@ import java.io.Serializable;
 
 /**
  * Created by fucp on 2018-4-16.
- * Description :
+ * Description : 添加好友
  */
 
 public class RequestParams implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 医生详情
-     */
     public int duid;
+
+    public int contUid;
 
 }

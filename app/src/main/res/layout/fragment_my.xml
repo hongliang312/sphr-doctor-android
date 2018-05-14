@@ -17,7 +17,6 @@
         android:paddingStart="@dimen/dp_14"
         android:paddingTop="@dimen/dp_44">
 
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/clvHeadImage"
             android:layout_width="@dimen/dp_50"
@@ -26,6 +25,7 @@
             android:src="@mipmap/ic_user" />
 
         <RelativeLayout
+            android:id="@+id/rlDcoInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
                 android:textSize="@dimen/big_small"
                 android:textStyle="bold"
                 tools:ignore="NotSibling"
-                tools:text="@string/appname" />
+                tools:text="@string/appName" />
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -55,6 +55,7 @@
                 tools:text="主任医师" />
 
             <TextView
+                android:id="@+id/tvTutor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvUserName"
@@ -68,8 +69,10 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tvAuth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_round"
             android:drawablePadding="@dimen/dp_4"
             android:drawableStart="@mipmap/ic_certify"
             android:padding="@dimen/dp_6"
@@ -79,6 +82,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvMyHomePage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
@@ -95,6 +99,7 @@
         android:background="@color/colorDayTextLight" />
 
     <TextView
+        android:id="@+id/tvFeedBadk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -110,6 +115,7 @@
         android:background="@color/colorDayTextLight" />
 
     <TextView
+        android:id="@+id/tvMyInvitationCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -125,6 +131,7 @@
         android:background="@color/colorDayTextLight" />
 
     <TextView
+        android:id="@+id/tvSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
@@ -142,7 +149,7 @@
         android:layout_marginTop="@dimen/dp_18"
         android:gravity="center"
         android:text="@string/service_tel"
-        android:textColor="@color/specialColor"
+        android:textColor="@color/theme_color"
         android:textSize="@dimen/small" />
 
     <TextView
@@ -150,7 +157,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/service_time"
-        android:textColor="@color/specialColor"
+        android:textColor="@color/theme_color"
         android:textSize="@dimen/small" />
 
 

@@ -33,14 +33,6 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    /*@BindView(R.id.mainBar)
-    AppBarLayout mainBar;
-    @BindView(R.id.common_toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.bt_sub)
-    Button mBtSub;
-    @BindView(R.id.common_toolbar_title_tv)
-    TextView mTitleTv;*/
     @BindView(R.id.navigation)
     BottomNavigationView mNavigation;
     private List<BaseFragment> mFragments = new ArrayList<>();
@@ -58,7 +50,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     @Override
     protected void initView() {
-//        initToolbar(mToolbar, mTitleTv, mBtSub, 0, false, 0);
         mNavigation.setOnNavigationItemSelectedListener(this);
         initFragment();
         switchFragment(0);
@@ -69,17 +60,12 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navigation_home:
-//                mainBar.setVisibility(View.GONE);
                 switchFragment(0);
                 break;
             case R.id.navigation_contract:
-//                mainBar.setVisibility(View.GONE);
-//                setTitle(mTitleTv,mBtSub, R.string.title_contract,true,R.string.title_contract);
                 switchFragment(1);
                 break;
             case R.id.navigation_my:
-//                mainBar.setVisibility(View.GONE);
-//                setTitle(mTitleTv,mBtSub, R.string.title_my,false,R.string.title_my);
                 switchFragment(2);
                 break;
         }

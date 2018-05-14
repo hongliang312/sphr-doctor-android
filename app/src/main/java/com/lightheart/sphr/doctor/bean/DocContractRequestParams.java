@@ -16,4 +16,10 @@ public class DocContractRequestParams implements Serializable {
     public int duid;
     public String status;
 
+    // 好友申请列表id
+    public int id;
+
+    // 搜索好友
+    public String mobile;
+
 }

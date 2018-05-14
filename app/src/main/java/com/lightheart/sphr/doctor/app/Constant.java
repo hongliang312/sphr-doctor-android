@@ -8,13 +8,15 @@ package com.lightheart.sphr.doctor.app;
 public class Constant {
     // 测试服务器
      public static final String BASE_URL = "http://172.61.1.63:8889/shdr-service-basic/";
+    // 鲁有志
+//    public static final String BASE_URL = "http://172.61.1.51:8889/shdr-service-basic/";
     // 宇清
-//    public static final String BASE_URL = "http://172.61.1.208:8889/shdr-service-basic/";
+    // public static final String BASE_URL = "http://172.61.1.208:8889/shdr-service-basic/";
 
     /**
      * 每页数量
      */
-    public static final int PAGE_SIZE = 20;
+    public static final int PAGE_SIZE = 10;
     /**
      * url key
      */

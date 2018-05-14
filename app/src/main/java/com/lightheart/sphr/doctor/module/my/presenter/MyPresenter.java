@@ -1,5 +1,7 @@
 package com.lightheart.sphr.doctor.module.my.presenter;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
@@ -29,7 +31,7 @@ public class MyPresenter extends BasePresenter<MyContract.View> implements MyCon
     @Inject
     public MyPresenter() {
         this.mIsRefresh = true;
-        this.params.duid = 8520;
+        this.params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
     }
 
     @Override
