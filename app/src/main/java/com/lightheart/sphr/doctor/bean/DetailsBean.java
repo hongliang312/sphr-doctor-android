@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by 知足 on 2018/5/11.
  */
 
-public class DetailsEntity implements Serializable{
+public class DetailsBean implements Serializable{
     private String duid;
     private String id;
 

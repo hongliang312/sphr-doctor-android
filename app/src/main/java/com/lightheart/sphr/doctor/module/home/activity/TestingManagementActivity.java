@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
@@ -19,7 +18,6 @@ import com.lightheart.sphr.doctor.module.home.presenter.TestingManagementPresent
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
-
 public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View,HideScrollListener, View.OnClickListener {
 
 

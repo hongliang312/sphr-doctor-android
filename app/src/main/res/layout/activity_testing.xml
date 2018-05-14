@@ -8,45 +8,24 @@
     tools:context="com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity">
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/sky_blue2"
         >
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ssss"
+            android:text="@string/ssss"
 
             />
 
     </RelativeLayout>
 
-   <!-- <RelativeLayout
-        android:id="@+id/layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/sky_blue3">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@color/sky_blue3"
-            android:text="在这里，您看到您所参加的项目的进度"
-            android:textColor="@color/theme_color"
-            android:textSize="16dp"
-            android:layout_marginLeft="@dimen/dp_15"
-            />
-
-    </RelativeLayout>-->
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        app:title="在这里，您看到您所参加的项目的进度"
+        app:title="@string/title"
         android:layout_width="match_parent"
         android:textColor="@color/theme_color"
         android:layout_height="?attr/actionBarSize"

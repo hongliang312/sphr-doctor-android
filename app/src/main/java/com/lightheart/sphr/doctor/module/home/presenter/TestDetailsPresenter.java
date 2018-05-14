@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.DetailsEntity;
+import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.module.home.contract.TestDetailsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
@@ -21,7 +21,7 @@ import io.reactivex.functions.Consumer;
 
 public class TestDetailsPresenter extends BasePresenter<TestDetailsContract.View> implements TestDetailsContract.Presenter {
 
-    private DetailsEntity entity = new DetailsEntity();
+    private DetailsBean entity = new DetailsBean();
 
     @Inject
     public TestDetailsPresenter() {
@@ -30,7 +30,7 @@ public class TestDetailsPresenter extends BasePresenter<TestDetailsContract.View
     }
 
     @Override
-    public void loadDetailsData(DetailsEntity entity) {
+    public void loadDetailsData(DetailsBean entity) {
 
         Log.i("id",""+entity);
 

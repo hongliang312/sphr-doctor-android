@@ -93,4 +93,34 @@
     <string name="qian">前列腺癌</string>
     <string name="project">项目名称</string>
 
+
+    <string name="title">在这里，您看到您所参加的项目的进度</string>
+    <string name="message">为确保信息的时效性以下信息每天更新</string>
+    <string name="testingmanagement">试验管理</string>
+    <string name="testingtime">试验时间:</string>
+    <string name="recruit">招募人数:</string>
+    <string name="man">人</string>
+    <string name="adaptationdisease">适   应   症 :</string>
+    <string name="projectsponsor">项目主办方:</string>
+    <string name="projectorganizer">项目承办方</string>
+    <string name="projectpi">项   目    PI  :</string>
+    <string name="projectphase">项目阶段</string>
+    <string name="projectlocation">项目地点</string>
+    <string name="researcher">研究者</string>
+    <string name="plan">计划受试者人数</string>
+    <string name="thegroupnumber">目前已入组人数</string>
+    <string name="thegrouprate">入组率</string>
+    <string name="state">状态</string>
+    <string name="isstart">是否启动</string>
+    <string name="earlyexit">提前退出人数</string>
+    <string name="total">总计</string>
+
+    <string name="biddingfortheunit">申办单位:</string>
+    <string name="testingstage">试验阶段:</string>
+    <string name="_2017_12_03_2018_01_29">2017-12-03-2018-01-29</string>
+    <string name="purposeofresearch">研究目的</string>
+    <string name="ssss">ssss</string>
+    <string name="particulars">详情</string>
+    <string name="ygxq">  阳光欣晴</string>
+
 </resources>

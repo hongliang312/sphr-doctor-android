@@ -1,7 +1,7 @@
 package com.lightheart.sphr.doctor.net;
 
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.DetailsEntity;
+import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.FeedBackBean;
@@ -14,16 +14,10 @@ import com.lightheart.sphr.doctor.bean.TestingManagement;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
 import com.lightheart.sphr.doctor.bean.User;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import io.reactivex.Completable;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -161,6 +155,6 @@ public interface ApiService {
      * @return
      */
     @POST("clinicalTrial/myCtrDetailById")
-    Observable<DataResponse<TestDetails>> detailslist(@Body DetailsEntity entity);
+    Observable<DataResponse<TestDetails>> detailslist(@Body DetailsBean entity);
 
 }

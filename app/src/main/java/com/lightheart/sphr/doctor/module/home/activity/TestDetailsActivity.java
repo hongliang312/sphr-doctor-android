@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.DetailsEntity;
+import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.module.home.contract.TestDetailsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.TestDetailsPresenter;
@@ -75,8 +75,8 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
     @Override
     protected void initView() {
         String id = getIntent().getStringExtra("id");
-        DetailsEntity entity=new DetailsEntity();
-        entity.setDuid("8520");
+        DetailsBean entity=new DetailsBean();
+        entity.setDuid(id);
         entity.setId(id);
 
         assert mPresenter != null;
