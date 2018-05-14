@@ -19,15 +19,18 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.module.contracts.adapter.ContractsAdapter;
 import com.lightheart.sphr.doctor.module.contracts.contract.ContractsContract;
 import com.lightheart.sphr.doctor.module.contracts.presenter.ContractPresenter;
 import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -50,7 +53,9 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvContracts)
     RecyclerView mRvContracts;
-    private ContractsAdapter mContractsAdapter;
+    @Inject
+    ContractsAdapter mContractsAdapter;
+    // private ContractsAdapter mContractsAdapter;
     private PopupWindow mAddPop;
 
     @Override
@@ -68,9 +73,10 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.title_contract, true, R.string.add);
         mBtSub.setOnClickListener(this);
 
+        mContractsAdapter.initData(getActivity(), "ADDED");
         //  设置RecyclerView
         mRvContracts.setLayoutManager(new LinearLayoutManager(getContext()));
-        mContractsAdapter = new ContractsAdapter(getActivity(), R.layout.item_doc_contract, "ADDED");
+//        mContractsAdapter = new ContractsAdapter(getActivity(), R.layout.item_doc_contract, "ADDED");
         mRvContracts.setAdapter(mContractsAdapter);
 
         //   设置ContractView
@@ -93,7 +99,7 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     }
 
     @Override
-    public void setClinicals(List<ContractDocItem> contractDocList, int loadType) {
+    public void setClinicals(List<DoctorBean> contractDocList, int loadType) {
         setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
     }
 
@@ -137,6 +143,16 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     }
 
     @Override
+    public void showLoading() {
+        mSwipeRefreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void showFaild(String errorMsg) {
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
     public void onRefresh() {
         assert mPresenter != null;
         mPresenter.refresh();
@@ -149,19 +165,19 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     }
 
     @Override
-    public void itemClick(View view, int position, ContractDocItem item) {
+    public void itemClick(View view, int position, DoctorBean item) {
         assert item != null;
-        ToastUtils.showShort(item.getContName());
+        startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getContUid()).putExtra("flag", "CHECK"));
     }
 
     // 暂时不需要
     @Override
-    public void accept(View view, int position, ContractDocItem item) {
+    public void accept(View view, int position, DoctorBean item) {
 
     }
 
     @Override
-    public void deleteClick(View view, int position, ContractDocItem item) {
+    public void deleteClick(View view, int position, DoctorBean item) {
         DocContractRequestParams params = new DocContractRequestParams();
         params.status = "DEL";
         params.id = item.getId();

@@ -15,9 +15,10 @@
     <color name="title_black">#222222</color>
 
 
-
     <color name="theme_color">#297fca</color>
     <color name="backgound_color">#f2f2f2</color>
     <color name="toRegister">#dcecff</color>
-    <color name="specialColor">#297fca</color>
+    <color name="fiveEight">#585858</color>
+    <color name="divide">#dddddd</color>
+    <color name="eight">#888888</color>
 </resources>

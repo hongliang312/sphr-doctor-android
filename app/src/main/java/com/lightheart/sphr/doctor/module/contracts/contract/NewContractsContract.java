@@ -2,8 +2,8 @@ package com.lightheart.sphr.doctor.module.contracts.contract;
 
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface NewContractsContract {
 
     interface View extends BaseContract.BaseView {
 
-        void setNewContracts(List<ContractDocItem> ContractDocList, @LoadType.checker int loadType);
+        void setNewContracts(List<DoctorBean> ContractDocList, @LoadType.checker int loadType);
 
     }
 

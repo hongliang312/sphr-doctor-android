@@ -4,9 +4,9 @@ import com.blankj.utilcode.util.SPUtils;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BasePresenter;
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.module.contracts.contract.ContractsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
@@ -42,11 +42,11 @@ public class ContractPresenter extends BasePresenter<ContractsContract.View> imp
     public void loadContractData() {
         RetrofitManager.create(ApiService.class)
                 .getContractList(params)
-                .compose(RxSchedulers.<DataResponse<List<ContractDocItem>>>applySchedulers())
-                .compose(mView.<DataResponse<List<ContractDocItem>>>bindToLife())
-                .subscribe(new Consumer<DataResponse<List<ContractDocItem>>>() {
+                .compose(RxSchedulers.<DataResponse<List<DoctorBean>>>applySchedulers())
+                .compose(mView.<DataResponse<List<DoctorBean>>>bindToLife())
+                .subscribe(new Consumer<DataResponse<List<DoctorBean>>>() {
                     @Override
-                    public void accept(DataResponse<List<ContractDocItem>> response) throws Exception {
+                    public void accept(DataResponse<List<DoctorBean>> response) throws Exception {
                         if (response.getResultcode() == 200) {
                             int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
                             mView.setClinicals(response.getContent(), loadType);

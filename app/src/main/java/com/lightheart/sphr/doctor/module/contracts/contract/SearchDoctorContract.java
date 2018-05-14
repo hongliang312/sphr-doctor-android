@@ -2,8 +2,7 @@ package com.lightheart.sphr.doctor.module.contracts.contract;
 
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
-import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public interface SearchDoctorContract {
 
     interface View extends BaseContract.BaseView {
 
-        void setSearchDoctors(List<ContractDocItem> ContractDocList, @LoadType.checker int loadType);
+        void setSearchDoctors(List<DoctorBean> ContractDocList, @LoadType.checker int loadType);
 
     }
 
@@ -24,7 +23,7 @@ public interface SearchDoctorContract {
 
         void loadDoctors(String mobile);
 
-        void refresh();
+//        void refresh();
 
         void loadMore();
 

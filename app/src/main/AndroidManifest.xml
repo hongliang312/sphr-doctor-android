@@ -39,7 +39,7 @@
         android:name=".app.DCApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/appname"
+        android:label="@string/appName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -71,6 +71,13 @@
             android:name=".module.contracts.ui.SearchPhoneActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.my.ui.MyHomePageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".module.my.ui.AuthenticationActivity" />
+        <activity android:name=".module.my.ui.FeedBackActivity" />
+        <activity android:name=".module.my.ui.MyInvitationCodeActivity" />
     </application>
 
 </manifest>

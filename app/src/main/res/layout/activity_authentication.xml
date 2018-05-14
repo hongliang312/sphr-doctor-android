@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/mainBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/dp_0">
+
+            <include layout="@layout/common_toolbar" />
+        </android.support.design.widget.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/ivSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_60"
+            android:contentDescription="@string/authentication"
+            android:src="@mipmap/ic_auth" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_28"
+            android:text="@string/auth_hint"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_30"
+            android:paddingStart="@dimen/dp_30"
+            android:text="@string/auth_hint1"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_40"
+            android:background="@mipmap/bg_auth_upload" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

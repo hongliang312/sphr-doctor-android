@@ -8,7 +8,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -60,7 +60,8 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-
+    implementation 'pub.devrel:easypermissions:1.0.0'
+    implementation project(':lib-zxing')
 }
 repositories {
     mavenCentral()

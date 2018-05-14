@@ -1,9 +1,9 @@
 package com.lightheart.sphr.doctor.net;
 
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
@@ -14,8 +14,6 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -90,7 +88,7 @@ public interface ApiService {
      * @return List<ContractDocItem>
      */
     @POST("doctorContact/list")
-    Observable<DataResponse<List<ContractDocItem>>> getContractList(@Body DocContractRequestParams parmas);
+    Observable<DataResponse<List<DoctorBean>>> getContractList(@Body DocContractRequestParams parmas);
 
     /**
      * 获取医生个人信息
@@ -114,10 +112,27 @@ public interface ApiService {
      * 通过电话号搜索医生
      *
      * @param params
-     * @return
+     * @return List<ContractDocItem>
      */
     @POST("doctorContact/doctor/list")
-    Observable<DataResponse<List<ContractDocItem>>> searchDoc(@Body DocContractRequestParams params);
+    Observable<DataResponse<List<DoctorBean>>> searchDoc(@Body DocContractRequestParams params);
 
+    /**
+     * 申请添加好友
+     *
+     * @param params
+     * @return
+     */
+    @POST("doctorContact/apply/add")
+    Observable<DataResponse<Object>> applyAddDoc(@Body RequestParams params);
+
+    /**
+     * 提交意见反馈
+     *
+     * @param params
+     * @return
+     */
+    @POST("user/feedback")
+    Observable<DataResponse<Object>> feedback(@Body FeedBackBean params);
 
 }

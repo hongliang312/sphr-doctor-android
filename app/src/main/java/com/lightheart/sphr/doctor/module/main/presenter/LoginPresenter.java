@@ -3,7 +3,6 @@ package com.lightheart.sphr.doctor.module.main.presenter;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
-import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.bean.User;
 import com.lightheart.sphr.doctor.module.main.contract.LoginContract;
 import com.lightheart.sphr.doctor.net.ApiService;

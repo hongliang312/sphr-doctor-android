@@ -10,6 +10,8 @@ import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.module.main.ui.RegisterActivity;
+import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 
 import dagger.Component;
 
@@ -32,5 +34,9 @@ public interface ActivityComponent {
     void inject(NewContractActivity activity);
 
     void inject(SearchPhoneActivity activity);
+
+    void inject(MyHomePageActivity activity);
+
+    void inject(FeedBackActivity activity);
 
 }

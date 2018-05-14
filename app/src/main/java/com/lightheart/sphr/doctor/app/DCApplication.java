@@ -7,6 +7,7 @@ import com.blankj.utilcode.util.Utils;
 import com.lightheart.sphr.doctor.di.component.ApplicationComponent;
 import com.lightheart.sphr.doctor.di.component.DaggerApplicationComponent;
 import com.lightheart.sphr.doctor.di.module.ApplicationModule;
+import com.lightheart.sphr.lib_zxing.activity.ZXingLibrary;
 
 /**
  * Created by fucp on 2018-4-10.
@@ -24,6 +25,7 @@ public class DCApplication extends Application {
         mInstance = this;
         initApplicationComponent();
         Utils.init(this);
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     /**

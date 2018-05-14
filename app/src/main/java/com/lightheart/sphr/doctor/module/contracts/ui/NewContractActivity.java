@@ -12,13 +12,15 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.module.contracts.adapter.ContractsAdapter;
 import com.lightheart.sphr.doctor.module.contracts.contract.NewContractsContract;
 import com.lightheart.sphr.doctor.module.contracts.presenter.NewContractPresenter;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -39,7 +41,9 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvNewContracts)
     RecyclerView mRvNewContracts;
-    private ContractsAdapter mContractsAdapter;
+    //    private ContractsAdapter mContractsAdapter;
+    @Inject
+    ContractsAdapter mContractsAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -55,9 +59,10 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
     protected void initView() {
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.new_contract, false, 0);
 
+        mContractsAdapter.initData(this, "APPLY");
         //  设置RecyclerView
         mRvNewContracts.setLayoutManager(new LinearLayoutManager(this));
-        mContractsAdapter = new ContractsAdapter(this, R.layout.item_doc_contract, "APPLY");
+//        mContractsAdapter = new ContractsAdapter(this, R.layout.item_doc_contract, "APPLY");
         mRvNewContracts.setAdapter(mContractsAdapter);
 
         mContractsAdapter.setOnSlideItemListener(this);
@@ -69,19 +74,16 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
     }
 
     @Override
-    public void setNewContracts(List<ContractDocItem> contractDocList, int loadType) {
+    public void setNewContracts(List<DoctorBean> contractDocList, int loadType) {
         setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
     }
 
     // 暂时不需要
     @Override
-    public void itemClick(View view, int position, ContractDocItem item) {
-        assert item != null;
-        ToastUtils.showShort(item.getContName());
-    }
+    public void itemClick(View view, int position, DoctorBean item) {}
 
     @Override
-    public void accept(View view, int position, ContractDocItem item) {
+    public void accept(View view, int position, DoctorBean item) {
         DocContractRequestParams params = new DocContractRequestParams();
         params.status = "ADD";
         params.id = item.getId();
@@ -90,7 +92,7 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
     }
 
     @Override
-    public void deleteClick(View view, int position, ContractDocItem item) {
+    public void deleteClick(View view, int position, DoctorBean item) {
         DocContractRequestParams params = new DocContractRequestParams();
         params.status = "REF";
         params.id = item.getId();
@@ -110,4 +112,8 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
         mPresenter.refresh();
     }
 
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
+    }
 }
