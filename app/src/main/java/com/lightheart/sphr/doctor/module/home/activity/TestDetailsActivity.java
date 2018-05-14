@@ -113,6 +113,7 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
             TotalinvolvedNum.setText(detailslist.get(0).getInvolvedNum()+"");
             TotalThegrouprate.setText(v+"%");
             TotalexitedNum.setText(detailslist.get(0).getExitedNum()+"");
+
         }
     }
 }
