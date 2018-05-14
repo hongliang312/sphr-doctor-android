@@ -48,6 +48,7 @@
             android:theme="@style/AppSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -63,6 +64,8 @@
             android:name=".module.main.ui.RegisterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".module.home.activity.TestingManagementActivity" />
+        <activity android:name=".module.home.activity.TestDetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -2,19 +2,27 @@ package com.lightheart.sphr.doctor.net;
 
 import com.lightheart.sphr.doctor.bean.ContractDocItem;
 import com.lightheart.sphr.doctor.bean.DataResponse;
+import com.lightheart.sphr.doctor.bean.DetailsEntity;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
 import com.lightheart.sphr.doctor.bean.RequestParams;
+import com.lightheart.sphr.doctor.bean.TestDetails;
+import com.lightheart.sphr.doctor.bean.TestingManagement;
+import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
 import com.lightheart.sphr.doctor.bean.User;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
@@ -97,5 +105,23 @@ public interface ApiService {
      */
     @POST("doctor/info")
     Observable<DataResponse<DoctorBean>> getDocInfo(@Body DocContractRequestParams parmas);
+
+
+    /***
+     *
+     * 试验管理
+     * @param
+     */
+
+    @POST("clinicalTrial/clinicalTrialsByDuid")
+    Observable<DataResponse<List<TestingManagement>>> Testinglist(@Body TextsingRequestParams requestParams);
+
+    /**
+     *
+     * @param entity
+     * @return
+     */
+    @POST("clinicalTrial/myCtrDetailById")
+    Observable<DataResponse<TestDetails>> detailslist(@Body DetailsEntity entity);
 
 }

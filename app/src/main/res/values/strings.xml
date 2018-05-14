@@ -49,7 +49,6 @@
     <string name="service_time">服务时间：周一至周五 9:00&#8211;18:00</string>
 
 
-
     <string name="jump">跳过</string>
     <string name="cancel">取消</string>
     <string name="confirm">确定</string>
@@ -59,4 +58,15 @@
 
     <string name="exit_system">再按一次退出程序</string>
     <string name="empty"> </string>
+
+
+    <string name="clinic_trial">临床试验</string>
+    <string name="search">查询关键字:糖尿病</string>
+    <string name="button">Search</string>
+    <string name="hot">热门搜索:</string>
+    <string name="bin">糖尿病</string>
+    <string name="yuan">原发性高血压</string>
+    <string name="qian">前列腺癌</string>
+    <string name="project">项目名称</string>
+
 </resources>

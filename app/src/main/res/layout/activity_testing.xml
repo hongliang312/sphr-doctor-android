@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sky_blue2"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ssss"
+
+            />
+
+    </RelativeLayout>
+
+   <!-- <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sky_blue3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@color/sky_blue3"
+            android:text="在这里，您看到您所参加的项目的进度"
+            android:textColor="@color/theme_color"
+            android:textSize="16dp"
+            android:layout_marginLeft="@dimen/dp_15"
+            />
+
+    </RelativeLayout>-->
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="在这里，您看到您所参加的项目的进度"
+        android:layout_width="match_parent"
+        android:textColor="@color/theme_color"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/sky_blue3"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        />
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

@@ -21,6 +21,7 @@ public interface HomeContract {
 
         void setClinicals(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialObj, @LoadType.checker int loadType);
 
+
     }
 
     interface Presenter extends BaseContract.BasePresenter<View >{
