@@ -30,6 +30,7 @@
     <string name="clinical_manage">试验管理</string>
     <string name="panel">专家组</string>
     <string name="consult_online">在线咨询</string>
+    <string name="tel_online">电话质询</string>
     <string name="clinical_trial">临床试验招募</string>
     <string name="recruitment_num">招募人数：</string>
     <string name="trial_stage">试验阶段：</string>

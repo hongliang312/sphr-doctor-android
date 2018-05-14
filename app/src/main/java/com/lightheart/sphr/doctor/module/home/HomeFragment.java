@@ -2,16 +2,14 @@ package com.lightheart.sphr.doctor.module.home;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -24,7 +22,6 @@ import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomePresenter;
-import com.lightheart.sphr.doctor.module.home.view.VerticalTextview;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -51,7 +48,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     ClinicalAdapter mClinicalAdapter;
     private Banner mBannerAds;
     private List<HomeMoudleManage> moudleManageList = new ArrayList<>();
-    private VerticalTextview mtvNotice;
+    private TextView mTvNotice;
 
     @Override
     protected int getLayoutId() {
@@ -72,8 +69,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         // 设置BannerHeadView
         View mHomeBannerHeadView = LayoutInflater.from(getContext()).inflate(R.layout.layout_home_banner_head, null);
         mBannerAds = mHomeBannerHeadView.findViewById(R.id.banner_ads);
-        mtvNotice = mHomeBannerHeadView.findViewById(R.id.tvNotice);
+        mTvNotice = mHomeBannerHeadView.findViewById(R.id.tvNotice);
+        LinearLayout llTelConsult = mHomeBannerHeadView.findViewById(R.id.llTelConsult);
+        LinearLayout llOnlineConsult = mHomeBannerHeadView.findViewById(R.id.llOnlineConsult);
         TextView mTvClinicalMore = mHomeBannerHeadView.findViewById(R.id.tvClinicalMore);
+        llTelConsult.setOnClickListener(this);
+        llOnlineConsult.setOnClickListener(this);
         mTvClinicalMore.setOnClickListener(this);
 
         // 设置管理模块
@@ -111,13 +112,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     public void setHomeBanners(List<HomePageInfo.BannerListBean> banners) {
         List<String> images = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        /*String[] stringArray = getResources().getStringArray(R.array.banner_title);
-        TypedArray typedArray = getResources().obtainTypedArray(R.array.banner_image);
-        for (int i = 0; i < stringArray.length; i++) {
-            images.add(typedArray.getResourceId(i, 1));
-            titles.add(stringArray[i]);
-        }
-        typedArray.recycle();*/
         for (HomePageInfo.BannerListBean item : banners) {
             images.add(item.getImgUrl());
             titles.add(item.getTitle());
@@ -131,17 +125,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void setNotices(List<HomePageInfo.NoticeListBean> noticeList) {
-        /*if (noticeList != null && noticeList.size() > 0)
-            mTvNotice.setText(noticeList.get(0).getTitle());*/
+        if (noticeList != null && noticeList.size() > 0)
+            mTvNotice.setText(noticeList.get(0).getTitle());
 
-        final List<String> titlelist = new ArrayList<>();
-
-        for(int i=0;i<noticeList.size();i++){
+        /*final List<String> titlelist = new ArrayList<>();
+        for (int i = 0; i < noticeList.size(); i++) {
             String title = noticeList.get(i).getTitle();
             titlelist.add(title);
-            Log.i("zzz",""+titlelist.toString());
         }
-
         mtvNotice.setTextList((ArrayList<String>) titlelist);
         mtvNotice.setText(26, 5, Color.BLUE);//设置属性
         mtvNotice.setTextStillTime(3000);//设置停留时长间隔
@@ -150,31 +141,28 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         mtvNotice.setOnItemClickListener(new VerticalTextview.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
                 Toast.makeText(getActivity(), "点击了 : " + titlelist.get(position), Toast.LENGTH_SHORT).show();
-
             }
-        });
+        });*/
 
     }
 
-     /* @Override
+    @Override
     public void onResume() {
         super.onResume();
-        mtvNotice.startAutoScroll();
+//        mtvNotice.startAutoScroll();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mtvNotice.stopAutoScroll();
-    }*/
+//        mtvNotice.stopAutoScroll();
+    }
 
     @Override
     public void setClinicals(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialObj, int loadType) {
         setLoadDataResult(mClinicalAdapter, mSwipeRefreshLayout, clinicalTrialObj, loadType);
     }
-
 
     @Override
     public void onRefresh() {
@@ -184,7 +172,17 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void onClick(View view) {
-        ToastUtils.showShort(R.string.more);
+        switch (view.getId()) {
+            case R.id.llTelConsult:
+                ToastUtils.showShort(R.string.tel_online);
+                break;
+            case R.id.llOnlineConsult:
+                ToastUtils.showShort(R.string.consult_online);
+                break;
+            case R.id.tvClinicalMore:
+                ToastUtils.showShort(R.string.more);
+                break;
+        }
     }
 
     @Override
@@ -202,10 +200,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
                     break;
                 case "CLM":
-
                     Intent intent = new Intent(getActivity(), TestingManagementActivity.class);
                     startActivity(intent);
-
                     break;
                 case "PANEL":
 

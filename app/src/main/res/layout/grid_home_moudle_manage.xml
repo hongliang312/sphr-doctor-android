@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/dp_10">
 
@@ -29,9 +29,9 @@
         android:id="@+id/tvHomeMoudle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_8"
         android:textColor="@color/title_black"
-        android:textSize="@dimen/medium"
+        android:textSize="@dimen/micro"
         tools:text="@string/panel" />
 
 

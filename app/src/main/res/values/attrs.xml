@@ -39,7 +39,6 @@
         <item>@string/patient_manage</item>
         <item>@string/clinical_manage</item>
         <item>@string/panel</item>
-        <item>@string/consult_online</item>
     </string-array>
 
     <!-- 首页管理模块type -->
@@ -47,7 +46,6 @@
         <item>PTM</item>
         <item>CLM</item>
         <item>PANEL</item>
-        <item>COL</item>
     </string-array>
 
     <!--首页管理模块 Image-->
@@ -55,7 +53,6 @@
         <item>@mipmap/bg_ptm</item>
         <item>@mipmap/bg_clm</item>
         <item>@mipmap/bg_panel</item>
-        <item>@mipmap/bg_col</item>
     </integer-array>
 
 </resources>
