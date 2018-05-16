@@ -15,6 +15,7 @@
         app:elevation="@dimen/dp_0">
 
         <include layout="@layout/common_toolbar" />
+
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout

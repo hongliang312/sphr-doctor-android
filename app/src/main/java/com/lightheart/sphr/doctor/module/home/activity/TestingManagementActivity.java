@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
+import android.widget.TextView;
+
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
@@ -20,11 +23,14 @@ import java.util.List;
 import butterknife.BindView;
 public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View,HideScrollListener, View.OnClickListener {
 
-
+    @BindView(R.id.common_toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.bt_sub)
+    Button mBtSub;
+    @BindView(R.id.common_toolbar_title_tv)
+    TextView mTitleTv;
     @BindView(R.id.Recycleview)
     RecyclerView Recycleview;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     private TestingManagementAdapter testingAdapter;
     private List<TestingManagement> content = new ArrayList<>();
@@ -42,7 +48,7 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
 
     @Override
     protected void initView() {
-
+        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.testingmanagement,false,0);
         assert mPresenter != null;
         mPresenter.loadTestData();
 
@@ -78,12 +84,17 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
     @Override
     public void onHide() {
         //隐藏动画
-        toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(3));
+        mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(3));
     }
 
     @Override
     public void onShow() {
         // 显示动画--属性动画
-        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(3));
+        mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(3));
+    }
+
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
     }
 }

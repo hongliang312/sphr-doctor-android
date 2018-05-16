@@ -17,6 +17,7 @@ import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.HomeMoudleManage;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
+import com.lightheart.sphr.doctor.module.home.activity.OnlineConsultantActivity;
 import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
 import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
@@ -180,6 +181,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.llOnlineConsult:
                 ToastUtils.showShort(R.string.consult_online);
+                Intent intent = new Intent(getActivity(), OnlineConsultantActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tvClinicalMore:
                 ToastUtils.showShort(R.string.more);

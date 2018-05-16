@@ -1,7 +1,9 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.lightheart.sphr.doctor.R;
@@ -17,8 +19,12 @@ import butterknife.BindView;
 
 public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> implements TestDetailsContract.View, View.OnClickListener{
 
-    /*@BindView(R.id.recylview)
-    RecyclerView recyclerView;*/
+    @BindView(R.id.common_toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.bt_sub)
+    Button mBtSub;
+    @BindView(R.id.common_toolbar_title_tv)
+    TextView mTitleTv;
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.time)
@@ -74,6 +80,7 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
 
     @Override
     protected void initView() {
+        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.testingmanagement,false,0);
         String id = getIntent().getStringExtra("id");
         DetailsBean entity=new DetailsBean();
         entity.setDuid(id);
@@ -82,6 +89,8 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
         assert mPresenter != null;
         mPresenter.loadDetailsData(entity);
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -115,5 +124,9 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
             TotalexitedNum.setText(detailslist.get(0).getExitedNum()+"");
 
         }
+    }
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
     }
 }
