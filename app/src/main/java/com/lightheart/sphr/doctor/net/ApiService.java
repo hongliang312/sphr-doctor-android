@@ -6,8 +6,13 @@ import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
+import com.lightheart.sphr.doctor.bean.IsFriendModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.PanelRequestParams;
+import com.lightheart.sphr.doctor.bean.PanelShareModel;
+import com.lightheart.sphr.doctor.bean.PanelShareParam;
+import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
@@ -166,5 +171,32 @@ public interface ApiService {
      */
     @POST("patient/getPatientByDuid")
     Observable<DataResponse<PatientsModel>> getPatientByDuid(@Body PatientsRequestParams params);
+
+    /**
+     * 专家组列表
+     *
+     * @param params
+     * @return List<PanelsModel>
+     */
+    @POST("dtmAro/getDtmAroList")
+    Observable<DataResponse<List<PanelsModel>>> getDtmAroList(@Body PanelRequestParams params);
+
+    /**
+     * 专家组共享内容列表
+     *
+     * @param params
+     * @return List<PanelShareModel>
+     */
+    @POST("dtmAro/shareListByDtmAroId")
+    Observable<DataResponse<List<PanelShareModel>>> shareListByDtmAroId(@Body PanelShareParam params);
+
+    /**
+     * 判断是否为好友
+     *
+     * @param params
+     * @return IsFriendModel
+     */
+    @POST("doctorContact/check/relation")
+    Observable<DataResponse<IsFriendModel>> checkFriend(@Body RequestParams params);
 
 }

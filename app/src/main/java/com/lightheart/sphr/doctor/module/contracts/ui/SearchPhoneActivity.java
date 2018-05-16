@@ -140,7 +140,7 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
     @Override
     public void itemClick(View view, int position, DoctorBean item) {
         assert item != null;
-        startActivity(new Intent(this, MyHomePageActivity.class).putExtra("duid", item.getId()).putExtra("flag", "ADD"));
+        startActivity(new Intent(this, MyHomePageActivity.class).putExtra("duid", item.getId()));
     }
 
     @Override

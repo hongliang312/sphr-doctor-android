@@ -31,6 +31,14 @@
     <string name="patient_search_hint">在患者端关注过您的患者，可以在这里显示哦。\n在这里，您可以看到完整的患者病历记录。</string>
     <string name="clinical_manage">试验管理</string>
     <string name="panel">专家组</string>
+    <string name="panel_manage">专家组管理</string>
+    <string name="added_panel">我加入的专家组</string>
+    <string name="interesting_panel">您可能感兴趣的专家组</string>
+    <string name="create_panel">创建专家组</string>
+    <string name="panel_details">专家组详情</string>
+    <string name="apply_add_panel">申请加入</string>
+
+
     <string name="consult_online">在线咨询</string>
     <string name="tel_online">电话质询</string>
     <string name="clinical_trial">临床试验招募</string>
@@ -55,6 +63,7 @@
     <string name="certify_fail">认证失败</string>
     <string name="certify_ing">认证中</string>
     <string name="my_page">我的主页</string>
+    <string name="personal_page">个人主页</string>
     <string name="feedback">意见反馈</string>
     <string name="my_invitation_code">我的邀请码</string>
     <string name="setting">设置</string>
@@ -78,6 +87,8 @@
     <string name="add">添加</string>
     <string name="delete">删除</string>
     <string name="submit">提交</string>
+    <string name="mes">消息</string>
+    <string name="all">全部</string>
 
 
     <string name="exit_system">再按一次退出程序</string>

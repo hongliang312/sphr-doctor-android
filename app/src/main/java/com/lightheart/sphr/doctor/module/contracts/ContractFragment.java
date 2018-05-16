@@ -167,7 +167,7 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     @Override
     public void itemClick(View view, int position, DoctorBean item) {
         assert item != null;
-        startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getContUid()).putExtra("flag", "CHECK"));
+        startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getContUid()));
     }
 
     // 暂时不需要

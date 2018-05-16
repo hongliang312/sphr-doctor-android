@@ -100,7 +100,7 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
                 }
                 break;
             case R.id.tvMyHomePage:
-                startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", doctorBean.getId()).putExtra("flag", "CHECK"));
+                startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", doctorBean.getId()));
                 break;
             case R.id.tvFeedBadk:
                 startActivity(new Intent(getActivity(), FeedBackActivity.class));
