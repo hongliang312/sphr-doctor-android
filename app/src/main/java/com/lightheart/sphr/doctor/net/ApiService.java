@@ -12,6 +12,8 @@ import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
+import com.lightheart.sphr.doctor.bean.UntreatedBean;
+import com.lightheart.sphr.doctor.bean.UntreatedRequestParams;
 import com.lightheart.sphr.doctor.bean.User;
 
 import java.util.List;
@@ -156,5 +158,14 @@ public interface ApiService {
      */
     @POST("clinicalTrial/myCtrDetailById")
     Observable<DataResponse<TestDetails>> detailslist(@Body DetailsBean entity);
+
+
+    /**
+     * 在线咨询
+     *
+     */
+     @POST("consult/list")
+     Observable<DataResponse<List<UntreatedBean>>> pendinglist(@Body UntreatedRequestParams untreated);
+
 
 }

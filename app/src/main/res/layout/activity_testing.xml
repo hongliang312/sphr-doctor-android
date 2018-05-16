@@ -8,31 +8,28 @@
     tools:context="com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity">
 
 
-    <RelativeLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/sky_blue2"
-        >
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="@dimen/dp_0">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ssss"
+        <include layout="@layout/common_toolbar"></include>
 
-            />
+    </android.support.design.widget.AppBarLayout>
 
-    </RelativeLayout>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+
+   <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarr"
         app:title="@string/title"
+        app:titleTextColor="@color/sky_blue"
         android:layout_width="match_parent"
-        android:textColor="@color/theme_color"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/sky_blue3"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         />
-
 
 
     <android.support.v7.widget.RecyclerView

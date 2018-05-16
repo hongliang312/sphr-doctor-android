@@ -65,7 +65,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".module.home.activity.TestingManagementActivity" />
-        <activity android:name=".module.home.activity.TestDetailsActivity"></activity>
+        <activity android:name=".module.home.activity.TestDetailsActivity" />
         <activity
             android:name=".module.contracts.ui.NewContractActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -81,6 +81,8 @@
         <activity android:name=".module.my.ui.AuthenticationActivity" />
         <activity android:name=".module.my.ui.FeedBackActivity" />
         <activity android:name=".module.my.ui.MyInvitationCodeActivity" />
+        <activity android:name=".module.home.activity.OnlineConsultantActivity" />
+        <activity android:name=".module.home.activity.TelephoneDetailsActivity"></activity>
     </application>
 
 </manifest>

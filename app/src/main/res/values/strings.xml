@@ -97,6 +97,7 @@
     <string name="title">在这里，您看到您所参加的项目的进度</string>
     <string name="message">为确保信息的时效性以下信息每天更新</string>
     <string name="testingmanagement">试验管理</string>
+    <string name="telephonecounseling">电话咨询</string>
     <string name="testingtime">试验时间:</string>
     <string name="recruit">招募人数:</string>
     <string name="man">人</string>
@@ -122,5 +123,6 @@
     <string name="ssss">ssss</string>
     <string name="particulars">详情</string>
     <string name="ygxq">  阳光欣晴</string>
-
+    <string name="testingmanger">试验管理</string>
+    <string name="butonne">查看</string>
 </resources>
