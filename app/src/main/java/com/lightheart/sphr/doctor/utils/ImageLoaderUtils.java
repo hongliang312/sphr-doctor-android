@@ -24,6 +24,16 @@ public class ImageLoaderUtils extends ImageLoader {
                 .into(imageView);
     }
 
+    public static void display(Context context, ImageView imageView, int drawable, int placeholder, int error) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(context)
+                .load(drawable)
+                .apply(new RequestOptions().placeholder(placeholder).error(error).centerCrop())
+                .into(imageView);
+    }
+
     public static void display(Context context, ImageView imageView, String url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");

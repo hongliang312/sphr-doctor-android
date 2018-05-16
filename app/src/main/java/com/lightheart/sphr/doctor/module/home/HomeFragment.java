@@ -23,6 +23,7 @@ import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomePresenter;
+import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -200,16 +201,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             ToastUtils.showShort(item.title);
             switch (item.type) {
                 case "PTM":
-
+                    startActivity(new Intent(getActivity(), HomePatientManageActivity.class));
                     break;
                 case "CLM":
-                    Intent intent = new Intent(getActivity(), TestingManagementActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(getActivity(), TestingManagementActivity.class));
                     break;
                 case "PANEL":
-
-                    break;
-                case "COL":
 
                     break;
             }
