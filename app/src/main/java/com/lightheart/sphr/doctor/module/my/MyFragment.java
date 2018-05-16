@@ -2,7 +2,10 @@ package com.lightheart.sphr.doctor.module.my;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -50,6 +53,8 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     @BindView(R.id.tvSetting)
     TextView tvSetting;
     private DoctorBean doctorBean;
+    @BindView(R.id.ll)
+    LinearLayout ll;
 
     @Override
     protected int getLayoutId() {
@@ -63,6 +68,17 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
 
     @Override
     protected void initView(View view) {
+
+        TextView view1 = new TextView(getContext());
+        view1.setGravity(Gravity.CENTER);
+        view1.setText(getString(R.string.appName));
+        view1.setTextColor(getResources().getColor(R.color.title_black));
+        view1.setBackgroundResource(R.drawable.bg_blue);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.height = 300;
+        layoutParams.width = 300;
+        ll.addView(view1, layoutParams);
+
         assert mPresenter != null;
         mPresenter.loadDocData();
     }

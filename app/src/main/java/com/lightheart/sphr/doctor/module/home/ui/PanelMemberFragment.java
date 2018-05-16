@@ -16,6 +16,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseFragment;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelGridAdapter;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
@@ -68,15 +69,16 @@ public class PanelMemberFragment extends BaseFragment implements BaseQuickAdapte
         tvCreate.setOnClickListener(this);
         if (!TextUtils.equals("Y", mFlag)) {
             mPanelGridAdapter.addFooterView(footerView);
+        } else {
+            assert panelsModel != null;
+            DoctorBean doctorDetail = new DoctorBean();
+            doctorDetail.setDoctorName("添加成员");
+            panelsModel.getDoctorList().add(doctorDetail);
         }
 
         mPanelGridAdapter.setOnItemClickListener(this);
         swipeRefreshLayout.setEnabled(false);
 
-        assert panelsModel != null;
-        PanelsModel.DoctorDetail doctorDetail = new PanelsModel.DoctorDetail();
-        doctorDetail.doctorName = "添加成员";
-        panelsModel.getDoctorList().add(doctorDetail);
         if (!TextUtils.isEmpty(panelsModel.getDtmAroName()) && panelsModel.getDtmAroName().length() >= 2) {
             String tx = panelsModel.getDtmAroName().substring(0, 2);
             tvImage.setText(tx);
@@ -87,7 +89,6 @@ public class PanelMemberFragment extends BaseFragment implements BaseQuickAdapte
         tvNum.setText(panelsModel.getDoctorList().size() - 1 + "  加入");
 
         setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelsModel.getDoctorList(), LoadType.TYPE_REFRESH_SUCCESS);
-
     }
 
     public static PanelMemberFragment newIntance(PanelsModel mPanelsModel, String flag) {
@@ -101,17 +102,24 @@ public class PanelMemberFragment extends BaseFragment implements BaseQuickAdapte
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        PanelsModel.DoctorDetail item = (PanelsModel.DoctorDetail) adapter.getItem(position);
+        DoctorBean item = (DoctorBean) adapter.getItem(position);
         assert item != null;
         if (position == panelsModel.getDoctorList().size() - 1) {
-            ToastUtils.showShort(item.doctorName);
+            if (position == 0) {
+                startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE"));
+            }
         } else {
-            startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.duid));
+            startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getDuid()));
         }
     }
 
     @Override
     public void onClick(View view) {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -1,4 +1,4 @@
-package com.lightheart.sphr.doctor.module.home.view;
+package com.lightheart.sphr.doctor.view;
 
 import android.content.Context;
 import android.graphics.Color;

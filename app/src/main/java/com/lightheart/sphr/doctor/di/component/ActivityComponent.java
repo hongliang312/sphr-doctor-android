@@ -6,14 +6,15 @@ import android.content.Context;
 import com.lightheart.sphr.doctor.di.module.ActivityModule;
 import com.lightheart.sphr.doctor.di.scope.ContextLife;
 import com.lightheart.sphr.doctor.di.scope.PerActivity;
-import com.lightheart.sphr.doctor.module.home.activity.OnlineConsultantActivity;
-import com.lightheart.sphr.doctor.module.home.activity.TestDetailsActivity;
-import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
+import com.lightheart.sphr.doctor.module.home.activity.TestDetailsActivity;
+import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
+import com.lightheart.sphr.doctor.module.home.ui.CreatePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.module.home.ui.PanelListActivity;
+import com.lightheart.sphr.doctor.module.home.ui.SelectContactActivity;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.module.main.ui.RegisterActivity;
 import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
@@ -51,10 +52,12 @@ public interface ActivityComponent {
 
     void inject(HomePatientManageActivity activity);
 
-    //void inject(OnlineConsultantActivity activity);
-
     void inject(HomePanelActivity activity);
 
     void inject(PanelListActivity activity);
+
+    void inject(CreatePanelActivity activity);
+
+    void inject(SelectContactActivity activity);
 
 }

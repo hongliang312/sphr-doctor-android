@@ -12,7 +12,7 @@ public class PanelsModel implements Serializable {
 
 
     private long creator;
-    private List<DoctorDetail> doctorList;
+    private List<DoctorBean> doctorList;
     private String doctorName;
     private int dtmAroId;
     private String dtmAroName;
@@ -31,7 +31,7 @@ public class PanelsModel implements Serializable {
 
     private boolean isAdded;
 
-    public PanelsModel(long creator, List<DoctorDetail> doctorList, String doctorName, int dtmAroId, String dtmAroName, String dtmAroSummary, String imgUrl, int duid, int id) {
+    public PanelsModel(long creator, List<DoctorBean> doctorList, String doctorName, int dtmAroId, String dtmAroName, String dtmAroSummary, String imgUrl, int duid, int id) {
         this.creator = creator;
         this.doctorList = doctorList;
         this.doctorName = doctorName;
@@ -51,11 +51,11 @@ public class PanelsModel implements Serializable {
         this.creator = creator;
     }
 
-    public List<DoctorDetail> getDoctorList() {
+    public List<DoctorBean> getDoctorList() {
         return doctorList;
     }
 
-    public void setDoctorList(List<DoctorDetail> doctorList) {
+    public void setDoctorList(List<DoctorBean> doctorList) {
         this.doctorList = doctorList;
     }
 
@@ -113,24 +113,6 @@ public class PanelsModel implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public static class DoctorDetail implements Serializable {
-
-        public int duid;
-        public String doctorName;
-        public String imgUrl;
-        public String hospitalName;
-        public String departmentName;
-        public String districtName;
-        public String titleName;
-        public String majorIn;
-        public String summary;
-        public int operationNum;
-        public int outpatientNum;
-        public int dtmAroId;
-        public int hospitalId;
-
     }
 
 }

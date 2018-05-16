@@ -99,7 +99,7 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     }
 
     @Override
-    public void setClinicals(List<DoctorBean> contractDocList, int loadType) {
+    public void setContracts(List<DoctorBean> contractDocList, int loadType) {
         setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
     }
 

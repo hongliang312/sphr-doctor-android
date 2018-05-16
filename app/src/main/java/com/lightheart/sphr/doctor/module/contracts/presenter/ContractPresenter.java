@@ -49,7 +49,7 @@ public class ContractPresenter extends BasePresenter<ContractsContract.View> imp
                     public void accept(DataResponse<List<DoctorBean>> response) throws Exception {
                         if (response.getResultcode() == 200) {
                             int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                            mView.setClinicals(response.getContent(), loadType);
+                            mView.setContracts(response.getContent(), loadType);
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
@@ -100,6 +100,11 @@ public class ContractPresenter extends BasePresenter<ContractsContract.View> imp
         this.params.pageNum = mPage;
         mIsRefresh = false;
         loadContractData();
+    }
+
+    @Override
+    public void invite2Panel() {
+
     }
 
 }

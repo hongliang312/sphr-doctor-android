@@ -9,6 +9,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 
@@ -23,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Description :
  */
 
-public class PanelGridAdapter extends BaseQuickAdapter<PanelsModel.DoctorDetail, BaseViewHolder> {
+public class PanelGridAdapter extends BaseQuickAdapter<DoctorBean, BaseViewHolder> {
 
     @Inject
     public PanelGridAdapter() {
@@ -31,13 +32,13 @@ public class PanelGridAdapter extends BaseQuickAdapter<PanelsModel.DoctorDetail,
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, PanelsModel.DoctorDetail item) {
-        helper.setText(R.id.tvMemberName, TextUtils.isEmpty(item.doctorName) ? "" : item.doctorName);
+    protected void convert(BaseViewHolder helper, DoctorBean item) {
+        helper.setText(R.id.tvMemberName, TextUtils.isEmpty(item.getDoctorName()) ? "" : item.getDoctorName());
         CircleImageView view = helper.getView(R.id.civPanel);
-        if (TextUtils.equals("添加成员", item.doctorName)) {
+        if (TextUtils.equals("添加成员", item.getDoctorName())) {
             ImageLoaderUtils.display(mContext, view, R.mipmap.ic_add_panel, R.drawable.bg_grey, R.drawable.bg_grey);
         } else {
-            ImageLoaderUtils.display(mContext, view, item.imgUrl, R.drawable.bg_grey, R.drawable.bg_grey);
+            ImageLoaderUtils.display(mContext, view, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
         }
     }
 

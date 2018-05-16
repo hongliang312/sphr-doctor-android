@@ -37,6 +37,10 @@
     <string name="create_panel">创建专家组</string>
     <string name="panel_details">专家组详情</string>
     <string name="apply_add_panel">申请加入</string>
+    <string name="panel_name">专家组名称</string>
+    <string name="disease_select">病种选择</string>
+    <string name="contract_select">选择联系人</string>
+    <string name="please_select_contract">请先选择联系人</string>
 
 
     <string name="consult_online">在线咨询</string>
@@ -89,6 +93,8 @@
     <string name="submit">提交</string>
     <string name="mes">消息</string>
     <string name="all">全部</string>
+    <string name="complete">完成</string>
+    <string name="invite">邀请</string>
 
 
     <string name="exit_system">再按一次退出程序</string>

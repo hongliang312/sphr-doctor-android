@@ -2,6 +2,7 @@ package com.lightheart.sphr.doctor.net;
 
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
+import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.FeedBackBean;
@@ -168,10 +169,9 @@ public interface ApiService {
 
     /**
      * 在线咨询
-     *
      */
-     @POST("consult/list")
-     Observable<DataResponse<List<UntreatedBean>>> pendinglist(@Body UntreatedRequestParams untreated);
+    @POST("consult/list")
+    Observable<DataResponse<List<UntreatedBean>>> pendinglist(@Body UntreatedRequestParams untreated);
 
 
     /**
@@ -209,5 +209,14 @@ public interface ApiService {
      */
     @POST("doctorContact/check/relation")
     Observable<DataResponse<IsFriendModel>> checkFriend(@Body RequestParams params);
+
+    /**
+     * 获取疾病列表
+     *
+     * @param params
+     * @return
+     */
+    @POST("disease/list/configed")
+    Observable<DataResponse<List<DiseaseModel>>> getDiseases(@Body LoginSuccess params);
 
 }

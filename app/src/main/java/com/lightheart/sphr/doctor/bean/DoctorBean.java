@@ -117,6 +117,39 @@ public class DoctorBean implements Serializable {
     private String mobile;
     private boolean friend;
 
+
+    public int getDuid() {
+        return duid;
+    }
+
+    public void setDuid(int duid) {
+        this.duid = duid;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public int getDtmAroId() {
+        return dtmAroId;
+    }
+
+    public void setDtmAroId(int dtmAroId) {
+        this.dtmAroId = dtmAroId;
+    }
+
+    /**
+     * 专家组成员
+     */
+    private int duid;
+    private String doctorName;
+    private int dtmAroId;
+
+
     public int getId() {
         return id;
     }
