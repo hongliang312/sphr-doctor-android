@@ -6,13 +6,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
-
-import java.math.BigDecimal;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;

@@ -50,6 +50,9 @@
     <string name="trial_stage">试验阶段：</string>
     <string name="adaptation_disease">适应症：</string>
     <string name="biding_unit">申办单位：</string>
+    <string name="please_input_adaptation_disease">搜索适应症名称</string>
+
+
 
     <string name="new_contract">新的好友</string>
     <string name="contract_list">好友列表</string>

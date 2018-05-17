@@ -50,6 +50,7 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
     SelectContractAdapter mAdapter;
     private List<DoctorBean> selectedContract = new ArrayList<>();// 被选中的条目集合
     private String mFlag;
+    private List<DoctorBean> slectedItems;
 
     @Override
     protected int getLayoutId() {
@@ -64,10 +65,15 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
     @Override
     protected void initView() {
         mFlag = getIntent().getStringExtra("flag");
+        slectedItems = (List<DoctorBean>) getIntent().getSerializableExtra("slectedItems");
         if (TextUtils.equals("CREATE", mFlag)) {
             initToolbar(mToolbar, mTitleTv, mSubmit, R.string.contract_select, true, R.string.complete);
         } else if (TextUtils.equals("INVITE", mFlag)) {
             initToolbar(mToolbar, mTitleTv, mSubmit, R.string.contract_select, true, R.string.invite);
+        }
+
+        if (slectedItems != null) {
+            selectedContract.addAll(slectedItems);
         }
 
         //  设置RecyclerView
@@ -88,6 +94,7 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
                 setResult(Activity.RESULT_OK, getIntent().putExtra("selectedItems", (Serializable) selectedContract));
                 this.finish();
             } else if (TextUtils.equals("INVITE", mFlag)) {
+                //TODO 邀请加入专家组，待完成
                 assert mPresenter != null;
                 mPresenter.invite2Panel();
             }
@@ -96,6 +103,13 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
 
     @Override
     public void setContracts(List<DoctorBean> contractDocList, int loadType) {
+        if (slectedItems != null) {
+            for (DoctorBean selectitem : slectedItems) {
+                for (DoctorBean doctor : contractDocList) {
+                    doctor.setCheck(doctor.getContUid() == selectitem.getContUid());
+                }
+            }
+        }
         setLoadDataResult(mAdapter, mSwipeRefreshLayout, contractDocList, loadType);
         mAdapter.initData(contractDocList);
     }
@@ -110,11 +124,17 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
         DoctorBean doctorBean = (DoctorBean) adapter.getItem(position);
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.cbContract);
         checkBox.toggle();
+        assert doctorBean != null;
+        doctorBean.setCheck(checkBox.isChecked());
         mAdapter.getIsSelected().put(position - 1, checkBox.isChecked());
         if (checkBox.isChecked()) {
             selectedContract.add(doctorBean);
         } else {
-            selectedContract.remove(doctorBean);
+            for (int i = 0; i < slectedItems.size(); i++) {
+                if (slectedItems.get(i).getContUid() == doctorBean.getContUid()) {
+                    selectedContract.remove(i);
+                }
+            }
         }
     }
 }

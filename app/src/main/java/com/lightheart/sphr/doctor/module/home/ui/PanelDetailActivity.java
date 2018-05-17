@@ -17,7 +17,6 @@ import com.lightheart.sphr.doctor.view.CustomTabEntity;
 import com.lightheart.sphr.doctor.view.OnTabSelectListener;
 import com.lightheart.sphr.doctor.view.TabEntity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

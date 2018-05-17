@@ -9,6 +9,7 @@ import com.lightheart.sphr.doctor.di.scope.PerFragment;
 import com.lightheart.sphr.doctor.module.contracts.ContractFragment;
 import com.lightheart.sphr.doctor.module.home.ClientcenteredCounseling;
 import com.lightheart.sphr.doctor.module.home.HomeFragment;
+import com.lightheart.sphr.doctor.module.home.ui.PanelMemberFragment;
 import com.lightheart.sphr.doctor.module.home.ui.PanelShareFragment;
 import com.lightheart.sphr.doctor.module.my.MyFragment;
 
@@ -34,5 +35,7 @@ public interface FragmentComponent {
     void inject(PanelShareFragment fragment);
 
     void inject(ClientcenteredCounseling fragment);
+
+    void inject(PanelMemberFragment fragment);
 
 }

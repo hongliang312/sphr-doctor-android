@@ -1,9 +1,7 @@
 package com.lightheart.sphr.doctor.module.my.presenter;
 
-import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.module.my.contract.FeedBackContract;
 import com.lightheart.sphr.doctor.net.ApiService;

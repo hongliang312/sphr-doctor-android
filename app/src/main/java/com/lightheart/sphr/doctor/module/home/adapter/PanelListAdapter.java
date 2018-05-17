@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 
 import javax.inject.Inject;

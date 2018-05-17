@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
@@ -24,17 +26,14 @@ import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelGridAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.CreatePanelContract;
 import com.lightheart.sphr.doctor.module.home.presenter.CreatePanelPresenter;
-import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Created by fucp on 2018-5-15.
@@ -57,6 +56,10 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
     PanelGridAdapter mPanelGridAdapter;
     private List<DoctorBean> members = new ArrayList<>();
     private int mRequestCode = 1000;
+    private TextInputEditText etPanelName;
+    private TextView tvDisease;
+    private List<DoctorBean> selectedItems;
+    private CreatePanelParam createPanelParam;
 
     @Override
     protected int getLayoutId() {
@@ -70,14 +73,14 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mSubmit, R.string.panel_manage, true, R.string.submit);
+        initToolbar(mToolbar, mTitleTv, mSubmit, R.string.create_panel, true, R.string.submit);
         mSubmit.setOnClickListener(this);
 
         // 设置header
         View header = getLayoutInflater().inflate(R.layout.header_create_panel, (ViewGroup) mRvPanels.getParent(), false);
-        TextInputEditText etPanelName = header.findViewById(R.id.etPanelName);
+        etPanelName = header.findViewById(R.id.etPanelName);
         LinearLayout llDiseaseSelect = header.findViewById(R.id.llDiseaseSelect);
-        TextView tvDisease = header.findViewById(R.id.tvDisease);
+        tvDisease = header.findViewById(R.id.tvDisease);
         llDiseaseSelect.setOnClickListener(this);
         mPanelGridAdapter.addHeaderView(header);
 
@@ -87,9 +90,13 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
         mPanelGridAdapter.setOnItemClickListener(this);
 
         DoctorBean doctorBean = new DoctorBean();
-        doctorBean.setDoctorName("添加成员");
+        doctorBean.setContName("添加成员");
         members.add(0, doctorBean);
         mPanelGridAdapter.setNewData(members);
+
+        mPanelGridAdapter.setType(0);// 0为创建专家组 1为专家组成员
+
+        createPanelParam = new CreatePanelParam();
 
         assert mPresenter != null;
         mPresenter.loadDiseaseData();
@@ -104,13 +111,37 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_sub:
-//                CreatePanelParam param = new CreatePanelParam();
-                ToastUtils.showShort(getString(R.string.submit));
+                checkContent();
                 break;
             case R.id.llDiseaseSelect:
                 ToastUtils.showShort(getString(R.string.disease_select));
                 break;
         }
+    }
+
+    private void checkContent() {
+        String panelName = etPanelName.getText().toString().trim();
+        String disease = tvDisease.getText().toString().trim();
+        if (TextUtils.isEmpty(panelName)) {
+            ToastUtils.showShort("请输入专家组名称");
+            return;
+        }
+        if (TextUtils.isEmpty(disease)) {
+            ToastUtils.showShort("请选择疾病");
+            return;
+        }
+        if (selectedItems != null && selectedItems.size() == 0) {
+            ToastUtils.showShort("请添加成员");
+            return;
+        }
+        createPanelParam.setCreateDuid(SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY));
+        createPanelParam.setDtmAroName(panelName);
+//        createPanelParam.setDiagnosisArray();
+        createPanelParam.setDoctorList(selectedItems);
+
+        //TODO 创建专家组，待完成
+        assert mPresenter != null;
+        mPresenter.createPanel(createPanelParam);
     }
 
     @Override
@@ -126,7 +157,7 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         if (position == 0) {
-            startActivityForResult(new Intent(CreatePanelActivity.this, SelectContactActivity.class).putExtra("flag", "CREATE"), mRequestCode);
+            startActivityForResult(new Intent(CreatePanelActivity.this, SelectContactActivity.class).putExtra("flag", "CREATE").putExtra("slectedItems", (Serializable) selectedItems), mRequestCode);
         }
     }
 
@@ -134,9 +165,24 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == mRequestCode && resultCode == Activity.RESULT_OK) {
-            List<DoctorBean> selectedItems = (List<DoctorBean>) data.getSerializableExtra("selectedItems");
-            members.addAll(selectedItems);
+            selectedItems = (List<DoctorBean>) data.getSerializableExtra("selectedItems");
+            removeDuplicate();
             mPanelGridAdapter.setNewData(members);
         }
     }
+
+    //TODO 数组去重，待优化
+    private void removeDuplicate() {
+        int size = members.size();
+        for (int i = 0; i < size; i++) {
+            for (DoctorBean select : selectedItems) {
+                if (select.getContUid() == members.get(i).getContUid()) {
+                    members.remove(i);
+                } else {
+                    members.add(select);
+                }
+            }
+        }
+    }
+
 }

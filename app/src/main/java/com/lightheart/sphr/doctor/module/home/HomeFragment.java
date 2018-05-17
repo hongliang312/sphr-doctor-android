@@ -23,6 +23,7 @@ import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomePresenter;
+import com.lightheart.sphr.doctor.module.home.ui.HomeClinicalRecruitActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
@@ -180,12 +181,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 ToastUtils.showShort(R.string.tel_online);
                 break;
             case R.id.llOnlineConsult:
-                ToastUtils.showShort(R.string.consult_online);
                 Intent intent = new Intent(getActivity(), OnlineConsultantActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tvClinicalMore:
-                ToastUtils.showShort(R.string.more);
+                startActivity(new Intent(getActivity(), HomeClinicalRecruitActivity.class));
                 break;
         }
     }

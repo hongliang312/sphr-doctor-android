@@ -176,6 +176,12 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
 
     }
 
+    // 暂时不需要
+    @Override
+    public void successInvite() {
+
+    }
+
     @Override
     public void deleteClick(View view, int position, DoctorBean item) {
         DocContractRequestParams params = new DocContractRequestParams();

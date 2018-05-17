@@ -7,8 +7,6 @@ import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
-import com.lightheart.sphr.doctor.bean.HomePageInfo;
-import com.lightheart.sphr.doctor.bean.LoginSuccess;
 import com.lightheart.sphr.doctor.module.my.contract.MyContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;

@@ -1,7 +1,6 @@
 package com.lightheart.sphr.doctor.module.main.ui;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,14 +8,9 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.SPUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
-import com.lightheart.sphr.doctor.app.ConstantsImageUrl;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.LoginSuccess;
-import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
-import com.lightheart.sphr.doctor.utils.RxBus;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;

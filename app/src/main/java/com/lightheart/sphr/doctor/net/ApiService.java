@@ -1,5 +1,8 @@
 package com.lightheart.sphr.doctor.net;
 
+import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
+import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
+import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
@@ -218,5 +221,32 @@ public interface ApiService {
      */
     @POST("disease/list/configed")
     Observable<DataResponse<List<DiseaseModel>>> getDiseases(@Body LoginSuccess params);
+
+    /**
+     * 申请加入专家组
+     *
+     * @param params
+     * @return Object
+     */
+    @POST("dtmAro/addApplyDtm")
+    Observable<DataResponse<Object>> addApplyDtm(@Body Apply2PanelParam params);
+
+    /**
+     * 获取临床试验招募列表
+     *
+     * @param params
+     * @return clinicalTrial/searchClinicalTrial
+     */
+    @POST("clinicalTrial/allClinicalTrial")
+    Observable<DataResponse<ClinicalRecruitModel>> getAllClinicalTrial(@Body LoginSuccess params);
+
+    /**
+     * 获取临床试验招募列表
+     *
+     * @param params
+     * @return
+     */
+    @POST("clinicalTrial/searchClinicalTrial")
+    Observable<DataResponse<List<HomePageInfo.ClinicalTrialListBean>>> searchClinicalTrial(@Body ClinicalSearchParam params);
 
 }

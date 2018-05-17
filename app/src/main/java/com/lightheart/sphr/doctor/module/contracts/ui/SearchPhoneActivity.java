@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
@@ -55,7 +54,6 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
     @BindView(R.id.rvDoctors)
     RecyclerView mRvDoctors;
     private PublishSubject<String> mSubject = PublishSubject.create();
-    //    private ContractsAdapter mContractsAdapter;
     @Inject
     ContractsAdapter mContractsAdapter;
 
@@ -76,13 +74,13 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
         mContractsAdapter.initData(this, "SEARCH");
         //  设置RecyclerView
         mRvDoctors.setLayoutManager(new LinearLayoutManager(this));
-//        mContractsAdapter = new ContractsAdapter(this, R.layout.item_doc_contract, "SEARCH");
         mRvDoctors.setAdapter(mContractsAdapter);
 
         mContractsAdapter.setOnSlideItemListener(this);
         mContractsAdapter.setOnLoadMoreListener(this);
         mSwipeRefreshLayout.setEnabled(false);
 
+        // 通过手机号搜索
         mShVPhone.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -104,7 +102,6 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
     }
 
     private void queryDoctor(String phone) {
-        ToastUtils.showShort("RxJava query " + phone);
         assert mPresenter != null;
         mPresenter.loadDoctors(phone);
     }

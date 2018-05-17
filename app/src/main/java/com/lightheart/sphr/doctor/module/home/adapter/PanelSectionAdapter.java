@@ -8,10 +8,8 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.PanelSection;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
-import com.lightheart.sphr.doctor.module.contracts.adapter.ContractsAdapter;
 
 import java.util.List;
 

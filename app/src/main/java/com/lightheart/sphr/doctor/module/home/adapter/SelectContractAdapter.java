@@ -1,10 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -43,7 +39,7 @@ public class SelectContractAdapter extends BaseQuickAdapter<DoctorBean, BaseView
         CircleImageView civContract = helper.getView(R.id.civContract);
         TextView tvConName = helper.getView(R.id.tvConName);
         ImageLoaderUtils.display(mContext, civContract, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
-        tvConName.setText(TextUtils.isEmpty(item.getDoctorName()) ? "" : item.getDoctorName());
+        tvConName.setText(TextUtils.isEmpty(item.getContName()) ? "" : item.getContName());
         cbContract.setChecked(getIsSelected().get(helper.getLayoutPosition()));
     }
 
@@ -51,7 +47,7 @@ public class SelectContractAdapter extends BaseQuickAdapter<DoctorBean, BaseView
         if (contractDocList != null && contractDocList.size() > 0) {
             for (int i = 0; i < contractDocList.size(); i++) {
                 if (isSelectedMap.get(i) == null) {// 加载更多的时候避免把之前选择项置为false
-                    isSelectedMap.put(i, false);
+                    isSelectedMap.put(i, contractDocList.get(i).isCheck());
                 }
             }
         }

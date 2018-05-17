@@ -8,18 +8,25 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseFragment;
+import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.PanelShareModel;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelGridAdapter;
+import com.lightheart.sphr.doctor.module.home.contract.PanelShareContract;
+import com.lightheart.sphr.doctor.module.home.presenter.PanelSharePresenter;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -28,7 +35,7 @@ import butterknife.BindView;
  * Description : 专家组成员页面
  */
 
-public class PanelMemberFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener, View.OnClickListener {
+public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> implements PanelShareContract.View, BaseQuickAdapter.OnItemClickListener, View.OnClickListener {
 
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
@@ -43,6 +50,7 @@ public class PanelMemberFragment extends BaseFragment implements BaseQuickAdapte
 
     @Override
     protected void initInjector() {
+        mFragmentComponent.inject(this);
     }
 
     @Override
@@ -115,11 +123,27 @@ public class PanelMemberFragment extends BaseFragment implements BaseQuickAdapte
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.tvCreate:
+                Apply2PanelParam apply2PanelParam = new Apply2PanelParam();
+                apply2PanelParam.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+                apply2PanelParam.creator = panelsModel.getCreator();
+                apply2PanelParam.doctorName = panelsModel.getDoctorName();
+                apply2PanelParam.dtmAroId = panelsModel.getDtmAroId();
+                apply2PanelParam.dtmAroName = panelsModel.getDtmAroName();
+                assert mPresenter != null;
+                mPresenter.apply2Panel(apply2PanelParam);
+                break;
+        }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void setPanelShare(List<PanelShareModel> panelsModels, int loadType) {
+    }
+
+    @Override
+    public void success2ApplyPanel() {
+        ToastUtils.showShort(getString(R.string.add_friend_hint));
+        getActivity().finish();
     }
 }

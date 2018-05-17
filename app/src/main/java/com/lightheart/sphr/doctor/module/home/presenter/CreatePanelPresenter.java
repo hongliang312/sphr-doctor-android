@@ -1,13 +1,11 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
 
-import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BasePresenter;
+import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
-import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
 import com.lightheart.sphr.doctor.module.home.contract.CreatePanelContract;
-import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
@@ -53,7 +51,7 @@ public class CreatePanelPresenter extends BasePresenter<CreatePanelContract.View
     }
 
     @Override
-    public void createPanel() {
+    public void createPanel(CreatePanelParam param) {
 
     }
 }

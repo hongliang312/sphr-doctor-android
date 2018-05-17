@@ -79,4 +79,10 @@ public class PanelShareFragment extends BaseFragment<PanelSharePresenter> implem
         assert item != null;
         ToastUtils.showShort(item.getShareTitle());
     }
+
+    // 暂时不需要
+    @Override
+    public void success2ApplyPanel() {
+    }
+
 }

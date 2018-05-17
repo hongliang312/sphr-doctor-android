@@ -1,7 +1,7 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.lightheart.sphr.doctor.R;
 

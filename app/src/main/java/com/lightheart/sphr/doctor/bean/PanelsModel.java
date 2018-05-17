@@ -11,7 +11,7 @@ import java.util.List;
 public class PanelsModel implements Serializable {
 
 
-    private long creator;
+    private int creator;
     private List<DoctorBean> doctorList;
     private String doctorName;
     private int dtmAroId;
@@ -31,7 +31,7 @@ public class PanelsModel implements Serializable {
 
     private boolean isAdded;
 
-    public PanelsModel(long creator, List<DoctorBean> doctorList, String doctorName, int dtmAroId, String dtmAroName, String dtmAroSummary, String imgUrl, int duid, int id) {
+    public PanelsModel(int creator, List<DoctorBean> doctorList, String doctorName, int dtmAroId, String dtmAroName, String dtmAroSummary, String imgUrl, int duid, int id) {
         this.creator = creator;
         this.doctorList = doctorList;
         this.doctorName = doctorName;
@@ -43,11 +43,11 @@ public class PanelsModel implements Serializable {
         this.id = id;
     }
 
-    public long getCreator() {
+    public int getCreator() {
         return creator;
     }
 
-    public void setCreator(long creator) {
+    public void setCreator(int creator) {
         this.creator = creator;
     }
 

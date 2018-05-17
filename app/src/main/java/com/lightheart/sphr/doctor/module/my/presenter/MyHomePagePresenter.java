@@ -1,8 +1,5 @@
 package com.lightheart.sphr.doctor.module.my.presenter;
 
-import com.blankj.utilcode.util.SPUtils;
-import com.lightheart.sphr.doctor.app.Constant;
-import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
@@ -13,8 +10,6 @@ import com.lightheart.sphr.doctor.module.my.contract.MyHomePageContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
-
-import java.io.ObjectInput;
 
 import javax.inject.Inject;
 

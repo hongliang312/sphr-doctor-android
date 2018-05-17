@@ -11,6 +11,7 @@ import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
 import com.lightheart.sphr.doctor.module.home.activity.TestDetailsActivity;
 import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
 import com.lightheart.sphr.doctor.module.home.ui.CreatePanelActivity;
+import com.lightheart.sphr.doctor.module.home.ui.HomeClinicalRecruitActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.module.home.ui.PanelListActivity;
@@ -59,5 +60,7 @@ public interface ActivityComponent {
     void inject(CreatePanelActivity activity);
 
     void inject(SelectContactActivity activity);
+
+    void inject(HomeClinicalRecruitActivity activity);
 
 }

@@ -7,17 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelListAdapter;
-import com.lightheart.sphr.doctor.module.home.adapter.PanelSectionAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomePanelContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PanelsPresenter;
 

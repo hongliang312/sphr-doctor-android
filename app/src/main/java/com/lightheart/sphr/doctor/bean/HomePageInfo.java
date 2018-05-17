@@ -403,7 +403,7 @@ public class HomePageInfo implements Serializable {
         }
     }
 
-    public static class ClinicalTrialListBean {
+    public static class ClinicalTrialListBean implements Serializable {
         /**
          * id : 14
          * projectName : 2018-3-14 测试项目管理

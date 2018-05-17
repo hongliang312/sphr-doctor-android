@@ -1,8 +1,10 @@
 package com.lightheart.sphr.doctor.module.home.contract;
 
+import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
+import com.lightheart.sphr.doctor.bean.HomePageInfo;
 
 import java.util.List;
 
@@ -11,21 +13,19 @@ import java.util.List;
  * Description :
  */
 
-public interface CreatePanelContract {
+public interface ClinicalRecruitContract {
 
     interface View extends BaseContract.BaseView {
 
-        void createPanelSuccess();
-
-        void setDiseases(List<DiseaseModel> diseaseModelList);
+        void setClinical(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialListBeanList,@LoadType.checker int loadType);
 
     }
 
     interface Presenter extends BaseContract.BasePresenter<View> {
 
-        void loadDiseaseData();
+        void loadClinicals();
 
-        void createPanel(CreatePanelParam param);
+        void searchClinical(String s);
 
     }
 

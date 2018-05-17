@@ -89,6 +89,7 @@
         <activity android:name=".module.home.activity.OnlineConsultantActivity" />
         <activity android:name=".module.home.activity.TelephoneDetailsActivity" />
         <activity android:name=".module.home.ui.SelectContactActivity" />
+        <activity android:name=".module.home.ui.HomeClinicalRecruitActivity" />
     </application>
 
 </manifest>

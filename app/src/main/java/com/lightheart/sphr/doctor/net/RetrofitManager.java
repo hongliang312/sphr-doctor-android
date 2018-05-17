@@ -4,13 +4,10 @@ import android.support.annotation.NonNull;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.lightheart.sphr.doctor.app.Constant;
-import com.lightheart.sphr.doctor.app.DCApplication;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
