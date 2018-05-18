@@ -127,4 +127,36 @@
     <string name="ygxq">  阳光欣晴</string>
     <string name="testingmanger">试验管理</string>
     <string name="butonne">查看</string>
+
+    <string name="patientswithdetails">患者详情</string>
+    <string name="patientrecord">患者档案</string>
+    <string name="patientname">山口百惠</string>
+    <string name="diseasedescription">病情描述</string>
+    <string name="uploadthemedicalrecords">上传病历图片</string>
+    <string name="telephonebooking">电话咨询预约时间</string>
+    <string name="warm">温馨提示:</string>
+    <string name="prompt">到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,谢谢</string>
+    <string name="patientrecords">患者病历</string>
+
+
+    <string name="clinictime">就诊时间</string>
+    <string name="complaint">主诉</string>
+    <string name="finaldiagnosis">最后诊断</string>
+    <string name="treatmentprocess">治疗经过</string>
+    <string name="therapeuticregimen">用药方案</string>
+    <string name="organizingtime"> (整理时间)</string>
+
+    <string name="epidemic">是否有瘟疫区、疫情、疫区居住史</string>
+    <string name="epidemicarea">是否有牧区、矿山、高沸去、低碘区居住史</string>
+    <string name="poison">是否有化学性物质、放射物、毒物接触史</string>
+    <string name="smokinghistory">吸烟史</string>
+    <string name="drinking">饮酒史</string>
+    <string name="obstericalhistory">婚育史</string>
+    <string name="familyhistory">家族史</string>
+
+    <string name="name">姓名:</string>
+    <string name="address">常住地:</string>
+    <string name="age">年龄:</string>
+    <string name="nation">民族:</string>
+
 </resources>

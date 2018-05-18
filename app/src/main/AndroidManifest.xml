@@ -83,7 +83,8 @@
         <activity android:name=".module.my.ui.MyInvitationCodeActivity" />
         <activity android:name=".module.home.ui.HomePatientManageActivity" />
         <activity android:name=".module.home.activity.OnlineConsultantActivity" />
-        <activity android:name=".module.home.activity.TelephoneDetailsActivity"></activity>
+        <activity android:name=".module.home.activity.TelephoneDetailsActivity" />
+        <activity android:name=".module.home.activity.PatientRecordsActivity"></activity>
     </application>
 
 </manifest>

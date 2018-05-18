@@ -7,6 +7,8 @@ import com.lightheart.sphr.doctor.di.module.ActivityModule;
 import com.lightheart.sphr.doctor.di.scope.ContextLife;
 import com.lightheart.sphr.doctor.di.scope.PerActivity;
 import com.lightheart.sphr.doctor.module.home.activity.OnlineConsultantActivity;
+import com.lightheart.sphr.doctor.module.home.activity.PatientRecordsActivity;
+import com.lightheart.sphr.doctor.module.home.activity.TelephoneDetailsActivity;
 import com.lightheart.sphr.doctor.module.home.activity.TestDetailsActivity;
 import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
@@ -50,5 +52,9 @@ public interface ActivityComponent {
     void inject(HomePatientManageActivity activity);
 
     //void inject(OnlineConsultantActivity activity);
+
+    void inject(TelephoneDetailsActivity activity);
+
+    void inject(PatientRecordsActivity activity);
 
 }

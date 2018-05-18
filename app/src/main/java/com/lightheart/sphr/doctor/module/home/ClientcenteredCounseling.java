@@ -5,9 +5,8 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
-
-import com.blankj.utilcode.util.StringUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
@@ -78,7 +77,10 @@ public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> i
             public void Oclick(View view, int position) {
                 Intent intent = new Intent(getActivity(), TelephoneDetailsActivity.class);
                 intent.putExtra("id",list.get(position).getConsultId()+"");
+                intent.putExtra("type",type);
+                getActivity().startActivity(intent);
 
+                Log.i("bbbb",""+list.get(position).getConsultId());
             }
         });
     }

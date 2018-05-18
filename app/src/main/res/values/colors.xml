@@ -18,13 +18,15 @@
 
 
 
+
+
     <color name="sky_blue">#2A80CA</color>
     <color name="sky_blue5">#2A80CA</color>
     <color name="sky_blue1">#336699</color>
     <color name="sky_blue2"> #3333CC</color>
     <color name="sky_blue4">#297FCA</color>
     <color name="sky_blue3"> #e9f5ff</color>
-
+    <color name="search">#F5F4F9</color>
     <color name="theme_color">#297fca</color>
     <color name="backgound_color">#f2f2f2</color>
     <color name="toRegister">#dcecff</color>
@@ -39,4 +41,9 @@
     <color name="wathetr">#3a91fa</color>
     <color name="grary">#F2F2F2</color>
     <color name="gra">#7C7C7C</color>
+    <color name="grayy">#878787</color>
+    <color name="dimmed">#E0E0E0</color>
+    <color name="dimmedd">#777777</color>
+    <color name="orange">#FF7300</color>
+
 </resources>
