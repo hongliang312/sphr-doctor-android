@@ -1,4 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.activity;
+
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +19,10 @@ import com.lightheart.sphr.doctor.module.home.contract.FabScrollListener;
 import com.lightheart.sphr.doctor.module.home.contract.HideScrollListener;
 import com.lightheart.sphr.doctor.module.home.contract.TestingManagementContract;
 import com.lightheart.sphr.doctor.module.home.presenter.TestingManagementPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View,HideScrollListener, View.OnClickListener {
 

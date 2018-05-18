@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_6"
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/dp_14"
+    android:paddingStart="@dimen/dp_14">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/tvClinicalTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_weight="1"
+            android:textColor="@color/title_black"
+            android:textSize="@dimen/big_small"
+            android:textStyle="bold"
+            tools:text="@string/clinical_trial" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_6"
+            android:drawableTop="@mipmap/details"
+            android:text="@string/particulars"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recruitment_num"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvRecNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="66" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trial_stage"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvTrialStage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="I" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingTop="@dimen/dp_6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/adaptation_disease"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvAdDis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="血压" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/biding_unit"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvBidingUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="北京阳光欣晴" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -16,7 +16,9 @@ public interface ContractsContract {
 
     interface View extends BaseContract.BaseView {
 
-        void setClinicals(List<DoctorBean> ContractDocList, @LoadType.checker int loadType);
+        void setContracts(List<DoctorBean> ContractDocList, @LoadType.checker int loadType);
+
+        void successInvite();
 
     }
 
@@ -29,6 +31,8 @@ public interface ContractsContract {
         void refresh();
 
         void loadMore();
+
+        void invite2Panel();
 
     }
 

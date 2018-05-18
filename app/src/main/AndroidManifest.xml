@@ -82,7 +82,14 @@
         <activity android:name=".module.my.ui.FeedBackActivity" />
         <activity android:name=".module.my.ui.MyInvitationCodeActivity" />
         <activity android:name=".module.home.ui.HomePatientManageActivity" />
+        <activity android:name=".module.home.ui.HomePanelActivity" />
+        <activity android:name=".module.home.ui.CreatePanelActivity" />
+        <activity android:name=".module.home.ui.PanelListActivity" />
+        <activity android:name=".module.home.ui.PanelDetailActivity" />
         <activity android:name=".module.home.activity.OnlineConsultantActivity" />
+        <activity android:name=".module.home.activity.TelephoneDetailsActivity" />
+        <activity android:name=".module.home.ui.SelectContactActivity" />
+        <activity android:name=".module.home.ui.HomeClinicalRecruitActivity" />
         <activity android:name=".module.home.activity.TelephoneDetailsActivity" />
         <activity android:name=".module.home.activity.PatientRecordsActivity"></activity>
     </application>

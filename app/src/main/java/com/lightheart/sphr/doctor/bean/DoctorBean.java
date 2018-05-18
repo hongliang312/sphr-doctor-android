@@ -117,6 +117,50 @@ public class DoctorBean implements Serializable {
     private String mobile;
     private boolean friend;
 
+    /**
+     * 专家组成员
+     */
+    private int duid;
+    private String doctorName;
+    private int dtmAroId;
+
+    public int getDuid() {
+        return duid;
+    }
+
+    public void setDuid(int duid) {
+        this.duid = duid;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public int getDtmAroId() {
+        return dtmAroId;
+    }
+
+    public void setDtmAroId(int dtmAroId) {
+        this.dtmAroId = dtmAroId;
+    }
+
+    /**
+     * 是否已选中
+     */
+    private boolean isCheck;
+
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
+
     public int getId() {
         return id;
     }
@@ -411,5 +455,10 @@ public class DoctorBean implements Serializable {
 
     public void setFriend(boolean friend) {
         this.friend = friend;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return false;
     }
 }

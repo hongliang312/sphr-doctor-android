@@ -11,7 +11,6 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.module.my.contract.MyHomePageContract;
@@ -55,7 +54,7 @@ public class MyHomePageActivity extends BaseActivity<MyHomePagePresenter> implem
     TextView tvDes;
     @BindView(R.id.tvAddFriend)
     TextView tvAddFriend;
-    private int duid;
+    private RequestParams params;
 
     @Override
     protected int getLayoutId() {
@@ -69,26 +68,33 @@ public class MyHomePageActivity extends BaseActivity<MyHomePagePresenter> implem
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.my_page, false, 0);
-        String mFlag = getIntent().getStringExtra("flag");
-        duid = getIntent().getIntExtra("duid", 0);
-        if (TextUtils.equals("CHECK", mFlag)) {
-            tvAddFriend.setVisibility(View.GONE);
-        } else if (TextUtils.equals("ADD", mFlag)) {
-            tvAddFriend.setVisibility(View.VISIBLE);
-        }
-
+        int duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+        int mDuid = getIntent().getIntExtra("duid", 0);
         assert mPresenter != null;
-        mPresenter.loadDoc(duid);
+        if (duid == mDuid) {
+            initToolbar(mToolbar, mTitleTv, mBtSub, R.string.my_page, false, 0);
+            mPresenter.loadDoc(duid);
+        } else {
+            initToolbar(mToolbar, mTitleTv, mBtSub, R.string.personal_page, false, 0);
+            mPresenter.loadDoc(mDuid);
+            params = new RequestParams();
+            params.duid = duid;
+            params.contUid = mDuid;
+            mPresenter.isAddFriend(params);
+        }
     }
 
     @OnClick(R.id.tvAddFriend)
     public void onClick(View view) {
-        RequestParams params = new RequestParams();
-        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        params.contUid = this.duid;
         assert mPresenter != null;
         mPresenter.toAddFriend(params);
+    }
+
+    @Override
+    public void setAddFriendView(boolean isFriend) {
+        if (isFriend) {
+            tvAddFriend.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

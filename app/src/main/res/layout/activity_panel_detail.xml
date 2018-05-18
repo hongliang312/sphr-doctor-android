@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgound_color"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/mainBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/dp_0">
+
+            <include layout="@layout/common_toolbar" />
+        </android.support.design.widget.AppBarLayout>
+
+        <com.lightheart.sphr.doctor.view.CommonTabLayout
+            android:id="@+id/tabPanelSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:paddingBottom="@dimen/dp_12"
+            android:paddingTop="@dimen/dp_20"
+            app:tl_divider_color="@color/divide"
+            app:tl_divider_padding="@dimen/dp_8"
+            app:tl_divider_width="0.5dp"
+            app:tl_iconVisible="false"
+            app:tl_indicator_color="@color/theme_color"
+            app:tl_indicator_height="@dimen/dp_2"
+            app:tl_tab_padding="@dimen/dp_10"
+            app:tl_textSelectColor="@color/theme_color"
+            app:tl_textUnselectColor="@color/eight"
+            app:tl_textsize="14sp"
+            app:tl_underline_color="@color/divide" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpPanelSubPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvPanels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

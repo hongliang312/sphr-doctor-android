@@ -3,12 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/theme_color</item>
         <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@style/windowAnimation</item>
         <!-- Set menu background and text color -->
         <item name="android:itemBackground">@color/white</item>
-        <item name="android:textColor">@color/title_black</item>
+        <item name="android:textColor">@color/theme_color</item>
+        <item name="android:textColorHint">@color/eight</item>
+        <item name="colorControlNormal">@color/eight</item>
+        <item name="colorControlActivated">@color/theme_color</item>
+        <item name="colorControlHighlight">@color/theme_color</item>
 
         //沉浸状态栏
         <item name="android:windowIsTranslucent">false</item>
@@ -26,7 +30,7 @@
     <style name="AppMainTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryDay</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDayDark</item>
-        <item name="colorAccent">@color/colorPrimaryDayAccent</item>
+        <item name="colorAccent">@color/theme_color</item>
         <item name="colorTextLight">@color/colorDayTextLight</item>
         <item name="colorTextDark">@color/colorDayTextDark</item>
         <item name="colorBg">@color/colorDayBg</item>
@@ -68,7 +72,7 @@
         <item name="actionMenuTextColor">@color/sky_blue</item> <!--颜色-->
     </style>
 
-   <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="actionMenuTextColor">@color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
@@ -78,9 +82,6 @@
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
-
-
-
 
 
 </resources>

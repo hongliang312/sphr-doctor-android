@@ -13,6 +13,8 @@ public interface MyHomePageContract {
 
     interface View extends BaseContract.BaseView {
 
+        void setAddFriendView(boolean isFriend);
+
         void setData(DoctorBean docInfo);
 
         void successAdd();
@@ -20,6 +22,8 @@ public interface MyHomePageContract {
     }
 
     interface Presenter extends BaseContract.BasePresenter<MyHomePageContract.View> {
+
+        void isAddFriend(RequestParams params);
 
         void loadDoc(int id);
 

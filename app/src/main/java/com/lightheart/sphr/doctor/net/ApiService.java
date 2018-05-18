@@ -2,14 +2,23 @@ package com.lightheart.sphr.doctor.net;
 
 import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
 import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
+import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
+import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
+import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
+import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
+import com.lightheart.sphr.doctor.bean.IsFriendModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.PanelRequestParams;
+import com.lightheart.sphr.doctor.bean.PanelShareModel;
+import com.lightheart.sphr.doctor.bean.PanelShareParam;
+import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
@@ -167,10 +176,9 @@ public interface ApiService {
 
     /**
      * 在线咨询
-     *
      */
-     @POST("consult/list")
-     Observable<DataResponse<List<UntreatedBean>>> pendinglist(@Body UntreatedRequestParams untreated);
+    @POST("consult/list")
+    Observable<DataResponse<List<UntreatedBean>>> pendinglist(@Body UntreatedRequestParams untreated);
 
 
     /**
@@ -181,6 +189,69 @@ public interface ApiService {
      */
     @POST("patient/getPatientByDuid")
     Observable<DataResponse<PatientsModel>> getPatientByDuid(@Body PatientsRequestParams params);
+
+    /**
+     * 专家组列表
+     *
+     * @param params
+     * @return List<PanelsModel>
+     */
+    @POST("dtmAro/getDtmAroList")
+    Observable<DataResponse<List<PanelsModel>>> getDtmAroList(@Body PanelRequestParams params);
+
+    /**
+     * 专家组共享内容列表
+     *
+     * @param params
+     * @return List<PanelShareModel>
+     */
+    @POST("dtmAro/shareListByDtmAroId")
+    Observable<DataResponse<List<PanelShareModel>>> shareListByDtmAroId(@Body PanelShareParam params);
+
+    /**
+     * 判断是否为好友
+     *
+     * @param params
+     * @return IsFriendModel
+     */
+    @POST("doctorContact/check/relation")
+    Observable<DataResponse<IsFriendModel>> checkFriend(@Body RequestParams params);
+
+    /**
+     * 获取疾病列表
+     *
+     * @param params
+     * @return
+     */
+    @POST("disease/list/configed")
+    Observable<DataResponse<List<DiseaseModel>>> getDiseases(@Body LoginSuccess params);
+
+    /**
+     * 申请加入专家组
+     *
+     * @param params
+     * @return Object
+     */
+    @POST("dtmAro/addApplyDtm")
+    Observable<DataResponse<Object>> addApplyDtm(@Body Apply2PanelParam params);
+
+    /**
+     * 获取临床试验招募列表
+     *
+     * @param params
+     * @return clinicalTrial/searchClinicalTrial
+     */
+    @POST("clinicalTrial/allClinicalTrial")
+    Observable<DataResponse<ClinicalRecruitModel>> getAllClinicalTrial(@Body LoginSuccess params);
+
+    /**
+     * 获取临床试验招募列表
+     *
+     * @param params
+     * @return
+     */
+    @POST("clinicalTrial/searchClinicalTrial")
+    Observable<DataResponse<List<HomePageInfo.ClinicalTrialListBean>>> searchClinicalTrial(@Body ClinicalSearchParam params);
 
 
     /**

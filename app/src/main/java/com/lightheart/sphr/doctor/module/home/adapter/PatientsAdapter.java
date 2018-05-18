@@ -1,11 +1,7 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
 
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;

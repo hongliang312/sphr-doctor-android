@@ -12,8 +12,6 @@ import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.reactivex.functions.Consumer;

@@ -99,7 +99,7 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     }
 
     @Override
-    public void setClinicals(List<DoctorBean> contractDocList, int loadType) {
+    public void setContracts(List<DoctorBean> contractDocList, int loadType) {
         setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
     }
 
@@ -167,12 +167,18 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     @Override
     public void itemClick(View view, int position, DoctorBean item) {
         assert item != null;
-        startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getContUid()).putExtra("flag", "CHECK"));
+        startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getContUid()));
     }
 
     // 暂时不需要
     @Override
     public void accept(View view, int position, DoctorBean item) {
+
+    }
+
+    // 暂时不需要
+    @Override
+    public void successInvite() {
 
     }
 

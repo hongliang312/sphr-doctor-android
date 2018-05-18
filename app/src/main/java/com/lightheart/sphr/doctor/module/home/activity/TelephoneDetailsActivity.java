@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;

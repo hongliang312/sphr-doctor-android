@@ -5,7 +5,7 @@
     android:layout_marginTop="@dimen/dp_6"
     android:background="@color/white"
     android:orientation="horizontal"
-    android:padding="@dimen/dp_10">
+    android:padding="@dimen/dp_14">
 
     <LinearLayout
         android:id="@+id/llTelConsult"
@@ -18,8 +18,8 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
+            android:layout_width="@dimen/dp_54"
+            android:layout_height="@dimen/dp_54"
             android:contentDescription="@string/tel_online"
             android:src="@mipmap/phone" />
 
@@ -48,8 +48,8 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
+            android:layout_width="@dimen/dp_54"
+            android:layout_height="@dimen/dp_54"
             android:contentDescription="@string/consult_online"
             android:src="@mipmap/xian" />
 

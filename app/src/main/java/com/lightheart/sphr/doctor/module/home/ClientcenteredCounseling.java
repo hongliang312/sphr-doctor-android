@@ -2,11 +2,11 @@ package com.lightheart.sphr.doctor.module.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
