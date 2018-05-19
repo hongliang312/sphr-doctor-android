@@ -12,7 +12,6 @@ import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
-import com.lightheart.sphr.doctor.bean.PanelShareModel;
 import com.lightheart.sphr.doctor.module.home.contract.ClinicalRecruitContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;

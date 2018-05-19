@@ -6,7 +6,6 @@ import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
-import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.module.home.contract.TelephoneDetailsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;

@@ -15,8 +15,10 @@ import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.PatientRecordsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.PatientRecordsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PatientRecordsPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 
 public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter> implements PatientRecordsContract.View, View.OnClickListener {

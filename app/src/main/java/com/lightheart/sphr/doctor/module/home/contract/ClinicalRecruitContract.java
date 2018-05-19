@@ -2,8 +2,6 @@ package com.lightheart.sphr.doctor.module.home.contract;
 
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.CreatePanelParam;
-import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 

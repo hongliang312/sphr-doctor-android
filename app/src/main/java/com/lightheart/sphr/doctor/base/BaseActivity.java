@@ -1,6 +1,5 @@
 package com.lightheart.sphr.doctor.base;
 
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,7 +22,6 @@ import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.di.component.ActivityComponent;
 import com.lightheart.sphr.doctor.di.component.DaggerActivityComponent;
 import com.lightheart.sphr.doctor.di.module.ActivityModule;
-import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import com.lightheart.sphr.doctor.utils.StatusBarUtil;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;

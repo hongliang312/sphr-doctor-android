@@ -1,7 +1,5 @@
 package com.lightheart.sphr.doctor.net;
 
-import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
-import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
 import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
@@ -20,6 +18,8 @@ import com.lightheart.sphr.doctor.bean.PanelRequestParams;
 import com.lightheart.sphr.doctor.bean.PanelShareModel;
 import com.lightheart.sphr.doctor.bean.PanelShareParam;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
+import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
+import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;

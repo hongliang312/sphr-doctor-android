@@ -1,15 +1,12 @@
 package com.lightheart.sphr.doctor.utils;
 
 import android.content.Context;
-import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.module.home.adapter.TelephoneDetailsAdapter;
-import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
 import com.youth.banner.loader.ImageLoader;
 
 /**
@@ -47,7 +44,7 @@ public class ImageLoaderUtils extends ImageLoader {
                 .into(imageView);
     }
 
-    public static void display(AuthenticationActivity context, ImageView imageView, int drawableId) {
+    public static void display(Context context, ImageView imageView, int drawableId) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
