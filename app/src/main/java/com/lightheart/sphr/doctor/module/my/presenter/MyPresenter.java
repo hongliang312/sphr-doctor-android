@@ -43,7 +43,7 @@ public class MyPresenter extends BasePresenter<MyContract.View> implements MyCon
                     public void accept(DataResponse<DoctorBean> response) throws Exception {
                         if (response.getResultcode() == 200) {
                             int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                            mView.setDocIndo(response.getContent());
+                            mView.setDocInfo(response.getContent());
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }

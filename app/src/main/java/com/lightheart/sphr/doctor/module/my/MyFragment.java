@@ -88,7 +88,7 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     }
 
     @Override
-    public void setDocIndo(DoctorBean docIndo) {
+    public void setDocInfo(DoctorBean docIndo) {
         if (docIndo != null) {
             doctorBean = new DoctorBean();
             doctorBean = docIndo;

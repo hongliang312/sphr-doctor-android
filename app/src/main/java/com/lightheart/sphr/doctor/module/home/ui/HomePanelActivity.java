@@ -121,4 +121,9 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
         startActivity(new Intent(HomePanelActivity.this, PanelDetailActivity.class).putExtra("detail", item.t).putExtra("flag", item.t.isAdded() ? "Y" : "N"));
 
     }
+
+    // 暂时不用
+    @Override
+    public void successShare() {
+    }
 }

@@ -10,10 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
+import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelListAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomePanelContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PanelsPresenter;
@@ -44,6 +48,10 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
     @Inject
     PanelListAdapter mPanelListAdapter;
     private String flag;
+    private String mTodo;
+    private int linkId;
+    private String shareTitle;
+    private String sharerName;
 
     @Override
     protected int getLayoutId() {
@@ -58,11 +66,13 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
     @Override
     protected void initView() {
         flag = getIntent().getStringExtra("flag");
-        if (TextUtils.equals("Y", flag)) {
-            initToolbar(mToolbar, mTitleTv, mRegiste, R.string.added_panel, false, 0);
-        } else {
-            initToolbar(mToolbar, mTitleTv, mRegiste, R.string.interesting_panel, false, 0);
-        }
+        mTodo = getIntent().getStringExtra("TODO");// 分享临床试验到专家组
+        linkId = getIntent().getIntExtra("linkId", 0);
+        shareTitle = getIntent().getStringExtra("shareTitle");
+        sharerName = getIntent().getStringExtra("sharerName");
+
+        int title = TextUtils.equals("Y", flag) ? R.string.added_panel : R.string.interesting_panel;
+        initToolbar(mToolbar, mTitleTv, mRegiste, title, false, 0);
 
         mPanelListAdapter.initData(flag);
 
@@ -80,12 +90,29 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         PanelsModel item = (PanelsModel) adapter.getItem(position);
         assert item != null;
-        startActivity(new Intent(PanelListActivity.this, PanelDetailActivity.class).putExtra("detail", item).putExtra("flag", flag));
+        if (TextUtils.equals("SHARE", mTodo)) {
+            ShareClinical2PanelParam param = new ShareClinical2PanelParam();
+            param.dtmAroId = item.getDtmAroId();
+            param.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+            param.linkId = linkId;
+            param.sharerName = sharerName;
+            param.shareTitle = shareTitle;
+            assert mPresenter != null;
+            mPresenter.share2Panel(param);
+        } else {
+            startActivity(new Intent(PanelListActivity.this, PanelDetailActivity.class).putExtra("detail", item).putExtra("flag", flag));
+        }
     }
 
     @Override
     public void setPanelData(List<PanelsModel> panelsModels, int loadType, String isMember) {
         setLoadDataResult(mPanelListAdapter, mSwipeRefreshLayout, panelsModels, loadType);
+    }
+
+    @Override
+    public void successShare() {
+        ToastUtils.showShort("分享成功");
+        this.finish();
     }
 
     @Override

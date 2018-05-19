@@ -7,6 +7,7 @@ import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.PanelRequestParams;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
+import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 import com.lightheart.sphr.doctor.module.home.contract.HomePanelContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
@@ -65,5 +66,29 @@ public class PanelsPresenter extends BasePresenter<HomePanelContract.View> imple
         mIsRefresh = true;
         loadPanelList("Y");
         loadPanelList("N");
+    }
+
+    @Override
+    public void share2Panel(ShareClinical2PanelParam param) {
+        RetrofitManager.create(ApiService.class)
+                .share2Panel(param)
+                .compose(RxSchedulers.<DataResponse<Object>>applySchedulers())
+                .compose(mView.<DataResponse<Object>>bindToLife())
+                .subscribe(new Consumer<DataResponse<Object>>() {
+                    @Override
+                    public void accept(DataResponse<Object> response) throws Exception {
+                        if (response.getResultcode() == 200) {
+                            mView.successShare();
+                        } else {
+                            mView.showFaild(String.valueOf(response.getResultmsg()));
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
+                        mView.showFaild(throwable.getMessage());
+                    }
+                });
     }
 }

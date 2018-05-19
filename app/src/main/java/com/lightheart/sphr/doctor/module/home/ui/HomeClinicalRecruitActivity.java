@@ -1,5 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.ui;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeClinicalRecruitAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.ClinicalRecruitContract;
@@ -80,11 +83,13 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
         shvDisease.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                // 避免输入框隐藏
+                ToastUtils.showShort("Close");
+                assert mPresenter != null;
+                mPresenter.loadClinicals();
                 return true;
             }
         });
-        shvDisease.onActionViewExpanded();
+//        shvDisease.onActionViewExpanded();
         shvDisease.setOnQueryTextListener(this);
         mSubject.debounce(600, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
@@ -98,10 +103,8 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
     }
 
     private void queryDoctor(String s) {
-        if (!TextUtils.isEmpty(s.trim())) {
-            assert mPresenter != null;
-            mPresenter.searchClinical(s);
-        }
+        assert mPresenter != null;
+        mPresenter.searchClinical(s);
     }
 
     @Override
@@ -111,7 +114,7 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        if (!TextUtils.isEmpty(newText)) {
+        if (!TextUtils.isEmpty(newText.trim())) {
             queryWithRxJava(newText);
         }
         return true;
@@ -130,12 +133,28 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         HomePageInfo.ClinicalTrialListBean item = (HomePageInfo.ClinicalTrialListBean) adapter.getItem(position);
         assert item != null;
-        ToastUtils.showShort(item.getProjectName());
+        startActivity(new Intent(HomeClinicalRecruitActivity.this, ClinicalRecruitDetailActivity.class).putExtra("id", item.getId()));
     }
 
     @Override
     public void setClinical(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialListBeanList, int loadType) {
         setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
+    }
+
+    // 暂时不用
+    @Override
+    public void setDoctorInfo(DoctorBean docInfo) {
+
+    }
+
+    // 暂时不用
+    @Override
+    public void setClinicalRecruitDetail(HomePageInfo.ClinicalTrialListBean clinicalTrialListBeanList, int loadType) {
+    }
+
+    // 暂时不用
+    @Override
+    public void successApply() {
     }
 
 }

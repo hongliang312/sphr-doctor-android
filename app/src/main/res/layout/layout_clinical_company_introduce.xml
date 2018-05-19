@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgound_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/lll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_14"
+            android:background="@color/backgound_color"
+            android:orientation="vertical" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lll"
+            android:layout_marginTop="@dimen/dp_28"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_14"
+            android:paddingStart="@dimen/dp_14"
+            android:paddingTop="@dimen/dp_10">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e7f4ff"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp"
+                    android:text="@string/trial_project_name"
+                    android:textColor="@color/eight"
+                    android:textSize="@dimen/small" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp"
+                    android:text="@string/trial_status"
+                    android:textColor="@color/eight"
+                    android:textSize="@dimen/small" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp"
+                    android:text="@string/contract_way"
+                    android:textColor="@color/eight"
+                    android:textSize="@dimen/small" />
+            </TableRow>
+
+            <TableLayout
+                android:id="@+id/tblCompanyIntroduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lll"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_marginTop="-6dp"
+            android:background="@mipmap/ic_nav"
+            android:gravity="center"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/company_introduce"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/small" />
+
+    </RelativeLayout>
+
+</LinearLayout>

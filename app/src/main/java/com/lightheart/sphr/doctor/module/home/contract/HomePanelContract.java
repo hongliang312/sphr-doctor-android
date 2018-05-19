@@ -3,6 +3,7 @@ package com.lightheart.sphr.doctor.module.home.contract;
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
+import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public interface HomePanelContract {
 
         void setPanelData(List<PanelsModel> panelsModels, @LoadType.checker int loadType, String isMember);
 
+        void successShare();
+
     }
 
     interface Presenter extends BaseContract.BasePresenter<View> {
@@ -24,6 +27,8 @@ public interface HomePanelContract {
         void loadPanelList(String isMember);
 
         void refresh();
+
+        void share2Panel(ShareClinical2PanelParam param);
 
     }
 
