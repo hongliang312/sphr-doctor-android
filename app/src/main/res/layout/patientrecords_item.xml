@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@color/grary"
+        android:textColor="@color/dimmedd"
+        >
+
+        <TextView
+            android:id="@+id/organizingtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/organizingtime"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_12"
+            android:textSize="@dimen/big_medium"
+            android:background="@color/grary"
+            android:textColor="@color/dimmedd"
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/clinictime"
+            android:layout_marginTop="@dimen/dp_6"
+            />
+
+        <TextView
+            android:id="@+id/clinictime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/orange"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/complaint"
+            android:layout_marginTop="@dimen/dp_6"
+            />
+
+        <TextView
+            android:id="@+id/complaint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            android:layout_marginTop="@dimen/dp_12"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/finaldiagnosis"
+            android:layout_marginTop="@dimen/dp_6"
+            />
+
+        <TextView
+            android:id="@+id/finaldiagnosis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/orange"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/treatmentprocess"
+            android:layout_marginTop="@dimen/dp_6"
+            />
+
+        <TextView
+            android:id="@+id/treatmentprocess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/orange"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/therapeuticregimen"
+            android:layout_marginTop="@dimen/dp_6"
+            />
+
+        <TextView
+            android:id="@+id/therapeuticregimen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            android:layout_marginTop="@dimen/dp_12"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class DetailsBean implements Serializable{
+
     private String duid;
     private String id;
 

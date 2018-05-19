@@ -38,7 +38,6 @@ public class TestDetailsPresenter extends BasePresenter<TestDetailsContract.View
                 .detailslist(entity)
                 .compose(RxSchedulers.<DataResponse<TestDetails>>applySchedulers())
                 .compose(mView.<DataResponse<TestDetails>>bindToLife())
-
                 .subscribe(new Consumer<DataResponse<TestDetails>>() {
                    @Override
                    public void accept(DataResponse<TestDetails> response) throws Exception {
@@ -54,7 +53,9 @@ public class TestDetailsPresenter extends BasePresenter<TestDetailsContract.View
                }, new Consumer<Throwable>() {
                    @Override
                    public void accept(Throwable throwable) throws Exception {
+
                        mView.showFaild(throwable.getMessage());
+
                    }
                });
     }

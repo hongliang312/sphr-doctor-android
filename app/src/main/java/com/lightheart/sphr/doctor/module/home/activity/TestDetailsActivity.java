@@ -82,20 +82,21 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
     protected void initView() {
         initToolbar(mToolbar,mTitleTv,mBtSub,R.string.testingmanagement,false,0);
         String id = getIntent().getStringExtra("id");
-        DetailsBean entity=new DetailsBean();
+        DetailsBean entity = new DetailsBean();
         entity.setDuid(id);
         entity.setId(id);
 
         assert mPresenter != null;
         mPresenter.loadDetailsData(entity);
-    }
 
+    }
 
 
     @Override
     public void onClick(View v) {
 
     }
+
     @Override
     public void setDetals(TestDetails content) {
         if(content != null){
@@ -122,7 +123,6 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
             TotalinvolvedNum.setText(detailslist.get(0).getInvolvedNum()+"");
             TotalThegrouprate.setText(v+"%");
             TotalexitedNum.setText(detailslist.get(0).getExitedNum()+"");
-
         }
     }
     @Override

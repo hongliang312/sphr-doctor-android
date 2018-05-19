@@ -1,5 +1,7 @@
 package com.lightheart.sphr.doctor.net;
 
+import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
+import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
 import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
@@ -22,6 +24,8 @@ import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
+import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
+import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
@@ -278,4 +282,22 @@ public interface ApiService {
     @POST("dtmAro/share")
     Observable<DataResponse<Object>> share2Panel(@Body ShareClinical2PanelParam params);
 
+
+    /**
+     *
+     * 电话详情
+     *
+     * */
+    @POST("consult/detailById")
+    Observable<DataResponse<TelephoneDetailsBean>> telephonedetails(@Body TelephoneDetailsRequestParams telephondetails);
+
+
+
+    /**
+     *
+     * 患者病历
+     *
+     * */
+    @POST("archive/case/list")
+    Observable<DataResponse<PatientRecordsBean>> clientcentlist(@Body PatientRecordsRequestParams Params);
 }

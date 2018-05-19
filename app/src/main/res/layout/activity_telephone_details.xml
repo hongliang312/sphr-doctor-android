@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="@dimen/dp_0"/>
+
+    <include layout="@layout/common_toolbar"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,15 +41,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_14"
             android:background="@color/white"
-            android:text="患者详情"
-            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/patientswithdetails"
+            android:layout_marginTop="@dimen/dp_14"
             android:textSize="@dimen/medium" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:background="@color/sky_blue2"
-            android:layout_marginTop="@dimen/dp_5"
+            android:background="@color/dimmed"
+            android:layout_marginTop="@dimen/dp_12"
             />
 
 
@@ -43,33 +62,41 @@
         >
 
         <TextView
+            android:id="@+id/patientsname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="山口百惠"
+            android:text="@string/patientname"
             android:textSize="@dimen/large"
             android:layout_marginStart="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_24"
             />
 
         <Button
+            android:id="@+id/patientswithdisease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="患者病历"
-            android:layout_marginTop="@dimen/dp_4"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/dp_16"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/button"
             />
 
     </RelativeLayout>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_5"
-        android:background="@color/colorDayTextLight"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_height="@dimen/dp_8"
+        android:background="@color/search"
+        android:layout_marginTop="@dimen/dp_16"
         />
-
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,18 +109,18 @@
             android:id="@+id/diseasedescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="病情描述"
+            android:text="@string/diseasedescription"
             android:textSize="@dimen/medium"
             android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_12"
             />
 
         <View
             android:layout_below="@+id/diseasedescription"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:background="@color/sky_blue2"
-            android:layout_marginTop="@dimen/dp_8"
+            android:background="@color/dimmed"
+            android:layout_marginTop="@dimen/dp_12"
             />
 
     </RelativeLayout>
@@ -108,43 +135,49 @@
         >
 
         <TextView
+            android:id="@+id/conditiondescribe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="请您描述你的身体症状王老吉抖擞地见覅偶的奇偶金佛我奇偶奇偶奇偶的书法家"
-            android:textSize="@dimen/small"
-            android:layout_marginTop="@dimen/dp_8"
+            android:text="请您描述你的身体症状IE欧文奇偶我奇偶发动机哦哦的缴费的季节哦和还哦啊啊啊啊啊王老吉抖擞地见覅偶的奇偶金佛我奇偶奇偶奇偶的书法家"
+            android:textSize="@dimen/big_small"
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/gra"
             />
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_5"
-        android:layout_marginTop="@dimen/dp_14"
-        android:background="@color/colorDayTextLight"
+        android:layout_height="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/search"
         />
-
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_12"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="上传病历图片"
+            android:text="@string/uploadthemedicalrecords"
             android:textSize="@dimen/medium"
             android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_10"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:background="@color/sky_blue2"
-            android:layout_marginTop="@dimen/dp_8"
+            android:background="@color/dimmed"
+            android:layout_marginTop="@dimen/dp_14"
             />
 
 
@@ -152,42 +185,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_16"
             >
 
 
-            <ImageView
-                android:layout_width="@dimen/dp_90"
-                android:layout_height="@dimen/dp_90"
-                android:src="@mipmap/ic_launcher"
-                android:layout_weight="1"
-                />
-            <ImageView
-                android:layout_width="@dimen/dp_90"
-                android:layout_height="@dimen/dp_90"
-                android:src="@mipmap/ic_launcher"
-                android:layout_weight="1"
-                />
-            <ImageView
-                android:layout_width="@dimen/dp_90"
-                android:layout_height="@dimen/dp_90"
-                android:src="@mipmap/ic_launcher"
-                android:layout_weight="1"
-                />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/loadpicture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
 
     </LinearLayout>
 
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_5"
         android:layout_marginTop="@dimen/dp_16"
-        android:background="@color/colorDayTextLight"
+        android:background="@color/search"
         />
 
-
+   </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -200,26 +222,27 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="电话预约时间"
+            android:text="@string/telephonebooking"
             android:textSize="@dimen/medium"
             android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_8"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:background="@color/sky_blue2"
-            android:layout_marginTop="@dimen/dp_8"
+            android:background="@color/dimmed"
+            android:layout_marginTop="@dimen/dp_14"
             />
 
         <TextView
+            android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2018-03-20    13:15"
             android:textSize="@dimen/medium"
             android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_10"
             />
 
     </LinearLayout>
@@ -228,24 +251,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/search"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="温馨提示："
+            android:text="@string/warm"
             android:layout_marginLeft="@dimen/dp_22"
+            android:textSize="@dimen/medium"
+            android:textColor="@color/sky_blue"
 
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间"
+            android:text="@string/prompt"
+            android:textSize="@dimen/medium"
+            android:textColor="@color/gra"
             />
     </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

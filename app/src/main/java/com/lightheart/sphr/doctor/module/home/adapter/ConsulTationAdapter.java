@@ -49,7 +49,6 @@ public class ConsulTationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         Untreated  untreated= (Untreated) holder;
 
-        long mill=1518333293000L;
         Date date=new Date(untreatedlist.get(position).getConsultDate());
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String strs=sdf.format(date);
