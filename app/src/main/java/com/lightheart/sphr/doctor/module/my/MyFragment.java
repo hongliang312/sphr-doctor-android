@@ -19,6 +19,8 @@ import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
 import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyInvitationCodeActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyPersonalInfoActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MySettingActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 
 import butterknife.BindView;
@@ -69,16 +71,6 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     @Override
     protected void initView(View view) {
 
-        TextView view1 = new TextView(getContext());
-        view1.setGravity(Gravity.CENTER);
-        view1.setText(getString(R.string.appName));
-        view1.setTextColor(getResources().getColor(R.color.title_black));
-        view1.setBackgroundResource(R.drawable.bg_blue);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.height = 300;
-        layoutParams.width = 300;
-        ll.addView(view1, layoutParams);
-
         assert mPresenter != null;
         mPresenter.loadDocData();
     }
@@ -108,7 +100,7 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
         switch (view.getId()) {
             case R.id.clvHeadImage:
             case R.id.rlDcoInfo:
-                ToastUtils.showShort("进入个人资料页面");
+                startActivity(new Intent(getActivity(), MyPersonalInfoActivity.class).putExtra("info", doctorBean));
                 break;
             case R.id.tvAuth:
                 if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
@@ -129,7 +121,7 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
                 }
                 break;
             case R.id.tvSetting:
-
+                startActivity(new Intent(getActivity(), MySettingActivity.class));
                 break;
         }
     }
