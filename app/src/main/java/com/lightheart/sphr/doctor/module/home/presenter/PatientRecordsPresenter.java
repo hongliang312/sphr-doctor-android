@@ -10,7 +10,9 @@ import com.lightheart.sphr.doctor.module.home.contract.PatientRecordsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+
 import javax.inject.Inject;
+
 import io.reactivex.functions.Consumer;
 
 

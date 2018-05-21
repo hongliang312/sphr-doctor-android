@@ -403,6 +403,47 @@ public class HomePageInfo implements Serializable {
         }
     }
 
+    public static class CtrSite implements Serializable {
+
+        private String contactWay;
+
+        public String getContactWay() {
+            return contactWay;
+        }
+
+        public void setContactWay(String contactWay) {
+            this.contactWay = contactWay;
+        }
+
+        public String getContacts() {
+            return contacts;
+        }
+
+        public void setContacts(String contacts) {
+            this.contacts = contacts;
+        }
+
+        public String getProjectStatus() {
+            return projectStatus;
+        }
+
+        public void setProjectStatus(String projectStatus) {
+            this.projectStatus = projectStatus;
+        }
+
+        public String getSiteName() {
+            return siteName;
+        }
+
+        public void setSiteName(String siteName) {
+            this.siteName = siteName;
+        }
+
+        private String contacts;
+        private String projectStatus;
+        private String siteName;
+    }
+
     public static class ClinicalTrialListBean implements Serializable {
         /**
          * id : 14
@@ -426,6 +467,8 @@ public class HomePageInfo implements Serializable {
          * fundSource : 募捐
          * consultTel : 13261037289
          * createTime : 1521016444000
+         * public applyStatus: string,
+         * public ctrSiteList: CtrSite[]
          */
 
         private int id;
@@ -449,6 +492,25 @@ public class HomePageInfo implements Serializable {
         private String fundSource;
         private String consultTel;
         private long createTime;
+        private String applyStatus;
+
+        public String getApplyStatus() {
+            return applyStatus;
+        }
+
+        public void setApplyStatus(String applyStatus) {
+            this.applyStatus = applyStatus;
+        }
+
+        public List<CtrSite> getCtrSiteList() {
+            return ctrSiteList;
+        }
+
+        public void setCtrSiteList(List<CtrSite> ctrSiteList) {
+            this.ctrSiteList = ctrSiteList;
+        }
+
+        private List<CtrSite> ctrSiteList;
 
         public int getId() {
             return id;

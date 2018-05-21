@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.NetworkUtils;
@@ -92,9 +93,35 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
         });
         if (mIsHasTvSub) {
             mBtSub.setVisibility(View.VISIBLE);
-            mBtSub.setText(mTvSubTitle);
+            if (mTvSubTitle == 0) {
+                mBtSub.setText("");
+            } else mBtSub.setText(mTvSubTitle);
         } else {
             mBtSub.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    // 初始化右边为点击按钮的toolbar
+    protected void initImageToolbar(Toolbar mToolbar, TextView mTitleTv, ImageView imageView, int mTitle, boolean mIsHasImageView) {
+        setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(showHomeAsUp());// 是否显示隐藏返回按钮
+        mTitleTv.setText(mTitle == 0 ? R.string.empty : mTitle);
+        StatusBarUtil.immersive(this);
+        StatusBarUtil.setPaddingSmart(this, mToolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        if (mIsHasImageView) {
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.INVISIBLE);
         }
 
     }

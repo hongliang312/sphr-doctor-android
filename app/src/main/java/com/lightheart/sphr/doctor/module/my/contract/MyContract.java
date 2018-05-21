@@ -12,7 +12,7 @@ public interface MyContract {
 
     interface View extends BaseContract.BaseView {
 
-        void setDocIndo(DoctorBean docIndo);
+        void setDocInfo(DoctorBean docInfo);
 
     }
 

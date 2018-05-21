@@ -23,6 +23,7 @@ import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomePresenter;
+import com.lightheart.sphr.doctor.module.home.ui.ClinicalRecruitDetailActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomeClinicalRecruitActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
@@ -195,7 +196,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         if (adapter instanceof ClinicalAdapter) {
             HomePageInfo.ClinicalTrialListBean item = ((ClinicalAdapter) adapter).getItem(position);
             assert item != null;
-            ToastUtils.showShort(item.getProjectName());
+            startActivity(new Intent(getActivity(), ClinicalRecruitDetailActivity.class).putExtra("id", item.getId()));
         } else {
             HomeMoudleManage item = (HomeMoudleManage) adapter.getItem(position);
             assert item != null;

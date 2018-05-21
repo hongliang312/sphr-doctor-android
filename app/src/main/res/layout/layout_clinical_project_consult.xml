@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgound_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/lll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_14"
+            android:background="@color/backgound_color"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lll"
+            android:layout_marginTop="@dimen/dp_28"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_14"
+            android:paddingStart="@dimen/dp_14"
+            android:paddingTop="@dimen/dp_10">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/trial_time"
+                android:src="@mipmap/ic_tel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/dp_14"
+                android:paddingStart="@dimen/dp_14">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp_2"
+                    android:text="@string/consult_tel"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/small" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp_2"
+                    android:text="@string/consult_hint"
+                    android:textColor="@color/eight"
+                    android:textSize="@dimen/small" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lll"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_marginTop="-6dp"
+            android:background="@mipmap/ic_nav"
+            android:gravity="center"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/project_consult"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/small" />
+
+    </RelativeLayout>
+
+</LinearLayout>

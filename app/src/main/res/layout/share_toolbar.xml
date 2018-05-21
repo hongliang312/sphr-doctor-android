@@ -18,14 +18,13 @@
         android:textSize="@dimen/sp_18"
         tools:text="标题" />
 
-    <Button
-        android:id="@+id/bt_sub"
+    <ImageView
+        android:id="@+id/iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:background="@android:color/transparent"
-        android:textColor="@color/toRegister"
-        android:textSize="@dimen/sp_16"
-        android:visibility="visible"
-        tools:text="标题" />
+        android:layout_marginEnd="@dimen/dp_18"
+        android:contentDescription="@string/scan"
+        android:padding="@dimen/dp_12"
+        android:visibility="gone" />
 </android.support.v7.widget.Toolbar>

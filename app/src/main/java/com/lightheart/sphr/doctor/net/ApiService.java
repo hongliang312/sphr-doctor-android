@@ -1,8 +1,7 @@
 package com.lightheart.sphr.doctor.net;
 
-import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
-import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
+import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
 import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
@@ -19,11 +18,14 @@ import com.lightheart.sphr.doctor.bean.PanelRequestParams;
 import com.lightheart.sphr.doctor.bean.PanelShareModel;
 import com.lightheart.sphr.doctor.bean.PanelShareParam;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
+import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
+import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
 import com.lightheart.sphr.doctor.bean.ReplyConsultingBean;
 import com.lightheart.sphr.doctor.bean.ReplyConsultingRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
+import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.bean.TestDetails;
@@ -247,13 +249,40 @@ public interface ApiService {
     Observable<DataResponse<ClinicalRecruitModel>> getAllClinicalTrial(@Body LoginSuccess params);
 
     /**
-     * 获取临床试验招募列表
+     * 搜索临床试验招募
      *
      * @param params
      * @return
      */
     @POST("clinicalTrial/searchClinicalTrial")
     Observable<DataResponse<List<HomePageInfo.ClinicalTrialListBean>>> searchClinicalTrial(@Body ClinicalSearchParam params);
+
+    /**
+     * 临床试验招募详情
+     *
+     * @param params
+     * @return
+     */
+    @POST("clinicalTrial/ctrDetailById")
+    Observable<DataResponse<HomePageInfo.ClinicalTrialListBean>> getctrDetails(@Body ClinicalDetailParam params);
+
+    /**
+     * 临床试验招募详情
+     *
+     * @param params
+     * @return
+     */
+    @POST("clinicalTrial/apply")
+    Observable<DataResponse<Object>> applyClinical(@Body ClinicalDetailParam params);
+
+    /**
+     * 临床试验招募分享到专家组
+     *
+     * @param params
+     * @return
+     */
+    @POST("dtmAro/share")
+    Observable<DataResponse<Object>> share2Panel(@Body ShareClinical2PanelParam params);
 
 
     /**
