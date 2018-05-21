@@ -24,7 +24,7 @@ import butterknife.BindView;
  * Created by 知足 on 2018/5/14.
  */
 
-public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> implements UntreatedContract.View,View.OnClickListener {
+public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> implements UntreatedContract.View,View.OnClickListener{
 
 
     @BindView(R.id.recycler)
@@ -84,4 +84,6 @@ public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> i
             }
         });
     }
+
+
 }

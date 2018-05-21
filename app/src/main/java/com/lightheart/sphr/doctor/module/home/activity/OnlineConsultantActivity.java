@@ -7,14 +7,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.module.home.ClientcenteredCounseling;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,29 +51,6 @@ public class OnlineConsultantActivity extends BaseActivity{
         viewPager.setAdapter(vpsp);
         //进行关联
         tabLayout.setupWithViewPager(viewPager);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public static final String TAG ="" ;
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-                if(state==0){
-                    Log.e(TAG, "onPageScrollStateChanged------>0");
-                }else if(state==1){
-                    Log.e(TAG, "onPageScrollStateChanged------>1");
-                }
-            }
-        });
 
     }
 

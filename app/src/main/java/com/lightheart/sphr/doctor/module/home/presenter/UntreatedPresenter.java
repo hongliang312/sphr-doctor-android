@@ -29,7 +29,7 @@ public class UntreatedPresenter extends BasePresenter<UntreatedContract.View> im
      private  UntreatedRequestParams untreated = new  UntreatedRequestParams();
     @Inject
     public UntreatedPresenter() {
-        this.untreated.duid= SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+        this.untreated.duid= 1010;//SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY)
     }
 
     @Override
@@ -62,5 +62,4 @@ public class UntreatedPresenter extends BasePresenter<UntreatedContract.View> im
                     }
                 });
      }
-
 }

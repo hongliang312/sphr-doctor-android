@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="@dimen/dp_0">
 
-    <include layout="@layout/common_toolbar"></include>
+    <include layout="@layout/common_toolbar"/>
 
     </android.support.design.widget.AppBarLayout>
     <ScrollView
@@ -160,6 +160,7 @@
                     android:layout_marginStart="@dimen/dp_14"
                     android:layout_marginTop="@dimen/dp_4"
                     android:textSize="@dimen/medium"
+                    android:textColor="@color/title_black"
                     />
 
                 <View
@@ -292,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/message"
                     android:layout_marginStart="@dimen/dp_10"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDayAccent"
                     android:textSize="@dimen/big_small"
                     />
 
@@ -305,6 +306,7 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="@dimen/dp_6"
                 android:layout_marginRight="@dimen/dp_6"
+                android:layout_marginTop="@dimen/dp_14"
                 >
                 <LinearLayout
                     android:orientation="horizontal"
@@ -521,7 +523,8 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    >
                     <TextView
                         android:id="@+id/Total"
                         android:layout_weight="1"

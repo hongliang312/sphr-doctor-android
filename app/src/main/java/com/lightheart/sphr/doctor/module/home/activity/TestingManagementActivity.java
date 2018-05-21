@@ -1,22 +1,17 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
-import com.lightheart.sphr.doctor.module.home.adapter.TestingManagementAdapter;
-import com.lightheart.sphr.doctor.module.home.contract.FabScrollListener;
-import com.lightheart.sphr.doctor.module.home.contract.HideScrollListener;
+import com.lightheart.sphr.doctor.module.home.adapter.TestingManagmentAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.TestingManagementContract;
 import com.lightheart.sphr.doctor.module.home.presenter.TestingManagementPresenter;
 
@@ -24,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View,HideScrollListener, View.OnClickListener {
+public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View,View.OnClickListener {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -32,11 +27,11 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
     Button mBtSub;
     @BindView(R.id.common_toolbar_title_tv)
     TextView mTitleTv;
-    @BindView(R.id.Recycleview)
-    RecyclerView Recycleview;
-
-    private TestingManagementAdapter testingAdapter;
+    @BindView(R.id.listitem)
+    ListView listitem;
     private List<TestingManagement> content = new ArrayList<>();
+    private TestingManagmentAdapter managmentAdapter;
+    private View view;
 
     @Override
     protected int getLayoutId() {
@@ -52,6 +47,8 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
     @Override
     protected void initView() {
         initToolbar(mToolbar,mTitleTv,mBtSub,R.string.testingmanagement,false,0);
+        view = View.inflate(this, R.layout.testingmangmenthead, null);
+        listitem.addHeaderView(view);
         assert mPresenter != null;
         mPresenter.loadTestData();
 
@@ -66,10 +63,9 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
     public void setTesting(final List<TestingManagement> content) {
         int size = content.size();
         Log.i("zzz",""+size);
-        Recycleview.setLayoutManager(new LinearLayoutManager(this));
-        testingAdapter = new TestingManagementAdapter(this,content);
-        Recycleview.setAdapter(testingAdapter);
-        testingAdapter.listener(new TestingManagementAdapter.OnClicklistener() {
+        managmentAdapter = new TestingManagmentAdapter(this,content);
+        listitem.setAdapter(managmentAdapter);
+        managmentAdapter.listener(new TestingManagmentAdapter.OnClicklistener() {
             @Override
             public void Oclick(View view, int position) {
                 Intent intent = new Intent(TestingManagementActivity.this,TestDetailsActivity.class);
@@ -77,23 +73,8 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
                 startActivity(intent);
 
                 Log.i("aaa",""+content.get(position).getId());
-
             }
         });
-        Recycleview.addOnScrollListener(new FabScrollListener((HideScrollListener) this));
-
-    }
-
-    @Override
-    public void onHide() {
-        //隐藏动画
-        mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(3));
-    }
-
-    @Override
-    public void onShow() {
-        // 显示动画--属性动画
-        mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(3));
     }
 
     @Override
