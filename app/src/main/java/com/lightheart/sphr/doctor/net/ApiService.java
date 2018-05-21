@@ -22,6 +22,8 @@ import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
 import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
+import com.lightheart.sphr.doctor.bean.ReplyConsultingBean;
+import com.lightheart.sphr.doctor.bean.ReplyConsultingRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
@@ -300,4 +302,14 @@ public interface ApiService {
      * */
     @POST("archive/case/list")
     Observable<DataResponse<PatientRecordsBean>> clientcentlist(@Body PatientRecordsRequestParams Params);
+
+
+    /**
+     * 回复咨询
+     *
+     *
+     */
+
+    @POST("consult/reply")
+    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingRequestParams params);
 }

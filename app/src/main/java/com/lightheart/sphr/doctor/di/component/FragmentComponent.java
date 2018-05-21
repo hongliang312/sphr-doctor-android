@@ -38,4 +38,5 @@ public interface FragmentComponent {
 
     void inject(PanelMemberFragment fragment);
 
+
 }

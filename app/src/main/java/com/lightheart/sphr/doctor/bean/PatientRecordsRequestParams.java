@@ -8,4 +8,5 @@ public class PatientRecordsRequestParams {
 
     public int uid;
     public  int id;
+
 }

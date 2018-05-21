@@ -38,6 +38,7 @@ public class TelephoneDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
         Telephone telephonebean= (Telephone) holder;
+
         ImageLoaderUtils.display(content,((Telephone) holder).img,contentt.get(position).getMediaUrl());
 
     }
