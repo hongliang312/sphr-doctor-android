@@ -96,10 +96,9 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
                 startActivity(new Intent(getActivity(), MyPersonalInfoActivity.class).putExtra("info", doctorBean));
                 break;
             case R.id.tvAuth:
-                /*if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
+                if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
                     startActivity(new Intent(getActivity(), AuthenticationActivity.class));
-                }*/
-                startActivity(new Intent(getActivity(), AuthenticationActivity.class));
+                }
                 break;
             case R.id.tvMyHomePage:
                 startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", doctorBean.getId()));
