@@ -130,11 +130,16 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
         if (checkBox.isChecked()) {
             selectedContract.add(doctorBean);
         } else {
-            for (int i = 0; i < slectedItems.size(); i++) {
-                if (slectedItems.get(i).getContUid() == doctorBean.getContUid()) {
+            for (int i = 0; i < selectedContract.size(); i++) {
+                if (selectedContract.get(i).getContUid() == doctorBean.getContUid()) {
                     selectedContract.remove(i);
                 }
             }
         }
+    }
+
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
     }
 }

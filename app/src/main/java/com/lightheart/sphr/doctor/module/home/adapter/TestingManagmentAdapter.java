@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.TimeUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
 

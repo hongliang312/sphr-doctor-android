@@ -9,7 +9,7 @@
         <!-- Set menu background and text color -->
         <item name="android:itemBackground">@color/white</item>
         <item name="android:textColor">@color/theme_color</item>
-        <item name="android:textColorHint">@color/eight</item>
+        <item name="android:textColorHint">@color/theme_color</item>
         <item name="colorControlNormal">@color/eight</item>
         <item name="colorControlActivated">@color/theme_color</item>
         <item name="colorControlHighlight">@color/theme_color</item>

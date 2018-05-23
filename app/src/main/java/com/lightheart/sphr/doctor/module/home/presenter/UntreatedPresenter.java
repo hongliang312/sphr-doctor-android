@@ -2,8 +2,6 @@ package com.lightheart.sphr.doctor.module.home.presenter;
 
 import android.util.Log;
 
-import com.blankj.utilcode.util.SPUtils;
-import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;

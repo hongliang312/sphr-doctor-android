@@ -131,6 +131,8 @@
     <string name="header_image">头像</string>
     <string name="person_name">姓名</string>
     <string name="sex">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
     <string name="birth">出生日期</string>
     <string name="distract">地区</string>
     <string name="hospital">医院</string>
@@ -138,6 +140,8 @@
     <string name="professional_title">职称</string>
     <string name="major">擅长</string>
     <string name="personal_introduce">个人简介</string>
+    <string name="distract_select">地区选择</string>
+    <string name="please_input_child_department_name">请输入二级科室名称</string>
 
 
     <string name="jump">跳过</string>
@@ -151,6 +155,12 @@
     <string name="all">全部</string>
     <string name="complete">完成</string>
     <string name="invite">邀请</string>
+    <string name="select">选取</string>
+    <string name="clipping">剪裁</string>
+    <string name="photograph">拍照</string>
+    <string name="select_from_album">从相册选择</string>
+
+    <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
 
 
     <string name="exit_system">再按一次退出程序</string>

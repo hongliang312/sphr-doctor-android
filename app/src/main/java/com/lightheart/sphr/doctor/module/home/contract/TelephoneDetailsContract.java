@@ -1,7 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.contract;
 
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.ReplyConsultingRequestParams;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 

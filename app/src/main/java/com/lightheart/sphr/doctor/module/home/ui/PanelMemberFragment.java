@@ -60,6 +60,8 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
 
         PanelGridAdapter mPanelGridAdapter = new PanelGridAdapter();
 
+        mPanelGridAdapter.setType(1);// 0为创建专家组 1为专家组成员
+
         // 设置RecyclerView
         rvMember.setLayoutManager(new GridLayoutManager(getContext(), 5));
         rvMember.setAdapter(mPanelGridAdapter);
@@ -81,7 +83,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
             assert panelsModel != null;
             DoctorBean doctorDetail = new DoctorBean();
             doctorDetail.setDoctorName("添加成员");
-            panelsModel.getDoctorList().add(doctorDetail);
+            panelsModel.getDoctorList().add(0, doctorDetail);
         }
 
         mPanelGridAdapter.setOnItemClickListener(this);
@@ -112,10 +114,8 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         DoctorBean item = (DoctorBean) adapter.getItem(position);
         assert item != null;
-        if (position == panelsModel.getDoctorList().size() - 1) {
-            if (position == 0) {
-                startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE"));
-            }
+        if (position == 0) {
+            startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE"));
         } else {
             startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getDuid()));
         }

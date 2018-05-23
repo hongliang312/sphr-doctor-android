@@ -20,10 +20,10 @@ import io.reactivex.functions.Consumer;
  * Created by 知足 on 2018/5/16.
  */
 
-public class PatientRecordsPresenter extends BasePresenter<PatientRecordsContract.View> implements PatientRecordsContract.Presenter{
+public class PatientRecordsPresenter extends BasePresenter<PatientRecordsContract.View> implements PatientRecordsContract.Presenter {
 
 
-     @Inject
+    @Inject
     public PatientRecordsPresenter() {
 
     }
@@ -36,14 +36,14 @@ public class PatientRecordsPresenter extends BasePresenter<PatientRecordsContrac
                 .compose(mView.<DataResponse<PatientRecordsBean>>bindToLife())
                 .subscribe(new Consumer<DataResponse<PatientRecordsBean>>() {
                     @Override
-                    public void accept(DataResponse<PatientRecordsBean>response) throws Exception {
+                    public void accept(DataResponse<PatientRecordsBean> response) throws Exception {
 
-                        if(response.getResultcode() == 200){
+                        if (response.getResultcode() == 200) {
 
                             mView.setPatientRecords(response.getContent());
-                            Log.i("kkk",""+response.getContent());
+                            Log.i("kkk", "" + response.getContent());
 
-                        }else{
+                        } else {
 
                             mView.showFaild(String.valueOf(response.getResultmsg()));
 

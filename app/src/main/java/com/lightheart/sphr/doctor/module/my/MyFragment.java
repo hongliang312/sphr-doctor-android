@@ -2,9 +2,7 @@ package com.lightheart.sphr.doctor.module.my;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -55,8 +53,6 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     @BindView(R.id.tvSetting)
     TextView tvSetting;
     private DoctorBean doctorBean;
-    @BindView(R.id.ll)
-    LinearLayout ll;
 
     @Override
     protected int getLayoutId() {
@@ -70,9 +66,6 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
 
     @Override
     protected void initView(View view) {
-
-        assert mPresenter != null;
-        mPresenter.loadDocData();
     }
 
     public static MyFragment newInstance() {
@@ -103,9 +96,10 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
                 startActivity(new Intent(getActivity(), MyPersonalInfoActivity.class).putExtra("info", doctorBean));
                 break;
             case R.id.tvAuth:
-                if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
+                /*if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
                     startActivity(new Intent(getActivity(), AuthenticationActivity.class));
-                }
+                }*/
+                startActivity(new Intent(getActivity(), AuthenticationActivity.class));
                 break;
             case R.id.tvMyHomePage:
                 startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", doctorBean.getId()));
@@ -126,4 +120,10 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        assert mPresenter != null;
+        mPresenter.loadDocData();
+    }
 }

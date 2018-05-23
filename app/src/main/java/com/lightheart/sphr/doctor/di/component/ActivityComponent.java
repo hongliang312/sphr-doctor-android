@@ -21,8 +21,12 @@ import com.lightheart.sphr.doctor.module.home.ui.PanelListActivity;
 import com.lightheart.sphr.doctor.module.home.ui.SelectContactActivity;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.module.main.ui.RegisterActivity;
+import com.lightheart.sphr.doctor.module.my.ui.AreaActivity;
+import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
+import com.lightheart.sphr.doctor.module.my.ui.DepartmentActivity;
 import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyPersonalInfoActivity;
 
 import dagger.Component;
 
@@ -71,5 +75,13 @@ public interface ActivityComponent {
     void inject(TelephoneDetailsActivity activity);
 
     void inject(PatientRecordsActivity activity);
+
+    void inject(MyPersonalInfoActivity activity);
+
+    void inject(AreaActivity activity);
+
+    void inject(DepartmentActivity activity);
+
+    void inject(AuthenticationActivity activity);
 
 }
