@@ -6,7 +6,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
-
 import javax.inject.Inject;
 
 /**
@@ -23,6 +22,7 @@ public class ClinicalAdapter extends BaseQuickAdapter<HomePageInfo.ClinicalTrial
 
     @Override
     protected void convert(BaseViewHolder helper, HomePageInfo.ClinicalTrialListBean item) {
+
         helper.setText(R.id.tvClinicalTitle, TextUtils.isEmpty(item.getProjectName()) ? "" : item.getProjectName());
         helper.setText(R.id.tvRecNum, item.getRecruitCount() == 0 ? "" : item.getRecruitCount() + "");
         helper.setText(R.id.tvTrialStage, TextUtils.isEmpty(item.getTrialStage()) ? "" : item.getTrialStage());

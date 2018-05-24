@@ -1,25 +1,33 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+
 import com.lightheart.sphr.doctor.bean.TestingManagement;
+
 import com.lightheart.sphr.doctor.module.home.adapter.TestingManagmentAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.TestingManagementContract;
 import com.lightheart.sphr.doctor.module.home.presenter.TestingManagementPresenter;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
-public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View,View.OnClickListener {
+
+public class TestingManagementActivity extends BaseActivity<TestingManagementPresenter> implements TestingManagementContract.View, BaseQuickAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener{
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -27,17 +35,16 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
     Button mBtSub;
     @BindView(R.id.common_toolbar_title_tv)
     TextView mTitleTv;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.listitem)
-    ListView listitem;
-    private List<TestingManagement> content = new ArrayList<>();
-    private TestingManagmentAdapter managmentAdapter;
-    private View view;
-
+    RecyclerView listitem;
+    @Inject
+    TestingManagmentAdapter testingManagmentAdapter;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_testing;
     }
-
 
     @Override
     protected void initInjector() {
@@ -46,39 +53,49 @@ public class TestingManagementActivity extends BaseActivity<TestingManagementPre
 
     @Override
     protected void initView() {
+
         initToolbar(mToolbar,mTitleTv,mBtSub,R.string.testingmanagement,false,0);
-        view = View.inflate(this, R.layout.testingmangmenthead, null);
-        listitem.addHeaderView(view);
+
+        listitem.setLayoutManager(new LinearLayoutManager(this));
+
+        View TestingHead = LayoutInflater.from(this).inflate(R.layout.testingmangmenthead, null);
+        testingManagmentAdapter.addHeaderView(TestingHead);
+        listitem.setAdapter(testingManagmentAdapter);
+
+        testingManagmentAdapter.setOnItemClickListener(this);
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         assert mPresenter != null;
         mPresenter.loadTestData();
 
     }
 
     @Override
-    public void onClick(View v) {
+    public void setTesting(List<TestingManagement> content, int loadType) {
+        testingManagmentAdapter.setNewData(content);
+        setLoadDataResult(testingManagmentAdapter,swipeRefreshLayout,content,loadType);
 
     }
 
-    @Override
-    public void setTesting(final List<TestingManagement> content) {
-        int size = content.size();
-        Log.i("zzz",""+size);
-        managmentAdapter = new TestingManagmentAdapter(this,content);
-        listitem.setAdapter(managmentAdapter);
-        managmentAdapter.listener(new TestingManagmentAdapter.OnClicklistener() {
-            @Override
-            public void Oclick(View view, int position) {
-                Intent intent = new Intent(TestingManagementActivity.this,TestDetailsActivity.class);
-                intent.putExtra("id",content.get(position).getId()+"");
-                startActivity(intent);
-
-                Log.i("aaa",""+content.get(position).getId());
-            }
-        });
-    }
 
     @Override
     protected boolean showHomeAsUp() {
         return true;
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
+        TestingManagement item = (TestingManagement) adapter.getItem(position);
+        assert item != null;
+        startActivity(new Intent(this, TestDetailsActivity.class).putExtra("id",item.getId()));
+
+    }
+
+    @Override
+    public void onRefresh() {
+        assert mPresenter != null;
+        mPresenter.refresh();
     }
 }

@@ -20,12 +20,10 @@ import io.reactivex.functions.Consumer;
 
 public class TelephoneDetailsPresenter extends BasePresenter<TelephoneDetailsContract.View> implements TelephoneDetailsContract.Presenter {
 
-      private ReplyConsultingRequestParams params = new ReplyConsultingRequestParams();
 
     @Inject
     public TelephoneDetailsPresenter() {
-        this.params.id= 89;
-        this.params.content=88;
+
     }
 
     @Override
@@ -61,10 +59,10 @@ public class TelephoneDetailsPresenter extends BasePresenter<TelephoneDetailsCon
     }
 
     @Override
-    public void loadReplyConsultingData() {
+    public void loadReplyConsultingData(ReplyConsultingBean replyConsultingbean) {
 
         RetrofitManager.create(ApiService.class)
-                .backlist(params)
+                .backlist(replyConsultingbean)
                 .compose(RxSchedulers.<ReplyConsultingBean> applySchedulers())
                 .compose(mView.<ReplyConsultingBean>bindToLife())
                 .subscribe(new Consumer<ReplyConsultingBean>() {
@@ -73,7 +71,7 @@ public class TelephoneDetailsPresenter extends BasePresenter<TelephoneDetailsCon
 
                         if(replyConsultingBean.getResultcode()==200){
 
-                            mView.setReplyConsulting(replyConsultingBean.getContent());
+                            mView.setReplyConsulting();
 
                         }else {
                             mView.showFaild(String.valueOf(replyConsultingBean.getResultmsg()));

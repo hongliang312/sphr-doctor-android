@@ -5,104 +5,112 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginTop="@dimen/dp_14"
+         >
+         <LinearLayout
+             android:layout_weight="1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             >
+         <TextView
+             android:id="@+id/namee"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/name"
+             android:layout_marginStart="@dimen/dp_22"
+             android:textColor="@color/balck"
+             />
+         <TextView
+             android:id="@+id/patientname"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="@dimen/dp_12"
+             android:textColor="@color/balck"
+             />
+         </LinearLayout>
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:layout_marginTop="@dimen/dp_14"
-
-           >
-
-           <TextView
-               android:layout_weight="1"
-               android:id="@+id/namee"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/name"
-               android:layout_marginStart="@dimen/dp_14"
-               />
-
-           <TextView
-               android:layout_weight="7"
-               android:id="@+id/patientname"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="@dimen/dp_6" />
-
-
-           <TextView
-               android:layout_weight="5"
-               android:id="@+id/addressd"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/address"
-               />
-
-           <TextView
-               android:layout_weight="1"
-               android:id="@+id/address"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="@dimen/dp_6"
-               android:layout_marginEnd="@dimen/dp_12"
-               />
-       </LinearLayout>
-
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="@dimen/dp_40"
+             >
+         <TextView
+             android:id="@+id/addressd"
+             android:layout_gravity="end"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/address"
+             android:textColor="@color/balck"
+             />
+         <TextView
+             android:id="@+id/address"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="@dimen/dp_12"
+             android:textColor="@color/balck"
+             />
+         </LinearLayout>
+     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_20"
-
+        android:layout_marginTop="@dimen/dp_16"
         >
-
-        <TextView
+        <LinearLayout
             android:layout_weight="1"
-            android:id="@+id/age1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/age"
-            android:layout_marginStart="@dimen/dp_14"
-            />
-
-        <TextView
-            android:layout_weight="7"
-            android:id="@+id/age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_6"
-            />
-
-
-        <TextView
+            >
+            <TextView
+                android:id="@+id/age1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age"
+                android:layout_marginStart="@dimen/dp_22"
+                android:textColor="@color/balck"
+                />
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:textColor="@color/balck"
+                />
+        </LinearLayout>
+        <LinearLayout
             android:layout_weight="1"
-            android:id="@+id/nation1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nation"
-            />
-
-        <TextView
-            android:layout_weight="5"
-            android:id="@+id/nation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_6"
-            android:layout_marginEnd="@dimen/dp_12"
-            />
+            >
+            <TextView
+                android:id="@+id/nation1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nation"
+                android:textColor="@color/balck"
+                android:layout_marginStart="@dimen/dp_30"
+                />
+            <TextView
+                android:id="@+id/nation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:textColor="@color/balck"/>
+        </LinearLayout>
     </LinearLayout>
-
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/dp_20"
         android:background="@color/colorDayTextLight"
         />
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,8 +128,6 @@
             />
 
     </RelativeLayout>
-
-
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -129,13 +135,12 @@
     android:layout_marginTop="@dimen/dp_16"
     android:layout_marginStart="@dimen/dp_16"
     >
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/epidemic"
         android:layout_marginTop="@dimen/dp_6"
+        android:textColor="@color/dimmedd"
         />
 
     <TextView
@@ -160,15 +165,13 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/epidemicarea"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
-
         <TextView
             android:id="@+id/epidemicarea"
             android:layout_width="match_parent"
@@ -176,7 +179,6 @@
             android:layout_marginTop="@dimen/dp_12"
             android:textColor="@color/orange"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -190,15 +192,13 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/poison"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
-
         <TextView
             android:id="@+id/poison"
             android:layout_width="match_parent"
@@ -206,7 +206,6 @@
             android:layout_marginTop="@dimen/dp_12"
             android:textColor="@color/orange"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -220,15 +219,13 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/smokinghistory"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
-
         <TextView
             android:id="@+id/smokinghistory"
             android:layout_width="match_parent"
@@ -236,7 +233,6 @@
             android:textColor="@color/orange"
             android:layout_marginTop="@dimen/dp_12"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -250,15 +246,13 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/drinking"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
-
         <TextView
             android:id="@+id/drinking"
             android:layout_width="match_parent"
@@ -266,7 +260,6 @@
             android:textColor="@color/orange"
             android:layout_marginTop="@dimen/dp_12"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -280,15 +273,13 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/obstericalhistory"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
-
         <TextView
             android:id="@+id/obstericalhistory"
             android:layout_width="match_parent"
@@ -296,7 +287,6 @@
             android:textColor="@color/orange"
             android:layout_marginTop="@dimen/dp_12"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -310,13 +300,12 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/familyhistory"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
 
         <TextView
@@ -333,5 +322,4 @@
             android:background="@color/colorDayTextLight"
             android:layout_marginTop="@dimen/dp_12"/>
     </LinearLayout>
-
 </LinearLayout>

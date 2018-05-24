@@ -15,12 +15,13 @@
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="@dimen/dp_0"/>
+    <include layout="@layout/common_toolbar"/>
 
-    <include layout="@layout/common_toolbar"></include>
 
-    <ListView
-        android:id="@+id/listview"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/patienrecycle"
+        />
 
 </LinearLayout>

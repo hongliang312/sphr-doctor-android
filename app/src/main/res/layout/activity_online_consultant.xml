@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tas"
-        app:tabGravity="center"
         app:tabMode="fixed"
         android:gravity="center"
         app:tabTextColor="@color/colorDayTextLight"

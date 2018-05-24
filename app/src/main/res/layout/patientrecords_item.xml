@@ -18,15 +18,14 @@
             android:id="@+id/organizingtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/organizingtime"
             android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_16"
             android:textSize="@dimen/big_medium"
             android:background="@color/grary"
             android:textColor="@color/dimmedd"
+
             />
     </RelativeLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="@string/clinictime"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
 
         <TextView
@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:text="@string/complaint"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
 
         <TextView
@@ -103,6 +104,7 @@
             android:layout_height="wrap_content"
             android:text="@string/finaldiagnosis"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
 
         <TextView
@@ -134,6 +136,7 @@
             android:layout_height="wrap_content"
             android:text="@string/treatmentprocess"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
 
         <TextView
@@ -165,6 +168,7 @@
             android:layout_height="wrap_content"
             android:text="@string/therapeuticregimen"
             android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/dimmedd"
             />
 
         <TextView

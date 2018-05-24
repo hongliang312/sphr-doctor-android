@@ -43,7 +43,7 @@ public class OnlineConsultantActivity extends BaseActivity{
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.telephonecounseling,false,0);
+        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.consult_online,false,0);
         datas.add("待处理");
         datas.add("已处理");
         //适配器

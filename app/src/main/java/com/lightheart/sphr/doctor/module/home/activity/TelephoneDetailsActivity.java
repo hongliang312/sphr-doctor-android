@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.ReplyConsultingBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.TelephoneDetailsAdapter;
@@ -22,8 +24,9 @@ import com.lightheart.sphr.doctor.module.home.presenter.TelephoneDetailsPresente
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
+import butterknife.OnClick;
 
-public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPresenter> implements TelephoneDetailsContract.View, View.OnClickListener {
+public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPresenter> implements TelephoneDetailsContract.View{
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -34,7 +37,7 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
     @BindView(R.id.patientsname)
     TextView patientsname;
     @BindView(R.id.patientswithdisease)
-    Button patientswithdisease;
+    TextView patientswithdisease;
     @BindView(R.id.conditiondescribe)
     TextView conditiondescribe;
     @BindView(R.id.time)
@@ -68,13 +71,12 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
     @Override
     protected void initView() {
 
-        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.telephonecounseling,false,0);
+        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.consult_online,false,0);
         String id = getIntent().getStringExtra("id");
         type = getIntent().getStringExtra("type");
         TelephoneDetailsRequestParams telephondetails = new TelephoneDetailsRequestParams();
         telephondetails.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         telephondetails.id= Integer.valueOf(id);
-
         if("SER_CST_S_ING".equals(type)){
             linealayout.setVisibility(View.VISIBLE);
             linea.setVisibility(View.GONE);
@@ -98,25 +100,27 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
                 intent.putExtra("id",contentt.get(0).getId()+"");
                 startActivity(intent);
                 Log.i("cccc",""+contentt.get(0).getId()+"");
-                ToastUtils.showShort(R.string.tel_online);
             }
         });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                mPresenter.loadReplyConsultingData();
-                feedback.setText(null);
-            }
-        });
-    }
-
-    @Override
-    public void onClick(View v) {
-
 
     }
+
+     @OnClick(R.id.Submit)
+     public void onClick(View view) {
+         ReplyConsultingBean replyConsultingbean = new ReplyConsultingBean();
+         replyConsultingbean.setResultcode(SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY));
+         replyConsultingbean.setContent(feedback.getText().toString().trim());
+
+         if (TextUtils.isEmpty(replyConsultingbean.getContent())) {
+             ToastUtils.showShort(getString(R.string.feed_back_reply));
+             return;
+         }
+         assert mPresenter != null;
+         mPresenter.loadReplyConsultingData(replyConsultingbean);
+         feedback.setText(null);
+     }
+
 
     @Override
     public void setTelephoneDetails(TelephoneDetailsBean content) {
@@ -132,9 +136,9 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
     }
 
     @Override
-    public void setReplyConsulting(String content) {
+    public void setReplyConsulting() {
 
-        ToastUtils.showShort("提交成功",content.toString());
+        ToastUtils.showShort("提交成功！");
 
     }
 

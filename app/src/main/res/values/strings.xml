@@ -122,6 +122,7 @@
     <string name="auth_hint1">请您上传胸牌或执业证书，确保姓名、医院、职称清晰可见，上传的资料我们仅作为认证使用，第三方不可见</string>
     <string name="feed_back_hint">尊敬的用户：感谢您关注阳光医线，如果您有对阳光医线的意见或是建议，请您告诉我们，您的建议对我们至关重要 ^_^</string>
     <string name="feed_back_hint1">请输入您的宝贵建议&#8230;</string>
+    <string name="feed_back_reply">在此输入您的回复</string>
     <string name="invitation_code">邀请码：</string>
 
     <string name="jump">跳过</string>
@@ -157,6 +158,7 @@
     <string name="message">为确保信息的时效性以下信息每天更新</string>
     <string name="testingmanagement">试验管理</string>
     <string name="telephonecounseling">电话咨询</string>
+    <string name="patientcounseling">患者咨询</string>
     <string name="testingtime">试验时间:</string>
     <string name="recruit">招募人数:</string>
     <string name="man">人</string>
@@ -186,13 +188,14 @@
     <string name="butonne">查看</string>
 
     <string name="patientswithdetails">患者详情</string>
-    <string name="patientrecord">患者档案</string>
+    <string name="patientrecord">在线咨询</string>
     <string name="patientname">山口百惠</string>
+    <string name="huan_name">患者病历</string>
     <string name="diseasedescription">病情描述</string>
     <string name="uploadthemedicalrecords">上传病历图片</string>
     <string name="telephonebooking">电话咨询预约时间</string>
     <string name="warm">温馨提示:</string>
-    <string name="prompt">到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,谢谢</string>
+    <string name="prompt">到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,  谢谢。</string>
     <string name="patientrecords">患者病历</string>
 
 

@@ -1,7 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
 
 import android.util.Log;
-
 import com.blankj.utilcode.util.SPUtils;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BasePresenter;
@@ -12,11 +11,8 @@ import com.lightheart.sphr.doctor.module.home.contract.UntreatedContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.functions.Consumer;
 
 
@@ -29,7 +25,7 @@ public class UntreatedPresenter extends BasePresenter<UntreatedContract.View> im
      private  UntreatedRequestParams untreated = new  UntreatedRequestParams();
     @Inject
     public UntreatedPresenter() {
-        this.untreated.duid= 1010;//SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY)
+        this.untreated.duid= SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
     }
 
     @Override

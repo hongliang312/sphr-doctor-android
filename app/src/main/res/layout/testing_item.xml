@@ -8,8 +8,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_3"
-        android:background="@color/colorDayTextLight"
+        android:layout_height="@dimen/dp_4"
+        android:background="@color/backgound_color"
         />
 
     <RelativeLayout
@@ -23,7 +23,9 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/big_medium"
-            android:layout_margin="@dimen/dp_10"/>
+            android:layout_margin="@dimen/dp_10"
+            android:textColor="@color/title_black"
+            />
 
         <ImageView
             android:id="@+id/deatil"
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text="@string/biddingfortheunit"
             android:textSize="@dimen/big_small"
+            android:textColor="@color/search_bg"
             />
 
         <TextView
@@ -72,6 +75,7 @@
             android:text="@string/ygxq"
             android:textSize="@dimen/big_small"
             android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="@color/search_bg"
             />
 
     </LinearLayout>
@@ -138,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_3"
         android:layout_marginTop="@dimen/dp_8"
-        android:background="@color/colorDayTextLight"
+        android:background="@color/backgound_color"
         />
 
 

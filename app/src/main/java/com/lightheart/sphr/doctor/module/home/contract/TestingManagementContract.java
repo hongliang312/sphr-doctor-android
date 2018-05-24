@@ -13,14 +13,14 @@ public interface TestingManagementContract {
 
     interface View extends BaseContract.BaseView{
 
-      void setTesting(List<TestingManagement> content);
+      void setTesting(List<TestingManagement> content, int loadType);
 
     }
 
     interface Presenter extends BaseContract.BasePresenter<View >{
 
         void loadTestData();
-
+        void refresh();
 
     }
 }

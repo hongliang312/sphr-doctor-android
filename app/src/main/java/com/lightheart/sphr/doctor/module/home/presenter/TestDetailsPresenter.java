@@ -1,7 +1,8 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
-
 import android.util.Log;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
@@ -10,9 +11,7 @@ import com.lightheart.sphr.doctor.module.home.contract.TestDetailsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
-
 import javax.inject.Inject;
-
 import io.reactivex.functions.Consumer;
 
 /**
@@ -21,18 +20,15 @@ import io.reactivex.functions.Consumer;
 
 public class TestDetailsPresenter extends BasePresenter<TestDetailsContract.View> implements TestDetailsContract.Presenter {
 
-    private DetailsBean entity = new DetailsBean();
-
     @Inject
     public TestDetailsPresenter() {
-       this.entity.getDuid();
-       this.entity.getId();
+
     }
-
     @Override
-    public void loadDetailsData(DetailsBean entity) {
-
-        Log.i("id",""+entity);
+    public void loadDetailsData(int id) {
+        DetailsBean entity = new DetailsBean();
+        entity.duid= SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+        entity.id=id;
 
         RetrofitManager.create(ApiService.class)
                 .detailslist(entity)
@@ -42,20 +38,22 @@ public class TestDetailsPresenter extends BasePresenter<TestDetailsContract.View
                    @Override
                    public void accept(DataResponse<TestDetails> response) throws Exception {
 
-                       if(response.getResultcode()==200)
+                       if(response.getResultcode()==200) {
+
                            mView.setDetals(response.getContent());
 
-                       else {
-                           mView.showFaild(String.valueOf(response.getResultmsg()));
-                       }
+                           Log.i("yyy",""+response.getContent());
 
+                       } else {
+
+                           mView.showFaild(String.valueOf(response.getResultmsg()));
+
+                       }
                    }
                }, new Consumer<Throwable>() {
                    @Override
                    public void accept(Throwable throwable) throws Exception {
-
                        mView.showFaild(throwable.getMessage());
-
                    }
                });
     }

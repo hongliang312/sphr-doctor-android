@@ -294,7 +294,6 @@ public interface ApiService {
     Observable<DataResponse<TelephoneDetailsBean>> telephonedetails(@Body TelephoneDetailsRequestParams telephondetails);
 
 
-
     /**
      *
      * 患者病历
@@ -308,8 +307,11 @@ public interface ApiService {
      * 回复咨询
      *
      *
+     * @param params
      */
 
     @POST("consult/reply")
-    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingRequestParams params);
+    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingBean params);
+
+
 }

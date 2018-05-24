@@ -50,6 +50,7 @@
             android:layout_height="@dimen/dp_1"
             android:background="@color/dimmed"
             android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_14"
             />
 
 
@@ -66,16 +67,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/patientname"
-            android:textSize="@dimen/large"
+            android:textSize="@dimen/big_medium"
             android:layout_marginStart="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_24"
             />
 
-        <Button
+        <TextView
             android:id="@+id/patientswithdisease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="患者病历"
+            android:text="@string/huan_name"
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/dp_16"
             android:layout_alignParentEnd="true"
@@ -121,6 +122,7 @@
             android:layout_height="@dimen/dp_1"
             android:background="@color/dimmed"
             android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_14"
             />
 
     </RelativeLayout>
@@ -141,6 +143,7 @@
             android:text="请您描述你的身体症状IE欧文奇偶我奇偶发动机哦哦的缴费的季节哦和还哦啊啊啊啊啊王老吉抖擞地见覅偶的奇偶金佛我奇偶奇偶奇偶的书法家"
             android:textSize="@dimen/big_small"
             android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_15"
             android:textColor="@color/gra"
             />
     </LinearLayout>
@@ -178,6 +181,7 @@
             android:layout_height="@dimen/dp_1"
             android:background="@color/dimmed"
             android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginLeft="@dimen/dp_14"
             />
 
 
@@ -185,14 +189,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
             >
 
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/loadpicture"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                />
 
         </LinearLayout>
 
@@ -235,6 +240,7 @@
             android:layout_height="@dimen/dp_1"
             android:background="@color/dimmed"
             android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginLeft="@dimen/dp_14"
             />
 
         <TextView
@@ -268,6 +274,7 @@
             android:layout_marginLeft="@dimen/dp_22"
             android:textSize="@dimen/medium"
             android:textColor="@color/sky_blue"
+            android:layout_marginTop="@dimen/dp_12"
 
             />
 
@@ -277,6 +284,9 @@
             android:text="@string/prompt"
             android:textSize="@dimen/medium"
             android:textColor="@color/gra"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_8"
             />
     </LinearLayout>
 
