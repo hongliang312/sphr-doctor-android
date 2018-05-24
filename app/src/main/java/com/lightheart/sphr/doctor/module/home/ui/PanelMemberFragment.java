@@ -26,6 +26,7 @@ import com.lightheart.sphr.doctor.module.home.contract.PanelShareContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PanelSharePresenter;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,6 +61,8 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
 
         PanelGridAdapter mPanelGridAdapter = new PanelGridAdapter();
 
+        mPanelGridAdapter.setType(1);// 0为创建专家组 1为专家组成员
+
         // 设置RecyclerView
         rvMember.setLayoutManager(new GridLayoutManager(getContext(), 5));
         rvMember.setAdapter(mPanelGridAdapter);
@@ -81,7 +84,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
             assert panelsModel != null;
             DoctorBean doctorDetail = new DoctorBean();
             doctorDetail.setDoctorName("添加成员");
-            panelsModel.getDoctorList().add(doctorDetail);
+            panelsModel.getDoctorList().add(0, doctorDetail);
         }
 
         mPanelGridAdapter.setOnItemClickListener(this);
@@ -94,7 +97,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
             tvImage.setText(TextUtils.isEmpty(panelsModel.getDtmAroName()) ? " " : panelsModel.getDtmAroName());
         }
         tvPanelName.setText(TextUtils.isEmpty(panelsModel.getDtmAroName()) ? " " : panelsModel.getDtmAroName());
-        tvNum.setText(panelsModel.getDoctorList().size() - 1 + "  加入");
+        tvNum.setText(String.valueOf(panelsModel.getDoctorList().size() - 1) + getString(R.string.join));
 
         setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelsModel.getDoctorList(), LoadType.TYPE_REFRESH_SUCCESS);
     }
@@ -112,10 +115,10 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         DoctorBean item = (DoctorBean) adapter.getItem(position);
         assert item != null;
-        if (position == panelsModel.getDoctorList().size() - 1) {
-            if (position == 0) {
-                startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE"));
-            }
+        if (position == 0) {
+            startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE")
+                    .putExtra("selectedItems", (Serializable) panelsModel.getDoctorList())
+                    .putExtra("dtmAroId", panelsModel.getDtmAroId()));
         } else {
             startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getDuid()));
         }

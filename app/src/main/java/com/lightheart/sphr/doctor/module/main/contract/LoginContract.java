@@ -1,6 +1,7 @@
 package com.lightheart.sphr.doctor.module.main.contract;
 
 import com.lightheart.sphr.doctor.base.BaseContract;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.User;
 
@@ -12,7 +13,7 @@ import com.lightheart.sphr.doctor.bean.User;
 public interface LoginContract {
 
     interface View extends BaseContract.BaseView {
-        void loginSuccess(User user);
+        void loginSuccess(DoctorBean user);
     }
 
     interface Presenter extends BaseContract.BasePresenter<LoginContract.View> {

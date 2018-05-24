@@ -2,28 +2,29 @@ package com.lightheart.sphr.doctor.module.my;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.LoginSuccess;
 import com.lightheart.sphr.doctor.module.my.contract.MyContract;
 import com.lightheart.sphr.doctor.module.my.presenter.MyPresenter;
 import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
 import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyInvitationCodeActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyPersonalInfoActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MySettingActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
+import com.lightheart.sphr.doctor.utils.RxBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by fucp on 2018-4-19.
@@ -53,8 +54,6 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     @BindView(R.id.tvSetting)
     TextView tvSetting;
     private DoctorBean doctorBean;
-    @BindView(R.id.ll)
-    LinearLayout ll;
 
     @Override
     protected int getLayoutId() {
@@ -68,19 +67,13 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
 
     @Override
     protected void initView(View view) {
-
-        TextView view1 = new TextView(getContext());
-        view1.setGravity(Gravity.CENTER);
-        view1.setText(getString(R.string.appName));
-        view1.setTextColor(getResources().getColor(R.color.title_black));
-        view1.setBackgroundResource(R.drawable.bg_blue);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.height = 300;
-        layoutParams.width = 300;
-        ll.addView(view1, layoutParams);
-
-        assert mPresenter != null;
-        mPresenter.loadDocData();
+        // 点击退出执行
+        RxBus.getInstance().toFlowable(LoginSuccess.class).subscribe(new Consumer<LoginSuccess>() {
+            @Override
+            public void accept(LoginSuccess event) throws Exception {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     public static MyFragment newInstance() {
@@ -108,7 +101,7 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
         switch (view.getId()) {
             case R.id.clvHeadImage:
             case R.id.rlDcoInfo:
-                ToastUtils.showShort("进入个人资料页面");
+                startActivity(new Intent(getActivity(), MyPersonalInfoActivity.class).putExtra("info", doctorBean));
                 break;
             case R.id.tvAuth:
                 if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
@@ -129,9 +122,15 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
                 }
                 break;
             case R.id.tvSetting:
-
+                startActivity(new Intent(getActivity(), MySettingActivity.class));
                 break;
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        assert mPresenter != null;
+        mPresenter.loadDocData();
+    }
 }

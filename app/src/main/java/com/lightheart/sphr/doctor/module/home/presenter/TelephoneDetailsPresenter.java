@@ -1,5 +1,7 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
+
 import android.util.Log;
+
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.ReplyConsultingBean;
@@ -10,7 +12,9 @@ import com.lightheart.sphr.doctor.module.home.contract.TelephoneDetailsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+
 import javax.inject.Inject;
+
 import io.reactivex.functions.Consumer;
 
 

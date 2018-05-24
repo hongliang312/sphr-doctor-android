@@ -1,16 +1,23 @@
 package com.lightheart.sphr.doctor.net;
 
+import com.lightheart.sphr.doctor.base.AuthParam;
 import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
+import com.lightheart.sphr.doctor.bean.AreaModel;
 import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
 import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
+import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.DoctorModel;
 import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
+import com.lightheart.sphr.doctor.bean.HomePanelModel;
+import com.lightheart.sphr.doctor.bean.HospitalsModel;
+import com.lightheart.sphr.doctor.bean.Invite2PanelParam;
 import com.lightheart.sphr.doctor.bean.IsFriendModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
@@ -31,6 +38,7 @@ import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.bean.TestDetails;
 import com.lightheart.sphr.doctor.bean.TestingManagement;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
+import com.lightheart.sphr.doctor.bean.TitlesModel;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
 import com.lightheart.sphr.doctor.bean.UntreatedRequestParams;
 import com.lightheart.sphr.doctor.bean.User;
@@ -46,16 +54,14 @@ public interface ApiService {
     /**
      * 登录
      *
-     * @param parmas
      * @return User
      */
     @POST("user/login")
-    Observable<DataResponse<User>> login(@Body LoginRequest parmas);
+    Observable<DataResponse<DoctorBean>> login(@Body LoginRequest parmas);
 
     /**
      * 验证码登录
      *
-     * @param parmas
      * @return User
      */
     @POST("auth/code/login")
@@ -64,7 +70,6 @@ public interface ApiService {
     /**
      * 发送验证码
      *
-     * @param parmas
      * @return Object
      */
     @POST("auth/code/send")
@@ -73,7 +78,6 @@ public interface ApiService {
     /**
      * 验证验证码
      *
-     * @param parmas
      * @return Object
      */
     @POST("auth/code/verify")
@@ -82,7 +86,6 @@ public interface ApiService {
     /**
      * 注册
      *
-     * @param parmas
      * @return User
      */
     @POST("user/register")
@@ -91,7 +94,6 @@ public interface ApiService {
     /**
      * 修改密码
      *
-     * @param parmas
      * @return User
      */
     @POST("user/forgetpwd")
@@ -100,7 +102,6 @@ public interface ApiService {
     /**
      * 获取首页信息
      *
-     * @param parmas
      * @return HomePageInfo
      */
     @POST("homepage/docHomePageInfo")
@@ -109,7 +110,6 @@ public interface ApiService {
     /**
      * 获取医生联系人
      *
-     * @param parmas
      * @return List<ContractDocItem>
      */
     @POST("doctorContact/list")
@@ -118,7 +118,6 @@ public interface ApiService {
     /**
      * 获取医生个人信息
      *
-     * @param parmas
      * @return DoctorBean
      */
     @POST("doctor/info")
@@ -127,7 +126,6 @@ public interface ApiService {
     /**
      * 接受，删除添加申请，删除好友
      *
-     * @param params
      * @return Object
      */
     @POST("doctorContact/operate")
@@ -136,7 +134,6 @@ public interface ApiService {
     /**
      * 通过电话号搜索医生
      *
-     * @param params
      * @return List<ContractDocItem>
      */
     @POST("doctorContact/doctor/list")
@@ -145,8 +142,7 @@ public interface ApiService {
     /**
      * 申请添加好友
      *
-     * @param params
-     * @return
+     * @return Object
      */
     @POST("doctorContact/apply/add")
     Observable<DataResponse<Object>> applyAddDoc(@Body RequestParams params);
@@ -154,8 +150,7 @@ public interface ApiService {
     /**
      * 提交意见反馈
      *
-     * @param params
-     * @return
+     * @return Object
      */
     @POST("user/feedback")
     Observable<DataResponse<Object>> feedback(@Body FeedBackBean params);
@@ -164,15 +159,13 @@ public interface ApiService {
     /***
      *
      * 试验管理
-     * @param
      */
 
     @POST("clinicalTrial/clinicalTrialsByDuid")
     Observable<DataResponse<List<TestingManagement>>> Testinglist(@Body TextsingRequestParams requestParams);
 
     /**
-     * @param entity
-     * @return
+     * @return TestDetails
      */
     @POST("clinicalTrial/myCtrDetailById")
     Observable<DataResponse<TestDetails>> detailslist(@Body DetailsBean entity);
@@ -188,7 +181,6 @@ public interface ApiService {
     /**
      * 患者列表
      *
-     * @param params
      * @return List<PatientsModel>
      */
     @POST("patient/getPatientByDuid")
@@ -197,16 +189,22 @@ public interface ApiService {
     /**
      * 专家组列表
      *
-     * @param params
+     * @return List<PanelsModel>
+     */
+    @POST("dtmAro/getDtmAroAllList")
+    Observable<DataResponse<HomePanelModel>> getDtmAroList(@Body PanelRequestParams params);
+
+    /**
+     * 我加入的或者感兴趣的专家组列表
+     *
      * @return List<PanelsModel>
      */
     @POST("dtmAro/getDtmAroList")
-    Observable<DataResponse<List<PanelsModel>>> getDtmAroList(@Body PanelRequestParams params);
+    Observable<DataResponse<List<PanelsModel>>> getAllDtmAroList(@Body PanelRequestParams params);
 
     /**
      * 专家组共享内容列表
      *
-     * @param params
      * @return List<PanelShareModel>
      */
     @POST("dtmAro/shareListByDtmAroId")
@@ -215,7 +213,6 @@ public interface ApiService {
     /**
      * 判断是否为好友
      *
-     * @param params
      * @return IsFriendModel
      */
     @POST("doctorContact/check/relation")
@@ -224,8 +221,7 @@ public interface ApiService {
     /**
      * 获取疾病列表
      *
-     * @param params
-     * @return
+     * @return List<DiseaseModel>
      */
     @POST("disease/list/configed")
     Observable<DataResponse<List<DiseaseModel>>> getDiseases(@Body LoginSuccess params);
@@ -233,7 +229,6 @@ public interface ApiService {
     /**
      * 申请加入专家组
      *
-     * @param params
      * @return Object
      */
     @POST("dtmAro/addApplyDtm")
@@ -242,7 +237,6 @@ public interface ApiService {
     /**
      * 获取临床试验招募列表
      *
-     * @param params
      * @return clinicalTrial/searchClinicalTrial
      */
     @POST("clinicalTrial/allClinicalTrial")
@@ -251,8 +245,7 @@ public interface ApiService {
     /**
      * 搜索临床试验招募
      *
-     * @param params
-     * @return
+     * @return List<HomePageInfo.ClinicalTrialListBean>
      */
     @POST("clinicalTrial/searchClinicalTrial")
     Observable<DataResponse<List<HomePageInfo.ClinicalTrialListBean>>> searchClinicalTrial(@Body ClinicalSearchParam params);
@@ -260,8 +253,7 @@ public interface ApiService {
     /**
      * 临床试验招募详情
      *
-     * @param params
-     * @return
+     * @return HomePageInfo.ClinicalTrialListBean
      */
     @POST("clinicalTrial/ctrDetailById")
     Observable<DataResponse<HomePageInfo.ClinicalTrialListBean>> getctrDetails(@Body ClinicalDetailParam params);
@@ -269,8 +261,7 @@ public interface ApiService {
     /**
      * 临床试验招募详情
      *
-     * @param params
-     * @return
+     * @return Object
      */
     @POST("clinicalTrial/apply")
     Observable<DataResponse<Object>> applyClinical(@Body ClinicalDetailParam params);
@@ -278,27 +269,22 @@ public interface ApiService {
     /**
      * 临床试验招募分享到专家组
      *
-     * @param params
-     * @return
+     * @return Object
      */
     @POST("dtmAro/share")
     Observable<DataResponse<Object>> share2Panel(@Body ShareClinical2PanelParam params);
 
 
     /**
-     *
      * 电话详情
-     *
-     * */
+     */
     @POST("consult/detailById")
     Observable<DataResponse<TelephoneDetailsBean>> telephonedetails(@Body TelephoneDetailsRequestParams telephondetails);
 
 
     /**
-     *
      * 患者病历
-     *
-     * */
+     */
     @POST("archive/case/list")
     Observable<DataResponse<PatientRecordsBean>> clientcentlist(@Body PatientRecordsRequestParams Params);
 
@@ -311,6 +297,75 @@ public interface ApiService {
      */
 
     @POST("consult/reply")
+    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingRequestParams params);
+
+    /**
+     * 获取职称
+     *
+     * @return List<TitlesModel>
+     */
+    @POST("common/title")
+    Observable<DataResponse<List<TitlesModel>>> getTitles(@Body LoginSuccess params);
+
+    /**
+     * 根据地区id查询医院
+     *
+     * @return List<HospitalsModel>
+     */
+    @POST("common/getHosptialListById")
+    Observable<DataResponse<List<HospitalsModel>>> getHosptialListById(@Body PanelShareParam params);
+
+    /**
+     * 查询地区一级列表
+     *
+     * @return List<AreaModel>
+     */
+    @POST("common/getProviceList")
+    Observable<DataResponse<List<AreaModel>>> getProviceList(@Body LoginSuccess params);
+
+    /**
+     * 查询地区二三级列表
+     *
+     * @return List<AreaModel>
+     */
+    @POST("common/getareaListByFid")
+    Observable<DataResponse<List<AreaModel>>> getAreaListByFid(@Body PanelShareParam params);
+
+    /**
+     * 查询科室列表
+     *
+     * @return List<AreaModel>
+     */
+    @POST("common/department")
+    Observable<DataResponse<List<AreaModel>>> getDepartments(@Body LoginSuccess params);
+
+    /**
+     * 更新个人资料
+     *
+     * @return Object
+     */
+    @POST("doctor/info/update")
+    Observable<DataResponse<Object>> updateInfo(@Body DoctorModel params);
+
+    /**
+     * 认证
+     *
+     * @return Object
+     */
+    @POST("user/doctor/auth/update2")
+    Observable<DataResponse<Object>> auth(@Body AuthParam param);
+
+    /**
+     * 专家组成员邀请联系人进专家组
+     *
+     * @return Object
+     */
+    @POST("dtmAro/inviteDtms")
+    Observable<DataResponse<Object>> invite2Panel(@Body Invite2PanelParam param);
+
+    @POST("dtmAro/addDtmAro")
+    Observable<DataResponse<Object>> createPanel(@Body CreatePanelParam param);
+
     Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingBean params);
 
 

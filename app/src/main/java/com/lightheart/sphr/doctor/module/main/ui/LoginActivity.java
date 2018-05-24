@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
 import com.lightheart.sphr.doctor.bean.User;
@@ -68,20 +69,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         mEtPassword.setText(SPUtils.getInstance(Constant.SHARED_NAME).getString(Constant.PASSWORD_KEY));
         mTvForgetPsd.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         // 登陆成功重新设置用户新
-        RxBus.getInstance().toFlowable(LoginSuccess.class).subscribe(new Consumer<LoginSuccess>() {
+        RxBus.getInstance().toFlowable(DoctorBean.class).subscribe(new Consumer<DoctorBean>() {
             @Override
-            public void accept(LoginSuccess event) throws Exception {
+            public void accept(DoctorBean event) throws Exception {
                 finish();
             }
         });
     }
 
     @Override
-    public void loginSuccess(User user) {
+    public void loginSuccess(DoctorBean user) {
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.LOGIN_KEY, true);
-        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.mobile);
+        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.getMobile());
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.PASSWORD_KEY, mEtPassword.getText().toString());
-        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.USER_KEY, user.id);
+        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.USER_KEY, user.getId());
         // 登陆成功通知其他界面刷新
         RxBus.getInstance().post(user);
         startActivity(new Intent(LoginActivity.this, MainActivity.class));

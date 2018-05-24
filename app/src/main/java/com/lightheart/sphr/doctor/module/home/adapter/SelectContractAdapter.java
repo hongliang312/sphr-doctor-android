@@ -41,13 +41,17 @@ public class SelectContractAdapter extends BaseQuickAdapter<DoctorBean, BaseView
         ImageLoaderUtils.display(mContext, civContract, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
         tvConName.setText(TextUtils.isEmpty(item.getContName()) ? "" : item.getContName());
         cbContract.setChecked(getIsSelected().get(helper.getLayoutPosition()));
+        if (!item.isEnable) {
+            cbContract.setEnabled(false);
+            cbContract.setBackgroundResource(R.mipmap.icon_disable);
+        }
     }
 
     public void initData(List<DoctorBean> contractDocList) {
         if (contractDocList != null && contractDocList.size() > 0) {
             for (int i = 0; i < contractDocList.size(); i++) {
                 if (isSelectedMap.get(i) == null) {// 加载更多的时候避免把之前选择项置为false
-                    isSelectedMap.put(i, contractDocList.get(i).isCheck());
+                    isSelectedMap.put(i, contractDocList.get(i).isCheck);
                 }
             }
         }

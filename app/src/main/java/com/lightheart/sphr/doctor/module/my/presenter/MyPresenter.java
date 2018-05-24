@@ -47,7 +47,6 @@ public class MyPresenter extends BasePresenter<MyContract.View> implements MyCon
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
-
                     }
                 }, new Consumer<Throwable>() {
                     @Override

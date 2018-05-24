@@ -1,11 +1,15 @@
 package com.lightheart.sphr.doctor.module.contracts;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,28 +22,42 @@ import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.QRcodeModel;
 import com.lightheart.sphr.doctor.module.contracts.adapter.ContractsAdapter;
 import com.lightheart.sphr.doctor.module.contracts.contract.ContractsContract;
 import com.lightheart.sphr.doctor.module.contracts.presenter.ContractPresenter;
 import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
+import com.lightheart.sphr.doctor.module.contracts.ui.ScanActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
+import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyInvitationCodeActivity;
+import com.lightheart.sphr.doctor.utils.RxBus;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import io.reactivex.functions.Consumer;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+
+import static com.lightheart.sphr.doctor.app.Constant.RC_CAMERA_PERM;
 
 /**
  * Created by fucp on 2018-4-19.
  * Description :联系人页面
  */
 
-public class ContractFragment extends BaseFragment<ContractPresenter> implements ContractsContract.View, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, ContractsAdapter.SlideItemListener {
+public class ContractFragment extends BaseFragment<ContractPresenter> implements ContractsContract.View, View.OnClickListener,
+        SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, ContractsAdapter.SlideItemListener, EasyPermissions.PermissionCallbacks {
 
     @BindView(R.id.mainBar)
     AppBarLayout mainBar;
@@ -55,8 +73,8 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     RecyclerView mRvContracts;
     @Inject
     ContractsAdapter mContractsAdapter;
-    // private ContractsAdapter mContractsAdapter;
     private PopupWindow mAddPop;
+    private DoctorBean doctorBean = new DoctorBean();
 
     @Override
     protected int getLayoutId() {
@@ -76,7 +94,6 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
         mContractsAdapter.initData(getActivity(), "ADDED");
         //  设置RecyclerView
         mRvContracts.setLayoutManager(new LinearLayoutManager(getContext()));
-//        mContractsAdapter = new ContractsAdapter(getActivity(), R.layout.item_doc_contract, "ADDED");
         mRvContracts.setAdapter(mContractsAdapter);
 
         //   设置ContractView
@@ -92,6 +109,7 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
 
         assert mPresenter != null;
         mPresenter.loadContractData();
+        mPresenter.loadDocData();
     }
 
     public static ContractFragment newInstance() {
@@ -117,12 +135,38 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
                 if (mAddPop != null) mAddPop.dismiss();
                 break;
             case R.id.tvScan:
-                ToastUtils.showShort(R.string.scan);
+                cameraTask();
                 if (mAddPop != null) mAddPop.dismiss();
                 break;
             case R.id.tvQrCode:
-                ToastUtils.showShort(R.string.qr_code);
+                if (TextUtils.equals("USR_CERT_S_UN", doctorBean.getCertStatus()) || TextUtils.equals("USR_CERT_S_FAL", doctorBean.getCertStatus())) {
+                    startActivity(new Intent(getActivity(), AuthenticationActivity.class));
+                } else {
+                    startActivity(new Intent(getActivity(), MyInvitationCodeActivity.class).putExtra("docInfo", doctorBean));
+                }
                 if (mAddPop != null) mAddPop.dismiss();
+        }
+    }
+
+    @AfterPermissionGranted(RC_CAMERA_PERM)
+    public void cameraTask() {
+        if (hasCameraPermission()) {
+            startActivityForResult(new Intent(getActivity(), ScanActivity.class), Activity.RESULT_FIRST_USER);
+        } else {
+            EasyPermissions.requestPermissions(
+                    this,
+                    getString(R.string.rationale_camera),
+                    RC_CAMERA_PERM,
+                    Manifest.permission.CAMERA);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Activity.RESULT_FIRST_USER && resultCode == Activity.RESULT_OK && data != null) {
+            QRcodeModel info = (QRcodeModel) data.getSerializableExtra("info");
+            startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", info.id));
         }
     }
 
@@ -183,6 +227,11 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     }
 
     @Override
+    public void setDocInfo(DoctorBean docInfo) {
+        doctorBean = docInfo;
+    }
+
+    @Override
     public void deleteClick(View view, int position, DoctorBean item) {
         DocContractRequestParams params = new DocContractRequestParams();
         params.status = "DEL";
@@ -190,4 +239,32 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
         assert mPresenter != null;
         mPresenter.deleteDoc(params);
     }
+
+    private boolean hasCameraPermission() {
+        return EasyPermissions.hasPermissions(getActivity(), Manifest.permission.CAMERA);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // EasyPermissions handles the request result.
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        // (Optional) Check whether the user denied any permissions and checked "NEVER ASK AGAIN."
+        // This will display a dialog directing them to enable the permission in app settings.
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
+
+
 }

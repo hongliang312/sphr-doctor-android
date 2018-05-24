@@ -43,6 +43,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.lightheart.sphr.doctor.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".module.main.ui.SplashActivity"
             android:theme="@style/AppSplash">
@@ -91,8 +102,13 @@
         <activity android:name=".module.home.ui.SelectContactActivity" />
         <activity android:name=".module.home.ui.HomeClinicalRecruitActivity" />
         <activity android:name=".module.home.ui.ClinicalRecruitDetailActivity" />
-        <activity android:name=".module.home.activity.TelephoneDetailsActivity" />
-        <activity android:name=".module.home.activity.PatientRecordsActivity"></activity>
+        <activity android:name=".module.home.activity.PatientRecordsActivity" />
+        <activity android:name=".module.my.ui.MyPersonalInfoActivity" />
+        <activity android:name=".module.my.ui.MySettingActivity" />
+        <activity android:name=".module.home.ui.ClipImageActivity" />
+        <activity android:name=".module.my.ui.AreaActivity" />
+        <activity android:name=".module.my.ui.DepartmentActivity" />
+        <activity android:name=".module.contracts.ui.ScanActivity" />
     </application>
 
 </manifest>

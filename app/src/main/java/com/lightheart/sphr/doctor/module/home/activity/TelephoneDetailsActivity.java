@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
@@ -21,8 +22,10 @@ import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.TelephoneDetailsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.TelephoneDetailsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.TelephoneDetailsPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 

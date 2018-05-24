@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.HomePanelModel;
 import com.lightheart.sphr.doctor.bean.PanelSection;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelSectionAdapter;
@@ -71,31 +71,38 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
         mRvPanels.setLayoutManager(new LinearLayoutManager(this));
         mRvPanels.setAdapter(mPanelSectionAdapter);
 
+        mSwipeRefreshLayout.setEnabled(false);
         mPanelSectionAdapter.setOnSectionItemListener(this);
 
         assert mPresenter != null;
-        mPresenter.loadPanelList("N");
-        mPresenter.loadPanelList("Y");
+        mPresenter.loadPanelList();
     }
 
     @Override
-    public void setPanelData(List<PanelsModel> panelsModels, int loadType, String isMember) {
-        if (TextUtils.equals("Y", isMember)) {
-            panelSectionList.add(new PanelSection(true, getString(R.string.added_panel), false));
-            List<PanelsModel> subList = panelsModels.subList(0, 3);
-            for (PanelsModel item : subList) {
-                item.setAdded(true);
-                panelSectionList.add(new PanelSection(item));
-            }
-        } else if (TextUtils.equals("N", isMember)) {
-            panelSectionList.add(new PanelSection(true, getString(R.string.interesting_panel), true));
-            List<PanelsModel> subList = panelsModels.subList(0, 3);
-            for (PanelsModel item : subList) {
-                item.setAdded(false);
-                panelSectionList.add(new PanelSection(item));
-            }
+    public void setPanelData(HomePanelModel panelsModels, int loadType) {
+        List<PanelsModel> ownerGroupList = new ArrayList<>();
+        panelSectionList.add(new PanelSection(true, getString(R.string.added_panel), false));
+        if (panelsModels.owerGroupList.size() > 3) {
+            ownerGroupList = panelsModels.owerGroupList.subList(0, 3);
+        } else {
+            ownerGroupList.addAll(panelsModels.owerGroupList);
+        }
+        for (PanelsModel item : ownerGroupList) {
+            item.setAdded(true);
+            panelSectionList.add(new PanelSection(item));
+        }
+        panelSectionList.add(new PanelSection(true, getString(R.string.interesting_panel), true));
+        List<PanelsModel> otherGroupList = panelsModels.otherGroupList.subList(0, 3);
+        for (PanelsModel item : otherGroupList) {
+            item.setAdded(false);
+            panelSectionList.add(new PanelSection(item));
         }
         setLoadDataResult(mPanelSectionAdapter, mSwipeRefreshLayout, panelSectionList, loadType);
+    }
+
+    // 暂时不用
+    @Override
+    public void setPanelList(List<PanelsModel> panelsModels, int loadType) {
     }
 
     @Override
@@ -126,4 +133,6 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
     @Override
     public void successShare() {
     }
+
+
 }

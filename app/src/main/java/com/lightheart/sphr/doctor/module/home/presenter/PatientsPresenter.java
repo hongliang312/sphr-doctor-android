@@ -30,7 +30,8 @@ public class PatientsPresenter extends BasePresenter<PatientManageContract.View>
     @Inject
     public PatientsPresenter() {
         this.mIsRefresh = true;
-        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+//        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+        params.duid = 1010;
         params.pageSize = Constant.PAGE_SIZE;
     }
 
@@ -63,12 +64,14 @@ public class PatientsPresenter extends BasePresenter<PatientManageContract.View>
 
     @Override
     public void refresh(int pageNum, int timeCategory) {
+        mPage = 1;
         mIsRefresh = true;
         loadPatientData(pageNum, timeCategory);
     }
 
     @Override
     public void loadMore(int pageNum, int timeCategory) {
+        mPage++;
         mIsRefresh = false;
         loadPatientData(pageNum, timeCategory);
     }

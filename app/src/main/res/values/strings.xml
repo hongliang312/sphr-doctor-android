@@ -41,6 +41,8 @@
     <string name="disease_select">病种选择</string>
     <string name="contract_select">选择联系人</string>
     <string name="please_select_contract">请先选择联系人</string>
+    <string name="join">  加入</string>
+    <string name="birth_place">出生地:</string>
 
 
     <string name="consult_online">在线咨询</string>
@@ -111,6 +113,10 @@
     <string name="feedback">意见反馈</string>
     <string name="my_invitation_code">我的邀请码</string>
     <string name="setting">设置</string>
+    <string name="modify_password">修改密码</string>
+    <string name="message_set">消息设置</string>
+    <string name="current_version">当前版本</string>
+    <string name="log_out">退出登录</string>
     <string name="service_tel">客服电话  400&#8211;623&#8211;125</string>
     <string name="service_time">服务时间：周一至周五 9:00&#8211;18:00</string>
     <string name="outside_num">门诊次数</string>
@@ -124,6 +130,22 @@
     <string name="feed_back_hint1">请输入您的宝贵建议&#8230;</string>
     <string name="feed_back_reply">在此输入您的回复</string>
     <string name="invitation_code">邀请码：</string>
+    <string name="personal_info">个人资料</string>
+    <string name="header_image">头像</string>
+    <string name="person_name">姓名</string>
+    <string name="sex">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="birth">出生日期</string>
+    <string name="distract">地区</string>
+    <string name="hospital">医院</string>
+    <string name="department">科室</string>
+    <string name="professional_title">职称</string>
+    <string name="major">擅长</string>
+    <string name="personal_introduce">个人简介</string>
+    <string name="distract_select">地区选择</string>
+    <string name="please_input_child_department_name">请输入二级科室名称</string>
+
 
     <string name="jump">跳过</string>
     <string name="cancel">取消</string>
@@ -136,6 +158,12 @@
     <string name="all">全部</string>
     <string name="complete">完成</string>
     <string name="invite">邀请</string>
+    <string name="select">选取</string>
+    <string name="clipping">剪裁</string>
+    <string name="photograph">拍照</string>
+    <string name="select_from_album">从相册选择</string>
+
+    <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
 
 
     <string name="exit_system">再按一次退出程序</string>
@@ -179,15 +207,14 @@
 
     <string name="biddingfortheunit">申办单位:</string>
     <string name="testingstage">试验阶段:</string>
-    <string name="_2017_12_03_2018_01_29">2017-12-03-2018-01-29</string>
     <string name="purposeofresearch">研究目的</string>
-    <string name="ssss">ssss</string>
     <string name="particulars">详情</string>
     <string name="ygxq">  阳光欣晴</string>
     <string name="testingmanger">试验管理</string>
     <string name="butonne">查看</string>
 
     <string name="patientswithdetails">患者详情</string>
+    <string name="patientrecord">患者档案</string>
     <string name="patientrecord">在线咨询</string>
     <string name="patientname">山口百惠</string>
     <string name="huan_name">患者病历</string>
@@ -204,7 +231,7 @@
     <string name="finaldiagnosis">最后诊断</string>
     <string name="treatmentprocess">治疗经过</string>
     <string name="therapeuticregimen">用药方案</string>
-    <string name="organizingtime"> (整理时间)</string>
+    <string name="organizingtime">  (整理时间)</string>
 
     <string name="epidemic">是否有瘟疫区、疫情、疫区居住史</string>
     <string name="epidemicarea">是否有牧区、矿山、高沸去、低碘区居住史</string>
@@ -214,9 +241,9 @@
     <string name="obstericalhistory">婚育史</string>
     <string name="familyhistory">家族史</string>
 
-    <string name="name">姓名:</string>
-    <string name="address">常住地:</string>
-    <string name="age">年龄:</string>
-    <string name="nation">民族:</string>
+    <string name="name">姓名:  </string>
+    <string name="address">常住地:  </string>
+    <string name="age">年龄:  </string>
+    <string name="nation">民族:  </string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.lightheart.sphr.doctor.module.main.presenter;
 
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.User;
 import com.lightheart.sphr.doctor.module.main.contract.LoginContract;
@@ -28,11 +29,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     public void login(LoginRequest parmas) {
         RetrofitManager.create(ApiService.class)
                 .login(parmas)
-                .compose(RxSchedulers.<DataResponse<User>>applySchedulers())
-                .compose(mView.<DataResponse<User>>bindToLife())
-                .subscribe(new Consumer<DataResponse<User>>() {
+                .compose(RxSchedulers.<DataResponse<DoctorBean>>applySchedulers())
+                .compose(mView.<DataResponse<DoctorBean>>bindToLife())
+                .subscribe(new Consumer<DataResponse<DoctorBean>>() {
                     @Override
-                    public void accept(DataResponse<User> response) throws Exception {
+                    public void accept(DataResponse<DoctorBean> response) throws Exception {
                         if (response.getResultcode() == 200) {
                             mView.loginSuccess(response.getContent());
                         } else {

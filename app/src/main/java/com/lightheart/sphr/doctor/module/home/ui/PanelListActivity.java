@@ -16,6 +16,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.HomePanelModel;
 import com.lightheart.sphr.doctor.bean.PanelsModel;
 import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelListAdapter;
@@ -80,10 +81,11 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
         mRvPanels.setLayoutManager(new LinearLayoutManager(this));
         mRvPanels.setAdapter(mPanelListAdapter);
 
+        mSwipeRefreshLayout.setEnabled(false);
         mPanelListAdapter.setOnItemClickListener(this);
 
         assert mPresenter != null;
-        mPresenter.loadPanelList(flag);
+        mPresenter.loadPanelAllList(flag);
     }
 
     @Override
@@ -104,8 +106,13 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
         }
     }
 
+    // 不用
     @Override
-    public void setPanelData(List<PanelsModel> panelsModels, int loadType, String isMember) {
+    public void setPanelData(HomePanelModel panelsModels, int loadType) {
+    }
+
+    @Override
+    public void setPanelList(List<PanelsModel> panelsModels, int loadType) {
         setLoadDataResult(mPanelListAdapter, mSwipeRefreshLayout, panelsModels, loadType);
     }
 
