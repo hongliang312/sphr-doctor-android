@@ -42,7 +42,6 @@ public class MyHomePagePresenter extends BasePresenter<MyHomePageContract.View> 
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
-
                     }
                 }, new Consumer<Throwable>() {
                     @Override

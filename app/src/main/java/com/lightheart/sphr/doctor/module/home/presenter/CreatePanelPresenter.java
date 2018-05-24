@@ -1,5 +1,8 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
 
+import android.text.TextUtils;
+
+import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
@@ -52,6 +55,24 @@ public class CreatePanelPresenter extends BasePresenter<CreatePanelContract.View
 
     @Override
     public void createPanel(CreatePanelParam param) {
-
+        RetrofitManager.create(ApiService.class)
+                .createPanel(param)
+                .compose(RxSchedulers.<DataResponse<Object>>applySchedulers())
+                .compose(mView.<DataResponse<Object>>bindToLife())
+                .subscribe(new Consumer<DataResponse<Object>>() {
+                    @Override
+                    public void accept(DataResponse<Object> response) throws Exception {
+                        if (response.getResultcode() == 200) {
+                            mView.createPanelSuccess();
+                        } else {
+                            mView.showFaild(String.valueOf(response.getResultmsg()));
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showFaild(throwable.getMessage());
+                    }
+                });
     }
 }

@@ -6,6 +6,7 @@ import com.lightheart.sphr.doctor.bean.AreaModel;
 import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
 import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
+import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
@@ -16,6 +17,7 @@ import com.lightheart.sphr.doctor.bean.FeedBackBean;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.bean.HomePanelModel;
 import com.lightheart.sphr.doctor.bean.HospitalsModel;
+import com.lightheart.sphr.doctor.bean.Invite2PanelParam;
 import com.lightheart.sphr.doctor.bean.IsFriendModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
@@ -55,7 +57,7 @@ public interface ApiService {
      * @return User
      */
     @POST("user/login")
-    Observable<DataResponse<User>> login(@Body LoginRequest parmas);
+    Observable<DataResponse<DoctorBean>> login(@Body LoginRequest parmas);
 
     /**
      * 验证码登录
@@ -349,5 +351,16 @@ public interface ApiService {
      */
     @POST("user/doctor/auth/update2")
     Observable<DataResponse<Object>> auth(@Body AuthParam param);
+
+    /**
+     * 专家组成员邀请联系人进专家组
+     *
+     * @return Object
+     */
+    @POST("dtmAro/inviteDtms")
+    Observable<DataResponse<Object>> invite2Panel(@Body Invite2PanelParam param);
+
+    @POST("dtmAro/addDtmAro")
+    Observable<DataResponse<Object>> createPanel(@Body CreatePanelParam param);
 
 }

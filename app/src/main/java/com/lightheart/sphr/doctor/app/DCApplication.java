@@ -24,7 +24,6 @@ public class DCApplication extends Application {
         mInstance = this;
         initApplicationComponent();
         Utils.init(this);
-//        ZXingLibrary.initDisplayOpinion(this);
     }
 
     /**

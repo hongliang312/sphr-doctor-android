@@ -151,15 +151,12 @@ public class DoctorBean implements Serializable {
     /**
      * 是否已选中
      */
-    private boolean isCheck;
+    public boolean isCheck = false;
 
-    public boolean isCheck() {
-        return isCheck;
-    }
-
-    public void setCheck(boolean check) {
-        isCheck = check;
-    }
+    /**
+     * 是否可选
+     */
+    public boolean isEnable = true;
 
     public int getId() {
         return id;

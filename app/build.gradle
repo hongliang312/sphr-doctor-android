@@ -61,8 +61,8 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'pub.devrel:easypermissions:1.2.0'
-    implementation project(':lib-zxing')
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
 }
 
 repositories {

@@ -3,14 +3,13 @@ package com.lightheart.sphr.doctor.module.my;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.LoginSuccess;
 import com.lightheart.sphr.doctor.module.my.contract.MyContract;
 import com.lightheart.sphr.doctor.module.my.presenter.MyPresenter;
 import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
@@ -20,10 +19,12 @@ import com.lightheart.sphr.doctor.module.my.ui.MyInvitationCodeActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyPersonalInfoActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MySettingActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
+import com.lightheart.sphr.doctor.utils.RxBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by fucp on 2018-4-19.
@@ -66,6 +67,13 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
 
     @Override
     protected void initView(View view) {
+        // 点击退出执行
+        RxBus.getInstance().toFlowable(LoginSuccess.class).subscribe(new Consumer<LoginSuccess>() {
+            @Override
+            public void accept(LoginSuccess event) throws Exception {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     public static MyFragment newInstance() {

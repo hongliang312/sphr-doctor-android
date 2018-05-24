@@ -1,5 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.ui;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
+import com.lightheart.sphr.doctor.module.home.activity.PatientRecordsActivity;
 import com.lightheart.sphr.doctor.module.home.adapter.PatientsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.PatientManageContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PatientsPresenter;
@@ -131,6 +133,9 @@ public class HomePatientManageActivity extends BaseActivity<PatientsPresenter> i
 
     @Override
     public void onLoadMoreRequested() {
+        mPage++;
+        assert mPresenter != null;
+        mPresenter.loadMore(mPage, timeCategory);
     }
 
     @Override
@@ -153,6 +158,6 @@ public class HomePatientManageActivity extends BaseActivity<PatientsPresenter> i
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         PatientsModel.PatientModel item = (PatientsModel.PatientModel) adapter.getItem(position);
         assert item != null;
-        ToastUtils.showShort(item.patientName);
+        startActivity(new Intent(HomePatientManageActivity.this, PatientRecordsActivity.class).putExtra("id", item.duid));
     }
 }

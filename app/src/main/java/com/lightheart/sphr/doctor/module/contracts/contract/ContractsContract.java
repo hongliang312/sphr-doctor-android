@@ -4,6 +4,7 @@ import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BaseContract;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.Invite2PanelParam;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public interface ContractsContract {
 
         void successInvite();
 
+        void setDocInfo(DoctorBean docInfo);
+
     }
 
     interface Presenter extends BaseContract.BasePresenter<ContractsContract.View> {
@@ -32,7 +35,9 @@ public interface ContractsContract {
 
         void loadMore();
 
-        void invite2Panel();
+        void invite2Panel(Invite2PanelParam param);
+
+        void loadDocData();
 
     }
 

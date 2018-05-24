@@ -60,7 +60,6 @@
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_2017_12_03_2018_01_29"
                     android:layout_marginStart="@dimen/dp_14"
                     android:layout_below="@+id/title"
                     android:layout_toEndOf="@+id/tiemm"

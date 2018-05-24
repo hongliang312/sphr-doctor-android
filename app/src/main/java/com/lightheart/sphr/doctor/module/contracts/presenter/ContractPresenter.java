@@ -1,12 +1,14 @@
 package com.lightheart.sphr.doctor.module.contracts.presenter;
 
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.app.LoadType;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.Invite2PanelParam;
 import com.lightheart.sphr.doctor.module.contracts.contract.ContractsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
@@ -103,8 +105,52 @@ public class ContractPresenter extends BasePresenter<ContractsContract.View> imp
     }
 
     @Override
-    public void invite2Panel() {
-        // TODO 邀请进入专家组
+    public void invite2Panel(Invite2PanelParam param) {
+        RetrofitManager.create(ApiService.class)
+                .invite2Panel(param)
+                .compose(RxSchedulers.<DataResponse<Object>>applySchedulers())
+                .compose(mView.<DataResponse<Object>>bindToLife())
+                .subscribe(new Consumer<DataResponse<Object>>() {
+                    @Override
+                    public void accept(DataResponse<Object> response) throws Exception {
+                        if (response.getResultcode() == 200) {
+                            mView.successInvite();
+                            ToastUtils.showShort(String.valueOf(response.getContent()));
+                        } else {
+                            mView.showFaild(String.valueOf(response.getResultmsg()));
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showFaild(throwable.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void loadDocData() {
+        DocContractRequestParams params = new DocContractRequestParams();
+        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+        RetrofitManager.create(ApiService.class)
+                .getDocInfo(params)
+                .compose(RxSchedulers.<DataResponse<DoctorBean>>applySchedulers())
+                .compose(mView.<DataResponse<DoctorBean>>bindToLife())
+                .subscribe(new Consumer<DataResponse<DoctorBean>>() {
+                    @Override
+                    public void accept(DataResponse<DoctorBean> response) throws Exception {
+                        if (response.getResultcode() == 200) {
+                            mView.setDocInfo(response.getContent());
+                        } else {
+                            mView.showFaild(String.valueOf(response.getResultmsg()));
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mView.showFaild(throwable.getMessage());
+                    }
+                });
     }
 
 }

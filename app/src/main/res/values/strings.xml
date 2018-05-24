@@ -41,6 +41,8 @@
     <string name="disease_select">病种选择</string>
     <string name="contract_select">选择联系人</string>
     <string name="please_select_contract">请先选择联系人</string>
+    <string name="join">  加入</string>
+    <string name="birth_place">出生地:</string>
 
 
     <string name="consult_online">在线咨询</string>
@@ -203,9 +205,7 @@
 
     <string name="biddingfortheunit">申办单位:</string>
     <string name="testingstage">试验阶段:</string>
-    <string name="_2017_12_03_2018_01_29">2017-12-03-2018-01-29</string>
     <string name="purposeofresearch">研究目的</string>
-    <string name="ssss">ssss</string>
     <string name="particulars">详情</string>
     <string name="ygxq">  阳光欣晴</string>
     <string name="testingmanger">试验管理</string>
@@ -213,7 +213,6 @@
 
     <string name="patientswithdetails">患者详情</string>
     <string name="patientrecord">患者档案</string>
-    <string name="patientname">山口百惠</string>
     <string name="diseasedescription">病情描述</string>
     <string name="uploadthemedicalrecords">上传病历图片</string>
     <string name="telephonebooking">电话咨询预约时间</string>
@@ -227,7 +226,7 @@
     <string name="finaldiagnosis">最后诊断</string>
     <string name="treatmentprocess">治疗经过</string>
     <string name="therapeuticregimen">用药方案</string>
-    <string name="organizingtime"> (整理时间)</string>
+    <string name="organizingtime">  (整理时间)</string>
 
     <string name="epidemic">是否有瘟疫区、疫情、疫区居住史</string>
     <string name="epidemicarea">是否有牧区、矿山、高沸去、低碘区居住史</string>
@@ -237,9 +236,9 @@
     <string name="obstericalhistory">婚育史</string>
     <string name="familyhistory">家族史</string>
 
-    <string name="name">姓名:</string>
-    <string name="address">常住地:</string>
-    <string name="age">年龄:</string>
-    <string name="nation">民族:</string>
+    <string name="name">姓名:  </string>
+    <string name="address">常住地:  </string>
+    <string name="age">年龄:  </string>
+    <string name="nation">民族:  </string>
 
 </resources>

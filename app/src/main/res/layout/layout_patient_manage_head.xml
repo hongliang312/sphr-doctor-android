@@ -16,7 +16,8 @@
         android:padding="@dimen/dp_8"
         android:text="@string/patient_search"
         android:textColor="@color/fiveEight"
-        android:textSize="@dimen/small" />
+        android:textSize="@dimen/small"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="match_parent"

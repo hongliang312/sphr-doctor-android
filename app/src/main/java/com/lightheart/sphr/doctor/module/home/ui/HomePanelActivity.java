@@ -80,8 +80,13 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
 
     @Override
     public void setPanelData(HomePanelModel panelsModels, int loadType) {
+        List<PanelsModel> ownerGroupList = new ArrayList<>();
         panelSectionList.add(new PanelSection(true, getString(R.string.added_panel), false));
-        List<PanelsModel> ownerGroupList = panelsModels.owerGroupList.subList(0, 3);
+        if (panelsModels.owerGroupList.size() > 3) {
+            ownerGroupList = panelsModels.owerGroupList.subList(0, 3);
+        } else {
+            ownerGroupList.addAll(panelsModels.owerGroupList);
+        }
         for (PanelsModel item : ownerGroupList) {
             item.setAdded(true);
             panelSectionList.add(new PanelSection(item));

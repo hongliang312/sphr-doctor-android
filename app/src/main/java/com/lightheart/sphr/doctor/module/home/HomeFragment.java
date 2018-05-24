@@ -200,7 +200,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         } else {
             HomeMoudleManage item = (HomeMoudleManage) adapter.getItem(position);
             assert item != null;
-            ToastUtils.showShort(item.title);
             switch (item.type) {
                 case "PTM":
                     startActivity(new Intent(getActivity(), HomePatientManageActivity.class));

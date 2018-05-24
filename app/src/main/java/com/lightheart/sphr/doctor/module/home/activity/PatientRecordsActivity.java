@@ -1,51 +1,54 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.SPUtils;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
-import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.PatientRecordsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.PatientRecordsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PatientRecordsPresenter;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter> implements PatientRecordsContract.View, View.OnClickListener {
+public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter> implements PatientRecordsContract.View, SwipeRefreshLayout.OnRefreshListener {
 
 
-   @BindView(R.id.common_toolbar)
-   Toolbar mToolbar;
-   @BindView(R.id.bt_sub)
-   Button mBtSub;
-   @BindView(R.id.common_toolbar_title_tv)
-   TextView mTitleTv;
-    @BindView(R.id.listview)
-    ListView listView;
-    private PatientRecordsAdapter patientRecordsAdapter;
-    private View view;
-    private List<PatientRecordsBean.CaseHistoriesBean> list = new ArrayList<>();
-    private TextView patientname;
-    private TextView address;
-    private TextView age;
-    private TextView nation;
-    private TextView epidemic;
-    private TextView epidemicarea;
-    private TextView poison;
-    private TextView smokinghistory;
-    private TextView drinking;
-    private TextView obstericalhistory;
-    private TextView familyhistory;
+    @BindView(R.id.common_toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.bt_sub)
+    Button mBtSub;
+    @BindView(R.id.common_toolbar_title_tv)
+    TextView mTitleTv;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.rvRecord)
+    RecyclerView rvRecord;
+    @Inject
+    PatientRecordsAdapter patientRecordsAdapter;
+
+    private int id;
+    private TextView tvName;
+    private TextView tvAge;
+    private TextView tvPlace;
+    private TextView tvBirthPlace;
+    private TextView tvNation;
+    private TextView tvHistory1;
+    private TextView tvHistory2;
+    private TextView tvHistory3;
+    private TextView tvSmokingHistory;
+    private TextView tvDrink;
+    private TextView tvObstericalHistory;
+    private TextView tvFamilyHistory;
 
     @Override
     protected int getLayoutId() {
@@ -54,67 +57,71 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
 
     @Override
     protected void initInjector() {
-     mActivityComponent.inject(this);
+        mActivityComponent.inject(this);
     }
 
     @Override
     protected void initView() {
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.patientrecord, false, 0);
+        id = getIntent().getIntExtra("id", 0);
 
-        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.patientrecord,false,0);
-        view = View.inflate(this, R.layout.patientrecords, null);
-        patientname = view.findViewById(R.id.patientname);
-        address = view.findViewById(R.id.address);
-        age = view.findViewById(R.id.age);
-        nation = view.findViewById(R.id.nation);
-        epidemic = view.findViewById(R.id.epidemic);
-        epidemicarea = view.findViewById(R.id.epidemicarea);
-        poison = view.findViewById(R.id.poison);
-        smokinghistory = view.findViewById(R.id.smokinghistory);
-        drinking = view.findViewById(R.id.drinking);
-        obstericalhistory = view.findViewById(R.id.obstericalhistory);
-        familyhistory = view.findViewById(R.id.familyhistory);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rvRecord.setLayoutManager(linearLayoutManager);
+        rvRecord.setAdapter(patientRecordsAdapter);
 
-        listView.addHeaderView(view);
-        String id = getIntent().getStringExtra("id");
-        PatientRecordsRequestParams Params = new PatientRecordsRequestParams();
-        Params.uid= SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        Params.id= Integer.valueOf(id);
+        View view = getLayoutInflater().inflate(R.layout.head_layout_record, null);
+        tvName = view.findViewById(R.id.tvName);
+        tvAge = view.findViewById(R.id.tvAge);
+        tvPlace = view.findViewById(R.id.tvPlace);
+        tvBirthPlace = view.findViewById(R.id.tvBirthPlace);
+        tvNation = view.findViewById(R.id.tvNation);
+
+        tvHistory1 = view.findViewById(R.id.tvHistory1);
+        tvHistory2 = view.findViewById(R.id.tvHistory2);
+        tvHistory3 = view.findViewById(R.id.tvHistory3);
+        tvSmokingHistory = view.findViewById(R.id.tvSmokingHistory);
+        tvDrink = view.findViewById(R.id.tvDrink);
+        tvObstericalHistory = view.findViewById(R.id.tvObstericalHistory);
+        tvFamilyHistory = view.findViewById(R.id.tvFamilyHistory);
+        patientRecordsAdapter.addHeaderView(view);
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         assert mPresenter != null;
-        mPresenter.loadPatientRecordsData(Params);
+        mPresenter.loadPatientRecordsData(id);
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void setPatientRecords(PatientRecordsBean content) {
-
-        if(content!= null){
-        list.clear();
-        list.addAll(content.getCaseHistories());
-         patientname.setText(content.getName());
-        address.setText(content.getResidenceplace());
-        age.setText(content.getAge()+"");
-        nation.setText(content.getNation());
-        epidemic.setText(content.getIsHistory1());
-        epidemicarea.setText(content.getIsHistory2());
-        poison.setText(content.getIsHistory3());
-        smokinghistory.setText(content.getSmokeHistory());
-        drinking.setText(content.getDrinkHistory());
-        obstericalhistory.setText(content.getMaritalHistory());
-        familyhistory.setText(content.getFamilyHistory());
-
-        patientRecordsAdapter = new PatientRecordsAdapter(this,list);
-        listView.setAdapter(patientRecordsAdapter);
-
-          }
-    }
     @Override
     protected boolean showHomeAsUp() {
-
         return true;
+    }
+
+    @Override
+    public void setPatientRecords(PatientRecordsBean patientRecordsBean, int loadType) {
+        if (patientRecordsBean != null) {
+            tvName.setText(getString(R.string.name) + patientRecordsBean.getName());
+            tvPlace.setText(getString(R.string.address) + patientRecordsBean.getResidenceplace());
+            tvAge.setText(getString(R.string.age) + String.valueOf(patientRecordsBean.getAge()));
+            tvNation.setText(getString(R.string.nation) + patientRecordsBean.getNation());
+            tvBirthPlace.setText(getString(R.string.birth_place) + patientRecordsBean.getBirthplace());
+
+            tvHistory1.setText(TextUtils.equals("Y", patientRecordsBean.getIsHistory1()) ? "是" : TextUtils.equals("N", patientRecordsBean.getIsHistory1()) ? "否" : "未知");
+            tvHistory2.setText(TextUtils.equals("Y", patientRecordsBean.getIsHistory2()) ? "是" : TextUtils.equals("N", patientRecordsBean.getIsHistory2()) ? "否" : "未知");
+            tvHistory3.setText(TextUtils.equals("Y", patientRecordsBean.getIsHistory3()) ? "是" : TextUtils.equals("N", patientRecordsBean.getIsHistory3()) ? "否" : "未知");
+
+            tvSmokingHistory.setText(TextUtils.isEmpty(patientRecordsBean.getSmokeHistory()) ? " " : patientRecordsBean.getSmokeHistory());
+            tvDrink.setText(TextUtils.isEmpty(patientRecordsBean.getDrinkHistory()) ? " " : patientRecordsBean.getDrinkHistory());
+            tvObstericalHistory.setText(TextUtils.isEmpty(patientRecordsBean.getMaritalHistory()) ? " " : patientRecordsBean.getMaritalHistory());
+            tvFamilyHistory.setText(TextUtils.isEmpty(patientRecordsBean.getFamilyHistory()) ? " " : patientRecordsBean.getFamilyHistory());
+
+            setLoadDataResult(patientRecordsAdapter, swipeRefreshLayout, patientRecordsBean.getCaseHistories(), loadType);
+        }
+    }
+
+    @Override
+    public void onRefresh() {
+        assert mPresenter != null;
+        mPresenter.loadPatientRecordsData(id);
     }
 }

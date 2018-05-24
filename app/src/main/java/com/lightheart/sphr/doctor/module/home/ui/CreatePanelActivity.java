@@ -14,15 +14,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.OptionsPickerView;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.CreatePanelDoctorParam;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.HospitalsModel;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelGridAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.CreatePanelContract;
 import com.lightheart.sphr.doctor.module.home.presenter.CreatePanelPresenter;
@@ -59,7 +62,10 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
     private TextInputEditText etPanelName;
     private TextView tvDisease;
     private List<DoctorBean> selectedItems;
-    private CreatePanelParam createPanelParam;
+    private List<String> disease = new ArrayList<>();
+    private List<Integer> diseaseId = new ArrayList<>();
+    private List<CreatePanelDoctorParam> doctorParamList = new ArrayList<>();
+    private OptionsPickerView diseaseOption;
 
     @Override
     protected int getLayoutId() {
@@ -96,8 +102,6 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
 
         mPanelGridAdapter.setType(0);// 0为创建专家组 1为专家组成员
 
-        createPanelParam = new CreatePanelParam();
-
         assert mPresenter != null;
         mPresenter.loadDiseaseData();
     }
@@ -114,7 +118,7 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
                 checkContent();
                 break;
             case R.id.llDiseaseSelect:
-                ToastUtils.showShort(getString(R.string.disease_select));
+                if (diseaseOption != null) diseaseOption.show();
                 break;
         }
     }
@@ -130,34 +134,50 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
             ToastUtils.showShort("请选择疾病");
             return;
         }
-        if (selectedItems != null && selectedItems.size() == 0) {
+        if (doctorParamList != null && doctorParamList.size() == 0) {
             ToastUtils.showShort("请添加成员");
             return;
         }
+        CreatePanelParam createPanelParam = new CreatePanelParam();
         createPanelParam.setCreateDuid(SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY));
         createPanelParam.setDtmAroName(panelName);
-//        createPanelParam.setDiagnosisArray();
-        createPanelParam.setDoctorList(selectedItems);
+        createPanelParam.setDiagnosisArray(diseaseId);
+        createPanelParam.setDoctorList(doctorParamList);
 
-        //TODO 创建专家组，待完成
         assert mPresenter != null;
         mPresenter.createPanel(createPanelParam);
     }
 
     @Override
     public void createPanelSuccess() {
-
+        ToastUtils.showShort("您已成功创建专家组!");
+        this.finish();
     }
 
     @Override
-    public void setDiseases(List<DiseaseModel> diseaseModelList) {
-
+    public void setDiseases(final List<DiseaseModel> diseaseModelList) {
+        disease.clear();
+        for (DiseaseModel diseaseModel : diseaseModelList) {
+            disease.add(diseaseModel.diagnosisName);
+        }
+        // 医院选择器
+        diseaseOption = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                tvDisease.setText(disease.get(options1));
+                diseaseId.clear();
+                diseaseId.add(diseaseModelList.get(options1).id);
+            }
+        }).build();
+        diseaseOption.setNPicker(disease, null, null);
     }
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         if (position == 0) {
-            startActivityForResult(new Intent(CreatePanelActivity.this, SelectContactActivity.class).putExtra("flag", "CREATE").putExtra("slectedItems", (Serializable) selectedItems), mRequestCode);
+            startActivityForResult(new Intent(CreatePanelActivity.this, SelectContactActivity.class)
+                    .putExtra("flag", "CREATE")
+                    .putExtra("selectedItems", (Serializable) selectedItems), mRequestCode);
         }
     }
 
@@ -165,22 +185,17 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == mRequestCode && resultCode == Activity.RESULT_OK) {
+            members.clear();
+            DoctorBean doctorBean = new DoctorBean();
+            doctorBean.setContName("添加成员");
+            members.add(0, doctorBean);
             selectedItems = (List<DoctorBean>) data.getSerializableExtra("selectedItems");
-            removeDuplicate();
+            members.addAll(selectedItems);
             mPanelGridAdapter.setNewData(members);
-        }
-    }
-
-    //TODO 数组去重，待优化
-    private void removeDuplicate() {
-        int size = members.size();
-        for (int i = 0; i < size; i++) {
-            for (DoctorBean select : selectedItems) {
-                if (select.getContUid() == members.get(i).getContUid()) {
-                    members.remove(i);
-                } else {
-                    members.add(select);
-                }
+            for (DoctorBean doctor : selectedItems) {
+                CreatePanelDoctorParam param = new CreatePanelDoctorParam();
+                param.duid = doctor.getDuid();
+                doctorParamList.add(param);
             }
         }
     }

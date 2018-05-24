@@ -23,8 +23,8 @@ public class CreatePanelParam implements Serializable {
     private String dtmAroSummary;
     private int createDuid;
     private String createDoctorName;
-    private List<DoctorBean> doctorList;
-    private List<String> diagnosisArray;
+    private List<CreatePanelDoctorParam> doctorList;
+    private List<Integer> diagnosisArray;
 
     public String getDtmAroName() {
         return dtmAroName;
@@ -58,19 +58,19 @@ public class CreatePanelParam implements Serializable {
         this.createDoctorName = createDoctorName;
     }
 
-    public List<DoctorBean> getDoctorList() {
+    public List<CreatePanelDoctorParam> getDoctorList() {
         return doctorList;
     }
 
-    public void setDoctorList(List<DoctorBean> doctorList) {
+    public void setDoctorList(List<CreatePanelDoctorParam> doctorList) {
         this.doctorList = doctorList;
     }
 
-    public List<String> getDiagnosisArray() {
+    public List<Integer> getDiagnosisArray() {
         return diagnosisArray;
     }
 
-    public void setDiagnosisArray(List<String> diagnosisArray) {
+    public void setDiagnosisArray(List<Integer> diagnosisArray) {
         this.diagnosisArray = diagnosisArray;
     }
 }
