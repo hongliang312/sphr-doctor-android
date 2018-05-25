@@ -17,7 +17,7 @@ public interface TestDetailsContract {
 
     interface Presenter extends BaseContract.BasePresenter<View >{
 
-        void loadDetailsData(DetailsBean entity);
+        void loadDetailsData(int id);
 
 
     }

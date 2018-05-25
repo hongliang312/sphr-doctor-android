@@ -6,17 +6,15 @@ import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
 
 public interface PatientRecordsContract {
 
-    interface View extends BaseContract.BaseView {
+    interface View extends BaseContract.BaseView{
 
-        void setPatientRecords(PatientRecordsBean patientRecordsBean, @LoadType.checker int loadType);
+        void setPatientRecords(PatientRecordsBean content);
 
     }
 
-    interface Presenter extends BaseContract.BasePresenter<View> {
+    interface Presenter extends BaseContract.BasePresenter<View >{
 
-        void loadPatientRecordsData(int id);
-
-        void refresh(int id);
+        void loadPatientRecordsData(PatientRecordsRequestParams Params);
 
     }
 }

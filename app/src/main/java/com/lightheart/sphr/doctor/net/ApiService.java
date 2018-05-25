@@ -293,6 +293,7 @@ public interface ApiService {
 
     /**
      * 回复咨询
+     *
      */
 
     @POST("consult/reply")
@@ -401,5 +402,8 @@ public interface ApiService {
      */
     @POST("user/changepwd")
     Observable<DataResponse<Object>> modifyPsd(@Body ModifyPsdParam param);
+
+    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingBean params);
+
 
 }

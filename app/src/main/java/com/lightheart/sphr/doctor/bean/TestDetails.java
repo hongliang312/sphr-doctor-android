@@ -318,7 +318,7 @@ public class TestDetails {
             private Object createTime;
             private String siteName;
             private String piName;
-            private Object researcher;
+            private String researcher;
             private String projectStatusName;
 
             public Object getId() {
@@ -433,11 +433,11 @@ public class TestDetails {
                 this.piName = piName;
             }
 
-            public Object getResearcher() {
+            public String getResearcher() {
                 return researcher;
             }
 
-            public void setResearcher(Object researcher) {
+            public void setResearcher(String researcher) {
                 this.researcher = researcher;
             }
 

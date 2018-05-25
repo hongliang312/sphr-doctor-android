@@ -67,7 +67,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     protected void initView(View view) {
-        //  设置RecyclerView
+        // 设置RecyclerView
         mRvHomeArticles.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvHomeArticles.setAdapter(mClinicalAdapter);
 
@@ -82,7 +82,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         llOnlineConsult.setOnClickListener(this);
         mTvClinicalMore.setOnClickListener(this);
 
-        // 设置管理模块
+        //设置管理模块
         RecyclerView rvGridTest = mHomeBannerHeadView.findViewById(R.id.rvGridTest);
         rvGridTest.setLayoutManager(new GridLayoutManager(getContext(), 3));
         String[] titles = getResources().getStringArray(R.array.home_moudle_title);
@@ -196,7 +196,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         if (adapter instanceof ClinicalAdapter) {
             HomePageInfo.ClinicalTrialListBean item = ((ClinicalAdapter) adapter).getItem(position);
             assert item != null;
-            startActivity(new Intent(getActivity(), ClinicalRecruitDetailActivity.class).putExtra("id", item.getId()));
+            startActivity(new Intent(getActivity(), ClinicalRecruitDetailActivity.class).putExtra("id",item.getId()));
         } else {
             HomeMoudleManage item = (HomeMoudleManage) adapter.getItem(position);
             assert item != null;

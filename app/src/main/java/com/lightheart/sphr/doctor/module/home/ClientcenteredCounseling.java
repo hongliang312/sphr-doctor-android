@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.util.Utils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
@@ -24,7 +28,7 @@ import butterknife.BindView;
  * Created by 知足 on 2018/5/14.
  */
 
-public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> implements UntreatedContract.View,View.OnClickListener{
+public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> implements UntreatedContract.View{
 
 
     @BindView(R.id.recycler)
@@ -48,6 +52,7 @@ public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> i
         assert mPresenter != null;
         Bundle arguments = getArguments();
         String name = arguments.getString("name");
+
         if ("待处理".equals(name)){
 
             type="SER_CST_S_ING";
@@ -57,14 +62,12 @@ public class ClientcenteredCounseling extends BaseFragment<UntreatedPresenter> i
             type="SER_CST_S_END";
 
         }
+
         mPresenter.loadUntreatedData(type);
 
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
     @Override
     public void setUntreated(final List<UntreatedBean> content) {
         list.clear();

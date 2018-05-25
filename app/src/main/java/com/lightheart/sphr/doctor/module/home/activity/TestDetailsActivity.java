@@ -1,24 +1,29 @@
 package com.lightheart.sphr.doctor.module.home.activity;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.lightheart.sphr.doctor.R;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
 import com.lightheart.sphr.doctor.bean.TestDetails;
+import com.lightheart.sphr.doctor.module.home.adapter.TestDetailsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.TestDetailsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.TestDetailsPresenter;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.inject.Inject;
 import butterknife.BindView;
 
-public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> implements TestDetailsContract.View, View.OnClickListener{
+public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> implements TestDetailsContract.View{
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -34,31 +39,14 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
     TextView numb;
     @BindView(R.id.Indication)
     TextView Indication;
-    @BindView(R.id.COronary)
-    TextView Cornary;
+    @BindView(R.id.tvResearchTarget)
+    TextView research;
     @BindView(R.id.ProJectSponsor)
     TextView ProJectSponsor;
     @BindView(R.id.Projectorganizer)
     TextView Projectorganizer;
     @BindView(R.id.ProJectPI)
     TextView ProJectPI;
-
-    @BindView(R.id.siteName)
-    TextView siteName;
-    @BindView(R.id.contacts)
-    TextView contats;
-    @BindView(R.id.plannedNum)
-    TextView plannedNum;
-    @BindView(R.id.involvedNum)
-    TextView involvedNum;
-    @BindView(R.id.Thegrouprate)
-    TextView Thregrouprate;
-    @BindView(R.id.State)
-    TextView State;
-    @BindView(R.id.isStart)
-    TextView isStart;
-    @BindView(R.id.exitedNum)
-    TextView exitedNum;
     @BindView(R.id.TotalplannedNum)
     TextView TotalplannedNum;
     @BindView(R.id.TotalinvolvedNum)
@@ -67,7 +55,14 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
     TextView TotalThegrouprate;
     @BindView(R.id.TotalexitedNum)
     TextView TotalexitedNum;
+    @BindView(R.id.testrecycler)
+    RecyclerView testrecycler;
+    @Inject
+    TestDetailsAdapter testDetailsAdapter;
     private List<TestDetails.CtrSiteAssignmentsBean> detailslist;
+    int TotalplannedSum,TotalinvolvedSum,TotalThegrouprateSum,TotalexitedSum;
+    private int id;
+
 
     @Override
     protected int getLayoutId() {
@@ -82,53 +77,57 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
     @Override
     protected void initView() {
         initToolbar(mToolbar,mTitleTv,mBtSub,R.string.testingmanagement,false,0);
-        String id = getIntent().getStringExtra("id");
-        DetailsBean entity = new DetailsBean();
-        entity.setDuid(id);
-        entity.setId(id);
+
+        testrecycler.setLayoutManager(new LinearLayoutManager(this));
+        testrecycler.setAdapter(testDetailsAdapter);
+
+        id =getIntent().getIntExtra("id",0);
 
         assert mPresenter != null;
-        mPresenter.loadDetailsData(entity);
+        mPresenter.loadDetailsData(id);
 
     }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
     @Override
     public void setDetals(TestDetails content) {
 
         if(content != null){
+            detailslist = content.getCtrSiteAssignments();
             title.setText(TextUtils.isEmpty(content.getProjectName()) ? "" : content.getProjectName());
             time.setText(content.getTrialTime());
-            numb.setText(content.getRecruitCount()+"");
-            Indication.setText(content.getIndications()+"");
-            Cornary.setText(content.getTrialPurpose());
+            numb.setText(String.valueOf(content.getRecruitCount()+"人"));
+            Indication.setText(String.valueOf(content.getIndications()+""));
+            research.setText(content.getTrialPurpose());
             ProJectSponsor.setText(content.getOrganizeUnit());
             Projectorganizer.setText(content.getBidUnit());
             ProJectPI.setText(content.getTrialStage());
-            detailslist = content.getCtrSiteAssignments();
-            siteName.setText(detailslist.get(0).getSiteName());
-            contats.setText(detailslist.get(0).getPiName());
-            plannedNum.setText(detailslist.get(0).getPlannedNum()+"");
-            involvedNum.setText(detailslist.get(0).getInvolvedNum()+"");
 
-//            float v = ((float) detailslist.get(0).getInvolvedNum() / detailslist.get(0).getPlannedNum() * 100);
-//            Thregrouprate.setText(v+"%");
+            testDetailsAdapter.setNewData(detailslist);
 
-            double div = div(detailslist.get(0).getInvolvedNum(), detailslist.get(0).getPlannedNum(), 4);
-            Thregrouprate.setText(div*100+"%");
-            State.setText(detailslist.get(0).getProjectStatusName());
-            isStart.setText(detailslist.get(0).getIsStart());
-            exitedNum.setText(detailslist.get(0).getExitedNum()+"");
-            TotalplannedNum.setText(detailslist.get(0).getPlannedNum()+"");
-            TotalinvolvedNum.setText(detailslist.get(0).getInvolvedNum()+"");
-            TotalThegrouprate.setText(div*100+"%");
-            TotalexitedNum.setText(detailslist.get(0).getExitedNum()+"");
+            if(detailslist!=null){
+
+                for (int i=0;i<detailslist.size();i++){
+                    TotalplannedSum+=detailslist.get(i).getPlannedNum();
+                    TotalinvolvedSum+=detailslist.get(i).getInvolvedNum();
+                    float v = (float) (div(detailslist.get(i).getInvolvedNum(),detailslist.get(i).getPlannedNum(), 2))*100;
+                    TotalThegrouprateSum+=v;
+                    TotalexitedSum+=detailslist.get(i).getExitedNum();
+                }
+
+                TotalplannedNum.setText(String.valueOf(TotalplannedSum+""));
+                TotalinvolvedNum.setText(String.valueOf(TotalinvolvedSum+""));
+                TotalThegrouprate.setText(String.valueOf(TotalThegrouprateSum+"%"));
+                TotalexitedNum.setText(String.valueOf(TotalexitedSum+""));
+
+            }
         }
     }
+
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
+    }
+
+
     public static double div(double v1, double v2, int scale) {
         if (scale < 0) {
             throw new IllegalArgumentException(
@@ -137,9 +136,5 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
         return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
-    }
-    @Override
-    protected boolean showHomeAsUp() {
-        return true;
     }
 }
