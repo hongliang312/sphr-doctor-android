@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.lightheart.sphr.doctor.base.AuthParam;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.HospitalsModel;
 import com.lightheart.sphr.doctor.module.my.contract.AuthenticationContract;
 import com.lightheart.sphr.doctor.net.ApiFile;
 import com.lightheart.sphr.doctor.net.ApiService;

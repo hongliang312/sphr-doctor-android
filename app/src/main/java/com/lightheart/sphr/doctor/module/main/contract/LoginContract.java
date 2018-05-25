@@ -3,7 +3,6 @@ package com.lightheart.sphr.doctor.module.main.contract;
 import com.lightheart.sphr.doctor.base.BaseContract;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
-import com.lightheart.sphr.doctor.bean.User;
 
 /**
  * Created by fucp on 2018-4-12.

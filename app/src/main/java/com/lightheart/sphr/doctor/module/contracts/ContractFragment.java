@@ -19,10 +19,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SizeUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.DocContractRequestParams;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
@@ -36,15 +34,12 @@ import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
 import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyInvitationCodeActivity;
-import com.lightheart.sphr.doctor.utils.RxBus;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import io.reactivex.functions.Consumer;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;

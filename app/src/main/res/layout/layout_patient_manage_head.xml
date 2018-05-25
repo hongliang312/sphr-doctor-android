@@ -47,6 +47,7 @@
         app:tl_divider_padding="@dimen/dp_8"
         app:tl_divider_width="0.5dp"
         app:tl_iconVisible="false"
+        android:visibility="gone"
         app:tl_indicator_color="@color/theme_color"
         app:tl_indicator_height="@dimen/dp_2"
         app:tl_tab_padding="@dimen/dp_10"

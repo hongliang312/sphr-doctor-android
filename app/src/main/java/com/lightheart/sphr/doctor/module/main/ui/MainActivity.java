@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.base.BaseFragment;
-import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.EventModel;
 import com.lightheart.sphr.doctor.module.contracts.ContractFragment;
 import com.lightheart.sphr.doctor.module.home.HomeFragment;
 import com.lightheart.sphr.doctor.module.my.MyFragment;
@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -45,7 +46,12 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         mNavigation.setOnNavigationItemSelectedListener(this);
         initFragment();
         switchFragment(0);
-        RxBus.getInstance().post(new LoginSuccess());
+        RxBus.getInstance().toFlowable(EventModel.class).subscribe(new Consumer<EventModel>() {
+            @Override
+            public void accept(EventModel event) throws Exception {
+                if (event.isLogout) finish();
+            }
+        });
     }
 
     @Override

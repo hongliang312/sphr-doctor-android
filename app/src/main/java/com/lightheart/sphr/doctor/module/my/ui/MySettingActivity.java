@@ -1,21 +1,21 @@
 package com.lightheart.sphr.doctor.module.my.ui;
 
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.EventModel;
 import com.lightheart.sphr.doctor.utils.RxBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by fucp on 2018-5-19.
@@ -46,19 +46,24 @@ public class MySettingActivity extends BaseActivity {
 
     @Override
     protected void initInjector() {
-
     }
 
     @Override
     protected void initView() {
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.setting, false, 0);
+        RxBus.getInstance().toFlowable(EventModel.class).subscribe(new Consumer<EventModel>() {
+            @Override
+            public void accept(EventModel event) throws Exception {
+                if (event.isModify) finish();
+            }
+        });
     }
 
     @OnClick({R.id.tvModifyPsd, R.id.tvMessageSet, R.id.tvCurrentVersion, R.id.tvLogOut,})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tvModifyPsd:
-
+                startActivity(new Intent(MySettingActivity.this, ModifyPasswordActivity.class));
                 break;
             case R.id.tvMessageSet:
 
@@ -69,7 +74,9 @@ public class MySettingActivity extends BaseActivity {
             case R.id.tvLogOut:
                 // 设置退出登陆
                 SPUtils.getInstance(Constant.SHARED_NAME).clear();
-                RxBus.getInstance().post(new LoginSuccess());
+                EventModel event = new EventModel();
+                event.isLogout = true;
+                RxBus.getInstance().post(event);
                 finish();
                 break;
         }

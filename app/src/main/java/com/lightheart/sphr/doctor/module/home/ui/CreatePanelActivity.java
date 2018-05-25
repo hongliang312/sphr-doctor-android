@@ -25,7 +25,6 @@ import com.lightheart.sphr.doctor.bean.CreatePanelDoctorParam;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
-import com.lightheart.sphr.doctor.bean.HospitalsModel;
 import com.lightheart.sphr.doctor.module.home.adapter.PanelGridAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.CreatePanelContract;
 import com.lightheart.sphr.doctor.module.home.presenter.CreatePanelPresenter;

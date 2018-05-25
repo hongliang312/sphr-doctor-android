@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;

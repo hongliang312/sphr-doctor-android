@@ -109,6 +109,8 @@
         <activity android:name=".module.my.ui.AreaActivity" />
         <activity android:name=".module.my.ui.DepartmentActivity" />
         <activity android:name=".module.contracts.ui.ScanActivity" />
+        <activity android:name=".module.home.ui.PanelMessageListActivity" />
+        <activity android:name=".module.my.ui.ModifyPasswordActivity" />
     </application>
 
 </manifest>

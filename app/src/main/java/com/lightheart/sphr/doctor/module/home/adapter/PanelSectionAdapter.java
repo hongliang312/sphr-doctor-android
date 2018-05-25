@@ -52,7 +52,9 @@ public class PanelSectionAdapter extends BaseSectionQuickAdapter<PanelSection, B
         }
         helper.setText(R.id.tvImage, TextUtils.isEmpty(panelsModel.getDtmAroName()) ? "" : panelsModel.getDtmAroName().substring(0, 2));
         helper.setText(R.id.tvPanelName, TextUtils.isEmpty(panelsModel.getDtmAroName()) ? "" : panelsModel.getDtmAroName());
-        helper.setText(R.id.tvNum, panelsModel.getDoctorList().size() + "  加入");
+        if (panelsModel.getDoctorList() != null){
+            helper.setText(R.id.tvNum, panelsModel.getDoctorList().size() + "  加入");
+        }
         helper.setVisible(R.id.ivAddPanel, !panelsModel.isAdded());
         LinearLayout llPanel = helper.getView(R.id.llPanel);
         llPanel.setOnClickListener(new View.OnClickListener() {

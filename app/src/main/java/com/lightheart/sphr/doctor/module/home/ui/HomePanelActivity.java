@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.HomePanelModel;
@@ -34,7 +35,7 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
     @BindView(R.id.bt_sub)
-    Button mRegiste;
+    Button mMessage;
     @BindView(R.id.common_toolbar_title_tv)
     TextView mTitleTv;
     @BindView(R.id.swipeRefreshLayout)
@@ -56,7 +57,7 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mRegiste, R.string.panel_manage, true, R.string.mes);
+        initToolbar(mToolbar, mTitleTv, mMessage, R.string.panel_manage, true, R.string.mes);
 
         mPanelSectionAdapter = new PanelSectionAdapter(R.layout.item_panel, R.layout.section_panel, panelSectionList);
 
@@ -66,6 +67,7 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
         tvCreate.setText(getString(R.string.create_panel));
         tvCreate.setOnClickListener(this);
         mPanelSectionAdapter.addFooterView(footerView);
+        mMessage.setOnClickListener(this);
 
         // 设置RecyclerView
         mRvPanels.setLayoutManager(new LinearLayoutManager(this));
@@ -112,8 +114,15 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
 
     @Override
     public void onClick(View view) {
-        // 创建专家组
-        startActivity(new Intent(HomePanelActivity.this, CreatePanelActivity.class));
+        switch (view.getId()) {
+            case R.id.bt_sub:
+                startActivity(new Intent(HomePanelActivity.this, PanelMessageListActivity.class));
+                break;
+            case R.id.tvCreate:
+                // 创建专家组
+                startActivity(new Intent(HomePanelActivity.this, CreatePanelActivity.class));
+                break;
+        }
     }
 
     @Override

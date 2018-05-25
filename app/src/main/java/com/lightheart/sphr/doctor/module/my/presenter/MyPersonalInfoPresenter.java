@@ -4,7 +4,6 @@ import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.DoctorModel;
 import com.lightheart.sphr.doctor.bean.HospitalsModel;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;

@@ -40,7 +40,6 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvNewContracts)
     RecyclerView mRvNewContracts;
-    //    private ContractsAdapter mContractsAdapter;
     @Inject
     ContractsAdapter mContractsAdapter;
 
@@ -61,7 +60,6 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
         mContractsAdapter.initData(this, "APPLY");
         //  设置RecyclerView
         mRvNewContracts.setLayoutManager(new LinearLayoutManager(this));
-//        mContractsAdapter = new ContractsAdapter(this, R.layout.item_doc_contract, "APPLY");
         mRvNewContracts.setAdapter(mContractsAdapter);
 
         mContractsAdapter.setOnSlideItemListener(this);

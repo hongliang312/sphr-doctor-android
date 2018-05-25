@@ -35,7 +35,6 @@ import com.lightheart.sphr.doctor.module.home.ui.ClipImageActivity;
 import com.lightheart.sphr.doctor.module.my.contract.AuthenticationContract;
 import com.lightheart.sphr.doctor.module.my.presenter.AuthenticationPresenter;
 import com.lightheart.sphr.doctor.utils.FileUtil;
-import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 
 import java.io.File;
 import java.util.List;
@@ -50,8 +49,6 @@ import static com.lightheart.sphr.doctor.app.Constant.RC_CAMERA_PERM;
 import static com.lightheart.sphr.doctor.app.Constant.RC_READ_EXTERNAL_STORAGE;
 import static com.lightheart.sphr.doctor.app.Constant.REQUEST_CAPTURE;
 import static com.lightheart.sphr.doctor.app.Constant.REQUEST_CROP_PHOTO;
-import static com.lightheart.sphr.doctor.app.Constant.REQUEST_DEPARTMENT;
-import static com.lightheart.sphr.doctor.app.Constant.REQUEST_DISTRACT;
 import static com.lightheart.sphr.doctor.app.Constant.REQUEST_PICK;
 import static com.lightheart.sphr.doctor.utils.FileUtil.getRealFilePathFromUri;
 

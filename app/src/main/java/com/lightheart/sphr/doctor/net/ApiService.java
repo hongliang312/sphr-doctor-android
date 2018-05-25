@@ -6,6 +6,7 @@ import com.lightheart.sphr.doctor.bean.AreaModel;
 import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
 import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
+import com.lightheart.sphr.doctor.bean.CreatePanelDoctorParam;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DetailsBean;
@@ -21,6 +22,8 @@ import com.lightheart.sphr.doctor.bean.Invite2PanelParam;
 import com.lightheart.sphr.doctor.bean.IsFriendModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.ModifyPsdParam;
+import com.lightheart.sphr.doctor.bean.PanelMessageModel;
 import com.lightheart.sphr.doctor.bean.PanelRequestParams;
 import com.lightheart.sphr.doctor.bean.PanelShareModel;
 import com.lightheart.sphr.doctor.bean.PanelShareParam;
@@ -41,7 +44,6 @@ import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
 import com.lightheart.sphr.doctor.bean.TitlesModel;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
 import com.lightheart.sphr.doctor.bean.UntreatedRequestParams;
-import com.lightheart.sphr.doctor.bean.User;
 
 import java.util.List;
 
@@ -54,7 +56,7 @@ public interface ApiService {
     /**
      * 登录
      *
-     * @return User
+     * @return DoctorBean
      */
     @POST("user/login")
     Observable<DataResponse<DoctorBean>> login(@Body LoginRequest parmas);
@@ -62,10 +64,10 @@ public interface ApiService {
     /**
      * 验证码登录
      *
-     * @return User
+     * @return DoctorBean
      */
     @POST("auth/code/login")
-    Observable<DataResponse<User>> authCodeLogin(@Body LoginRequest parmas);
+    Observable<DataResponse<DoctorBean>> authCodeLogin(@Body LoginRequest parmas);
 
     /**
      * 发送验证码
@@ -86,18 +88,18 @@ public interface ApiService {
     /**
      * 注册
      *
-     * @return User
+     * @return DoctorBean
      */
     @POST("user/register")
-    Observable<DataResponse<User>> register(@Body LoginRequest parmas);
+    Observable<DataResponse<DoctorBean>> register(@Body LoginRequest parmas);
 
     /**
      * 修改密码
      *
-     * @return User
+     * @return DoctorBean
      */
     @POST("user/forgetpwd")
-    Observable<DataResponse<User>> modifyPsd(@Body LoginRequest parmas);
+    Observable<DataResponse<DoctorBean>> modifyPsd(@Body LoginRequest parmas);
 
     /**
      * 获取首页信息
@@ -360,7 +362,44 @@ public interface ApiService {
     @POST("dtmAro/inviteDtms")
     Observable<DataResponse<Object>> invite2Panel(@Body Invite2PanelParam param);
 
+    /**
+     * 创建专家组 dtmAro/getdtmApplyList
+     *
+     * @return Object
+     */
     @POST("dtmAro/addDtmAro")
     Observable<DataResponse<Object>> createPanel(@Body CreatePanelParam param);
+
+    /**
+     * 获取专家组消息 dtmAro/updateApplyDtm
+     *
+     * @return Object
+     */
+    @POST("dtmAro/getdtmApplyList")
+    Observable<DataResponse<List<PanelMessageModel>>> getDtmApplyList(@Body CreatePanelDoctorParam param);
+
+    /**
+     * 同意加入专家组 user/token
+     *
+     * @return Object
+     */
+    @POST("dtmAro/updateApplyDtm")
+    Observable<DataResponse<Object>> updateApplyDtm(@Body PanelMessageModel param);
+
+    /**
+     * 获取token user/changepwd
+     *
+     * @return String
+     */
+    @POST("user/token")
+    Observable<DataResponse<String>> getToken(@Body LoginSuccess param);
+
+    /**
+     * 修改密码
+     *
+     * @return Object
+     */
+    @POST("user/changepwd")
+    Observable<DataResponse<Object>> modifyPsd(@Body ModifyPsdParam param);
 
 }

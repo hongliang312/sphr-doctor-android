@@ -65,10 +65,6 @@
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
 
         <TextView
             android:id="@+id/tvLogOut"

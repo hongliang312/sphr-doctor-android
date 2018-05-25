@@ -21,9 +21,9 @@ import com.google.gson.Gson;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
+import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.EventModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
-import com.lightheart.sphr.doctor.bean.LoginSuccess;
-import com.lightheart.sphr.doctor.bean.User;
 import com.lightheart.sphr.doctor.module.main.contract.RegisterContract;
 import com.lightheart.sphr.doctor.module.main.presenter.RegisterPresenter;
 import com.lightheart.sphr.doctor.utils.CheckContentUtil;
@@ -65,8 +65,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     TextInputLayout mTilPassword;
     @BindView(R.id.etPassword)
     TextInputEditText etPassword;
-    @BindView(R.id.btnRegister)
-    Button btnRegister;
+    @BindView(R.id.tvRegister)
+    TextView tvRegister;
     @BindView(R.id.llTermUse)
     LinearLayout mLlTermUse;
     @BindView(R.id.tvTermUse)
@@ -92,30 +92,23 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         mFlag = getIntent().getStringExtra("mFlag");
         if (TextUtils.equals(mFlag, "REGISTER")) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.register, false, 0);
-            btnRegister.setText(R.string.register);
+            tvRegister.setText(R.string.register);
             mLlTermUse.setVisibility(View.VISIBLE);
             mTilPassword.setVisibility(View.VISIBLE);
         } else if (TextUtils.equals(mFlag, "MODIFYPSD")) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.forgetPsd, false, 0);
-            btnRegister.setText(R.string.modifyPsd);
+            tvRegister.setText(R.string.modifyPsd);
             mLlTermUse.setVisibility(View.GONE);
             mTilPassword.setVisibility(View.VISIBLE);
         } else if (TextUtils.equals(mFlag, "VERCODELOGIN")) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.verificationCodeLogin, false, 0);
-            btnRegister.setText(R.string.verificationCodeLogin);
+            tvRegister.setText(R.string.verificationCodeLogin);
             mLlTermUse.setVisibility(View.GONE);
             mTilPassword.setVisibility(View.GONE);
         }
-        // 登陆成功重新设置用户新
-        RxBus.getInstance().toFlowable(LoginSuccess.class).subscribe(new Consumer<LoginSuccess>() {
-            @Override
-            public void accept(LoginSuccess event) throws Exception {
-                finish();
-            }
-        });
     }
 
-    @OnClick({R.id.tvAuthCode, R.id.btnRegister})
+    @OnClick({R.id.tvAuthCode, R.id.tvRegister})
     public void onClick(View view) {
         String mobile = etMobile.getText().toString();
         String authCode = etAuthCode.getText().toString();
@@ -133,7 +126,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
                     mPresenter.sendAuthCode(params);
                 }
                 break;
-            case R.id.btnRegister:
+            case R.id.tvRegister:
                 LoginRequest verCodeParma = new LoginRequest();
                 LoginRequest.Data authCodeData = new LoginRequest.Data();
                 if (TextUtils.equals(mFlag, "VERCODELOGIN")) {
@@ -231,9 +224,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     }
 
     @Override
-    public void registerSuccess(User user) {
+    public void registerSuccess(DoctorBean user) {
         new AlertDialog.Builder(this)
-                .setTitle(R.string.app_name)
+                .setTitle(R.string.appName)
                 .setMessage("请前往登录页面重新登录！")
                 .setIcon(R.mipmap.ic_launcher)
                 .setCancelable(false)
@@ -246,11 +239,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     }
 
     @Override
-    public void verCodeSuccess(User user) {
+    public void verCodeSuccess(DoctorBean user) {
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.LOGIN_KEY, true);
-        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.mobile);
+        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.getMobile());
+        SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.USER_KEY, user.getId());
         // 登陆成功通知其他界面刷新
-        RxBus.getInstance().post(user);
+        EventModel event = new EventModel();
+        event.isLogin = true;
+        RxBus.getInstance().post(event);
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out);
     }

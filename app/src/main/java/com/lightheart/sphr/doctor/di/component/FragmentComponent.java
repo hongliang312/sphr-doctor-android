@@ -11,6 +11,7 @@ import com.lightheart.sphr.doctor.module.home.ClientcenteredCounseling;
 import com.lightheart.sphr.doctor.module.home.HomeFragment;
 import com.lightheart.sphr.doctor.module.home.ui.PanelMemberFragment;
 import com.lightheart.sphr.doctor.module.home.ui.PanelShareFragment;
+import com.lightheart.sphr.doctor.module.home.ui.PatientsFragment;
 import com.lightheart.sphr.doctor.module.my.MyFragment;
 
 import dagger.Component;
@@ -37,6 +38,8 @@ public interface FragmentComponent {
     void inject(ClientcenteredCounseling fragment);
 
     void inject(PanelMemberFragment fragment);
+
+    void inject(PatientsFragment fragment);
 
 
 }

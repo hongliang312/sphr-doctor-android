@@ -2,12 +2,8 @@ package com.lightheart.sphr.doctor.module.my.contract;
 
 import com.lightheart.sphr.doctor.base.AuthParam;
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.DoctorModel;
-import com.lightheart.sphr.doctor.bean.HospitalsModel;
-import com.lightheart.sphr.doctor.bean.TitlesModel;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * Created by fucp on 2018-5-23.

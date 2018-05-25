@@ -16,9 +16,8 @@ import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
+import com.lightheart.sphr.doctor.bean.EventModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
-import com.lightheart.sphr.doctor.bean.LoginSuccess;
-import com.lightheart.sphr.doctor.bean.User;
 import com.lightheart.sphr.doctor.module.main.contract.LoginContract;
 import com.lightheart.sphr.doctor.module.main.presenter.LoginPresenter;
 import com.lightheart.sphr.doctor.utils.CheckContentUtil;
@@ -69,10 +68,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         mEtPassword.setText(SPUtils.getInstance(Constant.SHARED_NAME).getString(Constant.PASSWORD_KEY));
         mTvForgetPsd.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         // 登陆成功重新设置用户新
-        RxBus.getInstance().toFlowable(DoctorBean.class).subscribe(new Consumer<DoctorBean>() {
+        RxBus.getInstance().toFlowable(EventModel.class).subscribe(new Consumer<EventModel>() {
             @Override
-            public void accept(DoctorBean event) throws Exception {
-                finish();
+            public void accept(EventModel event) throws Exception {
+                if (event.isLogin) finish();
             }
         });
     }
@@ -84,7 +83,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.PASSWORD_KEY, mEtPassword.getText().toString());
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.USER_KEY, user.getId());
         // 登陆成功通知其他界面刷新
-        RxBus.getInstance().post(user);
+        EventModel event = new EventModel();
+        event.isLogin = true;
+        RxBus.getInstance().post(event);
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out);
     }

@@ -4,7 +4,6 @@ import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
-import com.lightheart.sphr.doctor.bean.User;
 import com.lightheart.sphr.doctor.module.main.contract.LoginContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;

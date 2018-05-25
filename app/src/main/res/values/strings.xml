@@ -100,6 +100,7 @@
     <string name="qr_code">二维码</string>
     <string name="accept">接受</string>
     <string name="add_contract">添加好友</string>
+    <string name="agree">同意</string>
     <string name="please_input_phone_num">请输入手机号</string>
 
 
@@ -161,6 +162,11 @@
     <string name="clipping">剪裁</string>
     <string name="photograph">拍照</string>
     <string name="select_from_album">从相册选择</string>
+    <string name="please_input_old_psd">请输入原密码</string>
+    <string name="please_input_new_psd">请输入新密码</string>
+    <string name="please_input_new_psd_one_more">请再次输入新密码</string>
+    <string name="input_new_psd_not_fit">您输入的新密码不一致</string>
+    <string name="modify_success_to_login">密码修改成功，请重新登录&#8230;</string>
 
     <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
 

@@ -1,24 +1,18 @@
 package com.lightheart.sphr.doctor.module.home.ui;
 
-import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.PatientsModel;
-import com.lightheart.sphr.doctor.module.home.activity.PatientRecordsActivity;
-import com.lightheart.sphr.doctor.module.home.adapter.PatientsAdapter;
-import com.lightheart.sphr.doctor.module.home.contract.PatientManageContract;
-import com.lightheart.sphr.doctor.module.home.presenter.PatientsPresenter;
+import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.view.CommonTabLayout;
 import com.lightheart.sphr.doctor.view.CustomTabEntity;
 import com.lightheart.sphr.doctor.view.OnTabSelectListener;
@@ -27,8 +21,6 @@ import com.lightheart.sphr.doctor.view.TabEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
 
 /**
@@ -36,7 +28,7 @@ import butterknife.BindView;
  * Description : 患者管理
  */
 
-public class HomePatientManageActivity extends BaseActivity<PatientsPresenter> implements PatientManageContract.View, OnTabSelectListener, View.OnClickListener, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.OnItemClickListener {
+public class HomePatientManageActivity extends BaseActivity implements OnTabSelectListener, View.OnClickListener, ViewPager.OnPageChangeListener {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -44,20 +36,18 @@ public class HomePatientManageActivity extends BaseActivity<PatientsPresenter> i
     Button mRegiste;
     @BindView(R.id.common_toolbar_title_tv)
     TextView mTitleTv;
-    @BindView(R.id.swipeRefreshLayout)
-    SwipeRefreshLayout mSwipeRefreshLayout;
-    @BindView(R.id.rvPatients)
-    RecyclerView mRvPatients;
-    @Inject
-    PatientsAdapter mPatientsAdapter;
+    @BindView(R.id.tabPatient)
+    CommonTabLayout tabPatientSub;
+    @BindView(R.id.vpPatients)
+    ViewPager vpPatientSubPage;
+
     private final String[] mTitles = {"3个月", "3个月-1年", "1年以上"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private int[] mIconSelectIds = {
             R.drawable.ic_home_black_24dp, R.drawable.ic_home_black_24dp, R.drawable.ic_home_black_24dp};
     private int[] mIconUnselectIds = {
             R.drawable.ic_home_black_24dp, R.drawable.ic_home_black_24dp, R.drawable.ic_home_black_24dp};
-    private int mPage = 1;
-    private int timeCategory = 1;
+    private List<BaseFragment> mFragmentList = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -66,60 +56,30 @@ public class HomePatientManageActivity extends BaseActivity<PatientsPresenter> i
 
     @Override
     protected void initInjector() {
-        mActivityComponent.inject(this);
     }
 
     @Override
     protected void initView() {
         initToolbar(mToolbar, mTitleTv, mRegiste, R.string.patient_manage, false, 0);
 
-        //  设置RecyclerView
-        mRvPatients.setLayoutManager(new LinearLayoutManager(this));
-        mRvPatients.setAdapter(mPatientsAdapter);
-
-        // 设置HeadView
-        View mPatientHeadView = LayoutInflater.from(this).inflate(R.layout.layout_patient_manage_head, null, false);
-        TextView tvSearch = mPatientHeadView.findViewById(R.id.tvSearch);
-        CommonTabLayout tabPatient = mPatientHeadView.findViewById(R.id.tabPatient);
-        mPatientsAdapter.addHeaderView(mPatientHeadView);
-        tvSearch.setOnClickListener(this);
-
         mTabEntities.clear();
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
-        tabPatient.setTabData(mTabEntities);
-        tabPatient.setCurrentTab(0);
-        tabPatient.setOnTabSelectListener(this);
 
-        mPatientsAdapter.setOnItemClickListener(this);
-        mPatientsAdapter.setOnLoadMoreListener(this);
-        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mFragmentList.clear();
+        int mPage = 1;
+        mFragmentList.add(PatientsFragment.newInstance(1, mPage));
+        mFragmentList.add(PatientsFragment.newInstance(2, mPage));
+        mFragmentList.add(PatientsFragment.newInstance(3, mPage));
 
-        assert mPresenter != null;
-        mPresenter.loadPatientData(mPage, timeCategory);
+        MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        vpPatientSubPage.setAdapter(mAdapter);
+        tabPatientSub.setTabData(mTabEntities);
+        tabPatientSub.setCurrentTab(0);
+        tabPatientSub.setOnTabSelectListener(this);
+        vpPatientSubPage.addOnPageChangeListener(this);
 
-    }
-
-    @Override
-    public void onTabSelect(int position) {
-        mPage = 1;
-        timeCategory = position + 1;
-        if (position == 0) {
-            assert mPresenter != null;
-            mPresenter.loadPatientData(mPage, timeCategory);
-        } else if (position == 1) {
-            assert mPresenter != null;
-            mPresenter.loadPatientData(mPage, timeCategory);
-        } else if (position == 2) {
-            assert mPresenter != null;
-            mPresenter.loadPatientData(mPage, timeCategory);
-        }
-    }
-
-    @Override
-    public void setPatients(List<PatientsModel.PatientModel> patientModels, int loadType) {
-        setLoadDataResult(mPatientsAdapter, mSwipeRefreshLayout, patientModels, loadType);
     }
 
     @Override
@@ -132,32 +92,53 @@ public class HomePatientManageActivity extends BaseActivity<PatientsPresenter> i
     }
 
     @Override
-    public void onLoadMoreRequested() {
-        mPage++;
-        assert mPresenter != null;
-        mPresenter.loadMore(mPage, timeCategory);
-    }
-
-    @Override
-    public void onRefresh() {
-        assert mPresenter != null;
-        mPresenter.refresh(mPage, timeCategory);
+    public void onTabSelect(int position) {
+        vpPatientSubPage.setCurrentItem(position);
     }
 
     @Override
     public void onTabReselect(int position) {
-
     }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        tabPatientSub.setCurrentTab(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+    }
+
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+        MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+    }
+
 
     @Override
     protected boolean showHomeAsUp() {
         return true;
     }
 
-    @Override
-    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        PatientsModel.PatientModel item = (PatientsModel.PatientModel) adapter.getItem(position);
-        assert item != null;
-        startActivity(new Intent(HomePatientManageActivity.this, PatientRecordsActivity.class).putExtra("id", item.duid));
-    }
+
 }

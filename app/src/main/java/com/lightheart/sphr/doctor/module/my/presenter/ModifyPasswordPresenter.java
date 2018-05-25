@@ -1,46 +1,45 @@
-package com.lightheart.sphr.doctor.module.home.presenter;
+package com.lightheart.sphr.doctor.module.my.presenter;
 
 import com.lightheart.sphr.doctor.base.BasePresenter;
-import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.DiseaseModel;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
-import com.lightheart.sphr.doctor.module.home.contract.CreatePanelContract;
+import com.lightheart.sphr.doctor.bean.ModifyPsdParam;
+import com.lightheart.sphr.doctor.module.my.contract.ModifyPasswordContract;
+import com.lightheart.sphr.doctor.module.my.contract.ModifyPasswordContract.Presenter;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.functions.Consumer;
 
 /**
- * Created by fucp on 2018-4-23.
+ * Created by fucp on 2018-5-25.
  * Description :
  */
 
-public class CreatePanelPresenter extends BasePresenter<CreatePanelContract.View> implements CreatePanelContract.Presenter {
+public class ModifyPasswordPresenter extends BasePresenter<ModifyPasswordContract.View> implements Presenter {
 
     @Inject
-    public CreatePanelPresenter() {
+    public ModifyPasswordPresenter() {
     }
 
     @Override
-    public void loadDiseaseData() {
+    public void getToken() {
         RetrofitManager.create(ApiService.class)
-                .getDiseases(new LoginSuccess())
-                .compose(RxSchedulers.<DataResponse<List<DiseaseModel>>>applySchedulers())
-                .compose(mView.<DataResponse<List<DiseaseModel>>>bindToLife())
-                .subscribe(new Consumer<DataResponse<List<DiseaseModel>>>() {
+                .getToken(new LoginSuccess())
+                .compose(RxSchedulers.<DataResponse<String>>applySchedulers())
+                .compose(mView.<DataResponse<String>>bindToLife())
+                .subscribe(new Consumer<DataResponse<String>>() {
                     @Override
-                    public void accept(DataResponse<List<DiseaseModel>> response) throws Exception {
+                    public void accept(DataResponse<String> response) throws Exception {
                         if (response.getResultcode() == 200) {
-                            mView.setDiseases(response.getContent());
+                            mView.getToken(response.getContent());
                         } else {
-                            mView.showFaild(String.valueOf(response.getResultmsg()));
+                            mView.showFaild(response.getResultmsg());
                         }
+
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -51,16 +50,16 @@ public class CreatePanelPresenter extends BasePresenter<CreatePanelContract.View
     }
 
     @Override
-    public void createPanel(CreatePanelParam param) {
+    public void modifyPsd(ModifyPsdParam param) {
         RetrofitManager.create(ApiService.class)
-                .createPanel(param)
+                .modifyPsd(param)
                 .compose(RxSchedulers.<DataResponse<Object>>applySchedulers())
                 .compose(mView.<DataResponse<Object>>bindToLife())
                 .subscribe(new Consumer<DataResponse<Object>>() {
                     @Override
                     public void accept(DataResponse<Object> response) throws Exception {
                         if (response.getResultcode() == 200) {
-                            mView.createPanelSuccess();
+                            mView.successModify();
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }

@@ -18,6 +18,7 @@ import com.lightheart.sphr.doctor.module.home.ui.HomeClinicalRecruitActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.module.home.ui.PanelListActivity;
+import com.lightheart.sphr.doctor.module.home.ui.PanelMessageListActivity;
 import com.lightheart.sphr.doctor.module.home.ui.SelectContactActivity;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.module.main.ui.RegisterActivity;
@@ -25,6 +26,7 @@ import com.lightheart.sphr.doctor.module.my.ui.AreaActivity;
 import com.lightheart.sphr.doctor.module.my.ui.AuthenticationActivity;
 import com.lightheart.sphr.doctor.module.my.ui.DepartmentActivity;
 import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
+import com.lightheart.sphr.doctor.module.my.ui.ModifyPasswordActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyPersonalInfoActivity;
 
@@ -58,8 +60,6 @@ public interface ActivityComponent {
 
     void inject(FeedBackActivity activity);
 
-    void inject(HomePatientManageActivity activity);
-
     void inject(HomePanelActivity activity);
 
     void inject(PanelListActivity activity);
@@ -83,5 +83,9 @@ public interface ActivityComponent {
     void inject(DepartmentActivity activity);
 
     void inject(AuthenticationActivity activity);
+
+    void inject(PanelMessageListActivity activity);
+
+    void inject(ModifyPasswordActivity activity);
 
 }
