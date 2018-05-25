@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/dp_8"
         android:paddingTop="@dimen/dp_8"
+        android:textColor="@color/title_black"
         android:textSize="@dimen/big_small"
         android:textStyle="bold"
         tools:text="@string/clinical_trial" />

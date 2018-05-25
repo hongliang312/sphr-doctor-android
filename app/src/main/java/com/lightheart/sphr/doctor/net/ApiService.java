@@ -39,7 +39,7 @@ import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.bean.TestDetails;
-import com.lightheart.sphr.doctor.bean.TestingManagement;
+import com.lightheart.sphr.doctor.bean.ClinicalTrailModel;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
 import com.lightheart.sphr.doctor.bean.TitlesModel;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
@@ -164,7 +164,7 @@ public interface ApiService {
      */
 
     @POST("clinicalTrial/clinicalTrialsByDuid")
-    Observable<DataResponse<List<TestingManagement>>> Testinglist(@Body TextsingRequestParams requestParams);
+    Observable<DataResponse<List<ClinicalTrailModel>>> Testinglist(@Body TextsingRequestParams requestParams);
 
     /**
      * @return TestDetails

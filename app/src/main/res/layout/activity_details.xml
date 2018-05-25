@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.lightheart.sphr.doctor.module.home.activity.TestDetailsActivity">
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,7 +13,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="@dimen/dp_0">
 
-        <include layout="@layout/common_toolbar"/>
+        <include layout="@layout/common_toolbar" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -27,44 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
+            android:paddingBottom="@dimen/dp_20">
 
-            <include layout="@layout/testdetails_head"/>
+            <include layout="@layout/testdetails_head" />
 
-            <include layout="@layout/layout_clinical_recruit_dinfo"/>
+            <include layout="@layout/layout_clinical_recruit_dinfo" />
 
-            <include layout="@layout/testdetails_midder"/>
+            <include layout="@layout/testdetails_foot" />
 
-            <include layout="@layout/testdetails_foot"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/message"
-                android:layout_marginStart="@dimen/dp_10"
-                android:textColor="@color/colorPrimaryDayAccent"
-                android:textSize="@dimen/small"
-                android:layout_marginTop="@dimen/dp_12"
-                android:background="@color/white"
-                />
-
-            <include layout="@layout/testdetails_formhead"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/testrecycler"
-                    android:background="@color/white"
-                    />
-            </LinearLayout>
-
-            <include layout="@layout/testdetails_formfoot"/>
+            <include layout="@layout/testdetails_formhead" />
 
         </LinearLayout>
 

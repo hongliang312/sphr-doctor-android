@@ -8,15 +8,14 @@ import com.lightheart.sphr.doctor.di.scope.ContextLife;
 import com.lightheart.sphr.doctor.di.scope.PerActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.NewContractActivity;
 import com.lightheart.sphr.doctor.module.contracts.ui.SearchPhoneActivity;
-import com.lightheart.sphr.doctor.module.home.activity.PatientRecordsActivity;
-import com.lightheart.sphr.doctor.module.home.activity.TelephoneDetailsActivity;
-import com.lightheart.sphr.doctor.module.home.activity.TestDetailsActivity;
-import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
+import com.lightheart.sphr.doctor.module.home.ui.HomeConsultSubDetailActivity;
+import com.lightheart.sphr.doctor.module.home.ui.ClinicalTrailManageDetailActivity;
+import com.lightheart.sphr.doctor.module.home.ui.PatientRecordsActivity;
+import com.lightheart.sphr.doctor.module.home.ui.ClinicalTrailManageActivity;
 import com.lightheart.sphr.doctor.module.home.ui.ClinicalRecruitDetailActivity;
 import com.lightheart.sphr.doctor.module.home.ui.CreatePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomeClinicalRecruitActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
-import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.module.home.ui.PanelListActivity;
 import com.lightheart.sphr.doctor.module.home.ui.PanelMessageListActivity;
 import com.lightheart.sphr.doctor.module.home.ui.SelectContactActivity;
@@ -48,9 +47,9 @@ public interface ActivityComponent {
 
     void inject(RegisterActivity activity);
 
-    void inject(TestingManagementActivity activity);
+    void inject(ClinicalTrailManageActivity activity);
 
-    void inject(TestDetailsActivity activity);
+    void inject(ClinicalTrailManageDetailActivity activity);
 
     void inject(NewContractActivity activity);
 
@@ -72,7 +71,7 @@ public interface ActivityComponent {
 
     void inject(ClinicalRecruitDetailActivity activity);
 
-    void inject(TelephoneDetailsActivity activity);
+    void inject(HomeConsultSubDetailActivity activity);
 
     void inject(PatientRecordsActivity activity);
 

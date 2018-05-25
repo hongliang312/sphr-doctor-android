@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.lightheart.sphr.doctor.module.home.activity.OnlineConsultantActivity">
+    tools:context="com.lightheart.sphr.doctor.module.home.ui.HomeConsultActivity">
 
 
     <include layout="@layout/common_toolbar"></include>

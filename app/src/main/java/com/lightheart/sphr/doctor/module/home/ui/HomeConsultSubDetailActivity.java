@@ -1,4 +1,4 @@
-package com.lightheart.sphr.doctor.module.home.activity;
+package com.lightheart.sphr.doctor.module.home.ui;
 
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
@@ -29,7 +29,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPresenter> implements TelephoneDetailsContract.View{
+/**
+ *
+ * 在线咨询和电话咨询详情页，分待完成和已完成
+ */
+
+public class HomeConsultSubDetailActivity extends BaseActivity<TelephoneDetailsPresenter> implements TelephoneDetailsContract.View {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -59,7 +64,7 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
     TextView submit;
     private TelephoneDetailsAdapter telephoneDetailsAdapter;
     private List<TelephoneDetailsBean.ImgsBean> contentt = new ArrayList<>();
-    private String type="";
+    private String type = "";
 
     @Override
     protected int getLayoutId() {
@@ -68,29 +73,29 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
 
     @Override
     protected void initInjector() {
-     mActivityComponent.inject(this);
+        mActivityComponent.inject(this);
     }
 
     @Override
     protected void initView() {
 
-        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.consult_online,false,0);
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
         String id = getIntent().getStringExtra("id");
         type = getIntent().getStringExtra("type");
         TelephoneDetailsRequestParams telephondetails = new TelephoneDetailsRequestParams();
         telephondetails.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        telephondetails.id= Integer.valueOf(id);
-        if("SER_CST_S_ING".equals(type)){
+        telephondetails.id = Integer.valueOf(id);
+        if ("SER_CST_S_ING".equals(type)) {
             linealayout.setVisibility(View.VISIBLE);
             linea.setVisibility(View.GONE);
             layout.setVisibility(View.GONE);
-        }else {
+        } else {
             linealayout.setVisibility(View.GONE);
             linea.setVisibility(View.VISIBLE);
             layout.setVisibility(View.VISIBLE);
         }
 
-        Log.i("type",""+type.toString());
+        Log.i("type", "" + type.toString());
 
         assert mPresenter != null;
         mPresenter.loadTelephoneDetailsData(telephondetails);
@@ -99,39 +104,39 @@ public class TelephoneDetailsActivity extends BaseActivity<TelephoneDetailsPrese
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(TelephoneDetailsActivity.this, PatientRecordsActivity.class);
-                intent.putExtra("id",contentt.get(0).getId()+"");
+                Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
+                intent.putExtra("id", contentt.get(0).getId());
                 startActivity(intent);
-                Log.i("cccc",""+contentt.get(0).getId()+"");
+                Log.i("cccc", "" + contentt.get(0).getId() + "");
             }
         });
 
 
     }
 
-     @OnClick(R.id.Submit)
-     public void onClick(View view) {
-         ReplyConsultingBean replyConsultingbean = new ReplyConsultingBean();
-         replyConsultingbean.setResultcode(SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY));
-         replyConsultingbean.setContent(feedback.getText().toString().trim());
+    @OnClick(R.id.Submit)
+    public void onClick(View view) {
+        ReplyConsultingBean replyConsultingbean = new ReplyConsultingBean();
+        replyConsultingbean.setResultcode(SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY));
+        replyConsultingbean.setContent(feedback.getText().toString().trim());
 
-         if (TextUtils.isEmpty(replyConsultingbean.getContent())) {
-             ToastUtils.showShort(getString(R.string.feed_back_reply));
-             return;
-         }
-         assert mPresenter != null;
-         mPresenter.loadReplyConsultingData(replyConsultingbean);
-         feedback.setText(null);
-     }
+        if (TextUtils.isEmpty(replyConsultingbean.getContent())) {
+            ToastUtils.showShort(getString(R.string.feed_back_reply));
+            return;
+        }
+        assert mPresenter != null;
+        mPresenter.loadReplyConsultingData(replyConsultingbean);
+        feedback.setText(null);
+    }
 
 
     @Override
     public void setTelephoneDetails(TelephoneDetailsBean content) {
 
-        if(content !=null){
+        if (content != null) {
             contentt.clear();
             contentt.addAll(content.getImgs());
-            recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
             telephoneDetailsAdapter = new TelephoneDetailsAdapter(this, contentt);
             recyclerView.setAdapter(telephoneDetailsAdapter);
             conditiondescribe.setText(content.getContent());

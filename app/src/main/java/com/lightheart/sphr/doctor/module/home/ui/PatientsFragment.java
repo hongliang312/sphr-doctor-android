@@ -11,7 +11,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
-import com.lightheart.sphr.doctor.module.home.activity.PatientRecordsActivity;
 import com.lightheart.sphr.doctor.module.home.adapter.PatientsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.PatientManageContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PatientsPresenter;

@@ -1,4 +1,4 @@
-package com.lightheart.sphr.doctor.module.home.activity;
+package com.lightheart.sphr.doctor.module.home.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -12,14 +12,17 @@ import android.widget.TextView;
 
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.module.home.ClientcenteredCounseling;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class OnlineConsultantActivity extends BaseActivity{
+/**
+ * 在线咨询和电话咨询Tab页面
+ */
+
+public class HomeConsultActivity extends BaseActivity {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -40,12 +43,12 @@ public class OnlineConsultantActivity extends BaseActivity{
 
     @Override
     protected void initInjector() {
-      // mActivityComponent.inject(this);
+        // mActivityComponent.inject(this);
     }
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar,mTitleTv,mBtSub,R.string.consult_online,false,0);
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
         datas.add("待处理");
         datas.add("已处理");
         //适配器
@@ -61,26 +64,30 @@ public class OnlineConsultantActivity extends BaseActivity{
         public vpsp(FragmentManager fm) {
             super(fm);
         }
+
         //返回选项卡的文本 ，，，添加选项卡
         @Override
         public CharSequence getPageTitle(int position) {
             return datas.get(position);
         }
+
         //创建fragment对象并返回
         @Override
         public Fragment getItem(int position) {
-            ClientcenteredCounseling content = new ClientcenteredCounseling();
+            HomeConsultSubFragment content = new HomeConsultSubFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("name",datas.get(position));
+            bundle.putString("name", datas.get(position));
             content.setArguments(bundle);
             return content;
         }
+
         //返回数量
         @Override
         public int getCount() {
             return datas.size();
         }
     }
+
     @Override
     protected boolean showHomeAsUp() {
         return true;

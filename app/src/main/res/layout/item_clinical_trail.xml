@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_6"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp_10"
+    android:paddingEnd="@dimen/dp_14"
+    android:paddingStart="@dimen/dp_14"
+    android:paddingTop="@dimen/dp_10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingTop="@dimen/dp_6">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:textColor="@color/title_black"
+            android:textSize="@dimen/big_small"
+            android:textStyle="bold"
+            tools:text="@string/appName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_4"
+            android:drawableTop="@mipmap/details"
+            android:text="@string/particulars"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_4"
+        android:paddingTop="@dimen/dp_4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bindingUnit"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvBindUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_4"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recruit"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvRecruitNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_8"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/num" />
+
+        <View
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="@dimen/dp_14"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@color/theme_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testingstage"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvTrialStage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_8"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/num" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

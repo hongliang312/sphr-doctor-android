@@ -17,8 +17,8 @@ import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.HomeMoudleManage;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
-import com.lightheart.sphr.doctor.module.home.activity.OnlineConsultantActivity;
-import com.lightheart.sphr.doctor.module.home.activity.TestingManagementActivity;
+import com.lightheart.sphr.doctor.module.home.ui.HomeConsultActivity;
+import com.lightheart.sphr.doctor.module.home.ui.ClinicalTrailManageActivity;
 import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
@@ -182,7 +182,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 ToastUtils.showShort(R.string.tel_online);
                 break;
             case R.id.llOnlineConsult:
-                Intent intent = new Intent(getActivity(), OnlineConsultantActivity.class);
+                Intent intent = new Intent(getActivity(), HomeConsultActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tvClinicalMore:
@@ -205,7 +205,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                     startActivity(new Intent(getActivity(), HomePatientManageActivity.class));
                     break;
                 case "CLM":
-                    startActivity(new Intent(getActivity(), TestingManagementActivity.class));
+                    startActivity(new Intent(getActivity(), ClinicalTrailManageActivity.class));
                     break;
                 case "PANEL":
                     startActivity(new Intent(getActivity(), HomePanelActivity.class));
