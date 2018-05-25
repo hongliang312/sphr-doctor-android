@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-
     >
 
     <RelativeLayout
@@ -14,19 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="@dimen/dp_14"
-        android:layout_marginStart="@dimen/dp_3"
-        android:layout_marginEnd="@dimen/dp_4"
         >
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:layout_weight="1"
                 android:textColor="#fff"
                 android:gravity="center"
                 android:text="@string/projectlocation"
-                android:layout_width="0dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/dp_2"
                 />

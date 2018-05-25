@@ -1,16 +1,11 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
 import android.text.TextUtils;
-
 import com.blankj.utilcode.util.TimeUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
-import com.lightheart.sphr.doctor.module.home.activity.PatientRecordsActivity;
-
 import java.text.SimpleDateFormat;
-import java.util.List;
-
 import javax.inject.Inject;
 
 /**
@@ -29,7 +24,7 @@ public class PatientRecordAdapter extends BaseQuickAdapter<PatientRecordsBean.Ca
 
         String time= TimeUtils.millis2String((Long) item.getCreateTime(),new SimpleDateFormat("yyyy-MM-dd"));
         String timer= TimeUtils.millis2String((Long) item.getClinicTime(),new SimpleDateFormat("yyyy-MM-dd"));
-         helper.setText(R.id.organizingtime,item.getCreateTime() == 0 ? "" :time +"");
+      //   helper.setText(R.id.organizingtime,item.getCreateTime() == 0 ? "" :time +"");
          helper.setText(R.id.clinictime, item.getCreateTime() == 0? "" :timer +"");
          helper.setText(R.id.complaint,TextUtils.isEmpty(item.getChiefComplaint()) ? "" :item.getChiefComplaint());
          helper.setText(R.id.finaldiagnosis,TextUtils.isEmpty(item.getDiagnosis()) ? "" :item.getDiagnosis());

@@ -5,10 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    android:layout_marginLeft="@dimen/dp_3"
-    android:layout_marginRight="@dimen/dp_4"
-    >
 
+    >
     <View
         android:id="@+id/v"
         android:background="@color/orangee"
@@ -18,8 +16,7 @@
         android:id="@+id/r4"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginLeft="@dimen/dp_6"
-        android:layout_marginRight="@dimen/dp_6"
+
         >
         <LinearLayout
             android:orientation="horizontal"
@@ -28,18 +25,17 @@
             >
             <TextView
                 android:id="@+id/Total"
-                android:layout_weight="1"
                 android:textColor="#000"
                 android:gravity="center"
                 android:text="@string/total"
-                android:layout_width="0dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent" />
             <View
                 android:background="@color/orangee"
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"/>
             <LinearLayout
-                android:layout_width="91dp"
+                android:layout_width="100dp"
                 android:layout_height="130dp"
                 android:orientation="vertical"
                 >
@@ -104,11 +100,6 @@
                 android:layout_weight="1.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
-            <View
-                android:background="@color/orangee"
-                android:layout_width="0.5dp"
-                android:layout_height="match_parent"/>
-
             <View
                 android:background="@color/orangee"
                 android:layout_width="0.5dp"

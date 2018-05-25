@@ -1,7 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
-
 import android.text.TextUtils;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
@@ -12,7 +10,6 @@ import javax.inject.Inject;
 /**
  * Created by 知足 on 2018/5/23.
  */
-
 
 public class TestDetailsAdapter extends BaseQuickAdapter<TestDetails.CtrSiteAssignmentsBean,BaseViewHolder> {
 
@@ -30,7 +27,7 @@ public class TestDetailsAdapter extends BaseQuickAdapter<TestDetails.CtrSiteAssi
         helper.setText(R.id.reseach, TextUtils.isEmpty(item.getResearcher())? "":item.getResearcher());
         helper.setText(R.id.plannedNum,item.getPlannedNum() == 0 ? "" :item.getPlannedNum()+"");
         helper.setText(R.id.involvedNum,item.getInvolvedNum() == 0 ? "" :item.getInvolvedNum()+"");
-        float div = (float) div(item.getInvolvedNum(), item.getPlannedNum(), 1)*100;
+        float div = (float) div(item.getInvolvedNum(), item.getPlannedNum(), 2)*100;
         helper.setText(R.id.Thegrouprate,TextUtils.isEmpty(item.getContacts()) ? "" :div+"%");
         helper.setText(R.id.State,TextUtils.isEmpty(item.getProjectStatusName()) ? "" :item.getProjectStatusName());
         helper.setText(R.id.isStart,TextUtils.isEmpty(item.getIsStart()) ? "" :item.getIsStart());

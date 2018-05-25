@@ -20,39 +20,25 @@ import io.reactivex.functions.Consumer;
  */
 
 public class PatientRecordsPresenter extends BasePresenter<PatientRecordsContract.View> implements PatientRecordsContract.Presenter{
-public class PatientRecordsPresenter extends BasePresenter<PatientRecordsContract.View> implements PatientRecordsContract.Presenter {
-
-     @Inject
-    private boolean mIsRefresh;
-    private PatientRecordsRequestParams params = new PatientRecordsRequestParams();
 
     @Inject
     public PatientRecordsPresenter() {
-        this.mIsRefresh = true;
-        params.uid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+
     }
 
     @Override
-    public void loadPatientRecordsData(int id) {
-        params.id = id;
+    public void loadPatientRecordsData(PatientRecordsRequestParams Params) {
         RetrofitManager.create(ApiService.class)
-                .clientcentlist(params)
+                .clientcentlist(Params)
                 .compose(RxSchedulers.<DataResponse<PatientRecordsBean>>applySchedulers())
                 .compose(mView.<DataResponse<PatientRecordsBean>>bindToLife())
                 .subscribe(new Consumer<DataResponse<PatientRecordsBean>>() {
                     @Override
-                    public void accept(DataResponse<PatientRecordsBean> response) throws Exception {
-                        if (response.getResultcode() == 200) {
-                            int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
-                            mView.setPatientRecords(response.getContent(), loadType);
-                        } else {
-                            mView.showFaild(response.getResultmsg());
                     public void accept(DataResponse<PatientRecordsBean>response) throws Exception {
 
                         if(response.getResultcode() == 200){
 
                             mView.setPatientRecords(response.getContent());
-                            Log.i("dddd",""+response.getContent());
 
                         }else{
 
@@ -63,14 +49,10 @@ public class PatientRecordsPresenter extends BasePresenter<PatientRecordsContrac
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
                         mView.showFaild(throwable.getMessage());
+
                     }
                 });
-    }
-
-    @Override
-    public void refresh(int id) {
-        mIsRefresh = true;
-        loadPatientRecordsData(id);
     }
 }

@@ -108,7 +108,7 @@ public class TestDetailsActivity extends BaseActivity<TestDetailsPresenter> impl
                 for (int i=0;i<detailslist.size();i++){
                     TotalplannedSum+=detailslist.get(i).getPlannedNum();
                     TotalinvolvedSum+=detailslist.get(i).getInvolvedNum();
-                    float v = (float) (div(detailslist.get(i).getInvolvedNum(),detailslist.get(i).getPlannedNum(), 2)*100);
+                    float v = (float) (div(detailslist.get(i).getInvolvedNum(),detailslist.get(i).getPlannedNum(), 2))*100;
                     TotalThegrouprateSum+=v;
                     TotalexitedSum+=detailslist.get(i).getExitedNum();
                 }

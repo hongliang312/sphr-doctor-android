@@ -40,7 +40,7 @@
             android:textSize="@dimen/medium"
             android:layout_marginStart="@dimen/dp_18"
             android:layout_marginTop="@dimen/dp_16"
-            android:textColor="@color/grgray"
+            android:textColor="@color/grayy"
             android:layout_marginRight="@dimen/dp_20"
             />
 

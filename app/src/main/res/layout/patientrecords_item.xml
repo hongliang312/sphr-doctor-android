@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/backgound_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/dp_6"
-        android:paddingEnd="@dimen/dp_0"
-        android:paddingStart="@dimen/dp_14"
-        android:paddingTop="@dimen/dp_10">
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@color/grary"
+        android:textColor="@color/dimmedd"
+        >
 
         <TextView
             android:id="@+id/tvSetTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/grary"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_12"
             android:layout_marginStart="@dimen/dp_16"
@@ -33,26 +26,20 @@
 
             />
     </RelativeLayout>
-            android:text="@string/organizingtime"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/dp_0"
-        android:paddingStart="@dimen/dp_14">
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_12"
             android:text="@string/clinictime"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
@@ -61,22 +48,30 @@
             android:id="@+id/clinictime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp_8"
-            android:paddingTop="@dimen/dp_8"
-            android:textColor="@color/theme_color" />
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/orange"
+            />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_12"
             android:text="@string/complaint"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
@@ -85,22 +80,29 @@
             android:id="@+id/complaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp_8"
-            android:paddingTop="@dimen/dp_8"
-            android:textColor="@color/theme_color" />
+            android:textColor="@color/orange"
+            android:layout_marginTop="@dimen/dp_12"
+            />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_12"
             android:text="@string/finaldiagnosis"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
@@ -109,22 +111,30 @@
             android:id="@+id/finaldiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp_8"
-            android:paddingTop="@dimen/dp_8"
-            android:textColor="@color/theme_color" />
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/orange"
+            />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_12"
             android:text="@string/treatmentprocess"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
@@ -133,22 +143,30 @@
             android:id="@+id/treatmentprocess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp_8"
-            android:paddingTop="@dimen/dp_8"
-            android:textColor="@color/theme_color" />
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/orange"
+            />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        >
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_12"
             android:text="@string/therapeuticregimen"
-            android:textColor="@color/eight"
-            android:textSize="@dimen/small" />
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
@@ -157,14 +175,15 @@
             android:id="@+id/therapeuticregimen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp_8"
-            android:paddingTop="@dimen/dp_8"
-            android:textColor="@color/theme_color" />
+            android:textColor="@color/orange"
+            android:layout_marginTop="@dimen/dp_12"
+            />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorDayTextLight"
+            android:layout_marginTop="@dimen/dp_12"/>
 
     </LinearLayout>
 
