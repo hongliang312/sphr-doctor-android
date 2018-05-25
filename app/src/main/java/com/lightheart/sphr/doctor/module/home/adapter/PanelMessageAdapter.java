@@ -4,22 +4,15 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.app.Constant;
-import com.lightheart.sphr.doctor.bean.DoctorBean;
 import com.lightheart.sphr.doctor.bean.PanelMessageModel;
-import com.lightheart.sphr.doctor.module.home.ui.PanelMessageListActivity;
-import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import com.lightheart.sphr.doctor.view.SlidingButtonView;
 
 import javax.inject.Inject;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by fucp on 2018-4-25.

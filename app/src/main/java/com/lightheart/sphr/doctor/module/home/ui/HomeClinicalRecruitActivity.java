@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
@@ -19,6 +20,7 @@ import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeClinicalRecruitAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.ClinicalRecruitContract;
 import com.lightheart.sphr.doctor.module.home.presenter.ClinicalRecruitPresenter;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

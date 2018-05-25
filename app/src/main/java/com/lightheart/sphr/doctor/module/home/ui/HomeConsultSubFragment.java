@@ -10,7 +10,6 @@ import android.view.View;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
 import com.lightheart.sphr.doctor.bean.UntreatedBean;
-import com.lightheart.sphr.doctor.module.home.ui.HomeConsultSubDetailActivity;
 import com.lightheart.sphr.doctor.module.home.adapter.ConsulTationAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.UntreatedContract;
 import com.lightheart.sphr.doctor.module.home.presenter.UntreatedPresenter;

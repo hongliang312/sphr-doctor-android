@@ -5,7 +5,6 @@ import android.util.Log;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.bean.ReplyConsultingBean;
-import com.lightheart.sphr.doctor.bean.ReplyConsultingRequestParams;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
 import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
 import com.lightheart.sphr.doctor.module.home.contract.TelephoneDetailsContract;

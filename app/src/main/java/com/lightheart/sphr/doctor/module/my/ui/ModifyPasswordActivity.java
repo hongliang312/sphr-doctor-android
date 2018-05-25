@@ -9,19 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.EventModel;
-import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.ModifyPsdParam;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.module.my.contract.ModifyPasswordContract;
 import com.lightheart.sphr.doctor.module.my.presenter.ModifyPasswordPresenter;
-import com.lightheart.sphr.doctor.utils.CheckContentUtil;
 import com.lightheart.sphr.doctor.utils.RxBus;
 
 import butterknife.BindView;

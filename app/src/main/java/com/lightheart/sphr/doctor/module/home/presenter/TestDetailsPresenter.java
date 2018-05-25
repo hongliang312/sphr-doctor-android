@@ -1,4 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
+
 import android.util.Log;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -11,7 +12,9 @@ import com.lightheart.sphr.doctor.module.home.contract.TestDetailsContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+
 import javax.inject.Inject;
+
 import io.reactivex.functions.Consumer;
 
 /**
