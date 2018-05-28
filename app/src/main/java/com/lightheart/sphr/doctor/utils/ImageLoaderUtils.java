@@ -63,4 +63,5 @@ public class ImageLoaderUtils extends ImageLoader {
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_image_loading).diskCacheStrategy(DiskCacheStrategy.RESOURCE).error(R.mipmap.ic_image_loadfail))
                 .into(imageView);
     }
+
 }

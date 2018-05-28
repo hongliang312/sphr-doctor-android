@@ -28,7 +28,6 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
 //        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         params.duid = 1010;
     }
-
     @Override
     public void loadOnlineData(String type) {
         params.type = type;
@@ -51,8 +50,7 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
                         mView.showFaild(throwable.getMessage());
                     }
                 });
-    }
-
+          }
 
     @Override
     public void loadTelConsultData(String type) {

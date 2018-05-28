@@ -1,5 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.ui;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,21 +10,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.ConsultingReplyBean;
+import com.lightheart.sphr.doctor.bean.ConsultingReplyRequestParams;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -58,7 +63,6 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     LinearLayout tvLayout;
     @BindView(R.id.FeedBack)
     TextView feedback;
-
     private List<HomeConsultSubDetail.ImgsBean> contentt = new ArrayList<>();
     private int id;
     private String consultType;
@@ -76,14 +80,22 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
+
         consultType = getIntent().getStringExtra("consult_type");
         consultStatus = getIntent().getStringExtra("consult_status");
+
+        if (TextUtils.equals("TEL", consultType)) {
+            initToolbar(mToolbar, mTitleTv, mBtSub, R.string.tel_online, false, 0);
+        } else if (TextUtils.equals("ONLINE", consultType)) {
+            initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
+        }
+
         id = getIntent().getIntExtra("id", 0);
         HomeConsultSubDetailRequestParams subDetailRequestParams = new HomeConsultSubDetailRequestParams();
         subDetailRequestParams.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         subDetailRequestParams.id = id;
-        if ("SER_CST_S_ING".equals(consultStatus)) {
+
+        if("SER_CST_S_ING".equals(consultStatus)){
             tvLineaLayout.setVisibility(View.VISIBLE);
             tvLinea.setVisibility(View.GONE);
             tvLayout.setVisibility(View.GONE);
@@ -92,25 +104,22 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             tvLinea.setVisibility(View.VISIBLE);
             tvLayout.setVisibility(View.VISIBLE);
         }
-        assert mPresenter != null;
-        mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
-        tvPatientRecords.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
-                intent.putExtra("id", contentt.get(0).getId());
-                startActivity(intent);
-            }
-        });
-    }
 
+        assert mPresenter != null;
+        if (TextUtils.equals("TEL", consultType)) {
+           mPresenter.loadTelDetailsData(subDetailRequestParams);
+        } else if (TextUtils.equals("ONLINE", consultType)) {
+           mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
+        }
+
+    }
     @OnClick(R.id.Submit)
     public void onClick(View view) {
-        ConsultingReplyBean replyConsultingbean = new ConsultingReplyBean();
-        replyConsultingbean.setResultcode(id);
-        replyConsultingbean.setContent(feedback.getText().toString().trim());
+        ConsultingReplyRequestParams replyConsultingbean = new ConsultingReplyRequestParams();
+        replyConsultingbean.id=id;
+        replyConsultingbean.content=feedback.getText().toString().trim();
 
-        if (TextUtils.isEmpty(replyConsultingbean.getContent())) {
+        if (TextUtils.isEmpty(replyConsultingbean.content)) {
             ToastUtils.showShort(getString(R.string.feed_back_reply));
             return;
         }
@@ -119,9 +128,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         feedback.setText(null);
     }
 
-
     @Override
-    public void setHomeConsultSubDetailData(HomeConsultSubDetail content) {
+    public void setHomeConsultSubDetailData(final HomeConsultSubDetail content) {
         if (content != null) {
             contentt.clear();
             contentt.addAll(content.getImgs());
@@ -130,14 +138,47 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
             tvLoadicture.setAdapter(subDetailAdapter);
             tvDescription.setText(content.getContent());
+            tvPatientName.setText(contentt.get(0).getMediaName());
+            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)));
+
+            tvPatientRecords.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
+                    intent.putExtra("id",content.getPuid());
+                    startActivity(intent);
+                }
+            });
         }
     }
-
     @Override
     public void setConsultingReply() {
         ToastUtils.showShort("提交成功！");
     }
 
+    @Override
+    public void setTelDetailsData(final HomeConsultSubDetail content) {
+        if (content != null) {
+            contentt.clear();
+            contentt.addAll(content.getImgs());
+            tvLoadicture.setLayoutManager(new GridLayoutManager(this, 3));
+            HomeConsultSubDetailAdapter subDetailAdapter;
+            subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
+            tvLoadicture.setAdapter(subDetailAdapter);
+            tvDescription.setText(content.getContent());
+            tvPatientName.setText(contentt.get(0).getMediaName());
+            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)));
+
+            tvPatientRecords.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
+                    intent.putExtra("id",content.getPuid());
+                    startActivity(intent);
+                }
+            });
+        }
+    }
 
     @Override
     protected boolean showHomeAsUp() {
