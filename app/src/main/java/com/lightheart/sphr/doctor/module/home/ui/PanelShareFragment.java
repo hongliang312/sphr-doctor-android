@@ -1,5 +1,6 @@
 package com.lightheart.sphr.doctor.module.home.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -74,10 +75,9 @@ public class PanelShareFragment extends BaseFragment<PanelSharePresenter> implem
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        //TODO
         PanelShareModel item = (PanelShareModel) adapter.getItem(position);
         assert item != null;
-        ToastUtils.showShort(item.getShareTitle());
+        startActivity(new Intent(getActivity(), ClinicalRecruitDetailActivity.class).putExtra("id", item.getLinkId()));
     }
 
     // 暂时不需要

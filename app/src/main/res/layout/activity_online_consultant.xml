@@ -20,30 +20,40 @@
             <include layout="@layout/common_toolbar" />
         </android.support.design.widget.AppBarLayout>
 
-        <com.lightheart.sphr.doctor.view.CommonTabLayout
-            android:id="@+id/tabConsultSub"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@android:color/white"
-            android:paddingBottom="@dimen/dp_12"
-            android:paddingTop="@dimen/dp_20"
-            app:tl_divider_color="@color/divide"
-            app:tl_divider_padding="@dimen/dp_8"
-            app:tl_divider_width="0.5dp"
-            app:tl_iconVisible="false"
-            app:tl_indicator_color="@color/theme_color"
-            app:tl_indicator_height="@dimen/dp_2"
-            app:tl_tab_padding="@dimen/dp_10"
-            app:tl_textSelectColor="@color/theme_color"
-            app:tl_textUnselectColor="@color/eight"
-            app:tl_textsize="14sp"
-            app:tl_underline_color="@color/divide" />
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+            <com.lightheart.sphr.doctor.view.CommonTabLayout
+                android:id="@+id/tabConsultSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/white"
+                android:paddingBottom="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_14"
+                android:paddingStart="@dimen/dp_14"
+                android:paddingTop="@dimen/dp_20"
+                app:tl_divider_color="@color/divide"
+                app:tl_divider_padding="@dimen/dp_8"
+                app:tl_iconVisible="false"
+                app:tl_indicator_color="@color/theme_color"
+                app:tl_indicator_height="@dimen/dp_2"
+                app:tl_tab_padding="@dimen/dp_10"
+                app:tl_textSelectColor="@color/theme_color"
+                app:tl_textUnselectColor="@color/eight"
+                app:tl_textsize="14sp"
+                app:tl_underline_color="@color/divide" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_05"
-            android:background="@color/divide" />
+            android:background="@color/divide"
+            android:visibility="gone" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vpConsultSubPage"

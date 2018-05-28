@@ -71,7 +71,7 @@ public class HomeConsultActivity extends BaseActivity implements ViewPager.OnPag
 
         mFragmentList.clear();
         mFragmentList.add(HomeConsultSubFragment.newInstance(consultType, "SER_CST_S_ING"));
-        mFragmentList.add(HomeConsultSubFragment.newInstance(consultType,"SER_CST_S_END"));
+        mFragmentList.add(HomeConsultSubFragment.newInstance(consultType, "SER_CST_S_END"));
 
         MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager());
         vpConsultSubPage.setAdapter(mAdapter);
