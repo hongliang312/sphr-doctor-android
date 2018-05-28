@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context="com.lightheart.sphr.doctor.module.home.ui.HomeConsultActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <include layout="@layout/common_toolbar"/>
-
-
-    <android.support.design.widget.TabLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tas"
-        app:tabMode="fixed"
-        android:gravity="center"
-        app:tabTextColor="@color/colorDayTextLight"
-        app:tabSelectedTextColor="#297fca"
-        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        app:tabIndicatorColor="@color/sky_blue"
-        >
+        android:layout_height="match_parent"
+        android:background="@color/backgound_color"
+        android:orientation="vertical">
 
-    </android.support.design.widget.TabLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/dp_0">
 
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/vp"
-        android:gravity="center">
-    </android.support.v4.view.ViewPager>
+            <include layout="@layout/common_toolbar" />
+        </android.support.design.widget.AppBarLayout>
 
+        <com.lightheart.sphr.doctor.view.CommonTabLayout
+            android:id="@+id/tabConsultSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:paddingBottom="@dimen/dp_12"
+            android:paddingTop="@dimen/dp_20"
+            app:tl_divider_color="@color/divide"
+            app:tl_divider_padding="@dimen/dp_8"
+            app:tl_divider_width="0.5dp"
+            app:tl_iconVisible="false"
+            app:tl_indicator_color="@color/theme_color"
+            app:tl_indicator_height="@dimen/dp_2"
+            app:tl_tab_padding="@dimen/dp_10"
+            app:tl_textSelectColor="@color/theme_color"
+            app:tl_textUnselectColor="@color/eight"
+            app:tl_textsize="14sp"
+            app:tl_underline_color="@color/divide" />
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpConsultSubPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

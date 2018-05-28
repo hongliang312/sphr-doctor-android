@@ -20,7 +20,7 @@ public class ClinicalTrialManageDetailsPresenter extends BasePresenter<ClinicalT
 
     }
     @Override
-    public void loadClinicalDetalsData(int id) {
+    public void loadClinicalDetailsData(int id) {
         DetailsBean entity = new DetailsBean();
         entity.duid= SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         entity.id=id;
@@ -34,7 +34,7 @@ public class ClinicalTrialManageDetailsPresenter extends BasePresenter<ClinicalT
                    public void accept(DataResponse<ClinicalTrialManageDetails> response) throws Exception {
 
                        if(response.getResultcode()==200) {
-                           mView.setClinicalDetalsData(response.getContent());
+                           mView.setClinicalDetailsData(response.getContent());
                        } else {
 
                            mView.showFaild(String.valueOf(response.getResultmsg()));

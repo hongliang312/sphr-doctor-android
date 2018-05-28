@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgound_color"
+        android:gravity="start"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingEnd="@dimen/dp_0"
+        android:paddingStart="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_14"
+        android:textColor="@color/seven"
+        android:textSize="@dimen/micro"
+        tools:text="@string/appName" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/dp_0"
+        android:paddingStart="@dimen/dp_14">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_14"
+            android:textColor="@color/title_black"
+            android:textSize="@dimen/big_small"
+            android:textStyle="bold"
+            tools:text="@string/appName" />
+
+        <TextView
+            android:id="@+id/tvDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingBottom="@dimen/dp_10"
+            android:textColor="@color/fiveEight"
+            android:textSize="@dimen/small"
+            tools:text="@string/patient_rights_hint" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:id="@+id/tvCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_14"
+            android:background="@drawable/bg_check"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingEnd="@dimen/dp_14"
+            android:paddingStart="@dimen/dp_14"
+            android:paddingTop="@dimen/dp_8"
+            android:text="@string/examine"
+            android:textColor="@color/sky_blue"
+            android:textSize="@dimen/small" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

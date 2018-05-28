@@ -8,6 +8,7 @@ import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
 import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
 import com.lightheart.sphr.doctor.bean.ClinicalTrailModel;
 import com.lightheart.sphr.doctor.bean.ClinicalTrialManageDetails;
+import com.lightheart.sphr.doctor.bean.ConsultModel;
 import com.lightheart.sphr.doctor.bean.CreatePanelDoctorParam;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
@@ -43,12 +44,10 @@ import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.bean.TelephoneConsultBean;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
 import com.lightheart.sphr.doctor.bean.TitlesModel;
-import com.lightheart.sphr.doctor.bean.ConsultingListBean;
 import com.lightheart.sphr.doctor.bean.ConsultingListRequestParams;
 
 import java.util.List;
 
-import butterknife.OnClick;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -159,7 +158,6 @@ public interface ApiService {
     @POST("user/feedback")
     Observable<DataResponse<Object>> feedback(@Body FeedBackBean params);
 
-
     /***
      *
      * 试验管理
@@ -179,7 +177,7 @@ public interface ApiService {
      * 在线咨询
      */
     @POST("consult/list")
-    Observable<DataResponse<List<ConsultingListBean>>> pendinglist(@Body ConsultingListRequestParams untreated);
+    Observable<DataResponse<List<ConsultModel>>> getConsultList(@Body ConsultingListRequestParams untreated);
 
 
     /**
@@ -295,7 +293,6 @@ public interface ApiService {
 
     /**
      * 回复咨询
-     *
      */
 
     @POST("consult/reply")
@@ -407,13 +404,15 @@ public interface ApiService {
 
     /**
      * 咨询回复
-     * */
+     */
     @POST("consult/reply")
     Observable<ConsultingReplyBean> consultingreply(@Body ConsultingReplyBean replyConsultingbean);
 
     /**
      * 电话咨询列表
-     * */
+     */
     @POST("consult/tel/list")
-    Observable<TelephoneConsultBean> phoneconsulting(@Body ConsultingListRequestParams untreated);
+    Observable<DataResponse<List<ConsultModel>>> getTelConsultList(@Body ConsultingListRequestParams params);
+
+
 }

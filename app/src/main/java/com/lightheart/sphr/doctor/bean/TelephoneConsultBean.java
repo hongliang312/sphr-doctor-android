@@ -4,12 +4,6 @@ package com.lightheart.sphr.doctor.bean;
 
 public class TelephoneConsultBean {
 
-        /**
-         * name : ws
-         * content : 肚子疼
-         * consultDate : 1527230774000
-         * consultId : 1
-         */
 
         private String name;
         private String content;

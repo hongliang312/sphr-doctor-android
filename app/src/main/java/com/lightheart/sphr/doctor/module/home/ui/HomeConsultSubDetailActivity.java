@@ -28,10 +28,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static java.lang.Integer.parseInt;
-
 /**
- *
  * 在线咨询和电话咨询详情页，分待完成和已完成
  */
 
@@ -63,7 +60,9 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     TextView feedback;
 
     private List<HomeConsultSubDetail.ImgsBean> contentt = new ArrayList<>();
-    private String id;
+    private int id;
+    private String consultType;
+    private String consultStatus;
 
     @Override
     protected int getLayoutId() {
@@ -78,15 +77,16 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @Override
     protected void initView() {
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
-        id = getIntent().getStringExtra("id");
-        String type = getIntent().getStringExtra("type");
+        consultType = getIntent().getStringExtra("consult_type");
+        consultStatus = getIntent().getStringExtra("consult_status");
+        id = getIntent().getIntExtra("id", 0);
         HomeConsultSubDetailRequestParams subDetailRequestParams = new HomeConsultSubDetailRequestParams();
         subDetailRequestParams.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        subDetailRequestParams.id = Integer.valueOf(id);
-        if ("SER_CST_S_ING".equals(type)) {
-                tvLineaLayout.setVisibility(View.VISIBLE);
-                tvLinea.setVisibility(View.GONE);
-                tvLayout.setVisibility(View.GONE);
+        subDetailRequestParams.id = id;
+        if ("SER_CST_S_ING".equals(consultStatus)) {
+            tvLineaLayout.setVisibility(View.VISIBLE);
+            tvLinea.setVisibility(View.GONE);
+            tvLayout.setVisibility(View.GONE);
         } else {
             tvLineaLayout.setVisibility(View.GONE);
             tvLinea.setVisibility(View.VISIBLE);
@@ -107,7 +107,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @OnClick(R.id.Submit)
     public void onClick(View view) {
         ConsultingReplyBean replyConsultingbean = new ConsultingReplyBean();
-        replyConsultingbean.setResultcode(Integer.parseInt(id));
+        replyConsultingbean.setResultcode(id);
         replyConsultingbean.setContent(feedback.getText().toString().trim());
 
         if (TextUtils.isEmpty(replyConsultingbean.getContent())) {
@@ -132,6 +132,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             tvDescription.setText(content.getContent());
         }
     }
+
     @Override
     public void setConsultingReply() {
         ToastUtils.showShort("提交成功！");

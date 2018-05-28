@@ -10,14 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
-import com.lightheart.sphr.doctor.bean.HomeMoudleManage;
+import com.lightheart.sphr.doctor.bean.HomeModuleManage;
 import com.lightheart.sphr.doctor.bean.HomePageInfo;
 import com.lightheart.sphr.doctor.module.home.adapter.ClinicalAdapter;
-import com.lightheart.sphr.doctor.module.home.adapter.HomeMoudleManagerAdapter;
+import com.lightheart.sphr.doctor.module.home.adapter.HomeModuleManagerAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomePresenter;
 import com.lightheart.sphr.doctor.module.home.ui.ClinicalRecruitDetailActivity;
@@ -29,9 +30,12 @@ import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import butterknife.BindView;
 
 /**
@@ -48,7 +52,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @Inject
     ClinicalAdapter mClinicalAdapter;
     private Banner mBannerAds;
-    private List<HomeMoudleManage> moudleManageList = new ArrayList<>();
+    private List<HomeModuleManage> moudleManageList = new ArrayList<>();
     private TextView mTvNotice;
 
     @Override
@@ -85,16 +89,16 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         String[] types = getResources().getStringArray(R.array.home_moudle_type);
         TypedArray images = getResources().obtainTypedArray(R.array.home_moudle_image);
         for (int i = 0; i < titles.length; i++) {
-            HomeMoudleManage homeMoudleManage = new HomeMoudleManage();
-            homeMoudleManage.type = types[i];
-            homeMoudleManage.title = titles[i];
-            homeMoudleManage.imgUrl = images.getResourceId(i, 1);
-            moudleManageList.add(homeMoudleManage);
+            HomeModuleManage homeModuleManage = new HomeModuleManage();
+            homeModuleManage.type = types[i];
+            homeModuleManage.title = titles[i];
+            homeModuleManage.imgUrl = images.getResourceId(i, 1);
+            moudleManageList.add(homeModuleManage);
         }
         images.recycle();
-        HomeMoudleManagerAdapter moudleManagerAdapter = new HomeMoudleManagerAdapter(R.layout.grid_home_moudle_manage, moudleManageList);
-        moudleManagerAdapter.setOnItemClickListener(this);
-        rvGridTest.setAdapter(moudleManagerAdapter);
+        HomeModuleManagerAdapter moduleManagerAdapter = new HomeModuleManagerAdapter(R.layout.grid_home_moudle_manage, moudleManageList);
+        moduleManagerAdapter.setOnItemClickListener(this);
+        rvGridTest.setAdapter(moduleManagerAdapter);
 
         mClinicalAdapter.addHeaderView(mHomeBannerHeadView);
         mClinicalAdapter.setOnItemClickListener(this);
@@ -176,10 +180,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         switch (view.getId()) {
             case R.id.llTelConsult:
                 ToastUtils.showShort(R.string.tel_online);
-                startActivity(new Intent(getActivity(), HomeConsultActivity.class).putExtra("tyname","电话咨询"));
+                startActivity(new Intent(getActivity(), HomeConsultActivity.class).putExtra("consult_type", "TEL"));
                 break;
             case R.id.llOnlineConsult:
-                startActivity(new Intent(getActivity(), HomeConsultActivity.class));
+                startActivity(new Intent(getActivity(), HomeConsultActivity.class).putExtra("consult_type", "ONLINE"));
                 break;
             case R.id.tvClinicalMore:
                 startActivity(new Intent(getActivity(), HomeClinicalRecruitActivity.class));
@@ -192,9 +196,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         if (adapter instanceof ClinicalAdapter) {
             HomePageInfo.ClinicalTrialListBean item = ((ClinicalAdapter) adapter).getItem(position);
             assert item != null;
-            startActivity(new Intent(getActivity(), ClinicalRecruitDetailActivity.class).putExtra("id",item.getId()));
+            startActivity(new Intent(getActivity(), ClinicalRecruitDetailActivity.class).putExtra("id", item.getId()));
         } else {
-            HomeMoudleManage item = (HomeMoudleManage) adapter.getItem(position);
+            HomeModuleManage item = (HomeModuleManage) adapter.getItem(position);
             assert item != null;
             switch (item.type) {
                 case "PTM":

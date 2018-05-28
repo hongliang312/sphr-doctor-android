@@ -1,4 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.ui;
+
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -6,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.ClinicalTrialManageDetails;
@@ -14,7 +16,9 @@ import com.lightheart.sphr.doctor.module.home.presenter.ClinicalTrialManageDetai
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import butterknife.BindView;
+
 public class ClinicalTrailManageDetailActivity extends BaseActivity<ClinicalTrialManageDetailsPresenter> implements ClinicalTrialManageDetailsContract.View {
 
     @BindView(R.id.common_toolbar)
@@ -52,7 +56,7 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<ClinicalTria
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_details;
+        return R.layout.activity_clinical_trail_manage_details;
     }
 
     @Override
@@ -65,31 +69,31 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<ClinicalTria
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.testingmanagement, false, 0);
         int id = getIntent().getIntExtra("id", 0);
         assert mPresenter != null;
-        mPresenter.loadClinicalDetalsData(id);
+        mPresenter.loadClinicalDetailsData(id);
 
     }
 
     @Override
-    public void setClinicalDetalsData(ClinicalTrialManageDetails content) {
+    public void setClinicalDetailsData(ClinicalTrialManageDetails content) {
 
         if (content != null) {
-            List<ClinicalTrialManageDetails.CtrSiteAssignmentsBean> detailslist = content.getCtrSiteAssignments();
+            List<ClinicalTrialManageDetails.CtrSiteAssignmentsBean> detailsList = content.getCtrSiteAssignments();
             tvTitle.setText(TextUtils.isEmpty(content.getProjectName()) ? "" : content.getProjectName());
-            testPeriod.setText(content.getTrialTime());
+            testPeriod.setText(TextUtils.isEmpty(content.getTrialTime()) ? "" : content.getTrialTime());
             tvRecruitNumber.setText(String.valueOf(content.getRecruitCount() + "人"));
             tvIndication.setText(String.valueOf(content.getIndications() + ""));
-            research.setText(content.getTrialPurpose());
-            tvProjectSponsor.setText(content.getOrganizeUnit());
-            tvProjectOrganizers.setText(content.getBidUnit());
-            tvProjectStage.setText(content.getTrialStage());
+            research.setText(TextUtils.isEmpty(content.getTrialTime()) ? "" : content.getTrialTime());
+            tvProjectSponsor.setText(TextUtils.isEmpty(content.getOrganizeUnit()) ? "" : content.getOrganizeUnit());
+            tvProjectOrganizers.setText(TextUtils.isEmpty(content.getContractUnit()) ? "" : content.getContractUnit());
+            tvProjectStage.setText(TextUtils.isEmpty(content.getTrialStage()) ? "" : content.getTrialStage());
 
             double totalPlan = 0;
             double totalJoin = 0;
             double totalRate = 0;
             double totalExit = 0;
-            if (detailslist != null && detailslist.size() > 0) {
-                for (int i = 0; i < detailslist.size(); i++) {
-                    ClinicalTrialManageDetails.CtrSiteAssignmentsBean ctrSite = detailslist.get(i);
+            if (detailsList != null && detailsList.size() > 0) {
+                for (int i = 0; i < detailsList.size(); i++) {
+                    ClinicalTrialManageDetails.CtrSiteAssignmentsBean ctrSite = detailsList.get(i);
 
                     View itemCompany = LayoutInflater.from(this).inflate(R.layout.tabrow_project_item, null);
                     TextView tvSite = itemCompany.findViewById(R.id.tvSite);
@@ -130,6 +134,7 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<ClinicalTria
             }
         }
     }
+
     @Override
     protected boolean showHomeAsUp() {
         return true;

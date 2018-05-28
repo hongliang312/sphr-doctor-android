@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Description :
  */
 
-public class HomeMoudleManage implements Serializable {
+public class HomeModuleManage implements Serializable {
 
     public String type;
 

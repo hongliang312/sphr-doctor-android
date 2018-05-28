@@ -1,19 +1,26 @@
 package com.lightheart.sphr.doctor.module.home.contract;
+
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.ConsultingListBean;
+import com.lightheart.sphr.doctor.bean.ConsultModel;
+import com.lightheart.sphr.doctor.bean.TelephoneConsultBean;
 
 import java.util.List;
 
 public interface ConsultingListContract {
 
-    interface View extends BaseContract.BaseView{
+    interface View extends BaseContract.BaseView {
 
-        void setConsultingListData(List<ConsultingListBean> content);
+        void setOnlineData(List<ConsultModel> content);
+
+        void setTelConsultData(List<ConsultModel> content);
 
     }
-    interface Presenter extends BaseContract.BasePresenter<View >{
 
-        void loadConsultingListData(String type);
+    interface Presenter extends BaseContract.BasePresenter<View> {
+
+        void loadOnlineData(String type);// 请求在线咨询列表数据
+
+        void loadTelConsultData(String type);// 请求电话咨询列表数据
 
     }
 }

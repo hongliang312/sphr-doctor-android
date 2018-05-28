@@ -198,9 +198,9 @@
     <string name="man">人</string>
     <string name="adaptationdisease">适应症 :</string>
     <string name="projectsponsor">项目主办方:</string>
-    <string name="projectorganizer">项目承办方</string>
-    <string name="projectpi">项   目    PI  :</string>
-    <string name="projectphase">项目阶段</string>
+    <string name="projectorganizer">项目承办方:</string>
+    <string name="projectpi">项目PI:</string>
+    <string name="projectphase">项目阶段:</string>
     <string name="projectlocation">项目地点</string>
     <string name="researcher">研究者</string>
     <string name="plan">计划受试者人数</string>
