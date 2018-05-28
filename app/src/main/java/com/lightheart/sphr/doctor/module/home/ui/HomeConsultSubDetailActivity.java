@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -83,6 +84,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 
         consultType = getIntent().getStringExtra("consult_type");
         consultStatus = getIntent().getStringExtra("consult_status");
+        id = getIntent().getIntExtra("id", 0);
 
         if (TextUtils.equals("TEL", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.tel_online, false, 0);
@@ -90,12 +92,11 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
         }
 
-        id = getIntent().getIntExtra("id", 0);
         HomeConsultSubDetailRequestParams subDetailRequestParams = new HomeConsultSubDetailRequestParams();
         subDetailRequestParams.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         subDetailRequestParams.id = id;
 
-        if("SER_CST_S_ING".equals(consultStatus)){
+        if ("SER_CST_S_ING".equals(consultStatus)) {
             tvLineaLayout.setVisibility(View.VISIBLE);
             tvLinea.setVisibility(View.GONE);
             tvLayout.setVisibility(View.GONE);
@@ -107,17 +108,18 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 
         assert mPresenter != null;
         if (TextUtils.equals("TEL", consultType)) {
-           mPresenter.loadTelDetailsData(subDetailRequestParams);
+            mPresenter.loadTelDetailsData(subDetailRequestParams);
         } else if (TextUtils.equals("ONLINE", consultType)) {
-           mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
+            mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
         }
 
     }
+
     @OnClick(R.id.Submit)
     public void onClick(View view) {
         ConsultingReplyRequestParams replyConsultingbean = new ConsultingReplyRequestParams();
-        replyConsultingbean.id=id;
-        replyConsultingbean.content=feedback.getText().toString().trim();
+        replyConsultingbean.id = id;
+        replyConsultingbean.content = feedback.getText().toString().trim();
 
         if (TextUtils.isEmpty(replyConsultingbean.content)) {
             ToastUtils.showShort(getString(R.string.feed_back_reply));
@@ -125,7 +127,6 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         }
         assert mPresenter != null;
         mPresenter.loadConsultingReplyData(replyConsultingbean);
-        feedback.setText(null);
     }
 
     @Override
@@ -145,12 +146,13 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
-                    intent.putExtra("id",content.getPuid());
+                    intent.putExtra("id", content.getPuid());
                     startActivity(intent);
                 }
             });
         }
     }
+
     @Override
     public void setConsultingReply() {
         ToastUtils.showShort("提交成功！");
@@ -173,7 +175,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
-                    intent.putExtra("id",content.getPuid());
+                    intent.putExtra("id", content.getPuid());
                     startActivity(intent);
                 }
             });

@@ -1,178 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    <RelativeLayout
+    android:background="@color/backgound_color"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_6"
-        android:background="@color/grary"
-        android:textColor="@color/dimmedd"
-        >
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingEnd="@dimen/dp_0"
+        android:paddingStart="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_10">
 
         <TextView
             android:id="@+id/tvSetTime"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_16"
-            android:textSize="@dimen/big_medium"
             android:background="@color/grary"
-            android:textColor="@color/dimmedd"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
 
-            />
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/organizingtime"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginStart="@dimen/dp_16"
-        >
-
+        android:paddingEnd="@dimen/dp_0"
+        android:paddingStart="@dimen/dp_14">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_12"
             android:text="@string/clinictime"
-            android:layout_marginTop="@dimen/dp_6"
-            android:textColor="@color/dimmedd"
-            />
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
 
         <TextView
-            android:id="@+id/tvClinicTime"
+            android:id="@+id/clinictime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:textColor="@color/orange"
-            />
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/colorDayTextLight"
-            android:layout_marginTop="@dimen/dp_12"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginStart="@dimen/dp_16"
-        >
-
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_12"
             android:text="@string/complaint"
-            android:layout_marginTop="@dimen/dp_6"
-            android:textColor="@color/dimmedd"
-            />
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
 
         <TextView
-            android:id="@+id/tvComplaint"
+            android:id="@+id/complaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/orange"
-            android:layout_marginTop="@dimen/dp_12"
-            />
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/colorDayTextLight"
-            android:layout_marginTop="@dimen/dp_12"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginStart="@dimen/dp_16"
-        >
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_12"
             android:text="@string/finaldiagnosis"
-            android:layout_marginTop="@dimen/dp_6"
-            android:textColor="@color/dimmedd"
-            />
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
         <TextView
-            android:id="@+id/tvFinalDiagnosis"
+            android:id="@+id/finaldiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:textColor="@color/orange"
-            />
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/colorDayTextLight"
-            android:layout_marginTop="@dimen/dp_12"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginStart="@dimen/dp_16"
-        >
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_12"
             android:text="@string/treatmentprocess"
-            android:layout_marginTop="@dimen/dp_6"
-            android:textColor="@color/dimmedd"
-            />
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
         <TextView
-            android:id="@+id/tvTreatment"
+            android:id="@+id/treatmentprocess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:textColor="@color/orange"
-            />
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color" />
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/colorDayTextLight"
-            android:layout_marginTop="@dimen/dp_12"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginStart="@dimen/dp_16"
-        >
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_12"
             android:text="@string/therapeuticregimen"
-            android:layout_marginTop="@dimen/dp_6"
-            android:textColor="@color/dimmedd"
-            />
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
 
         <TextView
-            android:id="@+id/tvDosageSchedule"
+            android:id="@+id/therapeuticregimen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/orange"
-            android:layout_marginTop="@dimen/dp_12"
-            />
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/colorDayTextLight"
-            android:layout_marginTop="@dimen/dp_12"/>
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
 
     </LinearLayout>
 

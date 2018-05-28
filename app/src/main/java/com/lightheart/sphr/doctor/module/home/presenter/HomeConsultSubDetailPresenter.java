@@ -28,7 +28,6 @@ public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubD
                 .subscribe(new Consumer<DataResponse<HomeConsultSubDetail>>() {
                     @Override
                     public void accept(DataResponse<HomeConsultSubDetail> response) throws Exception {
-
                         if(response.getResultcode() == 200){
                             mView.setHomeConsultSubDetailData(response.getContent());
                         } else {
@@ -71,13 +70,12 @@ public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubD
     @Override
     public void loadTelDetailsData(HomeConsultSubDetailRequestParams subDetailRequestParams) {
         RetrofitManager.create(ApiService.class)
-                .getTelDetailsList(subDetailRequestParams)
+                .getTelDetail(subDetailRequestParams)
                 .compose(RxSchedulers.<DataResponse<HomeConsultSubDetail>>applySchedulers())
                 .compose(mView.<DataResponse<HomeConsultSubDetail>>bindToLife())
                 .subscribe(new Consumer<DataResponse<HomeConsultSubDetail>>() {
                     @Override
                     public void accept(DataResponse<HomeConsultSubDetail> responsee) throws Exception {
-
                         if(responsee.getResultcode() == 200){
                             mView.setTelDetailsData(responsee.getContent());
                         } else {

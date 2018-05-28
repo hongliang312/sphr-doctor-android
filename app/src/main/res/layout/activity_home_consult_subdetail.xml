@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="@dimen/dp_0"/>
+        app:elevation="@dimen/dp_0" />
 
-    <include layout="@layout/common_toolbar"/>
+    <include layout="@layout/common_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,261 +22,244 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_14"
-            android:background="@color/white"
-            android:text="@string/patientswithdetails"
-            android:layout_marginTop="@dimen/dp_14"
-            android:textSize="@dimen/medium"
-            android:textColor="@color/title_black"
-            />
+            android:orientation="vertical">
 
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/dimmed"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_14"
-            />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rela"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/tvPatientName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/patientname"
-            android:textSize="@dimen/big_medium"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_24"
-            android:textColor="@color/title_black"
-            />
-
-        <TextView
-            android:id="@+id/tvPatientRecords"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/huan_name"
-            android:textColor="@color/white"
-            android:layout_marginTop="@dimen/dp_16"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:background="@drawable/button" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_8"
-        android:background="@color/search"
-        android:layout_marginTop="@dimen/dp_16"
-        />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
-        >
-
-        <TextView
-            android:id="@+id/diseasedescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/diseasedescription"
-            android:textSize="@dimen/medium"
-            android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_12"
-            android:textColor="@color/title_black"
-            />
-        <View
-            android:layout_below="@+id/diseasedescription"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/dimmed"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginStart="@dimen/dp_14"
-            />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginStart="@dimen/dp_14"
-        >
-
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/big_small"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginEnd="@dimen/dp_15"
-            android:textColor="@color/seven"
-            />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_8"
-        android:layout_marginTop="@dimen/dp_16"
-        android:background="@color/search"
-        />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_12"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/uploadthemedicalrecords"
-            android:textSize="@dimen/medium"
-            android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_10"
-            android:textColor="@color/title_black"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/dimmed"
-            android:layout_marginTop="@dimen/dp_14"
-            android:layout_marginStart="@dimen/dp_14"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/dp_12"
-            >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/tvLoadicture"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12"
-                />
-        </LinearLayout>
+                android:background="@color/white"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:background="@color/white"
+                    android:text="@string/patientswithdetails"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/medium" />
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_5"
-        android:layout_marginTop="@dimen/dp_16"
-        android:background="@color/search"
-        />
-   </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/tvLinea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dp_14"
-        android:visibility="gone"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/telephonebooking"
-            android:textSize="@dimen/medium"
-            android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_8"
-            android:textColor="@color/title_black"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/dimmed"
-            android:layout_marginTop="@dimen/dp_14"
-            android:layout_marginStart="@dimen/dp_14"
-            />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@color/dimmed" />
 
-        <TextView
-            android:id="@+id/tvPhoneTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/big_small"
-            android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginTop="@dimen/dp_10"
-            android:textColor="@color/seven"
-            />
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/tvLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_16"
-        android:background="@color/search"
-        android:visibility="gone"
-        >
+            <RelativeLayout
+                android:id="@+id/rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/warm"
-            android:layout_marginStart="@dimen/dp_22"
-            android:textSize="@dimen/medium"
-            android:textColor="@color/sky_blue"
-            android:layout_marginTop="@dimen/dp_12"
-            />
+                <TextView
+                    android:id="@+id/tvPatientName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:text="@string/patientname"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/big_medium" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/prompt"
-            android:textSize="@dimen/medium"
-            android:textColor="@color/seven"
-            android:layout_marginTop="@dimen/dp_12"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:layout_marginStart="@dimen/dp_8"
-            />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tvPatientRecords"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/button"
+                    android:text="@string/huan_name"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@color/search" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5">
+
+                <TextView
+                    android:id="@+id/diseasedescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/diseasedescription"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/medium" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/diseasedescription"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@color/dimmed" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_14"
+                android:layout_marginTop="@dimen/dp_5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:textColor="@color/seven"
+                    android:textSize="@dimen/big_small" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@color/search" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="@string/uploadthemedicalrecords"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/medium" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:background="@color/dimmed" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/tvLoadicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/dp_12"
+                        android:paddingStart="@dimen/dp_12" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@color/search" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/tvLinea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:text="@string/telephonebooking"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/medium" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:background="@color/dimmed" />
+
+                <TextView
+                    android:id="@+id/tvPhoneTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:textColor="@color/seven"
+                    android:textSize="@dimen/big_small" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@color/search"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_22"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/warm"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="@dimen/medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/prompt"
+                    android:textColor="@color/seven"
+                    android:textSize="@dimen/medium" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/tvLineaLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginTop="@dimen/dp_14"
-                android:visibility="gone"
-                >
+                android:orientation="vertical"
+                android:visibility="gone">
+
                 <EditText
                     android:id="@+id/FeedBack"
                     android:layout_width="match_parent"
@@ -288,8 +271,8 @@
                     android:lineSpacingExtra="@dimen/dp_4"
                     android:padding="@dimen/dp_10"
                     android:textColor="@color/title_black"
-                    android:textSize="@dimen/small"
-                    />
+                    android:textSize="@dimen/small" />
+
                 <TextView
                     android:id="@+id/Submit"
                     android:layout_width="match_parent"
@@ -300,8 +283,7 @@
                     android:padding="@dimen/dp_10"
                     android:text="@string/submit"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/small"
-                    />
+                    android:textSize="@dimen/small" />
             </LinearLayout>
         </LinearLayout>
 

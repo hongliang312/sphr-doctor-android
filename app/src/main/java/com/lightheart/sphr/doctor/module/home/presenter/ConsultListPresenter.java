@@ -26,7 +26,7 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
     @Inject
     ConsultListPresenter() {
 //        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        params.duid = 1010;
+        params.duid = 1012;
     }
     @Override
     public void loadOnlineData(String type) {

@@ -439,5 +439,5 @@ public interface ApiService {
      * 电话咨询详情
      * */
     @POST("consult/tel/detailById")
-    Observable<DataResponse<HomeConsultSubDetail>> getTelDetailsList(@Body HomeConsultSubDetailRequestParams subDetailRequestParams);
+    Observable<DataResponse<HomeConsultSubDetail>> getTelDetail(@Body HomeConsultSubDetailRequestParams subDetailRequestParams);
 }
