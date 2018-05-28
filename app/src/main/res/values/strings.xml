@@ -146,6 +146,11 @@
     <string name="personal_introduce">个人简介</string>
     <string name="distract_select">地区选择</string>
     <string name="please_input_child_department_name">请输入二级科室名称</string>
+    <string name="message_setting_hint">为避免影响您休息，晚10点后将不会收到消息推送~</string>
+    <string name="new_mes_push">最新咨询推送</string>
+    <string name="new_mes_push_hint">最新的会议、视频、指南等</string>
+    <string name="person_mes_push">个人消息推送</string>
+    <string name="person_mes_push_hint">好申请类消息</string>
 
 
     <string name="jump">跳过</string>

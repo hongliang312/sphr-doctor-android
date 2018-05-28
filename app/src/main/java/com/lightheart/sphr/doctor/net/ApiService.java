@@ -25,6 +25,7 @@ import com.lightheart.sphr.doctor.bean.Invite2PanelParam;
 import com.lightheart.sphr.doctor.bean.IsFriendModel;
 import com.lightheart.sphr.doctor.bean.LoginRequest;
 import com.lightheart.sphr.doctor.bean.LoginSuccess;
+import com.lightheart.sphr.doctor.bean.MessageSetParam;
 import com.lightheart.sphr.doctor.bean.ModifyPsdParam;
 import com.lightheart.sphr.doctor.bean.PanelMessageModel;
 import com.lightheart.sphr.doctor.bean.PanelRequestParams;
@@ -160,21 +161,21 @@ public interface ApiService {
 
     /***
      *
-     * 试验管理
+     * 试验管理 TODO
      */
 
     @POST("clinicalTrial/clinicalTrialsByDuid")
     Observable<DataResponse<List<ClinicalTrailModel>>> Testinglist(@Body TextsingRequestParams requestParams);
 
     /**
-     * @return ClinicalTrialManageDetails
+     * @return ClinicalTrialManageDetails TODO
      */
     @POST("clinicalTrial/myCtrDetailById")
     Observable<DataResponse<ClinicalTrialManageDetails>> detailslist(@Body DetailsBean entity);
 
 
     /**
-     * 在线咨询
+     * 在线咨询 TODO
      */
     @POST("consult/list")
     Observable<DataResponse<List<ConsultModel>>> getConsultList(@Body ConsultingListRequestParams untreated);
@@ -239,7 +240,7 @@ public interface ApiService {
     /**
      * 获取临床试验招募列表
      *
-     * @return clinicalTrial/searchClinicalTrial
+     * @return ClinicalRecruitModel
      */
     @POST("clinicalTrial/allClinicalTrial")
     Observable<DataResponse<ClinicalRecruitModel>> getAllClinicalTrial(@Body LoginSuccess params);
@@ -278,7 +279,7 @@ public interface ApiService {
 
 
     /**
-     * 电话详情
+     * 电话详情 TODO
      */
     @POST("consult/detailById")
     Observable<DataResponse<HomeConsultSubDetail>> subDetail(@Body HomeConsultSubDetailRequestParams subDetailRequestParams);
@@ -292,7 +293,7 @@ public interface ApiService {
 
 
     /**
-     * 回复咨询
+     * 回复咨询 TODO
      */
 
     @POST("consult/reply")
@@ -403,16 +404,34 @@ public interface ApiService {
     Observable<DataResponse<Object>> modifyPsd(@Body ModifyPsdParam param);
 
     /**
-     * 咨询回复
+     * 咨询回复 TODO
      */
     @POST("consult/reply")
     Observable<ConsultingReplyBean> consultingreply(@Body ConsultingReplyBean replyConsultingbean);
 
     /**
      * 电话咨询列表
+     *
+     * @return List<ConsultModel>
      */
     @POST("consult/tel/list")
     Observable<DataResponse<List<ConsultModel>>> getTelConsultList(@Body ConsultingListRequestParams params);
+
+    /**
+     * 设置咨询推送
+     *
+     * @return Object
+     */
+    @POST("user/pushmsg/updaIsPushArticleMsg")
+    Observable<DataResponse<Object>> setNewsPush(@Body MessageSetParam param);
+
+    /**
+     * 设置个人消息推送
+     *
+     * @return Object
+     */
+    @POST("user/pushmsg/updaIsPushPersonalMsg")
+    Observable<DataResponse<Object>> setPersonPush(@Body MessageSetParam param);
 
 
 }

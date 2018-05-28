@@ -27,6 +27,7 @@ import com.lightheart.sphr.doctor.module.my.ui.DepartmentActivity;
 import com.lightheart.sphr.doctor.module.my.ui.FeedBackActivity;
 import com.lightheart.sphr.doctor.module.my.ui.ModifyPasswordActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
+import com.lightheart.sphr.doctor.module.my.ui.MyMessageSetActivity;
 import com.lightheart.sphr.doctor.module.my.ui.MyPersonalInfoActivity;
 
 import dagger.Component;
@@ -86,5 +87,7 @@ public interface ActivityComponent {
     void inject(PanelMessageListActivity activity);
 
     void inject(ModifyPasswordActivity activity);
+
+    void inject(MyMessageSetActivity activity);
 
 }

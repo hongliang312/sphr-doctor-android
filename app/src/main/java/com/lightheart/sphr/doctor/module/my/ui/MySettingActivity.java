@@ -66,7 +66,7 @@ public class MySettingActivity extends BaseActivity {
                 startActivity(new Intent(MySettingActivity.this, ModifyPasswordActivity.class));
                 break;
             case R.id.tvMessageSet:
-
+                startActivity(new Intent(MySettingActivity.this, MyMessageSetActivity.class));
                 break;
             case R.id.tvCurrentVersion:
 

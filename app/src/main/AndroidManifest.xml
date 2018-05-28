@@ -111,6 +111,7 @@
         <activity android:name=".module.contracts.ui.ScanActivity" />
         <activity android:name=".module.home.ui.PanelMessageListActivity" />
         <activity android:name=".module.my.ui.ModifyPasswordActivity" />
+        <activity android:name=".module.my.ui.MyMessageSetActivity" />
     </application>
 
 </manifest>
