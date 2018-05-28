@@ -7,22 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
+import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
-
 import java.util.List;
 
-/**
- * Created by 知足 on 2018/5/16.
- */
-
-public class TelephoneDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeConsultSubDetailAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context content;
-    private List<TelephoneDetailsBean.ImgsBean> contentt;
-    public TelephoneDetailsAdapter(Context content, List<TelephoneDetailsBean.ImgsBean> contentt) {
+    private List<HomeConsultSubDetail.ImgsBean> contentt;
+    public HomeConsultSubDetailAdapter(Context content, List<HomeConsultSubDetail.ImgsBean> contentt) {
         this.content = content;
         this.contentt = contentt;
     }
@@ -30,16 +24,14 @@ public class TelephoneDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflater = LayoutInflater.from(content).inflate(R.layout.telephonedetails,parent,false);
-        Telephone telephone=new Telephone(inflater);
-        return telephone;
+        View inflater = LayoutInflater.from(content).inflate(R.layout.online_details_loader_item,parent,false);
+        return new SubDetail(inflater);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
-        Telephone telephonebean= (Telephone) holder;
 
-        ImageLoaderUtils.display(content,((Telephone) holder).img,contentt.get(position).getMediaUrl());
+        ImageLoaderUtils.display(content,((SubDetail) holder).img,contentt.get(position).getMediaUrl());
 
     }
 
@@ -48,11 +40,11 @@ public class TelephoneDetailsAdapter extends  RecyclerView.Adapter<RecyclerView.
         return contentt !=null?contentt.size():0;
     }
 
-    public static class Telephone extends RecyclerView.ViewHolder{
+    public static class SubDetail extends RecyclerView.ViewHolder{
 
-        public ImageView img;
+        ImageView img;
 
-        public Telephone(View itemView) {
+        SubDetail(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
 

@@ -6,7 +6,7 @@ import java.util.List;
  * Created by 知足 on 2018/5/11.
  */
 
-public class TestDetails {
+public class ClinicalTrialManageDetails {
 
 
     /**

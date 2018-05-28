@@ -1,5 +1,4 @@
 package com.lightheart.sphr.doctor.module.home.ui;
-
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -7,19 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
-
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
-import com.lightheart.sphr.doctor.bean.TestDetails;
-import com.lightheart.sphr.doctor.module.home.contract.TestDetailsContract;
-import com.lightheart.sphr.doctor.module.home.presenter.TestDetailsPresenter;
+import com.lightheart.sphr.doctor.bean.ClinicalTrialManageDetails;
+import com.lightheart.sphr.doctor.module.home.contract.ClinicalTrialManageDetailsContract;
+import com.lightheart.sphr.doctor.module.home.presenter.ClinicalTrialManageDetailsPresenter;
 
 import java.math.BigDecimal;
 import java.util.List;
-
 import butterknife.BindView;
-
-public class ClinicalTrailManageDetailActivity extends BaseActivity<TestDetailsPresenter> implements TestDetailsContract.View {
+public class ClinicalTrailManageDetailActivity extends BaseActivity<ClinicalTrialManageDetailsPresenter> implements ClinicalTrialManageDetailsContract.View {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
@@ -29,20 +25,20 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<TestDetailsP
     TextView mTitleTv;
     @BindView(R.id.tvTitle)
     TextView tvTitle;
-    @BindView(R.id.time)
-    TextView time;
-    @BindView(R.id.numb)
-    TextView numb;
-    @BindView(R.id.Indication)
-    TextView Indication;
+    @BindView(R.id.testPeriod)
+    TextView testPeriod;
+    @BindView(R.id.tvRecruitNumber)
+    TextView tvRecruitNumber;
+    @BindView(R.id.tvIndication)
+    TextView tvIndication;
     @BindView(R.id.tvResearchTarget)
     TextView research;
-    @BindView(R.id.ProJectSponsor)
-    TextView ProJectSponsor;
-    @BindView(R.id.Projectorganizer)
-    TextView Projectorganizer;
-    @BindView(R.id.ProJectPI)
-    TextView ProJectPI;
+    @BindView(R.id.tvProjectSponsor)
+    TextView tvProjectSponsor;
+    @BindView(R.id.tvProjectOrganizers)
+    TextView tvProjectOrganizers;
+    @BindView(R.id.tvProjectStage)
+    TextView tvProjectStage;
     @BindView(R.id.tvTotalPlanNum)
     TextView tvTotalPlanNum;
     @BindView(R.id.tvTotalJoinNum)
@@ -51,7 +47,6 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<TestDetailsP
     TextView tvTotalRate;
     @BindView(R.id.tvTotalExitNum)
     TextView tvTotalExitNum;
-
     @BindView(R.id.tblCompanyIntroduce)
     TableLayout tblCompanyIntroduce;
 
@@ -68,27 +63,25 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<TestDetailsP
     @Override
     protected void initView() {
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.testingmanagement, false, 0);
-
         int id = getIntent().getIntExtra("id", 0);
-
         assert mPresenter != null;
-        mPresenter.loadDetailsData(id);
+        mPresenter.loadClinicalDetalsData(id);
 
     }
 
     @Override
-    public void setDetals(TestDetails content) {
+    public void setClinicalDetalsData(ClinicalTrialManageDetails content) {
 
         if (content != null) {
-            List<TestDetails.CtrSiteAssignmentsBean> detailslist = content.getCtrSiteAssignments();
+            List<ClinicalTrialManageDetails.CtrSiteAssignmentsBean> detailslist = content.getCtrSiteAssignments();
             tvTitle.setText(TextUtils.isEmpty(content.getProjectName()) ? "" : content.getProjectName());
-            time.setText(content.getTrialTime());
-            numb.setText(String.valueOf(content.getRecruitCount() + "人"));
-            Indication.setText(String.valueOf(content.getIndications() + ""));
+            testPeriod.setText(content.getTrialTime());
+            tvRecruitNumber.setText(String.valueOf(content.getRecruitCount() + "人"));
+            tvIndication.setText(String.valueOf(content.getIndications() + ""));
             research.setText(content.getTrialPurpose());
-            ProJectSponsor.setText(content.getOrganizeUnit());
-            Projectorganizer.setText(content.getBidUnit());
-            ProJectPI.setText(content.getTrialStage());
+            tvProjectSponsor.setText(content.getOrganizeUnit());
+            tvProjectOrganizers.setText(content.getBidUnit());
+            tvProjectStage.setText(content.getTrialStage());
 
             double totalPlan = 0;
             double totalJoin = 0;
@@ -96,10 +89,9 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<TestDetailsP
             double totalExit = 0;
             if (detailslist != null && detailslist.size() > 0) {
                 for (int i = 0; i < detailslist.size(); i++) {
-                    TestDetails.CtrSiteAssignmentsBean ctrSite = detailslist.get(i);
+                    ClinicalTrialManageDetails.CtrSiteAssignmentsBean ctrSite = detailslist.get(i);
 
                     View itemCompany = LayoutInflater.from(this).inflate(R.layout.tabrow_project_item, null);
-
                     TextView tvSite = itemCompany.findViewById(R.id.tvSite);
                     TextView tvPiName = itemCompany.findViewById(R.id.tvPiName);
                     TextView tvSearchName = itemCompany.findViewById(R.id.tvSearchName);
@@ -134,10 +126,10 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<TestDetailsP
                 tvTotalJoinNum.setText(String.valueOf(totalJoin));
                 tvTotalRate.setText(String.valueOf(totalRate) + "%");
                 tvTotalExitNum.setText(String.valueOf(totalExit));
+
             }
         }
     }
-
     @Override
     protected boolean showHomeAsUp() {
         return true;

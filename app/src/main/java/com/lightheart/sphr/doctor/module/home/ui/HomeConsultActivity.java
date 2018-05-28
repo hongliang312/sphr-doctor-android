@@ -35,6 +35,7 @@ public class HomeConsultActivity extends BaseActivity {
     @BindView(R.id.vp)
     ViewPager viewPager;
     private List<String> datas = new ArrayList<String>();
+    private String stringExtra;
 
     @Override
     protected int getLayoutId() {
@@ -48,7 +49,13 @@ public class HomeConsultActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
+        stringExtra = getIntent().getStringExtra("tyname");
+        if ("电话咨询".equals(stringExtra)){
+            initToolbar(mToolbar, mTitleTv, mBtSub, R.string.tel_online, false, 0);
+        }else {
+            initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
+        }
+
         datas.add("待处理");
         datas.add("已处理");
         //适配器
@@ -56,38 +63,33 @@ public class HomeConsultActivity extends BaseActivity {
         viewPager.setAdapter(vpsp);
         //进行关联
         tabLayout.setupWithViewPager(viewPager);
-
     }
-
     class vpsp extends FragmentPagerAdapter {
         //有参数的构造
         public vpsp(FragmentManager fm) {
             super(fm);
         }
-
         //返回选项卡的文本 ，，，添加选项卡
         @Override
         public CharSequence getPageTitle(int position) {
             return datas.get(position);
         }
-
         //创建fragment对象并返回
         @Override
         public Fragment getItem(int position) {
             HomeConsultSubFragment content = new HomeConsultSubFragment();
             Bundle bundle = new Bundle();
             bundle.putString("name", datas.get(position));
+            bundle.putString("names",stringExtra);
             content.setArguments(bundle);
             return content;
         }
-
         //返回数量
         @Override
         public int getCount() {
             return datas.size();
         }
     }
-
     @Override
     protected boolean showHomeAsUp() {
         return true;

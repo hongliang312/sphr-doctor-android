@@ -9,68 +9,69 @@ import android.view.View;
 
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
-import com.lightheart.sphr.doctor.bean.UntreatedBean;
+import com.lightheart.sphr.doctor.bean.ConsultingListBean;
 import com.lightheart.sphr.doctor.module.home.adapter.ConsulTationAdapter;
-import com.lightheart.sphr.doctor.module.home.contract.UntreatedContract;
-import com.lightheart.sphr.doctor.module.home.presenter.UntreatedPresenter;
+import com.lightheart.sphr.doctor.module.home.contract.ConsultingListContract;
+import com.lightheart.sphr.doctor.module.home.presenter.ConsultingListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
-
 /**
  *
  * 在线咨询和电话咨询列表页面
  */
 
-public class HomeConsultSubFragment extends BaseFragment<UntreatedPresenter> implements UntreatedContract.View{
+public class HomeConsultSubFragment extends BaseFragment<ConsultingListPresenter> implements ConsultingListContract.View{
 
-
-    @BindView(R.id.recycler)
-    RecyclerView recycler;
-    private List<UntreatedBean> content;
-    private ConsulTationAdapter consulTationAdapter;
-    private List<UntreatedBean> list = new ArrayList<>();
+    @BindView(R.id.tvRecycler)
+    RecyclerView tvRecycler;
+    private List<ConsultingListBean> content;
+    private List<ConsultingListBean> list = new ArrayList<>();
     private String type="";
+
     @Override
     protected int getLayoutId() {
         return R.layout.clientcenteredcounseling;
     }
-
     @Override
     protected void initInjector() {
         mFragmentComponent.inject(this);
     }
-
     @Override
     protected void initView(View view) {
-        assert mPresenter != null;
+
         Bundle arguments = getArguments();
+        assert arguments != null;
         String name = arguments.getString("name");
+        String names = arguments.getString("names");
 
         if ("待处理".equals(name)){
-
             type="SER_CST_S_ING";
-
         }else {
-
             type="SER_CST_S_END";
-
         }
-
-        mPresenter.loadUntreatedData(type);
+        getDataInternet(names);
 
     }
 
+    private void getDataInternet(String names) {
+        if("电话咨询".equals(names)){
+
+
+        }else {
+            assert mPresenter != null;
+            mPresenter.loadConsultingListData(type);
+        }
+    }
 
     @Override
-    public void setUntreated(final List<UntreatedBean> content) {
+    public void setConsultingListData(final List<ConsultingListBean> content) {
         list.clear();
         list.addAll(content);
-        recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        consulTationAdapter=new ConsulTationAdapter(getContext(),list);
-        recycler.setAdapter(consulTationAdapter);
+        tvRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        ConsulTationAdapter consulTationAdapter = new ConsulTationAdapter(getContext(), list);
+        tvRecycler.setAdapter(consulTationAdapter);
         consulTationAdapter.listener(new ConsulTationAdapter.OnClicklistener() {
             @Override
             public void Oclick(View view, int position) {
@@ -79,7 +80,6 @@ public class HomeConsultSubFragment extends BaseFragment<UntreatedPresenter> imp
                 intent.putExtra("type",type);
                 getActivity().startActivity(intent);
 
-                Log.i("bbbb",""+list.get(position).getConsultId());
             }
         });
     }

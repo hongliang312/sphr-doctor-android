@@ -1,22 +1,22 @@
 package com.lightheart.sphr.doctor.module.home.contract;
 
 import com.lightheart.sphr.doctor.base.BaseContract;
-import com.lightheart.sphr.doctor.bean.TestDetails;
+import com.lightheart.sphr.doctor.bean.ClinicalTrialManageDetails;
 
 /**
  * Created by 知足 on 2018/5/11.
  */
 
-public interface TestDetailsContract {
+public interface ClinicalTrialManageDetailsContract {
     interface View extends BaseContract.BaseView{
 
-        void setDetals(TestDetails content);
+        void setClinicalDetalsData(ClinicalTrialManageDetails content);
 
     }
 
     interface Presenter extends BaseContract.BasePresenter<View >{
 
-        void loadDetailsData(int id);
+        void loadClinicalDetalsData(int id);
 
 
     }

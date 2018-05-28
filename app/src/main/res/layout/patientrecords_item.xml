@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
             />
 
         <TextView
-            android:id="@+id/clinictime"
+            android:id="@+id/tvClinicTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_12"
@@ -77,7 +76,7 @@
             />
 
         <TextView
-            android:id="@+id/complaint"
+            android:id="@+id/tvComplaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/orange"
@@ -97,8 +96,6 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,22 +103,19 @@
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
-
         <TextView
-            android:id="@+id/finaldiagnosis"
+            android:id="@+id/tvFinalDiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_12"
             android:textColor="@color/orange"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
             android:background="@color/colorDayTextLight"
             android:layout_marginTop="@dimen/dp_12"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -129,8 +123,6 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,15 +130,13 @@
             android:layout_marginTop="@dimen/dp_6"
             android:textColor="@color/dimmedd"
             />
-
         <TextView
-            android:id="@+id/treatmentprocess"
+            android:id="@+id/tvTreatment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_12"
             android:textColor="@color/orange"
             />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -161,7 +151,6 @@
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_16"
         >
-
 
         <TextView
             android:layout_width="match_parent"
@@ -172,7 +161,7 @@
             />
 
         <TextView
-            android:id="@+id/therapeuticregimen"
+            android:id="@+id/tvDosageSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/orange"

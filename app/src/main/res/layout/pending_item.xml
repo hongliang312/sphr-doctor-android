@@ -11,20 +11,19 @@
         android:layout_height="match_parent"
         android:background="@color/grary">
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/tvTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_14"
         android:textSize="@dimen/big_medium"
         android:background="@color/grary"
         android:textColor="@color/dimmedd"
-
         />
-
     </RelativeLayout>
+
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/large"
@@ -32,36 +31,34 @@
             android:layout_marginTop="@dimen/dp_30"
             android:textColor="@color/black"
             />
-
         <TextView
-            android:id="@+id/condition"
+            android:id="@+id/tvCondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/medium"
             android:layout_marginStart="@dimen/dp_18"
             android:layout_marginTop="@dimen/dp_16"
             android:textColor="@color/grayy"
-            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
             />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_05"
         android:layout_marginTop="@dimen/dp_10"
         android:background="@color/colorDayTextLight"
         />
-
-       <Button
-           android:id="@+id/lookover"
+       <TextView
+           android:id="@+id/tvLookOver"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="查看"
+           android:text="@string/examine"
            android:textColor="@color/sky_blue"
            android:layout_gravity="end"
            android:background="@drawable/buutonshape"
-           android:layout_marginEnd="@dimen/dp_24"
-           android:layout_marginTop="@dimen/dp_20"
-           android:layout_marginBottom="@dimen/dp_15"
+           android:layout_marginEnd="@dimen/dp_16"
+           android:layout_marginTop="@dimen/dp_16"
+           android:layout_marginBottom="@dimen/dp_12"
+           android:paddingLeft="@dimen/dp_16"
+           android:paddingRight="@dimen/dp_16"
            />
-
 </LinearLayout>

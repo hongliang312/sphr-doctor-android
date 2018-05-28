@@ -7,6 +7,7 @@ import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
 import com.lightheart.sphr.doctor.bean.ClinicalRecruitModel;
 import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
 import com.lightheart.sphr.doctor.bean.ClinicalTrailModel;
+import com.lightheart.sphr.doctor.bean.ClinicalTrialManageDetails;
 import com.lightheart.sphr.doctor.bean.CreatePanelDoctorParam;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
@@ -33,20 +34,21 @@ import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
 import com.lightheart.sphr.doctor.bean.PatientRecordsRequestParams;
 import com.lightheart.sphr.doctor.bean.PatientsModel;
 import com.lightheart.sphr.doctor.bean.PatientsRequestParams;
-import com.lightheart.sphr.doctor.bean.ReplyConsultingBean;
+import com.lightheart.sphr.doctor.bean.ConsultingReplyBean;
 import com.lightheart.sphr.doctor.bean.ReplyConsultingRequestParams;
 import com.lightheart.sphr.doctor.bean.RequestParams;
 import com.lightheart.sphr.doctor.bean.ShareClinical2PanelParam;
-import com.lightheart.sphr.doctor.bean.TelephoneDetailsBean;
-import com.lightheart.sphr.doctor.bean.TelephoneDetailsRequestParams;
-import com.lightheart.sphr.doctor.bean.TestDetails;
+import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
+import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
+import com.lightheart.sphr.doctor.bean.TelephoneConsultBean;
 import com.lightheart.sphr.doctor.bean.TextsingRequestParams;
 import com.lightheart.sphr.doctor.bean.TitlesModel;
-import com.lightheart.sphr.doctor.bean.UntreatedBean;
-import com.lightheart.sphr.doctor.bean.UntreatedRequestParams;
+import com.lightheart.sphr.doctor.bean.ConsultingListBean;
+import com.lightheart.sphr.doctor.bean.ConsultingListRequestParams;
 
 import java.util.List;
 
+import butterknife.OnClick;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -167,17 +169,17 @@ public interface ApiService {
     Observable<DataResponse<List<ClinicalTrailModel>>> Testinglist(@Body TextsingRequestParams requestParams);
 
     /**
-     * @return TestDetails
+     * @return ClinicalTrialManageDetails
      */
     @POST("clinicalTrial/myCtrDetailById")
-    Observable<DataResponse<TestDetails>> detailslist(@Body DetailsBean entity);
+    Observable<DataResponse<ClinicalTrialManageDetails>> detailslist(@Body DetailsBean entity);
 
 
     /**
      * 在线咨询
      */
     @POST("consult/list")
-    Observable<DataResponse<List<UntreatedBean>>> pendinglist(@Body UntreatedRequestParams untreated);
+    Observable<DataResponse<List<ConsultingListBean>>> pendinglist(@Body ConsultingListRequestParams untreated);
 
 
     /**
@@ -281,7 +283,7 @@ public interface ApiService {
      * 电话详情
      */
     @POST("consult/detailById")
-    Observable<DataResponse<TelephoneDetailsBean>> telephonedetails(@Body TelephoneDetailsRequestParams telephondetails);
+    Observable<DataResponse<HomeConsultSubDetail>> subDetail(@Body HomeConsultSubDetailRequestParams subDetailRequestParams);
 
 
     /**
@@ -297,7 +299,7 @@ public interface ApiService {
      */
 
     @POST("consult/reply")
-    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingRequestParams params);
+    Observable<ConsultingReplyBean> backlist(@Body ReplyConsultingRequestParams params);
 
     /**
      * 获取职称
@@ -403,7 +405,15 @@ public interface ApiService {
     @POST("user/changepwd")
     Observable<DataResponse<Object>> modifyPsd(@Body ModifyPsdParam param);
 
-    Observable<ReplyConsultingBean> backlist(@Body ReplyConsultingBean params);
+    /**
+     * 咨询回复
+     * */
+    @POST("consult/reply")
+    Observable<ConsultingReplyBean> consultingreply(@Body ConsultingReplyBean replyConsultingbean);
 
-
+    /**
+     * 电话咨询列表
+     * */
+    @POST("consult/tel/list")
+    Observable<TelephoneConsultBean> phoneconsulting(@Body ConsultingListRequestParams untreated);
 }

@@ -6,7 +6,7 @@ import java.util.List;
  * Created by 知足 on 2018/5/16.
  */
 
-public class TelephoneDetailsBean {
+public class HomeConsultSubDetail {
 
 
         private String content;

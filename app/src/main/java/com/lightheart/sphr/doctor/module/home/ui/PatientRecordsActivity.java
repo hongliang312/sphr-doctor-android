@@ -15,13 +15,10 @@ import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
 import com.lightheart.sphr.doctor.module.home.adapter.PatientRecordsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.PatientRecordsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PatientRecordsPresenter;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 
 public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter> implements PatientRecordsContract.View, SwipeRefreshLayout.OnRefreshListener {
-
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;

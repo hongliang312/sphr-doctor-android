@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
@@ -30,12 +29,9 @@ import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 
 /**
@@ -180,10 +176,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         switch (view.getId()) {
             case R.id.llTelConsult:
                 ToastUtils.showShort(R.string.tel_online);
+                startActivity(new Intent(getActivity(), HomeConsultActivity.class).putExtra("tyname","电话咨询"));
                 break;
             case R.id.llOnlineConsult:
-                Intent intent = new Intent(getActivity(), HomeConsultActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), HomeConsultActivity.class));
                 break;
             case R.id.tvClinicalMore:
                 startActivity(new Intent(getActivity(), HomeClinicalRecruitActivity.class));
