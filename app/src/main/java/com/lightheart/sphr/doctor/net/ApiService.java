@@ -9,6 +9,7 @@ import com.lightheart.sphr.doctor.bean.ClinicalSearchParam;
 import com.lightheart.sphr.doctor.bean.ClinicalTrailModel;
 import com.lightheart.sphr.doctor.bean.ClinicalTrialManageDetails;
 import com.lightheart.sphr.doctor.bean.ConsultModel;
+import com.lightheart.sphr.doctor.bean.ConsultingReplyRequestParams;
 import com.lightheart.sphr.doctor.bean.CreatePanelDoctorParam;
 import com.lightheart.sphr.doctor.bean.CreatePanelParam;
 import com.lightheart.sphr.doctor.bean.DataResponse;
@@ -407,7 +408,7 @@ public interface ApiService {
      * 咨询回复 TODO
      */
     @POST("consult/reply")
-    Observable<ConsultingReplyBean> consultingreply(@Body ConsultingReplyBean replyConsultingbean);
+    Observable<ConsultingReplyBean> consultingreply(@Body ConsultingReplyRequestParams replyConsultingbean);
 
     /**
      * 电话咨询列表
@@ -434,4 +435,9 @@ public interface ApiService {
     Observable<DataResponse<Object>> setPersonPush(@Body MessageSetParam param);
 
 
+    /**
+     * 电话咨询详情
+     * */
+    @POST("consult/tel/detailById")
+    Observable<DataResponse<HomeConsultSubDetail>> getTelDetailsList(@Body HomeConsultSubDetailRequestParams subDetailRequestParams);
 }

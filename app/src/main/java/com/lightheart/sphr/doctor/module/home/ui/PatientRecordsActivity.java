@@ -8,13 +8,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.bean.PatientRecordsBean;
 import com.lightheart.sphr.doctor.module.home.adapter.PatientRecordsAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.PatientRecordsContract;
 import com.lightheart.sphr.doctor.module.home.presenter.PatientRecordsPresenter;
+
+import java.util.List;
+
 import javax.inject.Inject;
 import butterknife.BindView;
 
@@ -33,7 +35,6 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
     @Inject
     PatientRecordsAdapter patientRecordsAdapter;
 
-    private int id;
     private TextView tvName;
     private TextView tvAge;
     private TextView tvPlace;
@@ -46,6 +47,7 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
     private TextView tvDrink;
     private TextView tvObstericalHistory;
     private TextView tvFamilyHistory;
+    private int id;
 
     @Override
     protected int getLayoutId() {
@@ -111,7 +113,6 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
             tvDrink.setText(TextUtils.isEmpty(patientRecordsBean.getDrinkHistory()) ? " " : patientRecordsBean.getDrinkHistory());
             tvObstericalHistory.setText(TextUtils.isEmpty(patientRecordsBean.getMaritalHistory()) ? " " : patientRecordsBean.getMaritalHistory());
             tvFamilyHistory.setText(TextUtils.isEmpty(patientRecordsBean.getFamilyHistory()) ? " " : patientRecordsBean.getFamilyHistory());
-
             setLoadDataResult(patientRecordsAdapter, swipeRefreshLayout, patientRecordsBean.getCaseHistories(), loadType);
         }
     }

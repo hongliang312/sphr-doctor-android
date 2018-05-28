@@ -31,7 +31,7 @@ public class HomeConsultSubDetailAdapter extends  RecyclerView.Adapter<RecyclerV
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
 
-        ImageLoaderUtils.display(content,((SubDetail) holder).img,contentt.get(position).getMediaUrl());
+        ImageLoaderUtils.display(content,((SubDetail) holder).tvImg,contentt.get(position).getMediaUrl());
 
     }
 
@@ -42,11 +42,11 @@ public class HomeConsultSubDetailAdapter extends  RecyclerView.Adapter<RecyclerV
 
     public static class SubDetail extends RecyclerView.ViewHolder{
 
-        ImageView img;
+        ImageView tvImg;
 
         SubDetail(View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.img);
+            tvImg = itemView.findViewById(R.id.tvImg);
 
         }
     }
