@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke  android:width="0.8dp" android:color="#72BE26" /><!-- 边框颜色，边框大小-->
-    <solid   android:color="#72BE26" /> <!-- 填充的颜色：这里设置背景透明 -->
-    <corners android:radius="5dip" /><!-- android:radius 弧形的半径 -->
+
+    <solid android:color="#72BE26" />
+    <stroke
+        android:width="@dimen/dp_05"
+        android:color="#72BE26" />
+    <corners android:radius="@dimen/dp_2" />
     <padding android:bottom="10dp"
         android:left="10dp"
         android:right="10dp"
         android:top="10dp" />
+
 </shape>
