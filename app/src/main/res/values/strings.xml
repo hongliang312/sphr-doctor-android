@@ -231,8 +231,7 @@
     <string name="diseasedescription">病情描述</string>
     <string name="uploadthemedicalrecords">上传病历图片</string>
     <string name="telephonebooking">电话咨询预约时间</string>
-    <string name="warm">温馨提示:</string>
-    <string name="prompt">到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,  谢谢。</string>
+    <string name="warm">温馨提示:到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,  谢谢。</string>
     <string name="patientrecords">患者病历</string>
 
 

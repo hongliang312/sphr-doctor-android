@@ -88,6 +88,11 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         tvPatientNamee = getIntent().getStringExtra("tvPatientName");
         id = getIntent().getIntExtra("id", 0);
 
+        HomeConsultSubDetailRequestParams subDetailRequestParams = new HomeConsultSubDetailRequestParams();
+        subDetailRequestParams.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
+        subDetailRequestParams.id = id;
+
+        assert mPresenter != null;
         if (TextUtils.equals("TEL", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.tel_online, false, 0);
             if ("SER_CST_S_ING".equals(consultStatus)) {
@@ -99,6 +104,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 tvLinea.setVisibility(View.VISIBLE);
                 tvLayout.setVisibility(View.VISIBLE);
             }
+            mPresenter.loadTelDetailsData(subDetailRequestParams);
         } else if (TextUtils.equals("ONLINE", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
             if ("SER_CST_S_ING".equals(consultStatus)) {
@@ -110,18 +116,6 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 tvLinea.setVisibility(View.VISIBLE);
                 tvLayout.setVisibility(View.VISIBLE);
             }
-        }
-
-        HomeConsultSubDetailRequestParams subDetailRequestParams = new HomeConsultSubDetailRequestParams();
-        subDetailRequestParams.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        subDetailRequestParams.id = id;
-
-
-
-        assert mPresenter != null;
-        if (TextUtils.equals("TEL", consultType)) {
-            mPresenter.loadTelDetailsData(subDetailRequestParams);
-        } else if (TextUtils.equals("ONLINE", consultType)) {
             mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
         }
 
@@ -151,7 +145,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
             tvLoadicture.setAdapter(subDetailAdapter);
             tvDescription.setText(content.getContent());
-            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)));
+            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
             tvPatientName.setText(tvPatientNamee);
             tvPatientRecords.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -179,7 +173,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
             tvLoadicture.setAdapter(subDetailAdapter);
             tvDescription.setText(content.getContent());
-            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)));
+            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
             tvPatientName.setText(tvPatientNamee);
             tvPatientRecords.setOnClickListener(new View.OnClickListener() {
                 @Override

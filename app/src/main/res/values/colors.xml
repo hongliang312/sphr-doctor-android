@@ -18,7 +18,13 @@
     <color name="tableRow">#f7f7f7</color>
     <color name="red">#ff4a3d</color>
 
-
+    <color name="toRegister">#dcecff</color>
+    <color name="fiveEight">#585858</color>
+    <color name="divide">#dddddd</color>
+    <color name="eight">#888888</color>
+    <color name="search">#F5F4F9</color>
+    <color name="theme_color">#297fca</color>
+    <color name="backgound_color">#f2f2f2</color>
 
 
     <color name="sky_blue">#2A80CA</color>
@@ -27,13 +33,6 @@
     <color name="sky_blue2">#3333CC</color>
     <color name="sky_blue4">#297FCA</color>
     <color name="sky_blue3">#e9f5ff</color>
-    <color name="search">#F5F4F9</color>
-    <color name="theme_color">#297fca</color>
-    <color name="backgound_color">#f2f2f2</color>
-    <color name="toRegister">#dcecff</color>
-    <color name="fiveEight">#585858</color>
-    <color name="divide">#dddddd</color>
-    <color name="eight">#888888</color>
     <color name="specialColor">#297fca</color>
     <color name="wathet">#51BED3</color>
     <color name="balck">#222222</color>
