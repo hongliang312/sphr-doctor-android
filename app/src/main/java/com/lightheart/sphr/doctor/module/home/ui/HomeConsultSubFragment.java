@@ -92,6 +92,9 @@ public class HomeConsultSubFragment extends BaseFragment<ConsultListPresenter> i
         startActivity(new Intent(getActivity(), HomeConsultSubDetailActivity.class)
                 .putExtra("consult_type", consultType)
                 .putExtra("consult_status", consultStatus)
+                .putExtra("tvPatientName",item.getName())
                 .putExtra("id", item.getConsultId()));
+
+
     }
 }

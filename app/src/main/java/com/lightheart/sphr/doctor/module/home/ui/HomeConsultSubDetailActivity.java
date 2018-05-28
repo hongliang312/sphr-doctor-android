@@ -68,6 +68,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     private int id;
     private String consultType;
     private String consultStatus;
+    private String tvPatientNamee;
 
     @Override
     protected int getLayoutId() {
@@ -84,27 +85,38 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 
         consultType = getIntent().getStringExtra("consult_type");
         consultStatus = getIntent().getStringExtra("consult_status");
+        tvPatientNamee = getIntent().getStringExtra("tvPatientName");
         id = getIntent().getIntExtra("id", 0);
 
         if (TextUtils.equals("TEL", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.tel_online, false, 0);
+            if ("SER_CST_S_ING".equals(consultStatus)) {
+                tvLineaLayout.setVisibility(View.GONE);
+                tvLinea.setVisibility(View.VISIBLE);
+                tvLayout.setVisibility(View.VISIBLE);
+            } else {
+                tvLineaLayout.setVisibility(View.GONE);
+                tvLinea.setVisibility(View.VISIBLE);
+                tvLayout.setVisibility(View.VISIBLE);
+            }
         } else if (TextUtils.equals("ONLINE", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
+            if ("SER_CST_S_ING".equals(consultStatus)) {
+                tvLineaLayout.setVisibility(View.VISIBLE);
+                tvLinea.setVisibility(View.GONE);
+                tvLayout.setVisibility(View.GONE);
+            } else {
+                tvLineaLayout.setVisibility(View.GONE);
+                tvLinea.setVisibility(View.VISIBLE);
+                tvLayout.setVisibility(View.VISIBLE);
+            }
         }
 
         HomeConsultSubDetailRequestParams subDetailRequestParams = new HomeConsultSubDetailRequestParams();
         subDetailRequestParams.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
         subDetailRequestParams.id = id;
 
-        if ("SER_CST_S_ING".equals(consultStatus)) {
-            tvLineaLayout.setVisibility(View.VISIBLE);
-            tvLinea.setVisibility(View.GONE);
-            tvLayout.setVisibility(View.GONE);
-        } else {
-            tvLineaLayout.setVisibility(View.GONE);
-            tvLinea.setVisibility(View.VISIBLE);
-            tvLayout.setVisibility(View.VISIBLE);
-        }
+
 
         assert mPresenter != null;
         if (TextUtils.equals("TEL", consultType)) {
@@ -139,9 +151,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
             tvLoadicture.setAdapter(subDetailAdapter);
             tvDescription.setText(content.getContent());
-            tvPatientName.setText(contentt.get(0).getMediaName());
             tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)));
-
+            tvPatientName.setText(tvPatientNamee);
             tvPatientRecords.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -168,9 +179,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
             tvLoadicture.setAdapter(subDetailAdapter);
             tvDescription.setText(content.getContent());
-            tvPatientName.setText(contentt.get(0).getMediaName());
             tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)));
-
+            tvPatientName.setText(tvPatientNamee);
             tvPatientRecords.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -186,4 +196,5 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     protected boolean showHomeAsUp() {
         return true;
     }
+
 }
