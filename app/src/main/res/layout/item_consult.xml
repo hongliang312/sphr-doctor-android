@@ -68,7 +68,7 @@
             android:paddingEnd="@dimen/dp_14"
             android:paddingStart="@dimen/dp_14"
             android:paddingTop="@dimen/dp_8"
-            android:text="@string/examine"
+            android:text="@string/check"
             android:textColor="@color/sky_blue"
             android:textSize="@dimen/small" />
 

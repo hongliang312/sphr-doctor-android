@@ -52,7 +52,7 @@ public class ClinicalTrailManageActivity extends BaseActivity<ClinicalTrailManag
     @Override
     protected void initView() {
 
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.testingmanagement, false, 0);
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.patient_manage, false, 0);
 
         mRvClinical.setLayoutManager(new LinearLayoutManager(this));
 

@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/testingtime"
+            android:text="@string/testing_time"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recruit"
+            android:text="@string/recruitment_num"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adaptationdisease"
+            android:text="@string/adaptation_disease"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 

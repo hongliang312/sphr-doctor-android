@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/dp_4"
             android:drawableTop="@mipmap/details"
-            android:text="@string/particulars"
+            android:text="@string/details"
             android:textColor="@color/theme_color"
             android:textSize="@dimen/small" />
 
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bindingUnit"
+            android:text="@string/binding_unit"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -75,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recruit"
+            android:text="@string/recruitment_num"
             android:textColor="@color/theme_color"
             android:textSize="@dimen/small" />
 
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/testingstage"
+            android:text="@string/testing_stage"
             android:textColor="@color/theme_color"
             android:textSize="@dimen/small" />
 
