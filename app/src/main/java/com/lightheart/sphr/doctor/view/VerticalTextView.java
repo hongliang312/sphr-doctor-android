@@ -1,7 +1,6 @@
 package com.lightheart.sphr.doctor.view;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -14,27 +13,25 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.lightheart.sphr.doctor.R;
+
 import java.util.ArrayList;
 
-/**
- * Created by 知足 on 2018/5/9.
- */
-
-public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewFactory {
+public class VerticalTextView extends TextSwitcher implements ViewSwitcher.ViewFactory {
 
     private static final int FLAG_START_AUTO_SCROLL = 0;
     private static final int FLAG_STOP_AUTO_SCROLL = 1;
 
-    private float mTextSize = 16 ;
+    private float mTextSize = 16;
     private int mPadding = 5;
-    private int textColor = Color.BLACK;
+    private int textColor = R.color.theme_color;
 
     /**
-     * @param textSize 字号
-     * @param padding 内边距
+     * @param textSize  字号
+     * @param padding   内边距
      * @param textColor 字体颜色
      */
-    public void setText(float textSize,int padding,int textColor) {
+    public void setText(float textSize, int padding, int textColor) {
         mTextSize = textSize;
         mPadding = padding;
         this.textColor = textColor;
@@ -46,12 +43,12 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
     private ArrayList<String> textList;
     private Handler handler;
 
-    public VerticalTextview(Context context) {
+    public VerticalTextView(Context context) {
         this(context, null);
         mContext = context;
     }
 
-    public VerticalTextview(Context context, AttributeSet attrs) {
+    public VerticalTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         textList = new ArrayList<String>();
@@ -71,10 +68,11 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
 
     /**
      * 间隔时间
+     *
      * @param time
      */
-    public void setTextStillTime(final long time){
-        handler =new Handler() {
+    public void setTextStillTime(final long time) {
+        handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 switch (msg.what) {
@@ -83,7 +81,7 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
                             currentId++;
                             setText(textList.get(currentId % textList.size()));
                         }
-                        handler.sendEmptyMessageDelayed(FLAG_START_AUTO_SCROLL,time);
+                        handler.sendEmptyMessageDelayed(FLAG_START_AUTO_SCROLL, time);
                         break;
                     case FLAG_STOP_AUTO_SCROLL:
                         handler.removeMessages(FLAG_START_AUTO_SCROLL);
@@ -92,8 +90,10 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
             }
         };
     }
+
     /**
      * 设置数据源
+     *
      * @param titles
      */
     public void setTextList(ArrayList<String> titles) {
@@ -122,7 +122,7 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
         t.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
         t.setMaxLines(1);
         t.setPadding(mPadding, mPadding, mPadding, mPadding);
-        t.setTextColor(textColor);
+        t.setTextColor(getResources().getColor(textColor));
         t.setTextSize(mTextSize);
 
         t.setClickable(true);
@@ -139,6 +139,7 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
 
     /**
      * 设置点击事件监听
+     *
      * @param itemClickListener
      */
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
@@ -151,11 +152,10 @@ public class VerticalTextview extends TextSwitcher implements ViewSwitcher.ViewF
     public interface OnItemClickListener {
         /**
          * 点击回调
+         *
          * @param position 当前点击ID
          */
         void onItemClick(int position);
     }
 
 }
-
-

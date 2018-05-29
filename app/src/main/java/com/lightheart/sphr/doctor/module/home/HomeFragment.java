@@ -2,6 +2,7 @@ package com.lightheart.sphr.doctor.module.home;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +29,7 @@ import com.lightheart.sphr.doctor.module.home.ui.HomeConsultActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
+import com.lightheart.sphr.doctor.view.VerticalTextView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -52,8 +54,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @Inject
     ClinicalAdapter mClinicalAdapter;
     private Banner mBannerAds;
-    private List<HomeModuleManage> moudleManageList = new ArrayList<>();
-    private TextView mTvNotice;
+    private List<HomeModuleManage> moduleManageList = new ArrayList<>();
+    private VerticalTextView mTvNotice;
+    private boolean isFirstEnter = true;
 
     @Override
     protected int getLayoutId() {
@@ -93,10 +96,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             homeModuleManage.type = types[i];
             homeModuleManage.title = titles[i];
             homeModuleManage.imgUrl = images.getResourceId(i, 1);
-            moudleManageList.add(homeModuleManage);
+            moduleManageList.add(homeModuleManage);
         }
         images.recycle();
-        HomeModuleManagerAdapter moduleManagerAdapter = new HomeModuleManagerAdapter(R.layout.grid_home_moudle_manage, moudleManageList);
+        HomeModuleManagerAdapter moduleManagerAdapter = new HomeModuleManagerAdapter(R.layout.grid_home_moudle_manage, moduleManageList);
         moduleManagerAdapter.setOnItemClickListener(this);
         rvGridTest.setAdapter(moduleManagerAdapter);
 
@@ -104,6 +107,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         mClinicalAdapter.setOnItemClickListener(this);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setEnabled(false);
 
         assert mPresenter != null;
         mPresenter.loadHomeData();
@@ -128,40 +132,47 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 .start();
     }
 
+
     @Override
-    public void setNotices(List<HomePageInfo.NoticeListBean> noticeList) {
-        if (noticeList != null && noticeList.size() > 0)
-            mTvNotice.setText(noticeList.get(0).getTitle());
-
-        /*final List<String> titlelist = new ArrayList<>();
-        for (int i = 0; i < noticeList.size(); i++) {
-            String title = noticeList.get(i).getTitle();
-            titlelist.add(title);
-        }
-        mtvNotice.setTextList((ArrayList<String>) titlelist);
-        mtvNotice.setText(26, 5, Color.BLUE);//设置属性
-        mtvNotice.setTextStillTime(3000);//设置停留时长间隔
-        mtvNotice.setAnimTime(100);//设置进入和退出的时间间隔
-        mtvNotice.startAutoScroll();
-        mtvNotice.setOnItemClickListener(new VerticalTextview.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Toast.makeText(getActivity(), "点击了 : " + titlelist.get(position), Toast.LENGTH_SHORT).show();
+    public void setNotices(final List<HomePageInfo.NoticeListBean> noticeList) {
+        if (noticeList != null && noticeList.size() > 0) {
+            List<String> titleList = new ArrayList<>();
+            for (int i = 0; i < noticeList.size(); i++) {
+                String title = noticeList.get(i).getTitle();
+                titleList.add(title);
             }
-        });*/
+            mTvNotice.setTextList((ArrayList<String>) titleList);
 
+            mTvNotice.setText(16, 0, R.color.theme_color);
+            mTvNotice.setTextStillTime(4000);//设置停留时长间隔
+            mTvNotice.setAnimTime(1000);//设置进入和退出的时间间隔
+            mTvNotice.startAutoScroll();
+            mTvNotice.setOnItemClickListener(new VerticalTextView.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    ToastUtils.showShort(noticeList.get(position).getTitle());
+                }
+            });
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-//        mtvNotice.startAutoScroll();
+        if (!isFirstEnter) mTvNotice.startAutoScroll();
+        isFirstEnter = false;
     }
 
     @Override
     public void onPause() {
         super.onPause();
-//        mtvNotice.stopAutoScroll();
+        mTvNotice.stopAutoScroll();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mTvNotice.stopAutoScroll();
     }
 
     @Override
@@ -179,7 +190,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.llTelConsult:
-                ToastUtils.showShort(R.string.tel_online);
                 startActivity(new Intent(getActivity(), HomeConsultActivity.class).putExtra("consult_type", "TEL"));
                 break;
             case R.id.llOnlineConsult:
