@@ -7,11 +7,11 @@ package com.lightheart.sphr.doctor.app;
 
 public class Constant {
     // 测试服务器
-//     public static final String BASE_URL = "http://172.61.1.63:8889/shdr-service-basic/";
+     public static final String BASE_URL = "http://172.61.1.63:8889/shdr-service-basic/";
     // 鲁有志
 //    public static final String BASE_URL = "http://172.61.1.51:8889/shdr-service-basic/";
     // 宇清
-    public static final String BASE_URL = "http://172.61.1.85:8889/shdr-service-basic/";
+//    public static final String BASE_URL = "http://172.61.1.85:8889/shdr-service-basic/";
 
     // 文件地址
     public static final String BASE_FILE_URL = "http://172.61.1.63:5085/shdr-file-boot/";

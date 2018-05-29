@@ -26,6 +26,7 @@ import com.lightheart.sphr.doctor.module.home.ui.ClinicalRecruitDetailActivity;
 import com.lightheart.sphr.doctor.module.home.ui.ClinicalTrailManageActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomeClinicalRecruitActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomeConsultActivity;
+import com.lightheart.sphr.doctor.module.home.ui.HomeNoticeActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePanelActivity;
 import com.lightheart.sphr.doctor.module.home.ui.HomePatientManageActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
@@ -150,7 +151,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             mTvNotice.setOnItemClickListener(new VerticalTextView.OnItemClickListener() {
                 @Override
                 public void onItemClick(int position) {
-                    ToastUtils.showShort(noticeList.get(position).getTitle());
+                    startActivity(new Intent(getActivity(), HomeNoticeActivity.class)
+                            .putExtra("title", noticeList.get(position).getTitle())
+                            .putExtra("content", noticeList.get(position).getContent()));
                 }
             });
         }

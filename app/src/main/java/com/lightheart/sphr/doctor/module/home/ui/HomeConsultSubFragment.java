@@ -94,7 +94,5 @@ public class HomeConsultSubFragment extends BaseFragment<ConsultListPresenter> i
                 .putExtra("consult_status", consultStatus)
                 .putExtra("tvPatientName",item.getName())
                 .putExtra("id", item.getConsultId()));
-
-
     }
 }

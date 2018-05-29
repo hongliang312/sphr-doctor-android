@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -22,12 +23,15 @@ import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 /**
  * 在线咨询和电话咨询详情页，分待完成和已完成
  */
@@ -48,7 +52,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @BindView(R.id.tvPhoneTime)
     TextView tvPhoneTime;
     @BindView(R.id.tvLoadicture)
-    RecyclerView tvLoadicture;
+    RecyclerView rvImages;
     @BindView(R.id.tvLineaLayout)
     LinearLayout tvLineaLayout;
     @BindView(R.id.tvLinea)
@@ -61,8 +65,6 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     TextView tvText;
     private List<HomeConsultSubDetail.ImgsBean> contentt = new ArrayList<>();
     private int id;
-    private String consultType;
-    private String consultStatus;
     private String tvPatientNamee;
     private HomeConsultSubDetail content;
 
@@ -79,8 +81,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @Override
     protected void initView() {
 
-        consultType = getIntent().getStringExtra("consult_type");
-        consultStatus = getIntent().getStringExtra("consult_status");
+        String consultType = getIntent().getStringExtra("consult_type");
+        String consultStatus = getIntent().getStringExtra("consult_status");
         tvPatientNamee = getIntent().getStringExtra("tvPatientName");
         id = getIntent().getIntExtra("id", 0);
         tvText.setText(Html.fromHtml("<font color='#297fca'>温馨提示:</font>&nbsp;&nbsp;&nbsp;&nbsp;到达指定时间后,平台客服会与您和患者进行连线，请安排好自己的时间,谢谢。"));
@@ -116,30 +118,42 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
             mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
         }
     }
-    @OnClick(R.id.Submit)
+
+    @OnClick({R.id.Submit, R.id.tvPatientRecords})
     public void onClick(View view) {
-        ConsultingReplyRequestParams replyConsultingbean = new ConsultingReplyRequestParams();
-        replyConsultingbean.id = id;
-        replyConsultingbean.content = feedback.getText().toString().trim();
+        switch (view.getId()) {
+            case R.id.Submit:
+                ConsultingReplyRequestParams replyConsultingbean = new ConsultingReplyRequestParams();
+                replyConsultingbean.id = id;
+                replyConsultingbean.content = feedback.getText().toString().trim();
 
-        if (TextUtils.isEmpty(replyConsultingbean.content)) {
-            ToastUtils.showShort(getString(R.string.feed_back_reply));
-            return;
+                if (TextUtils.isEmpty(replyConsultingbean.content)) {
+                    ToastUtils.showShort(getString(R.string.feed_back_reply));
+                    return;
+                }
+                assert mPresenter != null;
+                mPresenter.loadConsultingReplyData(replyConsultingbean);
+                break;
+            case R.id.tvPatientRecords:
+                startActivity(new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class).putExtra("id", content.getPuid()));
+                break;
         }
-        assert mPresenter != null;
-        mPresenter.loadConsultingReplyData(replyConsultingbean);
     }
 
-    @OnClick(R.id.tvPatientRecords)
-    public void tvPatientRecords(View view) {
-        Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
-        intent.putExtra("id", content.getPuid());
-        startActivity(intent);
-    }
     @Override
     public void setHomeConsultSubDetailData(final HomeConsultSubDetail content) {
-        this.content=content;
-        setConsultingDetailsMethod(content);
+        this.content = content;
+        if (content != null) {
+            contentt.clear();
+            contentt.addAll(content.getImgs());
+            rvImages.setLayoutManager(new GridLayoutManager(this, 3));
+            HomeConsultSubDetailAdapter subDetailAdapter;
+            subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
+            rvImages.setAdapter(subDetailAdapter);
+            tvDescription.setText(content.getContent());
+            tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
+            tvPatientName.setText(tvPatientNamee);
+        }
     }
 
     @Override
@@ -150,24 +164,23 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 
     @Override
     public void setTelDetailsData(final HomeConsultSubDetail content) {
-        this.content=content;
-        setConsultingDetailsMethod(content);
-    }
-    @Override
-    protected boolean showHomeAsUp() {
-        return true;
-    }
-    public void setConsultingDetailsMethod(HomeConsultSubDetail content) {
+        this.content = content;
         if (content != null) {
             contentt.clear();
             contentt.addAll(content.getImgs());
-            tvLoadicture.setLayoutManager(new GridLayoutManager(this, 3));
+            rvImages.setLayoutManager(new GridLayoutManager(this, 3));
             HomeConsultSubDetailAdapter subDetailAdapter;
             subDetailAdapter = new HomeConsultSubDetailAdapter(this, contentt);
-            tvLoadicture.setAdapter(subDetailAdapter);
+            rvImages.setAdapter(subDetailAdapter);
             tvDescription.setText(content.getContent());
             tvPhoneTime.setText(TimeUtils.millis2String(contentt.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
             tvPatientName.setText(tvPatientNamee);
         }
     }
+
+    @Override
+    protected boolean showHomeAsUp() {
+        return true;
+    }
+
 }
