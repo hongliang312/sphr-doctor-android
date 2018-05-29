@@ -18,7 +18,7 @@
             android:id="@+id/tvSetTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/grary"
+            android:background="@color/backgound_color"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 

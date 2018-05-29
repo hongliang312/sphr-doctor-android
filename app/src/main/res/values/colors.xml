@@ -24,12 +24,10 @@
     <color name="search">#F5F4F9</color>
     <color name="theme_color">#297fca</color>
     <color name="backgound_color">#f2f2f2</color>
+
+
     <color name="sky_blue">#2A80CA</color>
+    <color name="background_wither">#51BED3</color>
 
-
-
-    <color name="wathet">#51BED3</color>
-    <color name="grary">#F2F2F2</color>
-    <color name="orange">#FF7300</color>
 
 </resources>

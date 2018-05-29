@@ -294,13 +294,6 @@ public interface ApiService {
 
 
     /**
-     * 回复咨询 TODO
-     */
-
-    @POST("consult/reply")
-    Observable<ConsultingReplyBean> backlist(@Body ReplyConsultingRequestParams params);
-
-    /**
      * 获取职称
      *
      * @return List<TitlesModel>
@@ -440,4 +433,5 @@ public interface ApiService {
      * */
     @POST("consult/tel/detailById")
     Observable<DataResponse<HomeConsultSubDetail>> getTelDetail(@Body HomeConsultSubDetailRequestParams subDetailRequestParams);
+
 }

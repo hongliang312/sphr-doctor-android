@@ -19,6 +19,7 @@ public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubD
     @Inject
     HomeConsultSubDetailPresenter() {
     }
+
     @Override
     public void loadHomeConsultSubDetailData(HomeConsultSubDetailRequestParams subDetailRequestParams) {
         RetrofitManager.create(ApiService.class)
@@ -43,7 +44,7 @@ public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubD
     }
 
     @Override
-    public void loadConsultingReplyData(ConsultingReplyRequestParams replyConsultingbean) {
+    public void replyConsult(ConsultingReplyRequestParams replyConsultingbean) {
         RetrofitManager.create(ApiService.class)
                 .consultingreply(replyConsultingbean)
                 .compose(RxSchedulers.<ConsultingReplyBean> applySchedulers())
@@ -52,7 +53,7 @@ public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubD
                     @Override
                     public void accept(ConsultingReplyBean replyConsultingBean) throws Exception {
                         if(replyConsultingBean.getResultcode()==200){
-                            mView.setConsultingReply();
+                            mView.successReply();
                         }else {
                             mView.showFaild(String.valueOf(replyConsultingBean.getResultmsg()));
                         }
@@ -77,7 +78,7 @@ public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubD
                     @Override
                     public void accept(DataResponse<HomeConsultSubDetail> responsee) throws Exception {
                         if(responsee.getResultcode() == 200){
-                            mView.setTelDetailsData(responsee.getContent());
+                            mView.setHomeConsultSubDetailData(responsee.getContent());
                         } else {
                             mView.showFaild(String.valueOf(responsee.getResultmsg()));
                         }
