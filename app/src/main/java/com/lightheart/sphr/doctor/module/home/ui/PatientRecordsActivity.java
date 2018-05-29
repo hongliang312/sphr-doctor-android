@@ -110,10 +110,10 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
             tvHistory2.setText(TextUtils.equals("Y", patientRecordsBean.getIsHistory2()) ? "是" : TextUtils.equals("N", patientRecordsBean.getIsHistory2()) ? "否" : "未知");
             tvHistory3.setText(TextUtils.equals("Y", patientRecordsBean.getIsHistory3()) ? "是" : TextUtils.equals("N", patientRecordsBean.getIsHistory3()) ? "否" : "未知");
 
-            tvSmokingHistory.setText(TextUtils.isEmpty(patientRecordsBean.getSmokeHistory()) ? " " : patientRecordsBean.getSmokeHistory());
-            tvDrink.setText(TextUtils.isEmpty(patientRecordsBean.getDrinkHistory()) ? " " : patientRecordsBean.getDrinkHistory());
-            tvObstericalHistory.setText(TextUtils.isEmpty(patientRecordsBean.getMaritalHistory()) ? " " : patientRecordsBean.getMaritalHistory());
-            tvFamilyHistory.setText(TextUtils.isEmpty(patientRecordsBean.getFamilyHistory()) ? " " : patientRecordsBean.getFamilyHistory());
+            tvSmokingHistory.setText(TextUtils.isEmpty(patientRecordsBean.getSmokeHistory()) ? "未知" : patientRecordsBean.getSmokeHistory());
+            tvDrink.setText(TextUtils.isEmpty(patientRecordsBean.getDrinkHistory()) ? "未知" : patientRecordsBean.getDrinkHistory());
+            tvObstericalHistory.setText(TextUtils.isEmpty(patientRecordsBean.getMaritalHistory()) ? "未知" : patientRecordsBean.getMaritalHistory());
+            tvFamilyHistory.setText(TextUtils.isEmpty(patientRecordsBean.getFamilyHistory()) ? "未知" : patientRecordsBean.getFamilyHistory());
 
             setLoadDataResult(patientRecordsAdapter, swipeRefreshLayout, patientRecordsBean.getCaseHistories(), loadType);
         }

@@ -67,5 +67,5 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
                         mView.showFaild(throwable.getMessage());
                     }
                 });
-    }
-}
+           }
+   }

@@ -193,12 +193,12 @@
     <string name="age">年龄: </string>
     <string name="nationality">民族: </string>
     <string name="clinical_hint">在这里,您看到您所参加的项目的进度</string>
-    <string name="residential_historyidemic">是否有瘟疫区、疫情、疫区居住史</string>
+    <string name="residential_history">是否有瘟疫区、疫情、疫区居住史</string>
     <string name="living_history">是否有牧区、矿山、高沸去、低碘区居住史</string>
     <string name="radiation">是否有化学性物质、放射物、毒物接触史</string>
     <string name="smoking_history">吸烟史</string>
     <string name="drinking_history">饮酒史</string>
-    <string name="obsterical_history">婚育史</string>
+    <string name="obstetric_history">婚育史</string>
     <string name="family_history">家族史</string>
     <string name="testing_time">试验时间:</string>
     <string name="project_sponsor">项目主办方:</string>
@@ -226,9 +226,6 @@
     <string name="treatment_of">治疗经过</string>
     <string name="dosage_schedule">用药方案</string>
     <string name="finishing_time">(整理时间)</string>
-
-
-
 
 
 </resources>

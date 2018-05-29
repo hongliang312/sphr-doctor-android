@@ -3,7 +3,7 @@
     android:shape="oval"
     android:useLevel="false">
 
-    <solid android:color="@color/wathet" />
+    <solid android:color="@color/background_wither" />
 
     <size
         android:width="20dp"

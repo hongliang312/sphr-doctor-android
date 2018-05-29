@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/residential_historyidemic"
+            android:text="@string/residential_history"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -236,7 +236,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/obsterical_history"
+            android:text="@string/obstetric_history"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
