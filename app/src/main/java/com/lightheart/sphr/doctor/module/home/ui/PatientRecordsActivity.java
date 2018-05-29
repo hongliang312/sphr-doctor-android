@@ -62,7 +62,7 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.patientrecord, false, 0);
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.patient_record, false, 0);
         id = getIntent().getIntExtra("id", 0);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -100,10 +100,10 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
     @Override
     public void setPatientRecords(PatientRecordsBean patientRecordsBean, int loadType) {
         if (patientRecordsBean != null) {
-            tvName.setText(getString(R.string.name) + patientRecordsBean.getName());
-            tvPlace.setText(getString(R.string.address) + patientRecordsBean.getResidenceplace());
+            tvName.setText(getString(R.string.person_name) + patientRecordsBean.getName());
+            tvPlace.setText(getString(R.string.residence) + patientRecordsBean.getResidenceplace());
             tvAge.setText(getString(R.string.age) + String.valueOf(patientRecordsBean.getAge()));
-            tvNation.setText(getString(R.string.nation) + patientRecordsBean.getNation());
+            tvNation.setText(getString(R.string.nationality) + patientRecordsBean.getNation());
             tvBirthPlace.setText(getString(R.string.birth_place) + patientRecordsBean.getBirthplace());
 
             tvHistory1.setText(TextUtils.equals("Y", patientRecordsBean.getIsHistory1()) ? "是" : TextUtils.equals("N", patientRecordsBean.getIsHistory1()) ? "否" : "未知");

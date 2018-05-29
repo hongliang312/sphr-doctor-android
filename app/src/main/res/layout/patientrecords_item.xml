@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/organizingtime"
+            android:text="@string/finishing_time"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
     </LinearLayout>
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dp_12"
-            android:text="@string/clinictime"
+            android:text="@string/clinic_time"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dp_12"
-            android:text="@string/finaldiagnosis"
+            android:text="@string/final_diagnosis"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dp_12"
-            android:text="@string/treatmentprocess"
+            android:text="@string/treatment_of"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dp_12"
-            android:text="@string/therapeuticregimen"
+            android:text="@string/dosage_schedule"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 

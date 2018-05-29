@@ -22,7 +22,7 @@
             android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@string/projectlocation"
+            android:text="@string/project_location"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -54,7 +54,7 @@
             android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@string/plan"
+            android:text="@string/plan_examine"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -70,7 +70,7 @@
             android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@string/thegroupnumber"
+            android:text="@string/present_group_number"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -86,7 +86,7 @@
             android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@string/thegrouprate"
+            android:text="@string/group_rate"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -118,7 +118,7 @@
             android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@string/isstart"
+            android:text="@string/is_start"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -134,7 +134,7 @@
             android:gravity="center"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@string/earlyexit"
+            android:text="@string/exit_number"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
     </TableRow>

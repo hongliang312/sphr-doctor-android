@@ -66,7 +66,7 @@ public class ClinicalTrailManageDetailActivity extends BaseActivity<ClinicalTria
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.testingmanagement, false, 0);
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.clinical_manage, false, 0);
         int id = getIntent().getIntExtra("id", 0);
         assert mPresenter != null;
         mPresenter.loadClinicalDetailsData(id);

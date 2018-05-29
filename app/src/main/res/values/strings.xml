@@ -26,7 +26,7 @@
     <string name="modifyPsd">修改密码</string>
     <string name="announcement">公告</string>
 
-    <string name="patient_manage">患者管理</string>
+
     <string name="patient_search">请输入姓名或患者诊断</string>
     <string name="patient_search_hint">在患者端关注过您的患者，可以在这里显示哦。\n在这里，您可以看到完整的患者病历记录。</string>
     <string name="clinical_manage">试验管理</string>
@@ -53,6 +53,7 @@
     <string name="trial_stage">试验阶段：</string>
     <string name="adaptation_disease">适应症：</string>
     <string name="biding_unit">申办单位：</string>
+    <string name="patient_manage">患者管理</string>
     <string name="please_input_adaptation_disease">搜索适应症名称</string>
     <string name="trial_time">试验时间</string>
     <string name="trial_base_detail">基本信息</string>
@@ -173,86 +174,61 @@
     <string name="please_input_new_psd_one_more">请再次输入新密码</string>
     <string name="input_new_psd_not_fit">您输入的新密码不一致</string>
     <string name="modify_success_to_login">密码修改成功，请重新登录&#8230;</string>
-
     <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
-
-
     <string name="exit_system">再按一次退出程序</string>
     <string name="empty"> </string>
-
     <string name="num">666</string>
-
-
     <string name="clinic_trial">临床试验</string>
-    <string name="search">查询关键字:糖尿病</string>
-    <string name="button">Search</string>
-    <string name="hot">热门搜索:</string>
-    <string name="bin">糖尿病</string>
-    <string name="yuan">原发性高血压</string>
-    <string name="qian">前列腺癌</string>
-    <string name="project">项目名称</string>
 
 
-    <string name="clinical_hint">在这里，您看到您所参加的项目的进度</string>
+
+    <string name="patients_with_details">患者详情</string>
+    <string name="patient_record">患者档案</string>
+    <string name="patient_records">患者病历</string>
+    <string name="Illness_description">病情描述</string>
+    <string name="upload_medical_records">上传病历图片</string>
+    <string name="telephone_consulting_time">电话咨询预约时间</string>
+    <string name="war_prompt">温馨提示:到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,  谢谢。</string>
+    <string name="residence">常住地: </string>
+    <string name="age">年龄: </string>
+    <string name="nationality">民族: </string>
+    <string name="clinical_hint">在这里,您看到您所参加的项目的进度</string>
+    <string name="residential_historyidemic">是否有瘟疫区、疫情、疫区居住史</string>
+    <string name="living_history">是否有牧区、矿山、高沸去、低碘区居住史</string>
+    <string name="radiation">是否有化学性物质、放射物、毒物接触史</string>
+    <string name="smoking_history">吸烟史</string>
+    <string name="drinking_history">饮酒史</string>
+    <string name="obsterical_history">婚育史</string>
+    <string name="family_history">家族史</string>
+    <string name="testing_time">试验时间:</string>
+    <string name="project_sponsor">项目主办方:</string>
+    <string name="check">查看</string>
     <string name="message">为确保信息的时效性以下信息每天更新</string>
-    <string name="testingmanagement">试验管理</string>
-    <string name="telephonecounseling">电话咨询</string>
-    <string name="patientcounseling">患者咨询</string>
-    <string name="testingtime">试验时间:</string>
-    <string name="recruit">招募人数:</string>
-    <string name="man">人</string>
-    <string name="adaptationdisease">适应症 :</string>
-    <string name="projectsponsor">项目主办方:</string>
-    <string name="projectorganizer">项目承办方:</string>
-    <string name="projectpi">项目PI:</string>
-    <string name="projectphase">项目阶段:</string>
-    <string name="projectlocation">项目地点</string>
+    <string name="project_contractor">项目承办方:</string>
+    <string name="project_progress_overview">项目进度概览</string>
+    <string name="project_pi">项目PI:</string>
+    <string name="project_phase">项目阶段:</string>
+    <string name="project_location">项目地点</string>
     <string name="researcher">研究者</string>
-    <string name="plan">计划受试者人数</string>
-    <string name="thegroupnumber">目前已入组人数</string>
-    <string name="thegrouprate">入组率</string>
+    <string name="plan_examine">计划受试者人数</string>
+    <string name="present_group_number">目前已入组人数</string>
+    <string name="group_rate">入组率</string>
     <string name="state">状态</string>
-    <string name="isstart">是否启动</string>
-    <string name="earlyexit">提前退出人数</string>
+    <string name="is_start">是否启动</string>
+    <string name="exit_number">提前退出人数</string>
     <string name="total">总计</string>
-
-    <string name="bindingUnit">申办单位:</string>
-    <string name="testingstage">试验阶段:</string>
-    <string name="purposeofresearch">研究目的</string>
-    <string name="particulars">详情</string>
-    <string name="ygxq">  阳光欣晴</string>
-    <string name="testingmanger">试验管理</string>
-    <string name="examine">查看</string>
-
-    <string name="patientswithdetails">患者详情</string>
-    <string name="patientrecord">患者档案</string>
-    <string name="patientname">山口百惠</string>
-    <string name="huan_name">患者病历</string>
-    <string name="diseasedescription">病情描述</string>
-    <string name="uploadthemedicalrecords">上传病历图片</string>
-    <string name="telephonebooking">电话咨询预约时间</string>
-    <string name="warm">温馨提示:到达指定时间后,平台客服会与您和患者进行连线,请安排好自己的时间,  谢谢。</string>
-    <string name="patientrecords">患者病历</string>
-
-
-    <string name="clinictime">就诊时间</string>
+    <string name="details">详情</string>
+    <string name="binding_unit">申办单位:</string>
+    <string name="testing_stage">试验阶段:</string>
+    <string name="clinic_time">就诊时间</string>
     <string name="complaint">主诉</string>
-    <string name="finaldiagnosis">最后诊断</string>
-    <string name="treatmentprocess">治疗经过</string>
-    <string name="therapeuticregimen">用药方案</string>
-    <string name="organizingtime">  (整理时间)</string>
+    <string name="final_diagnosis">最后诊断</string>
+    <string name="treatment_of">治疗经过</string>
+    <string name="dosage_schedule">用药方案</string>
+    <string name="finishing_time">(整理时间)</string>
 
-    <string name="epidemic">是否有瘟疫区、疫情、疫区居住史</string>
-    <string name="epidemicarea">是否有牧区、矿山、高沸去、低碘区居住史</string>
-    <string name="poison">是否有化学性物质、放射物、毒物接触史</string>
-    <string name="smokinghistory">吸烟史</string>
-    <string name="drinking">饮酒史</string>
-    <string name="obstericalhistory">婚育史</string>
-    <string name="familyhistory">家族史</string>
 
-    <string name="name">姓名:  </string>
-    <string name="address">常住地:  </string>
-    <string name="age">年龄:  </string>
-    <string name="nation">民族:  </string>
+
+
 
 </resources>

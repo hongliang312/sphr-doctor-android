@@ -32,7 +32,7 @@
                     android:id="@+id/tvName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/name"
+                    android:text="@string/person_name"
                     android:textColor="@color/title_black"
                     android:textSize="@dimen/small" />
 
@@ -50,7 +50,7 @@
                     android:id="@+id/tvPlace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/address"
+                    android:text="@string/residence"
                     android:textColor="@color/title_black"
                     android:textSize="@dimen/small" />
 
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/dp_10"
                     android:paddingTop="@dimen/dp_10"
-                    android:text="@string/nation"
+                    android:text="@string/nationality"
                     android:textColor="@color/title_black"
                     android:textSize="@dimen/small" />
             </LinearLayout>
@@ -99,7 +99,7 @@
         android:paddingEnd="@dimen/dp_0"
         android:paddingStart="@dimen/dp_14"
         android:paddingTop="@dimen/dp_16"
-        android:text="@string/familyhistory"
+        android:text="@string/living_history"
         android:textColor="@color/fiveEight"
         android:textSize="@dimen/big_small" />
 
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/epidemic"
+            android:text="@string/residential_historyidemic"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/epidemicarea"
+            android:text="@string/recruitment_num"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/poison"
+            android:text="@string/radiation"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -188,7 +188,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/smokinghistory"
+            android:text="@string/smoking_history"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -212,7 +212,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/drinking"
+            android:text="@string/drinking_history"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -236,7 +236,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/obstericalhistory"
+            android:text="@string/obsterical_history"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 
@@ -260,7 +260,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/dp_10"
             android:paddingTop="@dimen/dp_10"
-            android:text="@string/familyhistory"
+            android:text="@string/family_history"
             android:textColor="@color/eight"
             android:textSize="@dimen/small" />
 

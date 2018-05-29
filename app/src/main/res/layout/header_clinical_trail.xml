@@ -8,7 +8,7 @@
         android:id="@+id/rvClinical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/sky_blue3"
+        android:background="@color/toRegister"
         android:padding="@dimen/dp_14"
         android:text="@string/clinical_hint"
         android:textColor="@color/sky_blue"

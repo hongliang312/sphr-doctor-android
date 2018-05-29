@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="@dimen/dp_14"
-                android:text="@string/patientswithdetails"
+                android:text="@string/patients_with_details"
                 android:textColor="@color/title_black"
                 android:textSize="@dimen/small" />
 
@@ -73,7 +73,7 @@
                     android:paddingEnd="@dimen/dp_4"
                     android:paddingStart="@dimen/dp_4"
                     android:paddingTop="@dimen/dp_6"
-                    android:text="@string/huan_name"
+                    android:text="@string/patient_records"
                     android:textColor="@color/white"
                     android:textSize="@dimen/small" />
             </LinearLayout>
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_14"
-                android:text="@string/diseasedescription"
+                android:text="@string/Illness_description"
                 android:textColor="@color/title_black"
                 android:textSize="@dimen/small" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_05"
                 android:layout_marginStart="@dimen/dp_14"
-                android:background="@color/dimmed" />
+                android:background="@color/divide" />
 
 
             <TextView
@@ -118,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_14"
-                android:text="@string/uploadthemedicalrecords"
+                android:text="@string/upload_medical_records"
                 android:textColor="@color/title_black"
                 android:textSize="@dimen/small" />
 
@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_05"
                 android:layout_marginStart="@dimen/dp_14"
-                android:background="@color/dimmed" />
+                android:background="@color/divide" />
 
 
             <android.support.v7.widget.RecyclerView
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/dp_14"
                     android:paddingTop="@dimen/dp_14"
-                    android:text="@string/telephonebooking"
+                    android:text="@string/telephone_consulting_time"
                     android:textColor="@color/title_black"
                     android:textSize="@dimen/small" />
 
@@ -182,13 +182,15 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/dp_14"
                 android:paddingBottom="@dimen/dp_20"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
+                    android:id="@+id/tvText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/warm"
+                    android:text="@string/war_prompt"
                     android:textColor="@color/eight"
+                    android:lineSpacingExtra="@dimen/dp_4"
                     android:textSize="@dimen/micro" />
 
             </LinearLayout>
@@ -208,10 +210,10 @@
                     android:layout_height="@dimen/dp_100"
                     android:background="@drawable/bg_grey_round"
                     android:gravity="start"
-                    android:hint="@string/feed_back_hint1"
+                    android:hint="@string/feed_back_reply"
                     android:lineSpacingExtra="@dimen/dp_4"
                     android:padding="@dimen/dp_10"
-                    android:textColor="@color/title_black"
+                    android:textColor="@color/eight"
                     android:textSize="@dimen/small" />
 
                 <TextView

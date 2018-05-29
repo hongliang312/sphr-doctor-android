@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/dp_6"
             android:drawableTop="@mipmap/details"
-            android:text="@string/particulars"
+            android:text="@string/recruitment_num"
             android:textColor="@color/theme_color"
             android:textSize="@dimen/micro" />
 

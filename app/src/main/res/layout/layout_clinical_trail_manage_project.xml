@@ -26,7 +26,7 @@
             android:gravity="center"
             android:paddingEnd="@dimen/dp_4"
             android:paddingStart="@dimen/dp_8"
-            android:text="项目进度概览"
+            android:text="@string/project_progress_overview"
             android:textColor="@android:color/white"
             android:textSize="@dimen/small" />
     </RelativeLayout>

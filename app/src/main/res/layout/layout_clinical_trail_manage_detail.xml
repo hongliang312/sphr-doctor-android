@@ -83,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/projectsponsor"
+            android:text="@string/project_sponsor"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
@@ -109,7 +109,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/projectorganizer"
+            android:text="@string/project_contractor"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
@@ -135,7 +135,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/projectpi"
+            android:text="@string/project_pi"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
@@ -162,7 +162,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/projectphase"
+            android:text="@string/project_phase"
             android:textColor="@color/fiveEight"
             android:textSize="@dimen/small" />
 
