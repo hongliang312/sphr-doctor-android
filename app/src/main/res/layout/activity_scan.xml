@@ -30,10 +30,9 @@
             app:qrcv_barcodeRectHeight="120dp"
             app:qrcv_borderColor="@android:color/white"
             app:qrcv_borderSize="1dp"
-            app:qrcv_cornerColor="@color/colorPrimaryDark"
-            app:qrcv_cornerLength="20dp"
-            app:qrcv_cornerSize="3dp"
-            app:qrcv_customScanLineDrawable="@drawable/scan_icon_scanline"
+            app:qrcv_cornerColor="@color/theme_color"
+            app:qrcv_cornerLength="14dp"
+            app:qrcv_cornerSize="2dp"
             app:qrcv_isBarcode="false"
             app:qrcv_isCenterVertical="false"
             app:qrcv_isOnlyDecodeScanBoxArea="false"
@@ -46,13 +45,13 @@
             app:qrcv_maskColor="#33FFFFFF"
             app:qrcv_qrCodeTipText="将二维码/条码放入框内，即可自动扫描"
             app:qrcv_rectWidth="200dp"
-            app:qrcv_scanLineColor="@color/colorPrimaryDark"
+            app:qrcv_scanLineColor="@color/theme_color"
             app:qrcv_scanLineMargin="0dp"
             app:qrcv_scanLineSize="0.5dp"
             app:qrcv_tipTextColor="@android:color/white"
             app:qrcv_tipTextSize="12sp"
             app:qrcv_toolbarHeight="56dp"
-            app:qrcv_topOffset="20dp" />
+            app:qrcv_topOffset="80dp" />
 
     </LinearLayout>
 

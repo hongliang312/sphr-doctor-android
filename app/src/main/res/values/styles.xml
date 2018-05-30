@@ -50,7 +50,7 @@
 
     <!--冷启动优化-->
     <style name="AppSplash" parent="NoTitleFullscreen">
-        <item name="android:windowBackground">@mipmap/bryant_cover</item>
+        <item name="android:windowBackground">@mipmap/bg_welcome</item>
     </style>
 
     <style name="action_bar">

@@ -2,7 +2,6 @@ package com.lightheart.sphr.doctor.module.home;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
@@ -146,7 +144,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
             mTvNotice.setText(16, 0, R.color.theme_color);
             mTvNotice.setTextStillTime(4000);//设置停留时长间隔
-            mTvNotice.setAnimTime(1000);//设置进入和退出的时间间隔
+            mTvNotice.setAnimTime(600);//设置进入和退出的时间间隔
             mTvNotice.startAutoScroll();
             mTvNotice.setOnItemClickListener(new VerticalTextView.OnItemClickListener() {
                 @Override
