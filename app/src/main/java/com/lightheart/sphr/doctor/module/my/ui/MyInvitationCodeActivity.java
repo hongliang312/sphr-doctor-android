@@ -62,7 +62,7 @@ public class MyInvitationCodeActivity extends BaseActivity {
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.my_invitation_code, false, 0);
         DoctorBean docInfo = (DoctorBean) getIntent().getSerializableExtra("docInfo");
         if (docInfo != null) {
-            ImageLoaderUtils.display(this, clvHeadImage, docInfo.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+            ImageLoaderUtils.display(this, clvHeadImage, docInfo.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
             tvName.setText(TextUtils.isEmpty(docInfo.getRealName()) ? "" : docInfo.getRealName());
             tvHospital.setText(TextUtils.isEmpty(docInfo.getHospitalName()) ? "" : docInfo.getHospitalName());
             tvInviteCode.setText(TextUtils.isEmpty(docInfo.getInviteCode()) ? getString(R.string.invitation_code) : getString(R.string.invitation_code) + docInfo.getInviteCode());

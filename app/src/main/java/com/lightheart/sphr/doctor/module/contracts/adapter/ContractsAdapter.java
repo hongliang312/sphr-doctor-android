@@ -62,7 +62,7 @@ public class ContractsAdapter extends BaseQuickAdapter<DoctorBean, ContractsAdap
         }
         helper.rl_content.getLayoutParams().width = mWidthPixels;
         CircleImageView civContract = helper.getView(R.id.civContract);
-        ImageLoaderUtils.display(mContext, civContract, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+        ImageLoaderUtils.display(mContext, civContract, item.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
 
         // 删除
         helper.item_delete_tv.setOnClickListener(new View.OnClickListener() {

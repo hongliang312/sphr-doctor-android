@@ -28,7 +28,6 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.List;
 
-
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;

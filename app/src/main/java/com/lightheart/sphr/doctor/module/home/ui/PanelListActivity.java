@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -113,7 +114,10 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
 
     @Override
     public void setPanelList(List<PanelsModel> panelsModels, int loadType) {
-        setLoadDataResult(mPanelListAdapter, mSwipeRefreshLayout, panelsModels, loadType);
+        if (panelsModels != null && panelsModels.size() > 0)
+            setLoadDataResult(mPanelListAdapter, mSwipeRefreshLayout, panelsModels, loadType);
+        else
+            mPanelListAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPanels.getParent());
     }
 
     @Override

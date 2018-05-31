@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 ToastUtils.showShort(R.string.exit_system);
                 mExitTime = System.currentTimeMillis();
             } else {
-                System.exit(0);
+                finish();
             }
             return true;
         }
@@ -121,12 +121,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /*if (item.getItemId() == R.id.menuHot) {
-            mToolbar.setTitle(R.string.hot_title);
-            switchFragment(3);
-        } else if (item.getItemId() == R.id.menuSearch) {
-            ARouter.getInstance().build("/hotsearch/SearchActivity").navigation();
-        }*/
         return super.onOptionsItemSelected(item);
     }
 

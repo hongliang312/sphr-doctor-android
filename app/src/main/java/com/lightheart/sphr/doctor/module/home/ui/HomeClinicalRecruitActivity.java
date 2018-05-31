@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
@@ -27,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -37,20 +41,22 @@ import io.reactivex.subjects.PublishSubject;
  * Description : 临床招募
  */
 
-public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPresenter> implements ClinicalRecruitContract.View, BaseQuickAdapter.OnItemClickListener, SearchView.OnQueryTextListener {
+public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPresenter> implements ClinicalRecruitContract.View, BaseQuickAdapter.OnItemClickListener, TextWatcher {
 
     @BindView(R.id.common_toolbar)
     Toolbar mToolbar;
     @BindView(R.id.bt_sub)
-    Button mRegiste;
+    Button mSub;
     @BindView(R.id.common_toolbar_title_tv)
     TextView mTitleTv;
-    @BindView(R.id.shvDisease)
-    SearchView shvDisease;
+    @BindView(R.id.etDisease)
+    EditText etDisease;
+    @BindView(R.id.ivDelete)
+    ImageView ivDelete;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvClinicals)
-    RecyclerView mRvClinicals;
+    RecyclerView mRvClinical;
     @Inject
     HomeClinicalRecruitAdapter mAdapter;
     private PublishSubject<String> mSubject = PublishSubject.create();
@@ -67,29 +73,19 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
 
     @Override
     protected void initView() {
-        initToolbar(mToolbar, mTitleTv, mRegiste, R.string.clinical_trial, false, 0);
+        initToolbar(mToolbar, mTitleTv, mSub, R.string.clinical_trial, false, 0);
 
         // 设置RecyclerView
-        mRvClinicals.setLayoutManager(new LinearLayoutManager(this));
-        mRvClinicals.setAdapter(mAdapter);
+        mRvClinical.setLayoutManager(new LinearLayoutManager(this));
+        mRvClinical.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
         mSwipeRefreshLayout.setEnabled(false);
 
         assert mPresenter != null;
         mPresenter.loadClinicals();
 
-        // 通过适应症搜索
-        shvDisease.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                ToastUtils.showShort("Close");
-                assert mPresenter != null;
-                mPresenter.loadClinicals();
-                return true;
-            }
-        });
-//        shvDisease.onActionViewExpanded();
-        shvDisease.setOnQueryTextListener(this);
+        etDisease.addTextChangedListener(this);
+
         mSubject.debounce(600, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -101,22 +97,31 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
                 }).subscribe();
     }
 
+    @OnClick({R.id.ivDelete})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ivDelete:
+                etDisease.setText(getString(R.string.empty));
+                break;
+        }
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        String searchText = charSequence.toString().trim();
+        if (!TextUtils.isEmpty(searchText)) {
+            ivDelete.setVisibility(View.VISIBLE);
+            queryWithRxJava(searchText);
+        } else {
+            ivDelete.setVisibility(View.INVISIBLE);
+            assert mPresenter != null;
+            mPresenter.loadClinicals();
+        }
+    }
+
     private void queryDoctor(String s) {
         assert mPresenter != null;
         mPresenter.searchClinical(s);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        if (!TextUtils.isEmpty(newText.trim())) {
-            queryWithRxJava(newText);
-        }
-        return true;
     }
 
     private void queryWithRxJava(String newText) {
@@ -137,13 +142,15 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
 
     @Override
     public void setClinical(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialListBeanList, int loadType) {
-        setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
+        if (clinicalTrialListBeanList != null && clinicalTrialListBeanList.size() > 0)
+            setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
+        else
+            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvClinical.getParent());
     }
 
     // 暂时不用
     @Override
     public void setDoctorInfo(DoctorBean docInfo) {
-
     }
 
     // 暂时不用
@@ -156,4 +163,11 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
     public void successApply() {
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+    }
 }

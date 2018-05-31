@@ -9,6 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/title_home"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/bg_grey_round" />
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,6 +24,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+
+/**
+ * 试验管理页面
+ */
 
 public class ClinicalTrailManageActivity extends BaseActivity<ClinicalTrailManagePresenter> implements ClinicalTrailManageContract.View, BaseQuickAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
@@ -52,7 +57,7 @@ public class ClinicalTrailManageActivity extends BaseActivity<ClinicalTrailManag
     @Override
     protected void initView() {
 
-        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.patient_manage, false, 0);
+        initToolbar(mToolbar, mTitleTv, mBtSub, R.string.clinical_manage, false, 0);
 
         mRvClinical.setLayoutManager(new LinearLayoutManager(this));
 
@@ -70,9 +75,11 @@ public class ClinicalTrailManageActivity extends BaseActivity<ClinicalTrailManag
 
     @Override
     public void setClinicalData(List<ClinicalTrailModel> content, int loadType) {
-        setLoadDataResult(manageAdapter, mSwipeRefreshLayout, content, loadType);
+        if (content != null && content.size() > 0)
+            setLoadDataResult(manageAdapter, mSwipeRefreshLayout, content, loadType);
+        else
+            manageAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvClinical.getParent());
     }
-
 
     @Override
     protected boolean showHomeAsUp() {

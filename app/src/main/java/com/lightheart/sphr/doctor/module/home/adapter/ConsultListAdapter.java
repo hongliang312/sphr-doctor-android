@@ -1,12 +1,16 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
+
 import android.text.TextUtils;
+
 import com.blankj.utilcode.util.TimeUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.bean.ConsultModel;
+
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
 import javax.inject.Inject;
 
 public class ConsultListAdapter extends BaseQuickAdapter<ConsultModel, BaseViewHolder> {

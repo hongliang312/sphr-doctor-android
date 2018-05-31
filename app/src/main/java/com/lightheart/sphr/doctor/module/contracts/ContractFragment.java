@@ -113,7 +113,10 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
 
     @Override
     public void setContracts(List<DoctorBean> contractDocList, int loadType) {
-        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() > 0)
+            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        else
+            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvContracts.getParent());
     }
 
     @Override

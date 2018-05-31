@@ -33,7 +33,7 @@ public class ScanActivity extends BaseActivity implements QRCodeView.Delegate {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_test_scan;
+        return R.layout.activity_scan;
     }
 
     @Override

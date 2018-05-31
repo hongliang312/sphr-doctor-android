@@ -5,11 +5,15 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -27,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -37,7 +42,7 @@ import io.reactivex.subjects.PublishSubject;
  * Description : 添加好友页面
  */
 
-public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> implements SearchDoctorContract.View, SearchView.OnQueryTextListener, BaseQuickAdapter.RequestLoadMoreListener, ContractsAdapter.SlideItemListener {
+public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> implements SearchDoctorContract.View, BaseQuickAdapter.RequestLoadMoreListener, ContractsAdapter.SlideItemListener, TextWatcher {
 
     @BindView(R.id.mainBar)
     AppBarLayout mainBar;
@@ -47,8 +52,10 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
     Button mBtSub;
     @BindView(R.id.common_toolbar_title_tv)
     TextView mTitleTv;
-    @BindView(R.id.shvPhone)
-    SearchView mShVPhone;
+    @BindView(R.id.etDisease)
+    EditText etDisease;
+    @BindView(R.id.ivDelete)
+    ImageView ivDelete;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvDoctors)
@@ -80,16 +87,8 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
         mContractsAdapter.setOnLoadMoreListener(this);
         mSwipeRefreshLayout.setEnabled(false);
 
-        // 通过手机号搜索
-        mShVPhone.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                // 避免输入框隐藏
-                return true;
-            }
-        });
-        mShVPhone.onActionViewExpanded();
-        mShVPhone.setOnQueryTextListener(this);
+        etDisease.addTextChangedListener(this);
+
         mSubject.debounce(600, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -101,22 +100,29 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
                 }).subscribe();
     }
 
+    @OnClick({R.id.ivDelete})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ivDelete:
+                etDisease.setText(getString(R.string.empty));
+                break;
+        }
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        String phone = charSequence.toString().trim();
+        if (!TextUtils.isEmpty(phone)) {
+            ivDelete.setVisibility(View.VISIBLE);
+        } else {
+            ivDelete.setVisibility(View.INVISIBLE);
+        }
+        queryWithRxJava(phone);
+    }
+
     private void queryDoctor(String phone) {
         assert mPresenter != null;
         mPresenter.loadDoctors(phone);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        if (!TextUtils.isEmpty(newText)) {
-            queryWithRxJava(newText);
-        }
-        return true;
     }
 
     private void queryWithRxJava(String newText) {
@@ -125,7 +131,10 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
 
     @Override
     public void setSearchDoctors(List<DoctorBean> contractDocList, int loadType) {
-        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() > 0)
+            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        else
+            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvDoctors.getParent());
     }
 
     @Override
@@ -153,4 +162,11 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
         return true;
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+    }
 }

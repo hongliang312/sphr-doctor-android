@@ -6,8 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseFragment;
@@ -70,7 +70,10 @@ public class PanelShareFragment extends BaseFragment<PanelSharePresenter> implem
 
     @Override
     public void setPanelShare(List<PanelShareModel> panelsModels, int loadType) {
-        setLoadDataResult(mPanelShareAdapter, swipeRefreshLayout, panelsModels, loadType);
+        if (panelsModels != null && panelsModels.size() > 0)
+            setLoadDataResult(mPanelShareAdapter, swipeRefreshLayout, panelsModels, loadType);
+        else
+            mPanelShareAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvMember.getParent());
     }
 
     @Override

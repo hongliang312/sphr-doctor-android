@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -115,7 +116,10 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
             tvObstericalHistory.setText(TextUtils.isEmpty(patientRecordsBean.getMaritalHistory()) ? "未知" : patientRecordsBean.getMaritalHistory());
             tvFamilyHistory.setText(TextUtils.isEmpty(patientRecordsBean.getFamilyHistory()) ? "未知" : patientRecordsBean.getFamilyHistory());
 
-            setLoadDataResult(patientRecordsAdapter, swipeRefreshLayout, patientRecordsBean.getCaseHistories(), loadType);
+            if (patientRecordsBean.getCaseHistories() != null && patientRecordsBean.getCaseHistories().size() > 0)
+                setLoadDataResult(patientRecordsAdapter, swipeRefreshLayout, patientRecordsBean.getCaseHistories(), loadType);
+            else
+                patientRecordsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvRecord.getParent());
         }
     }
 

@@ -2,7 +2,6 @@ package com.lightheart.sphr.doctor.module.home.contract;
 
 import com.lightheart.sphr.doctor.base.BaseContract;
 import com.lightheart.sphr.doctor.bean.ConsultModel;
-import com.lightheart.sphr.doctor.bean.TelephoneConsultBean;
 
 import java.util.List;
 

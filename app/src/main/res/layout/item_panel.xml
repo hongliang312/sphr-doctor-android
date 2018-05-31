@@ -45,7 +45,7 @@
                 android:paddingBottom="@dimen/dp_4"
                 android:paddingTop="@dimen/dp_4"
                 android:textColor="@color/title_black"
-                android:textSize="@dimen/medium"
+                android:textSize="@dimen/big_small"
                 tools:text="@string/appName" />
 
             <TextView

@@ -10,7 +10,7 @@
         android:id="@+id/tvTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgound_color"
+        android:background="@color/background_color"
         android:gravity="start"
         android:paddingBottom="@dimen/dp_6"
         android:paddingEnd="@dimen/dp_0"

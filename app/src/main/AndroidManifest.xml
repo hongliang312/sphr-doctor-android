@@ -20,6 +20,7 @@
     <!-- 改变wifi状态 -->
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 读取sd卡 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.BATTERY_STATS" />
@@ -41,11 +42,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/appName"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:label"
-        >
+        tools:replace="android:label">
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -115,6 +115,7 @@
         <activity android:name=".module.home.ui.PanelMessageListActivity" />
         <activity android:name=".module.my.ui.ModifyPasswordActivity" />
         <activity android:name=".module.my.ui.MyMessageSetActivity" />
+        <activity android:name=".module.home.ui.HomeNoticeActivity" />
     </application>
 
 </manifest>

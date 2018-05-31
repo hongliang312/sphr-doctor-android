@@ -22,7 +22,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgound_color"
         android:scrollbars="none">
 
         <LinearLayout
@@ -83,10 +82,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_4"
-                android:background="@color/backgound_color" />
+          />
 
             <TextView
-                android:id="@+id/diseasedescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_14"
@@ -141,7 +139,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_4"
-                android:background="@color/backgound_color" />
+ />
 
             <LinearLayout
                 android:id="@+id/tvLinea"
@@ -180,7 +178,6 @@
                 android:id="@+id/tvLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/backgound_color"
                 android:orientation="horizontal"
                 android:padding="@dimen/dp_14"
                 android:paddingBottom="@dimen/dp_20"
@@ -193,7 +190,8 @@
                     android:text="@string/war_prompt"
                     android:textColor="@color/eight"
                     android:lineSpacingExtra="@dimen/dp_4"
-                    android:textSize="@dimen/micro" />
+                    android:textSize="@dimen/micro"
+                    />
 
             </LinearLayout>
 

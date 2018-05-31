@@ -75,7 +75,7 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
         if (docIndo != null) {
             doctorBean = new DoctorBean();
             doctorBean = docIndo;
-            ImageLoaderUtils.display(getActivity(), clvHeadImage, docIndo.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+            ImageLoaderUtils.display(getActivity(), clvHeadImage, docIndo.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
             tvUserName.setText(TextUtils.isEmpty(docIndo.getRealName()) ? "" : docIndo.getRealName());
             tvTitle.setText(TextUtils.isEmpty(docIndo.getTitleName()) ? "" : docIndo.getTitleName());
             tvTutor.setText(TextUtils.isEmpty(docIndo.getDepartmentName()) ? "" : docIndo.getDepartmentName());

@@ -30,6 +30,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
 
     @Override
     public void loadHomeData() {
+        mView.showLoading();
         RetrofitManager.create(ApiService.class)
                 .getHomePageInfo(new LoginSuccess())
                 .compose(RxSchedulers.<DataResponse<HomePageInfo>>applySchedulers())
@@ -41,16 +42,14 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                             int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_SUCCESS : LoadType.TYPE_LOAD_MORE_SUCCESS;
                             mView.setHomeBanners(response.getContent().getBannerList());
                             mView.setNotices(response.getContent().getNoticeList());
-                            mView.setClinicals(response.getContent().getClinicalTrialList(),loadType);
+                            mView.setClinicals(response.getContent().getClinicalTrialList(), loadType);
                         } else {
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
-
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        int loadType = mIsRefresh ? LoadType.TYPE_REFRESH_ERROR : LoadType.TYPE_LOAD_MORE_ERROR;
                         mView.showFaild(throwable.getMessage());
                     }
                 });

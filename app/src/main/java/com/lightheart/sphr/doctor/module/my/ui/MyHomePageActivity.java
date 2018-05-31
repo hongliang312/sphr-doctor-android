@@ -100,7 +100,7 @@ public class MyHomePageActivity extends BaseActivity<MyHomePagePresenter> implem
     @Override
     public void setData(DoctorBean docInfo) {
         if (docInfo != null) {
-            ImageLoaderUtils.display(this, clvHeadImage, docInfo.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+            ImageLoaderUtils.display(this, clvHeadImage, docInfo.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
             tvName.setText(TextUtils.isEmpty(docInfo.getRealName()) ? "" : docInfo.getRealName());
             tvDepartment.setText(TextUtils.isEmpty(docInfo.getDepartmentName()) ? "" : docInfo.getDepartmentName());
             tvTitle.setText(TextUtils.isEmpty(docInfo.getTitleName()) ? "" : docInfo.getTitleName());

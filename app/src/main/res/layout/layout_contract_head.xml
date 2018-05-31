@@ -19,7 +19,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_05"
-        android:background="@color/colorDayTextLight" />
+        android:background="@color/divide" />
 
     <TextView
         android:layout_width="match_parent"

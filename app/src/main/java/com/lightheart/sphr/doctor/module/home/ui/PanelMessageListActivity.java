@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -71,7 +72,10 @@ public class PanelMessageListActivity extends BaseActivity<PanelMessageListPrese
 
     @Override
     public void setPanelMessage(List<PanelMessageModel> panelMessageModels, int loadType) {
-        setLoadDataResult(messageAdapter, mSwipeRefreshLayout, panelMessageModels, loadType);
+        if (panelMessageModels != null && panelMessageModels.size() > 0)
+            setLoadDataResult(messageAdapter, mSwipeRefreshLayout, panelMessageModels, loadType);
+        else
+            messageAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPanelMessage.getParent());
     }
 
     @Override

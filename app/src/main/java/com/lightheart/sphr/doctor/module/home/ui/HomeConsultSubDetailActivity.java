@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.SuperKotlin.pictureviewer.ImagePagerActivity;
 import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
@@ -27,12 +26,8 @@ import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
-import com.lightheart.sphr.doctor.module.main.ui.MainActivity;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -152,11 +147,6 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         homeConsultSubDetail1 = new HomeConsultSubDetail();
         homeConsultSubDetail1=homeConsultSubDetail;
         if (homeConsultSubDetail1 != null) {
-         /*   List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
-            if(imgs !=null && imgs.size()>0){
-                tvPhoneTime.setText(TimeUtils.millis2String(imgs.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
-            }
-*/
             tvDescription.setText(homeConsultSubDetail.getContent());
             tvPatientName.setText(tvPatientNamee);
             tvReply.setText(feedback.getText().toString());
@@ -164,24 +154,26 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 homeConsultSubDetailAdapter.setNewData(homeConsultSubDetail1.getImgs());
             }
         }
-        List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
-        final List<String> imageList = new ArrayList<>();
-        for(int i=0; i<imgs.size();i++){
-            imageList.add(imgs.get(i).getMediaUrl());
-        }
-        Log.i("tttt",""+imageList.size());
+
         homeConsultSubDetailAdapter.listener(new HomeConsultSubDetailAdapter.OnClicklistener() {
             @Override
             public void onClick(View view, int position) {
-                PictureConfig config = new PictureConfig.Builder()
-                        .setListData((ArrayList<String>) imageList)//图片数据List<String> list
-                        .setPosition(position)//图片下标（从第position张图片开始浏览）
-                        .setDownloadPath("pictureviewer")//图片下载文件夹地址
+                List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
+                final List<String> imageList = new ArrayList<>();
+                for(int i=0; i<imgs.size();i++){
+                    String mediaUrl = imgs.get(i).getMediaUrl();
+                    imageList.add(mediaUrl+"");
+                }
+                Log.i("tttt",""+imageList.size());
+              /*  PictureConfig config = new PictureConfig.Builder()
+                        .setListData((ArrayList<String>) imageList)	//图片数据List<String> list
+                        .setPosition(position)	//图片下标（从第position张图片开始浏览）
+                        .setDownloadPath("pictureviewer")	//图片下载文件夹地址
                         .setIsShowNumber(true)//是否显示数字下标
-                        .needDownload(true)//是否支持图片下载
+                        .needDownload(true)	//是否支持图片下载
                         .setPlacrHolder(R.mipmap.ic_launcher_round)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
                         .build();
-                ImagePagerActivity.startActivity(HomeConsultSubDetailActivity.this, config);
+                ImagePagerActivity.startActivity(HomeConsultSubDetailActivity.this, config);*/
 
             }
         });

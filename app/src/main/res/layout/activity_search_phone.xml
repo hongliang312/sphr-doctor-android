@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -20,17 +22,49 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_14"
+        android:layout_margin="@dimen/dp_12"
         app:cardCornerRadius="@dimen/dp_5"
         app:cardElevation="@dimen/dp_1"
         app:contentPaddingLeft="@dimen/dp_5"
         app:contentPaddingRight="@dimen/dp_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etDisease"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:drawableStart="@mipmap/ic_search"
+                android:hint="@string/please_input_phone_num"
+                android:inputType="phone"
+                android:padding="@dimen/dp_10"
+                android:textSize="@dimen/small" />
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/delete"
+                android:padding="@dimen/dp_8"
+                android:src="@mipmap/ic_delete"
+                android:visibility="invisible" />
+
+        </LinearLayout>
 
         <android.support.v7.widget.SearchView
             android:id="@+id/shvPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_white"
+            android:visibility="gone"
             app:iconifiedByDefault="false"
             app:queryHint="@string/please_input_phone_num" />
 

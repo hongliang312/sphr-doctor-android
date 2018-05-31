@@ -43,7 +43,7 @@
                 android:layout_width="@dimen/dp_68"
                 android:layout_height="@dimen/dp_68"
                 android:padding="@dimen/dp_8"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/bg_grey_round"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
