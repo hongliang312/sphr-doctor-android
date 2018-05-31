@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 ToastUtils.showShort(R.string.exit_system);
                 mExitTime = System.currentTimeMillis();
             } else {
-                System.exit(0);
+                finish();
             }
             return true;
         }

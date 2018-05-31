@@ -27,6 +27,8 @@ import com.lightheart.sphr.doctor.module.home.presenter.PanelSharePresenter;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,6 +45,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     @BindView(R.id.rvMember)
     RecyclerView rvMember;
     private PanelsModel panelsModel;
+    private List<DoctorBean> panelDoctors;
 
     @Override
     protected int getLayoutId() {
@@ -58,13 +61,18 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     protected void initView(View view) {
         panelsModel = (PanelsModel) getArguments().getSerializable("detail");
         String mFlag = getArguments().getString("flag");
+        panelDoctors = new ArrayList<>();
+        // 处理专家组成员
+        if (panelsModel.getDoctorList() != null && panelsModel.getDoctorList().size() > 0) {
+            panelDoctors.addAll(panelsModel.getDoctorList());
+        }
 
         PanelGridAdapter mPanelGridAdapter = new PanelGridAdapter();
 
         mPanelGridAdapter.setType(1);// 0为创建专家组 1为专家组成员
 
         // 设置RecyclerView
-        rvMember.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        rvMember.setLayoutManager(new GridLayoutManager(getContext(), 4));
         rvMember.setAdapter(mPanelGridAdapter);
         // 设置header
         View headerView = LayoutInflater.from(getContext()).inflate(R.layout.item_panel, null);
@@ -81,10 +89,9 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
         if (!TextUtils.equals("Y", mFlag)) {
             mPanelGridAdapter.addFooterView(footerView);
         } else {
-            assert panelsModel != null;
             DoctorBean doctorDetail = new DoctorBean();
             doctorDetail.setDoctorName("添加成员");
-            panelsModel.getDoctorList().add(0, doctorDetail);
+            panelDoctors.add(0, doctorDetail);
         }
 
         mPanelGridAdapter.setOnItemClickListener(this);
@@ -97,9 +104,9 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
             tvImage.setText(TextUtils.isEmpty(panelsModel.getDtmAroName()) ? " " : panelsModel.getDtmAroName());
         }
         tvPanelName.setText(TextUtils.isEmpty(panelsModel.getDtmAroName()) ? " " : panelsModel.getDtmAroName());
-        tvNum.setText(String.valueOf(panelsModel.getDoctorList().size() - 1) + getString(R.string.join));
+        tvNum.setText(String.valueOf(panelDoctors.size() - 1) + getString(R.string.join));
 
-        setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelsModel.getDoctorList(), LoadType.TYPE_REFRESH_SUCCESS);
+        setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelDoctors, LoadType.TYPE_REFRESH_SUCCESS);
     }
 
     public static PanelMemberFragment newIntance(PanelsModel mPanelsModel, String flag) {
@@ -117,7 +124,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
         assert item != null;
         if (position == 0) {
             startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE")
-                    .putExtra("selectedItems", (Serializable) panelsModel.getDoctorList())
+                    .putExtra("selectedItems", (Serializable) panelDoctors)
                     .putExtra("dtmAroId", panelsModel.getDtmAroId()));
         } else {
             startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getDuid()));
@@ -147,6 +154,6 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     @Override
     public void success2ApplyPanel() {
         ToastUtils.showShort(getString(R.string.add_friend_hint));
-        getActivity().finish();
+        getActivity().onBackPressed();
     }
 }

@@ -21,7 +21,6 @@
         android:paddingTop="@dimen/dp_8"
         android:textColor="@color/title_black"
         android:textSize="@dimen/big_small"
-        android:textStyle="bold"
         tools:text="@string/clinical_trial" />
 
     <LinearLayout

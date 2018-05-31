@@ -131,7 +131,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 .start();
     }
 
-
     @Override
     public void setNotices(final List<HomePageInfo.NoticeListBean> noticeList) {
         if (noticeList != null && noticeList.size() > 0) {
@@ -155,6 +154,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 }
             });
         }
+    }
+
+    @Override
+    public void showLoading() {
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override

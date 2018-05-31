@@ -25,7 +25,6 @@
             android:layout_weight="1"
             android:textColor="@color/title_black"
             android:textSize="@dimen/big_small"
-            android:textStyle="bold"
             tools:text="@string/clinical_trial" />
 
         <TextView
@@ -33,7 +32,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/dp_6"
             android:drawableTop="@mipmap/details"
-            android:text="@string/recruitment_num"
+            android:text="@string/details"
             android:textColor="@color/theme_color"
             android:textSize="@dimen/micro" />
 

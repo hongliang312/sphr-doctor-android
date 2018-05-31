@@ -23,7 +23,8 @@
     <color name="eight">#888888</color>
     <color name="search">#F5F4F9</color>
     <color name="theme_color">#297fca</color>
-    <color name="backgound_color">#f2f2f2</color>
+    <color name="background_color">#f2f2f2</color>
+    <color name="sixZero">#606060</color>
 
 
     <color name="sky_blue">#2A80CA</color>

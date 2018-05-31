@@ -13,7 +13,7 @@
             android:id="@+id/lll"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_14"
-            android:background="@color/backgound_color"
+            android:background="@color/background_color"
             android:orientation="vertical" />
 
         <TextView
