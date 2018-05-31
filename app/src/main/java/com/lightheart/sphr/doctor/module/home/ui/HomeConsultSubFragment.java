@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
@@ -77,12 +78,16 @@ public class HomeConsultSubFragment extends BaseFragment<ConsultListPresenter> i
 
     @Override
     public void setOnlineData(List<ConsultModel> content) {
-        mAdapter.setNewData(content);
+        if (content != null && content.size() > 0)
+            mAdapter.setNewData(content);
+        else mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvConsult.getParent());
     }
 
     @Override
     public void setTelConsultData(List<ConsultModel> content) {
-        mAdapter.setNewData(content);
+        if (content != null && content.size() > 0)
+            mAdapter.setNewData(content);
+        else mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvConsult.getParent());
     }
 
     @Override
@@ -92,7 +97,7 @@ public class HomeConsultSubFragment extends BaseFragment<ConsultListPresenter> i
         startActivity(new Intent(getActivity(), HomeConsultSubDetailActivity.class)
                 .putExtra("consult_type", consultType)
                 .putExtra("consult_status", consultStatus)
-                .putExtra("tvPatientName",item.getName())
+                .putExtra("tvPatientName", item.getName())
                 .putExtra("id", item.getConsultId()));
     }
 }

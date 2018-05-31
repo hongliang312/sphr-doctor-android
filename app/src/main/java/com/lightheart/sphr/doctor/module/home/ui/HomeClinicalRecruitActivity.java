@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.base.BaseActivity;
@@ -143,13 +142,15 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
 
     @Override
     public void setClinical(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialListBeanList, int loadType) {
-        setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
+        if (clinicalTrialListBeanList != null && clinicalTrialListBeanList.size() > 0)
+            setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
+        else
+            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvClinical.getParent());
     }
 
     // 暂时不用
     @Override
     public void setDoctorInfo(DoctorBean docInfo) {
-
     }
 
     // 暂时不用

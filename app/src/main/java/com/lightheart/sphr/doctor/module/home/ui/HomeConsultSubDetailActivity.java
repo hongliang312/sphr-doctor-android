@@ -1,4 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.ui;
+
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,11 +9,12 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
@@ -23,12 +25,12 @@ import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
+
 import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 /**
  * 在线咨询和电话咨询详情页，分待完成和已完成
  */
@@ -111,9 +113,10 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         tvImageRecycler.setLayoutManager(new GridLayoutManager(this, 3));
         tvImageRecycler.setAdapter(homeConsultSubDetailAdapter);
     }
-    @OnClick({R.id.Submit,R.id.tvPatientRecords})
+
+    @OnClick({R.id.Submit, R.id.tvPatientRecords})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.Submit:
                 ConsultingReplyRequestParams replyConsultingbean = new ConsultingReplyRequestParams();
                 replyConsultingbean.id = id;
@@ -136,7 +139,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @Override
     public void setHomeConsultSubDetailData(final HomeConsultSubDetail homeConsultSubDetail) {
         homeConsultSubDetail1 = new HomeConsultSubDetail();
-        homeConsultSubDetail1=homeConsultSubDetail;
+        homeConsultSubDetail1 = homeConsultSubDetail;
         if (homeConsultSubDetail1 != null) {
 
          /*   List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
@@ -146,12 +149,15 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 */
             tvDescription.setText(homeConsultSubDetail.getContent());
             tvPatientName.setText(tvPatientNamee);
-            if (homeConsultSubDetail1.getImgs() != null && homeConsultSubDetail1.getImgs().size() >0){
+            if (homeConsultSubDetail1.getImgs() != null && homeConsultSubDetail1.getImgs().size() > 0) {
                 homeConsultSubDetailAdapter.setNewData(homeConsultSubDetail1.getImgs());
+            } else {
+                homeConsultSubDetailAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) tvImageRecycler.getParent());
             }
         }
 
     }
+
     @Override
     public void successReply() {
         ToastUtils.showShort("提交成功！");
@@ -162,6 +168,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     protected boolean showHomeAsUp() {
         return true;
     }
+
     private SpannableString transformString(int s, int start, int end, int color) {
         SpannableString spannableString = new SpannableString(getString(s));
         ForegroundColorSpan colorSpan = new ForegroundColorSpan(getResources().getColor(color));

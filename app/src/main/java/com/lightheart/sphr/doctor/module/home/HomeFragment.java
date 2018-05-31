@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -182,7 +183,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void setClinicals(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialObj, int loadType) {
-        setLoadDataResult(mClinicalAdapter, mSwipeRefreshLayout, clinicalTrialObj, loadType);
+        if (clinicalTrialObj != null && clinicalTrialObj.size() > 0)
+            setLoadDataResult(mClinicalAdapter, mSwipeRefreshLayout, clinicalTrialObj, loadType);
+        else
+            mClinicalAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvHomeArticles.getParent());
     }
 
     @Override

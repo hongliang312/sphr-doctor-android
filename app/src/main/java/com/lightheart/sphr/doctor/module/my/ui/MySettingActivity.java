@@ -18,8 +18,6 @@ import com.lightheart.sphr.doctor.bean.EventModel;
 import com.lightheart.sphr.doctor.module.main.ui.LoginActivity;
 import com.lightheart.sphr.doctor.utils.RxBus;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.functions.Consumer;

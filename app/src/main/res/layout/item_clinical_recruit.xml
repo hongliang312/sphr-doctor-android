@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/dp_6"
-            android:drawableTop="@mipmap/details"
+            android:drawableTop="@mipmap/ic_detail"
             android:text="@string/details"
             android:textColor="@color/theme_color"
             android:textSize="@dimen/micro" />

@@ -98,7 +98,10 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
             item.setAdded(false);
             panelSectionList.add(new PanelSection(item));
         }
-        setLoadDataResult(mPanelSectionAdapter, mSwipeRefreshLayout, panelSectionList, loadType);
+        if (panelSectionList != null && panelSectionList.size() > 0)
+            setLoadDataResult(mPanelSectionAdapter, mSwipeRefreshLayout, panelSectionList, loadType);
+        else
+            mPanelSectionAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPanels.getParent());
     }
 
     // 暂时不用

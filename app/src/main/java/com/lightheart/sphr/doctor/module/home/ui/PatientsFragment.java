@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
@@ -76,7 +77,10 @@ public class PatientsFragment extends BaseFragment<PatientsPresenter> implements
 
     @Override
     public void setPatients(List<PatientsModel.PatientModel> patientModels, int loadType) {
-        setLoadDataResult(mPatientsAdapter, swipeRefreshLayout, patientModels, loadType);
+        if (patientModels != null && patientModels.size() > 0)
+            setLoadDataResult(mPatientsAdapter, swipeRefreshLayout, patientModels, loadType);
+        else
+            mPatientsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPatients.getParent());
     }
 
     @Override

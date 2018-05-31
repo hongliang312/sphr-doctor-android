@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -27,7 +28,6 @@ import com.lightheart.sphr.doctor.module.home.presenter.PanelSharePresenter;
 import com.lightheart.sphr.doctor.module.my.ui.MyHomePageActivity;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +46,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     RecyclerView rvMember;
     private PanelsModel panelsModel;
     private List<DoctorBean> panelDoctors;
+    private String mFlag;
 
     @Override
     protected int getLayoutId() {
@@ -60,7 +61,7 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     @Override
     protected void initView(View view) {
         panelsModel = (PanelsModel) getArguments().getSerializable("detail");
-        String mFlag = getArguments().getString("flag");
+        mFlag = getArguments().getString("flag");
         panelDoctors = new ArrayList<>();
         // 处理专家组成员
         if (panelsModel.getDoctorList() != null && panelsModel.getDoctorList().size() > 0) {
@@ -106,7 +107,11 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
         tvPanelName.setText(TextUtils.isEmpty(panelsModel.getDtmAroName()) ? " " : panelsModel.getDtmAroName());
         tvNum.setText(String.valueOf(panelDoctors.size() - 1) + getString(R.string.join));
 
-        setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelDoctors, LoadType.TYPE_REFRESH_SUCCESS);
+        if (panelDoctors != null && panelDoctors.size() > 0)
+            setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelDoctors, LoadType.TYPE_REFRESH_SUCCESS);
+        else
+            mPanelGridAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvMember.getParent());
+
     }
 
     public static PanelMemberFragment newIntance(PanelsModel mPanelsModel, String flag) {
@@ -122,12 +127,16 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         DoctorBean item = (DoctorBean) adapter.getItem(position);
         assert item != null;
-        if (position == 0) {
-            startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE")
-                    .putExtra("selectedItems", (Serializable) panelDoctors)
-                    .putExtra("dtmAroId", panelsModel.getDtmAroId()));
-        } else {
+        if (!TextUtils.equals("Y", mFlag)) {
             startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getDuid()));
+        } else {
+            if (position == 0) {
+                startActivity(new Intent(getActivity(), SelectContactActivity.class).putExtra("flag", "INVITE")
+                        .putExtra("selectedItems", (Serializable) panelDoctors)
+                        .putExtra("dtmAroId", panelsModel.getDtmAroId()));
+            } else {
+                startActivity(new Intent(getActivity(), MyHomePageActivity.class).putExtra("duid", item.getDuid()));
+            }
         }
     }
 

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -109,7 +110,10 @@ public class DepartmentActivity extends BaseActivity<AreaPresenter> implements A
 
     @Override
     public void setDepartment(List<AreaModel> departments) {
-        mAdapter.setNewData(departments);
+        if (departments != null && departments.size() > 0)
+            mAdapter.setNewData(departments);
+        else
+            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvDepartment.getParent());
     }
 
     @Override

@@ -34,14 +34,14 @@ public class PanelGridAdapter extends BaseQuickAdapter<DoctorBean, BaseViewHolde
             if (TextUtils.equals("添加成员", item.getContName())) {
                 ImageLoaderUtils.display(mContext, view, R.mipmap.ic_add_panel);
             } else {
-                ImageLoaderUtils.display(mContext, view, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+                ImageLoaderUtils.display(mContext, view, item.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
             }
         } else {
             helper.setText(R.id.tvMemberName, TextUtils.isEmpty(item.getDoctorName()) ? "" : item.getDoctorName());
             if (TextUtils.equals("添加成员", item.getDoctorName())) {
                 ImageLoaderUtils.display(mContext, view, R.mipmap.ic_add_panel);
             } else {
-                ImageLoaderUtils.display(mContext, view, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+                ImageLoaderUtils.display(mContext, view, item.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
             }
         }
     }

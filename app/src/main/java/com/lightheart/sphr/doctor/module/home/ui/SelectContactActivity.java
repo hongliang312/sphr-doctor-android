@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -135,7 +136,10 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
                 }
             }
         }
-        setLoadDataResult(mAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() > 0)
+            setLoadDataResult(mAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        else
+            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvContract.getParent());
         mAdapter.initData(contractDocList);
     }
 

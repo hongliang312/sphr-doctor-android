@@ -38,7 +38,7 @@ public class SelectContractAdapter extends BaseQuickAdapter<DoctorBean, BaseView
         CheckBox cbContract = helper.getView(R.id.cbContract);
         CircleImageView civContract = helper.getView(R.id.civContract);
         TextView tvConName = helper.getView(R.id.tvConName);
-        ImageLoaderUtils.display(mContext, civContract, item.getImgUrl(), R.drawable.bg_grey, R.drawable.bg_grey);
+        ImageLoaderUtils.display(mContext, civContract, item.getImgUrl(), R.drawable.bg_grey, R.mipmap.ic_user);
         tvConName.setText(TextUtils.isEmpty(item.getContName()) ? "" : item.getContName());
         cbContract.setChecked(getIsSelected().get(helper.getLayoutPosition()));
         if (!item.isEnable) {

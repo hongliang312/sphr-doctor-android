@@ -1,16 +1,18 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
 
 import com.lightheart.sphr.doctor.base.BasePresenter;
+import com.lightheart.sphr.doctor.bean.ConsultingReplyBean;
 import com.lightheart.sphr.doctor.bean.ConsultingReplyRequestParams;
 import com.lightheart.sphr.doctor.bean.DataResponse;
-import com.lightheart.sphr.doctor.bean.ConsultingReplyBean;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+
 import javax.inject.Inject;
+
 import io.reactivex.functions.Consumer;
 
 public class HomeConsultSubDetailPresenter extends BasePresenter<HomeConsultSubDetailContract.View> implements HomeConsultSubDetailContract.Presenter {

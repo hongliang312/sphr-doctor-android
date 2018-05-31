@@ -14,7 +14,7 @@
         android:id="@+id/civPanel"
         android:layout_width="@dimen/dp_58"
         android:layout_height="@dimen/dp_58"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/bg_grey_round"
         tools:ignore="RtlSymmetry" />
 
     <TextView

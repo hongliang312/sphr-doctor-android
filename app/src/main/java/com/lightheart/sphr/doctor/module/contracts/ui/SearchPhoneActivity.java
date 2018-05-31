@@ -5,12 +5,12 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -131,7 +131,10 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
 
     @Override
     public void setSearchDoctors(List<DoctorBean> contractDocList, int loadType) {
-        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() > 0)
+            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        else
+            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvDoctors.getParent());
     }
 
     @Override

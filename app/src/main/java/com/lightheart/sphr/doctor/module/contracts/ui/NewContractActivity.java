@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -72,7 +73,10 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
 
     @Override
     public void setNewContracts(List<DoctorBean> contractDocList, int loadType) {
-        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() > 0)
+            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        else
+            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvNewContracts.getParent());
     }
 
     // 暂时不需要

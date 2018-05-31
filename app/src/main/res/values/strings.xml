@@ -174,12 +174,13 @@
     <string name="please_input_new_psd_one_more">请再次输入新密码</string>
     <string name="input_new_psd_not_fit">您输入的新密码不一致</string>
     <string name="modify_success_to_login">密码修改成功，请重新登录&#8230;</string>
-    <string name="rationale_camera">阳光医线需要开启您的相机并且获取您的相册...</string>
+    <string name="rationale_camera">阳光医线需要开启您的相机并且获取您的相册&#8230;</string>
     <string name="exit_system">再按一次退出程序</string>
     <string name="empty"> </string>
     <string name="num">666</string>
     <string name="clinic_trial">临床试验</string>
     <string name="system_notice">系统公告</string>
+    <string name="no_data">暂无数据</string>
 
 
     <string name="patients_with_details">患者详情</string>

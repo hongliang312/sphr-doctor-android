@@ -1,4 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,11 +10,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
-import com.lightheart.sphr.doctor.bean.PanelSection;
-import com.lightheart.sphr.doctor.module.home.ui.HomeConsultSubDetailActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
 
 public class HomeConsultSubDetailAdapter extends BaseQuickAdapter<HomeConsultSubDetail.ImgsBean,BaseViewHolder>{
@@ -45,7 +46,7 @@ public class HomeConsultSubDetailAdapter extends BaseQuickAdapter<HomeConsultSub
                             .setDownloadPath("pictureviewer")	//图片下载文件夹地址
                             .setIsShowNumber(true)//是否显示数字下标
                             .needDownload(true)	//是否支持图片下载
-                            .setPlacrHolder(R.mipmap.ic_launcher_round)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
+                            .setPlacrHolder(R.mipmap.ic_launcher)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
                             .build();
                     ImagePagerActivity.startActivity(mContext, config);
               }

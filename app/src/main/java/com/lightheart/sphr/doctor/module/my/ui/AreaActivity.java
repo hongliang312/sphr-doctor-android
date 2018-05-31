@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -67,13 +68,19 @@ public class AreaActivity extends BaseActivity<AreaPresenter> implements AreaCon
 
     @Override
     public void setAreas(List<AreaModel> titles) {
-        mAdapter.setNewData(titles);
+        if (titles != null && titles.size() > 0)
+            mAdapter.setNewData(titles);
+        else
+            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvArea.getParent());
     }
 
     @Override
     public void setChildAreas(List<AreaModel> childAreas) {
         areaLevel += 1;
-        mAdapter.setNewData(childAreas);
+        if (childAreas != null && childAreas.size() > 0)
+            mAdapter.setNewData(childAreas);
+        else
+            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvArea.getParent());
     }
 
     @Override
