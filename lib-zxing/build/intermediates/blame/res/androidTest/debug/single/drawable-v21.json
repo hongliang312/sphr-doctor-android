@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\AndriodStudioWorkSpace\\sphr-doctor-android\\lib-zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\知足\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\78f885b5767a6bdcc513150c66e9fa9b\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\AndriodStudioWorkSpace\\sphr-doctor-android\\lib-zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\知足\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\78f885b5767a6bdcc513150c66e9fa9b\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\AndriodStudioWorkSpace\\sphr-doctor-android\\lib-zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\知足\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\2a2939d35e38bfcbcaae17c1d051ea1b\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "D:\\AndriodStudioWorkSpace\\sphr-doctor-android\\lib-zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\知足\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\78f885b5767a6bdcc513150c66e9fa9b\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    }
+]

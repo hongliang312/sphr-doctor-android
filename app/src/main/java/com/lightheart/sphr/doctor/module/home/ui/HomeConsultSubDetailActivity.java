@@ -12,9 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.SuperKotlin.pictureviewer.ImagePagerActivity;
-import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
