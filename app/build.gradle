@@ -63,6 +63,9 @@ dependencies {
     implementation 'pub.devrel:easypermissions:1.2.0'
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
     implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
+
+    implementation 'com.github.SuperKotlin:PictureViewer:2.0.1'
+
 }
 
 repositories {

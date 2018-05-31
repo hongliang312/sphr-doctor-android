@@ -67,16 +67,15 @@ public class PanelSectionAdapter extends BaseSectionQuickAdapter<PanelSection, B
             }
         });
     }
-
     public void setOnSectionItemListener(PanelSectionAdapter.SectionItemListener listener) {
         mSectionItemListener = listener;
     }
 
     public interface SectionItemListener {
 
-        void tvAllClick(View view, int position, PanelSection item);// 全部标签点击
+        void tvAllClick(View view, int position, PanelSection item);//全部标签点击
 
-        void itemClick(View view, int position, PanelSection item); // 点击item
+        void itemClick(View view, int position, PanelSection item); //点击item
 
     }
 

@@ -30,5 +30,4 @@ public class ClinicalAdapter extends BaseQuickAdapter<HomePageInfo.ClinicalTrial
         helper.setText(R.id.tvAdDis, TextUtils.isEmpty(item.getIndications()) ? "" : item.getIndications());
         helper.setText(R.id.tvBidingUnit, TextUtils.isEmpty(item.getBidUnit()) ? "" : item.getBidUnit());
     }
-
 }

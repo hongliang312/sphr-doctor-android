@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -25,9 +24,9 @@ import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapte
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 /**
@@ -49,8 +48,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     TextView tvDescription;
     @BindView(R.id.tvPhoneTime)
     TextView tvPhoneTime;
-    @BindView(R.id.tvLoadicture)
-    RecyclerView tvLoadicture;
+    @BindView(R.id.tvImageRecycler)
+    RecyclerView tvImageRecycler;
     @BindView(R.id.tvLineaLayout)
     LinearLayout tvLineaLayout;
     @BindView(R.id.tvLinea)
@@ -61,12 +60,12 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     TextView feedback;
     @BindView(R.id.tvText)
     TextView tvText;
-    private List<HomeConsultSubDetail.ImgsBean> consultSublist = new ArrayList<>();
     private int id;
-    private String consultType;
-    private String consultStatus;
     private String tvPatientNamee;
-    private HomeConsultSubDetail content;
+    @Inject
+    HomeConsultSubDetailAdapter homeConsultSubDetailAdapter;
+    private HomeConsultSubDetail homeConsultSubDetail1;
+
 
     @Override
     protected int getLayoutId() {
@@ -81,8 +80,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @Override
     protected void initView() {
 
-        consultType = getIntent().getStringExtra("consult_type");
-        consultStatus = getIntent().getStringExtra("consult_status");
+        String consultType = getIntent().getStringExtra("consult_type");
+        String consultStatus = getIntent().getStringExtra("consult_status");
         tvPatientNamee = getIntent().getStringExtra("tvPatientName");
         id = getIntent().getIntExtra("id", 0);
         tvText.setText(transformString(R.string.war_prompt, 0, 4, R.color.theme_color));
@@ -103,11 +102,14 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 tvLayout.setVisibility(View.GONE);
             } else {
                 tvLineaLayout.setVisibility(View.GONE);
-                tvLinea.setVisibility(View.VISIBLE);
+                tvLinea.setVisibility(View.GONE);
                 tvLayout.setVisibility(View.VISIBLE);
             }
             mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
         }
+
+        tvImageRecycler.setLayoutManager(new GridLayoutManager(this, 3));
+        tvImageRecycler.setAdapter(homeConsultSubDetailAdapter);
     }
     @OnClick({R.id.Submit,R.id.tvPatientRecords})
     public void onClick(View view) {
@@ -126,25 +128,29 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 break;
             case R.id.tvPatientRecords:
                 Intent intent = new Intent(HomeConsultSubDetailActivity.this, PatientRecordsActivity.class);
-                intent.putExtra("id", content.getPuid());
+                intent.putExtra("id", homeConsultSubDetail1.getPuid());
                 startActivity(intent);
-          }
+        }
     }
 
     @Override
-    public void setHomeConsultSubDetailData(final HomeConsultSubDetail content) {
-        this.content=content;
-        if (content != null) {
-            consultSublist.clear();
-            consultSublist.addAll(content.getImgs());
-            tvLoadicture.setLayoutManager(new GridLayoutManager(this, 3));
-            HomeConsultSubDetailAdapter subDetailAdapter;
-            subDetailAdapter = new HomeConsultSubDetailAdapter(this, consultSublist);
-            tvLoadicture.setAdapter(subDetailAdapter);
-            tvDescription.setText(content.getContent());
-            tvPhoneTime.setText(TimeUtils.millis2String(consultSublist.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
+    public void setHomeConsultSubDetailData(final HomeConsultSubDetail homeConsultSubDetail) {
+        homeConsultSubDetail1 = new HomeConsultSubDetail();
+        homeConsultSubDetail1=homeConsultSubDetail;
+        if (homeConsultSubDetail1 != null) {
+
+         /*   List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
+            if(imgs !=null && imgs.size()>0){
+                tvPhoneTime.setText(TimeUtils.millis2String(imgs.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
+            }
+*/
+            tvDescription.setText(homeConsultSubDetail.getContent());
             tvPatientName.setText(tvPatientNamee);
+            if (homeConsultSubDetail1.getImgs() != null && homeConsultSubDetail1.getImgs().size() >0){
+                homeConsultSubDetailAdapter.setNewData(homeConsultSubDetail1.getImgs());
+            }
         }
+
     }
     @Override
     public void successReply() {
@@ -161,6 +167,5 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         ForegroundColorSpan colorSpan = new ForegroundColorSpan(getResources().getColor(color));
         spannableString.setSpan(colorSpan, start, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         return spannableString;
-
     }
 }
