@@ -9,18 +9,16 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
-import com.lightheart.sphr.doctor.bean.PanelSection;
-import com.lightheart.sphr.doctor.module.home.ui.HomeConsultSubDetailActivity;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
+import static com.SuperKotlin.pictureviewer.PictureConfig.position;
+
 public class HomeConsultSubDetailAdapter extends BaseQuickAdapter<HomeConsultSubDetail.ImgsBean,BaseViewHolder>{
 
-
-    private List<String> imgsList= new ArrayList<>();;
-    private ImageView tvImg;
+    private OnClicklistener onClicklistener;
 
     @Inject
     HomeConsultSubDetailAdapter() {
@@ -29,28 +27,22 @@ public class HomeConsultSubDetailAdapter extends BaseQuickAdapter<HomeConsultSub
 
     @Override
     protected void convert(final BaseViewHolder helper, final HomeConsultSubDetail.ImgsBean item) {
-        tvImg = helper.getView(R.id.tvImg);
+        ImageView tvImg = helper.getView(R.id.tvImg);
         ImageLoaderUtils.display(mContext, tvImg, item.getMediaUrl());
-        Log.d("fffff",""+item.getMediaUrl());
-        imgsList.add(item.getMediaUrl());
-        Log.i("hhhhh",""+imgsList.size());
+         tvImg.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 onClicklistener.onClick(helper.itemView,position);
+             }
+         });
+        }
 
-        tvImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    public void listener(OnClicklistener onClicklistener){
+        this.onClicklistener=onClicklistener;
 
-                    PictureConfig config = new PictureConfig.Builder()
-                            .setListData((ArrayList<String>) imgsList)	//图片数据List<String> list
-                            .setPosition(0)	//图片下标（从第position张图片开始浏览）
-                            .setDownloadPath("pictureviewer")	//图片下载文件夹地址
-                            .setIsShowNumber(true)//是否显示数字下标
-                            .needDownload(true)	//是否支持图片下载
-                            .setPlacrHolder(R.mipmap.ic_launcher_round)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
-                            .build();
-                    ImagePagerActivity.startActivity(mContext, config);
-              }
-        });
-
+    }
+    public interface OnClicklistener{
+        void onClick(View view,int position);
     }
 
 }

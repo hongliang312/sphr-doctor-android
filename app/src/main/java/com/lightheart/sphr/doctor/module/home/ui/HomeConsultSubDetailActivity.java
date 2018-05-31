@@ -7,10 +7,14 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.SuperKotlin.pictureviewer.ImagePagerActivity;
+import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -23,7 +27,10 @@ import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
+import com.lightheart.sphr.doctor.module.main.ui.MainActivity;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.inject.Inject;
@@ -60,11 +67,16 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     TextView feedback;
     @BindView(R.id.tvText)
     TextView tvText;
+    @BindView(R.id.tvReply)
+    TextView tvReply;
+    @BindView(R.id.reply)
+    LinearLayout reply;
     private int id;
     private String tvPatientNamee;
     @Inject
     HomeConsultSubDetailAdapter homeConsultSubDetailAdapter;
     private HomeConsultSubDetail homeConsultSubDetail1;
+    private ConsultingReplyRequestParams replyConsultingbean;
 
 
     @Override
@@ -93,17 +105,19 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         assert mPresenter != null;
         if (TextUtils.equals("TEL", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.tel_online, false, 0);
+            if ("SER_CST_S_ING".equals(consultStatus)) {
+                tvLinea.setVisibility(View.VISIBLE);
+                tvLayout.setVisibility(View.VISIBLE);
+            } else {
+                tvLinea.setVisibility(View.VISIBLE);
+            }
             mPresenter.loadTelDetailsData(subDetailRequestParams);
         } else if (TextUtils.equals("ONLINE", consultType)) {
             initToolbar(mToolbar, mTitleTv, mBtSub, R.string.consult_online, false, 0);
             if ("SER_CST_S_ING".equals(consultStatus)) {
                 tvLineaLayout.setVisibility(View.VISIBLE);
-                tvLinea.setVisibility(View.GONE);
-                tvLayout.setVisibility(View.GONE);
             } else {
-                tvLineaLayout.setVisibility(View.GONE);
-                tvLinea.setVisibility(View.GONE);
-                tvLayout.setVisibility(View.VISIBLE);
+                reply.setVisibility(View.VISIBLE);
             }
             mPresenter.loadHomeConsultSubDetailData(subDetailRequestParams);
         }
@@ -115,7 +129,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.Submit:
-                ConsultingReplyRequestParams replyConsultingbean = new ConsultingReplyRequestParams();
+                replyConsultingbean = new ConsultingReplyRequestParams();
                 replyConsultingbean.id = id;
                 replyConsultingbean.content = feedback.getText().toString().trim();
 
@@ -138,7 +152,6 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         homeConsultSubDetail1 = new HomeConsultSubDetail();
         homeConsultSubDetail1=homeConsultSubDetail;
         if (homeConsultSubDetail1 != null) {
-
          /*   List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
             if(imgs !=null && imgs.size()>0){
                 tvPhoneTime.setText(TimeUtils.millis2String(imgs.get(0).getCreateTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA)));
@@ -146,11 +159,32 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 */
             tvDescription.setText(homeConsultSubDetail.getContent());
             tvPatientName.setText(tvPatientNamee);
+            tvReply.setText(feedback.getText().toString());
             if (homeConsultSubDetail1.getImgs() != null && homeConsultSubDetail1.getImgs().size() >0){
                 homeConsultSubDetailAdapter.setNewData(homeConsultSubDetail1.getImgs());
             }
         }
+        List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
+        final List<String> imageList = new ArrayList<>();
+        for(int i=0; i<imgs.size();i++){
+            imageList.add(imgs.get(i).getMediaUrl());
+        }
+        Log.i("tttt",""+imageList.size());
+        homeConsultSubDetailAdapter.listener(new HomeConsultSubDetailAdapter.OnClicklistener() {
+            @Override
+            public void onClick(View view, int position) {
+                PictureConfig config = new PictureConfig.Builder()
+                        .setListData((ArrayList<String>) imageList)//图片数据List<String> list
+                        .setPosition(position)//图片下标（从第position张图片开始浏览）
+                        .setDownloadPath("pictureviewer")//图片下载文件夹地址
+                        .setIsShowNumber(true)//是否显示数字下标
+                        .needDownload(true)//是否支持图片下载
+                        .setPlacrHolder(R.mipmap.ic_launcher_round)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
+                        .build();
+                ImagePagerActivity.startActivity(HomeConsultSubDetailActivity.this, config);
 
+            }
+        });
     }
     @Override
     public void successReply() {

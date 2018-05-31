@@ -226,6 +226,5 @@
     <string name="treatment_of">治疗经过</string>
     <string name="dosage_schedule">用药方案</string>
     <string name="finishing_time">(整理时间)</string>
-
-
+    <string name="reply">回复</string>
 </resources>
