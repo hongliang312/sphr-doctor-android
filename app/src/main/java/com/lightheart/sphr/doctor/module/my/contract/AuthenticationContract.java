@@ -1,6 +1,6 @@
 package com.lightheart.sphr.doctor.module.my.contract;
 
-import com.lightheart.sphr.doctor.base.AuthParam;
+import com.lightheart.sphr.doctor.bean.AuthParam;
 import com.lightheart.sphr.doctor.base.BaseContract;
 
 import java.io.File;

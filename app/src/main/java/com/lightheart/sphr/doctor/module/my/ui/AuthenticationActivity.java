@@ -29,7 +29,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.BuildConfig;
 import com.lightheart.sphr.doctor.R;
 import com.lightheart.sphr.doctor.app.Constant;
-import com.lightheart.sphr.doctor.base.AuthParam;
+import com.lightheart.sphr.doctor.bean.AuthParam;
 import com.lightheart.sphr.doctor.base.BaseActivity;
 import com.lightheart.sphr.doctor.module.home.ui.ClipImageActivity;
 import com.lightheart.sphr.doctor.module.my.contract.AuthenticationContract;

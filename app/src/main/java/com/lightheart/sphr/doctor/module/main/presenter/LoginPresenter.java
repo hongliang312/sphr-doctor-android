@@ -8,6 +8,7 @@ import com.lightheart.sphr.doctor.module.main.contract.LoginContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+import com.lightheart.sphr.doctor.view.ProgressBar;
 
 import javax.inject.Inject;
 
@@ -36,12 +37,14 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                         if (response.getResultcode() == 200) {
                             mView.loginSuccess(response.getContent());
                         } else {
+                            ProgressBar.dis();
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        ProgressBar.dis();
                         mView.showFaild(throwable.getMessage());
                     }
                 });

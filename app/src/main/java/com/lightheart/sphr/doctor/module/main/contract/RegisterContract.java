@@ -17,6 +17,8 @@ public interface RegisterContract {
         void registerSuccess(DoctorBean user);
 
         void verCodeSuccess(DoctorBean user);
+
+        void modifySuccess();
     }
 
     interface Presenter extends BaseContract.BasePresenter<RegisterContract.View> {

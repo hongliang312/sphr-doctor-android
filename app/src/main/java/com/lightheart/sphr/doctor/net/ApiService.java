@@ -1,6 +1,6 @@
 package com.lightheart.sphr.doctor.net;
 
-import com.lightheart.sphr.doctor.base.AuthParam;
+import com.lightheart.sphr.doctor.bean.AuthParam;
 import com.lightheart.sphr.doctor.bean.Apply2PanelParam;
 import com.lightheart.sphr.doctor.bean.AreaModel;
 import com.lightheart.sphr.doctor.bean.ClinicalDetailParam;
@@ -91,7 +91,7 @@ public interface ApiService {
      *
      * @return DoctorBean
      */
-    @POST("user/register")
+    @POST("user/reg")
     Observable<DataResponse<DoctorBean>> register(@Body LoginRequest parmas);
 
     /**
@@ -100,7 +100,7 @@ public interface ApiService {
      * @return DoctorBean
      */
     @POST("user/forgetpwd")
-    Observable<DataResponse<DoctorBean>> modifyPsd(@Body LoginRequest parmas);
+    Observable<DataResponse<Object>> modifyPsd(@Body LoginRequest parmas);
 
     /**
      * 获取首页信息

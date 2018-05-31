@@ -87,6 +87,15 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <!-- loading -->
+    <style name="mProgress_circle">
+        <item name="android:indeterminateDrawable">@drawable/progress_loading</item>
+        <item name="android:minWidth">25dp</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:maxWidth">60dp</item>
+        <item name="android:maxHeight">60dp</item>
+    </style>
+
 
 
 </resources>

@@ -2,7 +2,7 @@ package com.lightheart.sphr.doctor.module.my.presenter;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
-import com.lightheart.sphr.doctor.base.AuthParam;
+import com.lightheart.sphr.doctor.bean.AuthParam;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.DataResponse;
 import com.lightheart.sphr.doctor.module.my.contract.AuthenticationContract;
