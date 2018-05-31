@@ -40,5 +40,6 @@ public class PatientsAdapter extends BaseQuickAdapter<PatientsModel.PatientModel
         }
         helper.setText(R.id.tvAge, TextUtils.isEmpty(item.birth) ? "" : item.birth);
         helper.setText(R.id.tvDease, TextUtils.isEmpty(item.disdesc) ? "" : item.disdesc);
+
     }
 }

@@ -1,6 +1,7 @@
 package com.lightheart.sphr.doctor.utils;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -63,5 +64,6 @@ public class ImageLoaderUtils extends ImageLoader {
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_image_loading).diskCacheStrategy(DiskCacheStrategy.RESOURCE).error(R.mipmap.ic_image_loadfail))
                 .into(imageView);
     }
+
 
 }
