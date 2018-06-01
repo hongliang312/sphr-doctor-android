@@ -118,8 +118,6 @@ public class PatientRecordsActivity extends BaseActivity<PatientRecordsPresenter
 
             if (patientRecordsBean.getCaseHistories() != null && patientRecordsBean.getCaseHistories().size() > 0)
                 setLoadDataResult(patientRecordsAdapter, swipeRefreshLayout, patientRecordsBean.getCaseHistories(), loadType);
-            else
-                patientRecordsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvRecord.getParent());
         }
     }
 

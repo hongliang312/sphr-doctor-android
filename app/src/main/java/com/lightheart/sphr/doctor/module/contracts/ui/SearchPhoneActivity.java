@@ -131,10 +131,9 @@ public class SearchPhoneActivity extends BaseActivity<SearchDoctorPresenter> imp
 
     @Override
     public void setSearchDoctors(List<DoctorBean> contractDocList, int loadType) {
-        if (contractDocList != null && contractDocList.size() > 0)
-            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
-        else
-            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvDoctors.getParent());
+        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() == 0)
+            initEmptyView(mContractsAdapter, mRvDoctors);
     }
 
     @Override

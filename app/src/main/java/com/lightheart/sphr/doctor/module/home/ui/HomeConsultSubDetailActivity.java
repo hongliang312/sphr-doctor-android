@@ -149,10 +149,10 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
 */
             tvDescription.setText(homeConsultSubDetail.getContent());
             tvPatientName.setText(tvPatientNamee);
-            if (homeConsultSubDetail1.getImgs() != null && homeConsultSubDetail1.getImgs().size() > 0) {
+            if (homeConsultSubDetail1.getImgs() != null) {
                 homeConsultSubDetailAdapter.setNewData(homeConsultSubDetail1.getImgs());
-            } else {
-                homeConsultSubDetailAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) tvImageRecycler.getParent());
+                if (homeConsultSubDetail1.getImgs().size() == 0)
+                    initEmptyView(homeConsultSubDetailAdapter, tvImageRecycler);
             }
         }
 

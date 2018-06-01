@@ -27,10 +27,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvPanels"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvPanels"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <include
+                        android:id="@+id/layout_create_panel"
+                        layout="@layout/footer_panel" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>

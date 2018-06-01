@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +81,11 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
         unbinder = ButterKnife.bind(this, mRootView);
         initView(mRootView);
         return mRootView;
+    }
+
+    protected void initEmptyView(BaseQuickAdapter mAdapter, RecyclerView mRecyclerView) {
+        View empty = getLayoutInflater().inflate(R.layout.layout_empty, (ViewGroup) mRecyclerView.getParent(), false);
+        mAdapter.setEmptyView(empty);
     }
 
     @Override
@@ -190,7 +196,7 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
 
     }
 
-    protected void setTitle(TextView mTitleTv, Button mBtSub, int mTitle, boolean mIsHasTvSub, int mTvSubTitle){
+    protected void setTitle(TextView mTitleTv, Button mBtSub, int mTitle, boolean mIsHasTvSub, int mTvSubTitle) {
         mTitleTv.setText(mTitle == 0 ? R.string.empty : mTitle);
         if (mIsHasTvSub) {
             mBtSub.setVisibility(View.VISIBLE);

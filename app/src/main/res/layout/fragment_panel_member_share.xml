@@ -10,12 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvMember"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/dp_0"
-            android:paddingStart="@dimen/dp_6" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/llPanelItem"
+                layout="@layout/item_panel" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMember"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingEnd="@dimen/dp_0"
+                android:paddingStart="@dimen/dp_6" />
+
+            <include
+                android:id="@+id/llCreatePanel"
+                layout="@layout/footer_panel" />
+
+        </LinearLayout>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

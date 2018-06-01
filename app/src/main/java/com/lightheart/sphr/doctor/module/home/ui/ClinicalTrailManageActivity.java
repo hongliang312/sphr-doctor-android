@@ -60,9 +60,6 @@ public class ClinicalTrailManageActivity extends BaseActivity<ClinicalTrailManag
         initToolbar(mToolbar, mTitleTv, mBtSub, R.string.clinical_manage, false, 0);
 
         mRvClinical.setLayoutManager(new LinearLayoutManager(this));
-
-        View clinicalHeader = LayoutInflater.from(this).inflate(R.layout.header_clinical_trail, null);
-        manageAdapter.addHeaderView(clinicalHeader);
         mRvClinical.setAdapter(manageAdapter);
 
         manageAdapter.setOnItemClickListener(this);
@@ -75,10 +72,9 @@ public class ClinicalTrailManageActivity extends BaseActivity<ClinicalTrailManag
 
     @Override
     public void setClinicalData(List<ClinicalTrailModel> content, int loadType) {
-        if (content != null && content.size() > 0)
-            setLoadDataResult(manageAdapter, mSwipeRefreshLayout, content, loadType);
-        else
-            manageAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvClinical.getParent());
+        setLoadDataResult(manageAdapter, mSwipeRefreshLayout, content, loadType);
+        if (content != null && content.size() == 0)
+            initEmptyView(manageAdapter, mRvClinical);
     }
 
     @Override

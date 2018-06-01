@@ -142,10 +142,9 @@ public class HomeClinicalRecruitActivity extends BaseActivity<ClinicalRecruitPre
 
     @Override
     public void setClinical(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialListBeanList, int loadType) {
-        if (clinicalTrialListBeanList != null && clinicalTrialListBeanList.size() > 0)
-            setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
-        else
-            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvClinical.getParent());
+        setLoadDataResult(mAdapter, mSwipeRefreshLayout, clinicalTrialListBeanList, loadType);
+        if (clinicalTrialListBeanList != null && clinicalTrialListBeanList.size() == 0)
+            initEmptyView(mAdapter, mRvClinical);
     }
 
     // 暂时不用
