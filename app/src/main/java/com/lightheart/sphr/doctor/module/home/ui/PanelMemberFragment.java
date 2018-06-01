@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by fucp on 2018-5-15.
@@ -44,6 +46,16 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.rvMember)
     RecyclerView rvMember;
+    @BindView(R.id.tvImage)
+    TextView tvImage;
+    @BindView(R.id.tvPanelName)
+    TextView tvPanelName;
+    @BindView(R.id.tvNum)
+    TextView tvNum;
+    @BindView(R.id.tvCreate)
+    TextView tvCreate;
+    @BindView(R.id.llCreatePanel)
+    LinearLayout llCreatePanel;
     private PanelsModel panelsModel;
     private List<DoctorBean> panelDoctors;
     private String mFlag;
@@ -69,27 +81,18 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
         }
 
         PanelGridAdapter mPanelGridAdapter = new PanelGridAdapter();
-
         mPanelGridAdapter.setType(1);// 0为创建专家组 1为专家组成员
 
         // 设置RecyclerView
         rvMember.setLayoutManager(new GridLayoutManager(getContext(), 4));
         rvMember.setAdapter(mPanelGridAdapter);
-        // 设置header
-        View headerView = LayoutInflater.from(getContext()).inflate(R.layout.item_panel, null);
-        TextView tvImage = headerView.findViewById(R.id.tvImage);
-        TextView tvPanelName = headerView.findViewById(R.id.tvPanelName);
-        TextView tvNum = headerView.findViewById(R.id.tvNum);
-        mPanelGridAdapter.addHeaderView(headerView);
 
-        // 设置footer
-        View footerView = LayoutInflater.from(getContext()).inflate(R.layout.footer_panel, null);
-        TextView tvCreate = footerView.findViewById(R.id.tvCreate);
         tvCreate.setText(getString(R.string.apply_add_panel));
         tvCreate.setOnClickListener(this);
         if (!TextUtils.equals("Y", mFlag)) {
-            mPanelGridAdapter.addFooterView(footerView);
+            llCreatePanel.setVisibility(View.VISIBLE);
         } else {
+            llCreatePanel.setVisibility(View.GONE);
             DoctorBean doctorDetail = new DoctorBean();
             doctorDetail.setDoctorName("添加成员");
             panelDoctors.add(0, doctorDetail);
@@ -107,10 +110,9 @@ public class PanelMemberFragment extends BaseFragment<PanelSharePresenter> imple
         tvPanelName.setText(TextUtils.isEmpty(panelsModel.getDtmAroName()) ? " " : panelsModel.getDtmAroName());
         tvNum.setText(String.valueOf(panelDoctors.size() - 1) + getString(R.string.join));
 
-        if (panelDoctors != null && panelDoctors.size() > 0)
-            setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelDoctors, LoadType.TYPE_REFRESH_SUCCESS);
-        else
-            mPanelGridAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvMember.getParent());
+        setLoadDataResult(mPanelGridAdapter, swipeRefreshLayout, panelDoctors, LoadType.TYPE_REFRESH_SUCCESS);
+        if (panelDoctors != null && panelDoctors.size() == 0)
+            initEmptyView(mPanelGridAdapter, rvMember);
 
     }
 

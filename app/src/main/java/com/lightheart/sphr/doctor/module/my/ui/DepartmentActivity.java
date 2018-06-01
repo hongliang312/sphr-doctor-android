@@ -105,7 +105,6 @@ public class DepartmentActivity extends BaseActivity<AreaPresenter> implements A
                 }
             }
         });
-        ToastUtils.showShort(item.getName());
     }
 
     @Override
@@ -113,7 +112,7 @@ public class DepartmentActivity extends BaseActivity<AreaPresenter> implements A
         if (departments != null && departments.size() > 0)
             mAdapter.setNewData(departments);
         else
-            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvDepartment.getParent());
+            initEmptyView(mAdapter, rvDepartment);
     }
 
     @Override

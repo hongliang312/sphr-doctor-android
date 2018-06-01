@@ -1,4 +1,4 @@
-package com.lightheart.sphr.doctor.base;
+package com.lightheart.sphr.doctor.bean;
 
 import java.io.Serializable;
 

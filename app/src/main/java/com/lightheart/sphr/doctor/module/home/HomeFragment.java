@@ -185,8 +185,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     public void setClinicals(List<HomePageInfo.ClinicalTrialListBean> clinicalTrialObj, int loadType) {
         if (clinicalTrialObj != null && clinicalTrialObj.size() > 0)
             setLoadDataResult(mClinicalAdapter, mSwipeRefreshLayout, clinicalTrialObj, loadType);
-        else
-            mClinicalAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvHomeArticles.getParent());
+        else initEmptyView(mClinicalAdapter, mRvHomeArticles);
     }
 
     @Override

@@ -71,7 +71,7 @@ public class AreaActivity extends BaseActivity<AreaPresenter> implements AreaCon
         if (titles != null && titles.size() > 0)
             mAdapter.setNewData(titles);
         else
-            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvArea.getParent());
+            initEmptyView(mAdapter, rvArea);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class AreaActivity extends BaseActivity<AreaPresenter> implements AreaCon
         if (childAreas != null && childAreas.size() > 0)
             mAdapter.setNewData(childAreas);
         else
-            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvArea.getParent());
+            initEmptyView(mAdapter, rvArea);
     }
 
     @Override

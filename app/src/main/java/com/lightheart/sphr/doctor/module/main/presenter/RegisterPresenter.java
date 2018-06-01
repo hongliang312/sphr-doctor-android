@@ -11,6 +11,7 @@ import com.lightheart.sphr.doctor.module.main.contract.RegisterContract;
 import com.lightheart.sphr.doctor.net.ApiService;
 import com.lightheart.sphr.doctor.net.RetrofitManager;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+import com.lightheart.sphr.doctor.view.ProgressBar;
 
 import javax.inject.Inject;
 
@@ -44,12 +45,14 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
                         if (response.getResultcode() == 200) {
                             mView.sendCodeSucess();
                         } else {
+                            ProgressBar.dis();
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        ProgressBar.dis();
                         mView.showFaild(throwable.getMessage());
                     }
                 });
@@ -81,12 +84,14 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
                                 register(loginRequest);
                             else modifyPsd(loginRequest);
                         } else {
+                            ProgressBar.dis();
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        ProgressBar.dis();
                         mView.showFaild(throwable.getMessage());
                     }
                 });
@@ -109,12 +114,14 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
                         if (response.getResultcode() == 200) {
                             mView.registerSuccess(response.getContent());
                         } else {
+                            ProgressBar.dis();
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        ProgressBar.dis();
                         mView.showFaild(throwable.getMessage());
                     }
                 });
@@ -129,20 +136,22 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
     public void modifyPsd(LoginRequest parmas) {
         RetrofitManager.create(ApiService.class)
                 .modifyPsd(parmas)
-                .compose(RxSchedulers.<DataResponse<DoctorBean>>applySchedulers())
-                .compose(mView.<DataResponse<DoctorBean>>bindToLife())
-                .subscribe(new Consumer<DataResponse<DoctorBean>>() {
+                .compose(RxSchedulers.<DataResponse<Object>>applySchedulers())
+                .compose(mView.<DataResponse<Object>>bindToLife())
+                .subscribe(new Consumer<DataResponse<Object>>() {
                     @Override
-                    public void accept(DataResponse<DoctorBean> response) throws Exception {
+                    public void accept(DataResponse<Object> response) throws Exception {
                         if (response.getResultcode() == 200) {
-                            mView.registerSuccess(response.getContent());
+                            mView.modifySuccess();
                         } else {
+                            ProgressBar.dis();
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        ProgressBar.dis();
                         mView.showFaild(throwable.getMessage());
                     }
                 });
@@ -165,12 +174,14 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
                         if (response.getResultcode() == 200) {
                             mView.verCodeSuccess(response.getContent());
                         } else {
+                            ProgressBar.dis();
                             mView.showFaild(String.valueOf(response.getResultmsg()));
                         }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        ProgressBar.dis();
                         mView.showFaild(throwable.getMessage());
                     }
                 });

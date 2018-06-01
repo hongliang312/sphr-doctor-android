@@ -77,10 +77,9 @@ public class PatientsFragment extends BaseFragment<PatientsPresenter> implements
 
     @Override
     public void setPatients(List<PatientsModel.PatientModel> patientModels, int loadType) {
-        if (patientModels != null && patientModels.size() > 0)
-            setLoadDataResult(mPatientsAdapter, swipeRefreshLayout, patientModels, loadType);
-        else
-            mPatientsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPatients.getParent());
+        setLoadDataResult(mPatientsAdapter, swipeRefreshLayout, patientModels, loadType);
+        if (patientModels != null && patientModels.size() == 0)
+            initEmptyView(mPatientsAdapter, mRvPatients);
     }
 
     @Override

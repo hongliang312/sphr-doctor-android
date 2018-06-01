@@ -63,6 +63,7 @@ public class HomeConsultSubFragment extends BaseFragment<ConsultListPresenter> i
         rvConsult.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvConsult.setAdapter(mAdapter);
 
+        swipeRefreshLayout.setEnabled(false);
         mAdapter.setOnItemClickListener(this);
 
     }
@@ -80,14 +81,14 @@ public class HomeConsultSubFragment extends BaseFragment<ConsultListPresenter> i
     public void setOnlineData(List<ConsultModel> content) {
         if (content != null && content.size() > 0)
             mAdapter.setNewData(content);
-        else mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvConsult.getParent());
+        else initEmptyView(mAdapter, rvConsult);
     }
 
     @Override
     public void setTelConsultData(List<ConsultModel> content) {
         if (content != null && content.size() > 0)
             mAdapter.setNewData(content);
-        else mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvConsult.getParent());
+        else initEmptyView(mAdapter, rvConsult);
     }
 
     @Override

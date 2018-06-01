@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -72,10 +73,9 @@ public class PanelMessageListActivity extends BaseActivity<PanelMessageListPrese
 
     @Override
     public void setPanelMessage(List<PanelMessageModel> panelMessageModels, int loadType) {
-        if (panelMessageModels != null && panelMessageModels.size() > 0)
-            setLoadDataResult(messageAdapter, mSwipeRefreshLayout, panelMessageModels, loadType);
-        else
-            messageAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPanelMessage.getParent());
+        setLoadDataResult(messageAdapter, mSwipeRefreshLayout, panelMessageModels, loadType);
+        if (panelMessageModels != null && panelMessageModels.size() == 0)
+            initEmptyView(messageAdapter, mRvPanelMessage);
     }
 
     @Override

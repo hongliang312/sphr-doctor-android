@@ -29,6 +29,7 @@ import com.lightheart.sphr.doctor.module.main.presenter.RegisterPresenter;
 import com.lightheart.sphr.doctor.utils.CheckContentUtil;
 import com.lightheart.sphr.doctor.utils.RxBus;
 import com.lightheart.sphr.doctor.utils.RxSchedulers;
+import com.lightheart.sphr.doctor.view.ProgressBar;
 
 import java.util.concurrent.TimeUnit;
 
@@ -123,6 +124,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
                     params.data = new Gson().toJson(data);
                     LogUtils.e(tag, new Gson().toJson(params));
                     assert mPresenter != null;
+                    ProgressBar.show(getSupportFragmentManager());
                     mPresenter.sendAuthCode(params);
                 }
                 break;
@@ -136,14 +138,16 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
                         verCodeParma.data = new Gson().toJson(authCodeData);
                         LogUtils.e(tag, new Gson().toJson(verCodeParma));
                         assert mPresenter != null;
+                        ProgressBar.show(getSupportFragmentManager());
                         mPresenter.verCodeLogin(verCodeParma);
                     }
-                } else {
+                } else  {
                     if (check("REGISTER", mobile, authCode, password)) {
                         authCodeData.code = authCode;
                         authCodeData.mobile = mobile;
                         LogUtils.e(tag, new Gson().toJson(authCodeData));
                         assert mPresenter != null;
+                        ProgressBar.show(getSupportFragmentManager());
                         mPresenter.verifyAuthCode(authCodeData, password, mFlag);
                     }
                 }
@@ -220,11 +224,13 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @Override
     public void sendCodeSucess() {
         transform();
+        ProgressBar.dis();
         ToastUtils.showShort(R.string.authCodeSended);
     }
 
     @Override
     public void registerSuccess(DoctorBean user) {
+        ProgressBar.dis();
         new AlertDialog.Builder(this)
                 .setTitle(R.string.appName)
                 .setMessage("请前往登录页面重新登录！")
@@ -240,6 +246,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @Override
     public void verCodeSuccess(DoctorBean user) {
+        ProgressBar.dis();
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.LOGIN_KEY, true);
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.getMobile());
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.USER_KEY, user.getId());
@@ -249,6 +256,23 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         RxBus.getInstance().post(event);
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         overridePendingTransition(R.anim.screen_zoom_in, R.anim.screen_zoom_out);
+        finish();
+    }
+
+    @Override
+    public void modifySuccess() {
+        ProgressBar.dis();
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.appName)
+                .setMessage("请前往登录页面重新登录！")
+                .setIcon(R.mipmap.ic_launcher)
+                .setCancelable(false)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                }).show();
     }
 
     @Override

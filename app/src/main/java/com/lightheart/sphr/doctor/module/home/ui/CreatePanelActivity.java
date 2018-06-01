@@ -90,7 +90,7 @@ public class CreatePanelActivity extends BaseActivity<CreatePanelPresenter> impl
         mPanelGridAdapter.addHeaderView(header);
 
         // 设置RecyclerView
-        mRvPanels.setLayoutManager(new GridLayoutManager(this, 5));
+        mRvPanels.setLayoutManager(new GridLayoutManager(this, 4));
         mRvPanels.setAdapter(mPanelGridAdapter);
         mPanelGridAdapter.setOnItemClickListener(this);
 

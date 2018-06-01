@@ -138,8 +138,7 @@ public class SelectContactActivity extends BaseActivity<ContractPresenter> imple
         }
         if (contractDocList != null && contractDocList.size() > 0)
             setLoadDataResult(mAdapter, mSwipeRefreshLayout, contractDocList, loadType);
-        else
-            mAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvContract.getParent());
+        else initEmptyView(mAdapter, rvContract);
         mAdapter.initData(contractDocList);
     }
 

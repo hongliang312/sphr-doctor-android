@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by fucp on 2018-5-14.
@@ -41,6 +42,8 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvPanels)
     RecyclerView mRvPanels;
+    @BindView(R.id.tvCreate)
+    TextView tvCreate;
     private List<PanelSection> panelSectionList = new ArrayList<>();
     private PanelSectionAdapter mPanelSectionAdapter;
 
@@ -60,13 +63,7 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
 
         mPanelSectionAdapter = new PanelSectionAdapter(R.layout.item_panel, R.layout.section_panel, panelSectionList);
 
-        // 设置footer
-        View footerView = getLayoutInflater().inflate(R.layout.footer_panel, (ViewGroup) mRvPanels.getParent(), false);
-        TextView tvCreate = footerView.findViewById(R.id.tvCreate);
         tvCreate.setText(getString(R.string.create_panel));
-        tvCreate.setOnClickListener(this);
-        mPanelSectionAdapter.addFooterView(footerView);
-        mMessage.setOnClickListener(this);
 
         // 设置RecyclerView
         mRvPanels.setLayoutManager(new LinearLayoutManager(this));
@@ -82,26 +79,36 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
     @Override
     public void setPanelData(HomePanelModel panelsModels, int loadType) {
         List<PanelsModel> ownerGroupList = new ArrayList<>();
-        panelSectionList.add(new PanelSection(true, getString(R.string.added_panel), false));
-        if (panelsModels.owerGroupList.size() > 3) {
-            ownerGroupList = panelsModels.owerGroupList.subList(0, 3);
-        } else {
-            ownerGroupList.addAll(panelsModels.owerGroupList);
+        List<PanelsModel> otherGroupList = new ArrayList<>();
+        if (panelsModels.owerGroupList.size() > 0) {
+            panelSectionList.add(new PanelSection(true, getString(R.string.added_panel), false));
+            if (panelsModels.owerGroupList.size() > 3) {
+                ownerGroupList = panelsModels.owerGroupList.subList(0, 3);
+            } else {
+                ownerGroupList.addAll(panelsModels.owerGroupList);
+            }
+            for (PanelsModel item : ownerGroupList) {
+                item.setAdded(true);
+                panelSectionList.add(new PanelSection(item));
+            }
         }
-        for (PanelsModel item : ownerGroupList) {
-            item.setAdded(true);
-            panelSectionList.add(new PanelSection(item));
+
+        if (panelsModels.otherGroupList.size() > 0) {
+            panelSectionList.add(new PanelSection(true, getString(R.string.interesting_panel), true));
+            if (panelsModels.otherGroupList.size() > 3) {
+                otherGroupList = panelsModels.otherGroupList.subList(0, 3);
+            } else {
+                otherGroupList.addAll(panelsModels.otherGroupList);
+            }
+            for (PanelsModel item : otherGroupList) {
+                item.setAdded(false);
+                panelSectionList.add(new PanelSection(item));
+            }
         }
-        panelSectionList.add(new PanelSection(true, getString(R.string.interesting_panel), true));
-        List<PanelsModel> otherGroupList = panelsModels.otherGroupList.subList(0, 3);
-        for (PanelsModel item : otherGroupList) {
-            item.setAdded(false);
-            panelSectionList.add(new PanelSection(item));
-        }
-        if (panelSectionList != null && panelSectionList.size() > 0)
-            setLoadDataResult(mPanelSectionAdapter, mSwipeRefreshLayout, panelSectionList, loadType);
-        else
-            mPanelSectionAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPanels.getParent());
+
+        setLoadDataResult(mPanelSectionAdapter, mSwipeRefreshLayout, panelSectionList, loadType);
+        if (panelSectionList != null && panelSectionList.size() == 0)
+            initEmptyView(mPanelSectionAdapter, mRvPanels);
     }
 
     // 暂时不用
@@ -114,7 +121,7 @@ public class HomePanelActivity extends BaseActivity<PanelsPresenter> implements 
         return true;
     }
 
-    @Override
+    @OnClick({R.id.bt_sub, R.id.tvCreate})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_sub:

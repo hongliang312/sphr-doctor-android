@@ -1,5 +1,7 @@
 package com.lightheart.sphr.doctor.module.home.presenter;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.lightheart.sphr.doctor.app.Constant;
 import com.lightheart.sphr.doctor.base.BasePresenter;
 import com.lightheart.sphr.doctor.bean.ConsultModel;
 import com.lightheart.sphr.doctor.bean.ConsultingListRequestParams;
@@ -21,9 +23,9 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
 
     @Inject
     ConsultListPresenter() {
-//        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
-        params.duid = 1010;
+        params.duid = SPUtils.getInstance(Constant.SHARED_NAME).getInt(Constant.USER_KEY);
     }
+
     @Override
     public void loadOnlineData(String type) {
         params.type = type;
@@ -46,7 +48,7 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
                         mView.showFaild(throwable.getMessage());
                     }
                 });
-          }
+    }
 
     @Override
     public void loadTelConsultData(String type) {
@@ -70,5 +72,5 @@ public class ConsultListPresenter extends BasePresenter<ConsultingListContract.V
                         mView.showFaild(throwable.getMessage());
                     }
                 });
-           }
-   }
+    }
+}

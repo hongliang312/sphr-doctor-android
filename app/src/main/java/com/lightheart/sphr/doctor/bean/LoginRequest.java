@@ -22,7 +22,7 @@ public class LoginRequest implements Serializable {
         public String mobile;
         public String password;
         public int usrType = 1;
-        public String token = "";
+//        public String token = "";
         public String termType = "ADR";
         // 发送验证码
         public int smsType;

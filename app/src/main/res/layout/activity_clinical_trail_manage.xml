@@ -23,10 +23,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvClinical"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/header_clinical_trail" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvClinical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

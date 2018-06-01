@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -47,6 +48,8 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rvPanels)
     RecyclerView mRvPanels;
+    @BindView(R.id.layout_create_panel)
+    LinearLayout layoutCreate;
     @Inject
     PanelListAdapter mPanelListAdapter;
     private String flag;
@@ -67,6 +70,7 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
 
     @Override
     protected void initView() {
+        layoutCreate.setVisibility(View.GONE);
         flag = getIntent().getStringExtra("flag");
         mTodo = getIntent().getStringExtra("TODO");// 分享临床试验到专家组
         linkId = getIntent().getIntExtra("linkId", 0);
@@ -114,10 +118,9 @@ public class PanelListActivity extends BaseActivity<PanelsPresenter> implements 
 
     @Override
     public void setPanelList(List<PanelsModel> panelsModels, int loadType) {
-        if (panelsModels != null && panelsModels.size() > 0)
-            setLoadDataResult(mPanelListAdapter, mSwipeRefreshLayout, panelsModels, loadType);
-        else
-            mPanelListAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvPanels.getParent());
+        setLoadDataResult(mPanelListAdapter, mSwipeRefreshLayout, panelsModels, loadType);
+        if (panelsModels != null && panelsModels.size() == 0)
+            initEmptyView(mPanelListAdapter, mRvPanels);
     }
 
     @Override

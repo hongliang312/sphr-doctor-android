@@ -142,6 +142,9 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
      * 跳转到主页面
      */
     private void toMainActivity() {
+        if (timer != null && !timer.isDisposed()) {
+            timer.dispose();
+        }
         if (SPUtils.getInstance(Constant.SHARED_NAME).getBoolean(Constant.LOGIN_KEY, false))
             startActivity(new Intent(this, MainActivity.class));
         else startActivity(new Intent(this, LoginActivity.class));

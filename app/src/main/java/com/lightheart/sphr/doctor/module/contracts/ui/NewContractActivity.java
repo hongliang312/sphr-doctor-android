@@ -73,15 +73,15 @@ public class NewContractActivity extends BaseActivity<NewContractPresenter> impl
 
     @Override
     public void setNewContracts(List<DoctorBean> contractDocList, int loadType) {
-        if (contractDocList != null && contractDocList.size() > 0)
-            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
-        else
-            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvNewContracts.getParent());
+        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() == 0)
+            initEmptyView(mContractsAdapter, mRvNewContracts);
     }
 
     // 暂时不需要
     @Override
-    public void itemClick(View view, int position, DoctorBean item) {}
+    public void itemClick(View view, int position, DoctorBean item) {
+    }
 
     @Override
     public void accept(View view, int position, DoctorBean item) {

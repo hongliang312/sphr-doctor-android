@@ -40,6 +40,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -64,12 +65,15 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
     TextView mTitleTv;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.tvNewCon)
+    TextView tvNewCon;
     @BindView(R.id.rvContracts)
     RecyclerView mRvContracts;
     @Inject
     ContractsAdapter mContractsAdapter;
     private PopupWindow mAddPop;
     private DoctorBean doctorBean = new DoctorBean();
+    private View empty;
 
     @Override
     protected int getLayoutId() {
@@ -88,15 +92,9 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
 
         mContractsAdapter.initData(getActivity(), "ADDED");
         //  设置RecyclerView
+        mRvContracts.setHasFixedSize(true);
         mRvContracts.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContracts.setAdapter(mContractsAdapter);
-
-        //   设置ContractView
-        View mContractHeadView = LayoutInflater.from(getContext()).inflate(R.layout.layout_contract_head, null);
-        TextView tvNewCon = mContractHeadView.findViewById(R.id.tvNewCon);
-        tvNewCon.setOnClickListener(this);
-
-        mContractsAdapter.addHeaderView(mContractHeadView);
 
         mContractsAdapter.setOnSlideItemListener(this);
         mContractsAdapter.setOnLoadMoreListener(this);
@@ -113,13 +111,12 @@ public class ContractFragment extends BaseFragment<ContractPresenter> implements
 
     @Override
     public void setContracts(List<DoctorBean> contractDocList, int loadType) {
-        if (contractDocList != null && contractDocList.size() > 0)
-            setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
-        else
-            mContractsAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) mRvContracts.getParent());
+        setLoadDataResult(mContractsAdapter, mSwipeRefreshLayout, contractDocList, loadType);
+        if (contractDocList != null && contractDocList.size() == 0)
+            initEmptyView(mContractsAdapter, mRvContracts);
     }
 
-    @Override
+    @OnClick(R.id.tvNewCon)
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_sub:

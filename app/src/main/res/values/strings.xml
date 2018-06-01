@@ -181,6 +181,7 @@
     <string name="clinic_trial">临床试验</string>
     <string name="system_notice">系统公告</string>
     <string name="no_data">暂无数据</string>
+    <string name="loading">正在加载&#8230;</string>
 
 
     <string name="patients_with_details">患者详情</string>

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lightheart.sphr.doctor.R;
@@ -33,6 +34,10 @@ public class PanelShareFragment extends BaseFragment<PanelSharePresenter> implem
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.rvMember)
     RecyclerView rvMember;
+    @BindView(R.id.llPanelItem)
+    LinearLayout llPanelItem;
+    @BindView(R.id.llCreatePanel)
+    LinearLayout llCreatePanel;
     @Inject
     PanelShareAdapter mPanelShareAdapter;
 
@@ -49,7 +54,8 @@ public class PanelShareFragment extends BaseFragment<PanelSharePresenter> implem
     @Override
     protected void initView(View view) {
         int id = getArguments().getInt("id");
-
+        llPanelItem.setVisibility(View.GONE);
+        llCreatePanel.setVisibility(View.GONE);
         // 设置RecyclerView
         rvMember.setLayoutManager(new LinearLayoutManager(getContext()));
         rvMember.setAdapter(mPanelShareAdapter);
@@ -70,10 +76,9 @@ public class PanelShareFragment extends BaseFragment<PanelSharePresenter> implem
 
     @Override
     public void setPanelShare(List<PanelShareModel> panelsModels, int loadType) {
-        if (panelsModels != null && panelsModels.size() > 0)
-            setLoadDataResult(mPanelShareAdapter, swipeRefreshLayout, panelsModels, loadType);
-        else
-            mPanelShareAdapter.setEmptyView(R.layout.layout_empty, (ViewGroup) rvMember.getParent());
+        setLoadDataResult(mPanelShareAdapter, swipeRefreshLayout, panelsModels, loadType);
+        if (panelsModels != null && panelsModels.size() == 0)
+            initEmptyView(mPanelShareAdapter, rvMember);
     }
 
     @Override

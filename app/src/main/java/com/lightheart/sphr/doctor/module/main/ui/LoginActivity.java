@@ -22,6 +22,7 @@ import com.lightheart.sphr.doctor.module.main.contract.LoginContract;
 import com.lightheart.sphr.doctor.module.main.presenter.LoginPresenter;
 import com.lightheart.sphr.doctor.utils.CheckContentUtil;
 import com.lightheart.sphr.doctor.utils.RxBus;
+import com.lightheart.sphr.doctor.view.ProgressBar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -78,6 +79,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void loginSuccess(DoctorBean user) {
+        ProgressBar.dis();
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.LOGIN_KEY, true);
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.MOBILE_KEY, user.getMobile());
         SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.PASSWORD_KEY, mEtPassword.getText().toString());
@@ -116,6 +118,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 data.password = password;
                 params.data = new Gson().toJson(data);
                 assert mPresenter != null;
+                ProgressBar.show(getSupportFragmentManager());
                 mPresenter.login(params);
                 break;
             case R.id.bt_sub:
