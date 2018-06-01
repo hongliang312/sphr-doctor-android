@@ -1,19 +1,12 @@
 package com.lightheart.sphr.doctor.module.home.adapter;
-
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
 import android.view.View;
 import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.lightheart.sphr.doctor.R;
-import com.lightheart.sphr.doctor.bean.HomeConsultSubDetail;
 import com.lightheart.sphr.doctor.utils.ImageLoaderUtils;
-
-
-
 import javax.inject.Inject;
-
 import static com.SuperKotlin.pictureviewer.PictureConfig.position;
 
 public class HomeConsultSubDetailAdapter extends BaseQuickAdapter<HomeConsultSubDetail.ImgsBean,BaseViewHolder>{
@@ -35,12 +28,13 @@ public class HomeConsultSubDetailAdapter extends BaseQuickAdapter<HomeConsultSub
              public void onClick(View v) {
                  onClicklistener.onClick(helper.itemView,position);
              }
-         });
-        }
+           });
+    }
+
     public void listener(OnClicklistener onClicklistener){
         this.onClicklistener=onClicklistener;
-
     }
+
     public interface OnClicklistener{
         void onClick(View view,int position);
     }

@@ -83,7 +83,7 @@ public class MySettingActivity extends BaseActivity {
                 break;
             case R.id.tvLogOut:
                 // 设置退出登陆
-                SPUtils.getInstance(Constant.SHARED_NAME).clear();
+                SPUtils.getInstance(Constant.SHARED_NAME).put(Constant.LOGIN_KEY, false);
                 EventModel event = new EventModel();
                 event.isLogout = true;
                 startActivity(new Intent(MySettingActivity.this, LoginActivity.class));

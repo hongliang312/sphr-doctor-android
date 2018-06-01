@@ -22,6 +22,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/background_color"
         android:scrollbars="none">
 
         <LinearLayout
@@ -82,8 +83,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_4"
-          />
-
+                android:background="@color/background_color" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_4"
- />
+                android:background="@color/background_color" />
 
             <LinearLayout
                 android:id="@+id/tvLinea"
@@ -178,6 +178,7 @@
                 android:id="@+id/tvLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/background_color"
                 android:orientation="horizontal"
                 android:padding="@dimen/dp_14"
                 android:paddingBottom="@dimen/dp_20"

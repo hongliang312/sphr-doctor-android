@@ -1,4 +1,5 @@
 package com.lightheart.sphr.doctor.module.home.ui;
+
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,10 +9,15 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.SuperKotlin.pictureviewer.ImagePagerActivity;
+import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.lightheart.sphr.doctor.R;
@@ -23,11 +29,16 @@ import com.lightheart.sphr.doctor.bean.HomeConsultSubDetailRequestParams;
 import com.lightheart.sphr.doctor.module.home.adapter.HomeConsultSubDetailAdapter;
 import com.lightheart.sphr.doctor.module.home.contract.HomeConsultSubDetailContract;
 import com.lightheart.sphr.doctor.module.home.presenter.HomeConsultSubDetailPresenter;
+import com.lightheart.sphr.doctor.module.main.ui.MainActivity;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 /**
  * 在线咨询和电话咨询详情页，分待完成和已完成
  */
@@ -117,9 +128,10 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
         tvImageRecycler.setLayoutManager(new GridLayoutManager(this, 3));
         tvImageRecycler.setAdapter(homeConsultSubDetailAdapter);
     }
-    @OnClick({R.id.Submit,R.id.tvPatientRecords})
+
+    @OnClick({R.id.Submit, R.id.tvPatientRecords})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.Submit:
                 replyConsultingbean = new ConsultingReplyRequestParams();
                 replyConsultingbean.id = id;
@@ -142,7 +154,8 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     @Override
     public void setHomeConsultSubDetailData(final HomeConsultSubDetail homeConsultSubDetail) {
         homeConsultSubDetail1 = new HomeConsultSubDetail();
-        homeConsultSubDetail1=homeConsultSubDetail;
+        homeConsultSubDetail1 = homeConsultSubDetail;
+
         if (homeConsultSubDetail1 != null) {
             tvDescription.setText(homeConsultSubDetail.getContent());
             tvPatientName.setText(tvPatientNamee);
@@ -151,30 +164,34 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
                 homeConsultSubDetailAdapter.setNewData(homeConsultSubDetail1.getImgs());
             }
         }
-
         homeConsultSubDetailAdapter.listener(new HomeConsultSubDetailAdapter.OnClicklistener() {
             @Override
             public void onClick(View view, int position) {
-                List<HomeConsultSubDetail.ImgsBean> imgs = homeConsultSubDetail.getImgs();
-                final List<String> imageList = new ArrayList<>();
+                List<HomeConsultSubDetail.ImgsBean> imgs =homeConsultSubDetail.getImgs();
+
+                ArrayList<String> imageList = new ArrayList<>();
                 for(int i=0; i<imgs.size();i++){
                     String mediaUrl = imgs.get(i).getMediaUrl();
-                    imageList.add(mediaUrl+"");
+                    imageList.add(mediaUrl);
+                    Log.i("tttt",""+imageList.size());
+                    Log.d("eeeee",""+imgs.get(i).getMediaUrl());
                 }
-                Log.i("tttt",""+imageList.size());
-              /*  PictureConfig config = new PictureConfig.Builder()
-                        .setListData((ArrayList<String>) imageList)	//图片数据List<String> list
-                        .setPosition(position)	//图片下标（从第position张图片开始浏览）
-                        .setDownloadPath("pictureviewer")	//图片下载文件夹地址
+
+                PictureConfig config = new PictureConfig.Builder()
+                        .setListData(imageList)//图片数据List<String> list
+                        .setPosition(position)//图片下标（从第position张图片开始浏览）
+                        .setDownloadPath("pictureviewer")//图片下载文件夹地址
                         .setIsShowNumber(true)//是否显示数字下标
-                        .needDownload(true)	//是否支持图片下载
+                        .needDownload(true)//是否支持图片下载
                         .setPlacrHolder(R.mipmap.ic_launcher_round)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
                         .build();
-                ImagePagerActivity.startActivity(HomeConsultSubDetailActivity.this, config);*/
+                ImagePagerActivity.startActivity(HomeConsultSubDetailActivity.this, config);
+                ToastUtils.showShort("点击了");
 
             }
         });
     }
+
     @Override
     public void successReply() {
         ToastUtils.showShort("提交成功！");
@@ -185,6 +202,7 @@ public class HomeConsultSubDetailActivity extends BaseActivity<HomeConsultSubDet
     protected boolean showHomeAsUp() {
         return true;
     }
+
     private SpannableString transformString(int s, int start, int end, int color) {
         SpannableString spannableString = new SpannableString(getString(s));
         ForegroundColorSpan colorSpan = new ForegroundColorSpan(getResources().getColor(color));

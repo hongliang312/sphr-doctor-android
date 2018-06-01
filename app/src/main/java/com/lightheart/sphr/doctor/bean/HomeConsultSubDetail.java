@@ -145,5 +145,7 @@ public class HomeConsultSubDetail {
             public void setCreateTime(long createTime) {
                 this.createTime = createTime;
             }
+
         }
+
 }

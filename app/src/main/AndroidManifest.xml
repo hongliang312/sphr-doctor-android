@@ -116,6 +116,7 @@
         <activity android:name=".module.my.ui.ModifyPasswordActivity" />
         <activity android:name=".module.my.ui.MyMessageSetActivity" />
         <activity android:name=".module.home.ui.HomeNoticeActivity" />
+
     </application>
 
 </manifest>
