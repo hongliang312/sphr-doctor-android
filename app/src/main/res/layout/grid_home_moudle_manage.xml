@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_14">
+
+    <ImageView
+        android:id="@+id/ivHomeMoudle"
+        android:layout_width="@dimen/dp_54"
+        android:layout_height="@dimen/dp_54"
+        android:contentDescription="@string/panel"
+        android:src="@mipmap/bg_clm" />
+
+    <TextView
+        android:id="@+id/tvHomeMoudle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/micro"
+        tools:text="@string/panel" />
+
+
+</LinearLayout>

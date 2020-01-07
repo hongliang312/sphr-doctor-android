@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_12"
+        android:background="@drawable/bg_grey_corner"
+        android:drawablePadding="@dimen/dp_10"
+        android:drawableStart="@mipmap/ic_search"
+        android:padding="@dimen/dp_8"
+        android:text="@string/patient_search"
+        android:textColor="@color/fiveEight"
+        android:textSize="@dimen/small"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawablePadding="@dimen/dp_20"
+        android:drawableTop="@mipmap/ic_pm"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="@dimen/dp_6"
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingEnd="@dimen/dp_20"
+        android:paddingStart="@dimen/dp_30"
+        android:paddingTop="@dimen/dp_20"
+        android:text="@string/patient_search_hint"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small" />
+
+    <com.lightheart.sphr.doctor.view.CommonTabLayout
+        android:id="@+id/tabPatient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@android:color/white"
+        android:paddingBottom="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_12"
+        app:tl_divider_color="@color/divide"
+        app:tl_divider_padding="@dimen/dp_8"
+        app:tl_divider_width="0.5dp"
+        app:tl_iconVisible="false"
+        android:visibility="gone"
+        app:tl_indicator_color="@color/theme_color"
+        app:tl_indicator_height="@dimen/dp_2"
+        app:tl_tab_padding="@dimen/dp_10"
+        app:tl_textSelectColor="@color/theme_color"
+        app:tl_textUnselectColor="#1b1b1b"
+        app:tl_textsize="14sp"
+        app:tl_underline_color="@color/divide" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/divide" />
+
+</LinearLayout>

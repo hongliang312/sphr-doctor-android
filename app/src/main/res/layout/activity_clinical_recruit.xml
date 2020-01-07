@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/mainBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="@dimen/dp_0">
+
+        <include layout="@layout/common_toolbar" />
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_12"
+        android:background="@drawable/bg_grey_corner"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etDisease"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_grey_corner"
+            android:drawablePadding="@dimen/dp_8"
+            android:drawableStart="@mipmap/ic_search"
+            android:hint="@string/please_input_adaptation_disease"
+            android:padding="@dimen/dp_8"
+            android:textSize="@dimen/small" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/delete"
+            android:padding="@dimen/dp_8"
+            android:src="@mipmap/ic_delete"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/shvDisease"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:layout_margin="@dimen/dp_12"
+        android:background="@drawable/bg_grey_corner"
+        android:visibility="gone"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/please_input_adaptation_disease" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvClinicals"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f2f2f2" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_my_header"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/dp_14"
+        android:paddingStart="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_44">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/clvHeadImage"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_18"
+            android:src="@mipmap/ic_user" />
+
+        <RelativeLayout
+            android:id="@+id/rlDcoInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/clvHeadImage"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/big_small"
+                android:textStyle="bold"
+                tools:ignore="NotSibling"
+                tools:text="@string/appName" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvUserName"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_toEndOf="@+id/clvHeadImage"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small"
+                tools:ignore="NotSibling"
+                tools:text="主任医师" />
+
+            <TextView
+                android:id="@+id/tvTutor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvUserName"
+                android:layout_marginStart="@dimen/dp_6"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_toEndOf="@+id/tvTitle"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small"
+                tools:text="博士生导师" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_round"
+            android:drawablePadding="@dimen/dp_4"
+            android:drawableStart="@mipmap/ic_certify"
+            android:padding="@dimen/dp_6"
+            android:text="@string/to_certify"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMyHomePage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@android:color/white"
+        android:drawableEnd="@mipmap/ic_open"
+        android:padding="@dimen/dp_14"
+        android:text="@string/my_page"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/big_small" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/colorDayTextLight" />
+
+    <TextView
+        android:id="@+id/tvFeedBadk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawableEnd="@mipmap/ic_open"
+        android:padding="@dimen/dp_14"
+        android:text="@string/feedback"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/big_small" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/colorDayTextLight" />
+
+    <TextView
+        android:id="@+id/tvMyInvitationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawableEnd="@mipmap/ic_open"
+        android:padding="@dimen/dp_14"
+        android:text="@string/my_invitation_code"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/big_small" />
+
+    <TextView
+        android:id="@+id/tvSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@android:color/white"
+        android:drawableEnd="@mipmap/ic_open"
+        android:padding="@dimen/dp_14"
+        android:text="@string/setting"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/big_small" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_18"
+        android:gravity="center"
+        android:text="@string/service_tel"
+        android:textColor="@color/theme_color"
+        android:textSize="@dimen/small" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/service_time"
+        android:textColor="@color/theme_color"
+        android:textSize="@dimen/small" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

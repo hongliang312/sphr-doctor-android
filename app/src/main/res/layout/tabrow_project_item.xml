@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@android:color/white">
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvSite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/total" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
+
+        <TextView
+            android:id="@+id/tvPiName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:id="@+id/tvSearchName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvPlanNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/num" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvJoinNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/num" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvGroupRate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/num" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/num" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvIsStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/num" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+    <TextView
+        android:id="@+id/tvExitNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/eight"
+        android:textSize="@dimen/small"
+        tools:text="@string/num" />
+
+    <View
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="match_parent"
+        android:background="@color/divide" />
+
+</TableRow>

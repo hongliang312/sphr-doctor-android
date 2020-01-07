@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1A80D2</color>
+    <color name="colorPrimaryDark">#1A80D2</color>
+    <color name="colorAccent">#1A80D2</color>
+    <color name="white">#ffffff</color>
+
+
+    <!--使用address自定义的的颜色-->
+    <color name="addressTabIndicatorColor">#2EA3E6</color>
+    <color name="addressTabSelectedTextColor">#2EA3E6</color>
+    <color name="addressTabTextColor">#262626</color>
+    <color name="addressRecycleViewSelectedColor">#2EA3E6</color>
+    <color name="addressRecycleViewUnSelectedColor">#262626</color>
+    <color name="addressSureUnClickColor">#B9B9B9</color>
+    <color name="addressSureCanClickColor">#2EA3E6</color>
+
+    <color name="grayCC">#CCCCCC</color>
+    <color name="black">#000000</color>
+
+
+    <color name="black26">#262626</color>
+    <color name="grayDD">#DDDDDD</color>
+
+</resources>

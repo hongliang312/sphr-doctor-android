@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/lll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_14"
+            android:background="@color/background_color"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lll"
+            android:layout_marginTop="@dimen/dp_28"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_18"
+            android:paddingStart="@dimen/dp_24">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:background="@drawable/bg_blue"
+                    android:gravity="center"
+                    android:text="@string/one"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/micro" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/dp_0"
+                    android:paddingStart="@dimen/dp_12"
+                    android:text="@string/process_one"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/dp_05"
+                android:layout_height="@dimen/dp_14"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@color/divide" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:background="@drawable/bg_blue"
+                    android:gravity="center"
+                    android:text="@string/two"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/micro" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/dp_0"
+                    android:paddingStart="@dimen/dp_12"
+                    android:text="@string/process_two"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/dp_05"
+                android:layout_height="@dimen/dp_14"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@color/divide" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:background="@drawable/bg_blue"
+                    android:gravity="center"
+                    android:text="@string/three"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/micro" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/dp_0"
+                    android:paddingStart="@dimen/dp_12"
+                    android:text="@string/process_three"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/dp_05"
+                android:layout_height="@dimen/dp_14"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@color/divide" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:background="@drawable/bg_blue"
+                    android:gravity="center"
+                    android:text="@string/four"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/micro" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/dp_0"
+                    android:paddingStart="@dimen/dp_12"
+                    android:text="@string/process_four"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lll"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_marginTop="-6dp"
+            android:background="@mipmap/ic_nav"
+            android:gravity="center"
+            android:paddingEnd="@dimen/dp_4"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/doctor_registration_process"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/small" />
+
+    </RelativeLayout>
+
+</LinearLayout>

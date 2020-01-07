@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lightheart.sphr.doctor">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取wifi状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 改变wifi状态 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 读取sd卡 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" /> <!-- 获取电池信息 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 设置系统权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- 设置系统权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 电源锁权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 允许应用写（非读）用户的日历数据 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 允许应用访问震动器 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".app.DCApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/appName"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:label">
+        <activity android:name=".module.home.ui.Main9Activity"></activity>
+        <activity android:name=".module.home.ui.Main8Activity" />
+        <activity android:name=".module.home.ui.Main7Activity" />
+        <activity android:name=".module.home.ui.Main5Activity" />
+        <activity android:name=".module.home.ui.Main4Activity" />
+        <activity android:name=".module.home.ui.Main3Activity" />
+        <activity android:name=".module.home.ui.Main2Activity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.lightheart.sphr.doctor.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".module.main.ui.MainActivity" />
+        <activity android:name=".module.home.ui.Main6Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <activity -->
+        <!-- android:name=".module.main.ui.MainActivity" -->
+        <!-- android:configChanges="orientation|keyboardHidden|screenSize" -->
+        <!-- android:screenOrientation="portrait" /> -->
+        <activity
+            android:name=".module.main.ui.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.main.ui.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".module.home.ui.ClinicalTrailManageActivity" />
+        <activity android:name=".module.home.ui.ClinicalTrailManageDetailActivity" />
+        <activity
+            android:name=".module.contracts.ui.NewContractActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.contracts.ui.SearchPhoneActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.my.ui.MyHomePageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".module.my.ui.AuthenticationActivity" />
+        <activity android:name=".module.my.ui.FeedBackActivity" />
+        <activity android:name=".module.my.ui.MyInvitationCodeActivity" />
+        <activity android:name=".module.home.ui.HomePatientManageActivity" />
+        <activity android:name=".module.home.ui.HomePanelActivity" />
+        <activity android:name=".module.home.ui.CreatePanelActivity" />
+        <activity android:name=".module.home.ui.PanelListActivity" />
+        <activity android:name=".module.home.ui.PanelDetailActivity" />
+        <activity android:name=".module.home.ui.HomeConsultActivity" />
+        <activity android:name=".module.home.ui.HomeConsultSubDetailActivity" />
+        <activity android:name=".module.home.ui.SelectContactActivity" />
+        <activity android:name=".module.home.ui.HomeClinicalRecruitActivity" />
+        <activity android:name=".module.home.ui.ClinicalRecruitDetailActivity" />
+        <activity android:name=".module.home.ui.PatientRecordsActivity" />
+        <activity android:name=".module.my.ui.MyPersonalInfoActivity" />
+        <activity android:name=".module.my.ui.MySettingActivity" />
+        <activity android:name=".module.home.ui.ClipImageActivity" />
+        <activity android:name=".module.my.ui.AreaActivity" />
+        <activity android:name=".module.my.ui.DepartmentActivity" />
+        <activity android:name=".module.contracts.ui.ScanActivity" />
+        <activity android:name=".module.home.ui.PanelMessageListActivity" />
+        <activity android:name=".module.my.ui.ModifyPasswordActivity" />
+        <activity android:name=".module.my.ui.MyMessageSetActivity" />
+        <activity android:name=".module.home.ui.HomeNoticeActivity" /> <!-- android:screenOrientation="portrait"表示竖屏 -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+
+</manifest>

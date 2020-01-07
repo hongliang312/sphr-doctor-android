@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/dp_0"
+    android:paddingStart="@dimen/dp_14">
+
+    <LinearLayout
+        android:id="@+id/llPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_14"
+        android:paddingStart="@dimen/dp_2"
+        android:paddingTop="@dimen/dp_12">
+
+        <TextView
+            android:id="@+id/tvImage"
+            android:layout_width="@dimen/dp_54"
+            android:layout_height="@dimen/dp_54"
+            android:background="@drawable/bg_blue"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/big_small"
+            tools:text="@string/num" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/dp_14"
+            android:paddingStart="@dimen/dp_14">
+
+            <TextView
+                android:id="@+id/tvPanelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dp_4"
+                android:paddingTop="@dimen/dp_4"
+                android:textColor="@color/title_black"
+                android:textSize="@dimen/big_small"
+                tools:text="@string/appName" />
+
+            <TextView
+                android:id="@+id/tvNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:gravity="center_vertical"
+                android:textColor="@color/fiveEight"
+                android:textSize="@dimen/small"
+                tools:text="@string/num" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivAddPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/patient_manage"
+            android:src="@mipmap/ic_add_panel"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/divide" />
+
+</LinearLayout>

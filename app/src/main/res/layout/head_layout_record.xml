@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff9f7"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_16">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingStart="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/person_name"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:text="@string/age"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+
+                <TextView
+                    android:id="@+id/tvPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/residence"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingStart="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tvBirthPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birth_place"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+
+                <TextView
+                    android:id="@+id/tvNation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:text="@string/nationality"
+                    android:textColor="@color/title_black"
+                    android:textSize="@dimen/small" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/appName"
+            android:src="@mipmap/bg_cut" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_0"
+        android:paddingStart="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_16"
+        android:text="@string/living_history"
+        android:textColor="@color/fiveEight"
+        android:textSize="@dimen/big_small" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/dp_0"
+        android:paddingStart="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/residential_history"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvHistory1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/recruitment_num"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvHistory2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/radiation"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvHistory3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/smoking_history"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvSmokingHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/drinking_history"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvDrink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/obstetric_history"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvObstericalHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/divide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/family_history"
+            android:textColor="@color/eight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvFamilyHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/appName" />
+
+    </LinearLayout>
+
+</LinearLayout>

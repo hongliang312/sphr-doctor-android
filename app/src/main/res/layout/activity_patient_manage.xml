@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/materialup.appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                tools:ignore="ExtraText">
+                ​
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        android:drawableTop="@mipmap/ic_pm"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:gravity="center_vertical"
+                        android:lineSpacingExtra="@dimen/dp_6"
+                        android:paddingStart="@dimen/dp_30"
+                        android:paddingTop="@dimen/dp_20"
+                        android:paddingEnd="@dimen/dp_20"
+                        android:paddingBottom="@dimen/dp_20"
+                        android:text="@string/patient_search_hint"
+                        android:textColor="@color/eight"
+                        android:textSize="@dimen/small" />
+
+                </LinearLayout>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+            ​
+        </android.support.design.widget.AppBarLayout>
+        ​
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!--            <com.lightheart.sphr.doctor.view.CommonTabLayout-->
+            <!--                android:id="@+id/tabPatient"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/dp_6"-->
+            <!--                android:background="@android:color/white"-->
+            <!--                android:paddingTop="@dimen/dp_12"-->
+            <!--                android:paddingBottom="@dimen/dp_12"-->
+            <!--                app:tl_divider_color="@color/divide"-->
+            <!--                app:tl_divider_padding="@dimen/dp_8"-->
+            <!--                app:tl_divider_width="0.5dp"-->
+            <!--                app:tl_iconVisible="false"-->
+            <!--                app:tl_indicator_color="@color/theme_color"-->
+            <!--                app:tl_indicator_height="@dimen/dp_2"-->
+            <!--                app:tl_tab_padding="@dimen/dp_10"-->
+            <!--                app:tl_textSelectColor="@color/theme_color"-->
+            <!--                app:tl_textUnselectColor="#1b1b1b"-->
+            <!--                app:tl_textsize="14sp"-->
+            <!--                app:tl_underline_color="@color/divide" />-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:text="你好呀"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/big_small"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:text="你好呀"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/big_small"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpPatients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v4.view.ViewPager>
+
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/dp_14"
+    android:paddingStart="@dimen/dp_14">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/colorDayTextLight" />
+
+    <TextView
+        android:id="@+id/tvClinicalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/big_small"
+        tools:text="@string/clinical_trial" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recruitment_num"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvRecNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="66" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trial_stage"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvTrialStage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="I" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingTop="@dimen/dp_6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/adaptation_disease"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvAdDis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="血压" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/biding_unit"
+            android:textColor="@color/colorDayTextLight"
+            android:textSize="@dimen/micro" />
+
+        <TextView
+            android:id="@+id/tvBidingUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/dp_26"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/micro"
+            tools:text="北京阳光欣晴" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_6"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvNewCon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawableEnd="@mipmap/ic_open"
+        android:padding="@dimen/dp_14"
+        android:text="@string/new_contract"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/small" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/divide" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14"
+        android:text="@string/contract_list"
+        android:textSize="@dimen/small" />
+
+
+</LinearLayout>

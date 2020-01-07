@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_14">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp_4"
+        android:textColor="@color/title_black"
+        android:textSize="@dimen/big_small"
+        tools:text="@string/appName" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testing_time"
+            android:textColor="@color/fiveEight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/testPeriod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="@dimen/dp_0"
+            android:paddingStart="@dimen/dp_10"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/num" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recruitment_num"
+            android:textColor="@color/fiveEight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvRecruitNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="@dimen/dp_0"
+            android:paddingStart="@dimen/dp_10"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/num" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/adaptation_disease"
+            android:textColor="@color/fiveEight"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:id="@+id/tvIndication"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="@dimen/dp_0"
+            android:paddingStart="@dimen/dp_10"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/small"
+            tools:text="@string/num" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
